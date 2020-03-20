@@ -1,0 +1,34 @@
+<cr-animacao-carregamento *ngIf="carregando"></cr-animacao-carregamento>
+<div class="container">
+    <div class="row">
+        <div class="formatacao-conteudo-pagina formatacao-pagina-classification_database">
+
+            <div class="flex">
+                <h3>Classification</h3>
+                <p>
+                    This page will provide information about image classification of cervical cells in a whole image. Classification was designed by three cytopathologists. Click image to zoom and have access to cell classification in image. Each image has annotations for each nuclei which are represented by bounding boxes (100x100), all annotations and classification was selected and confirmed by three cytopathologists. There are xx annotations of nuclei cells. Classification Dataset is available in Downloads (colocar link).
+                </p>
+            </div>
+            <hr>
+
+            <div>
+                <p>
+                    <a href="#" data-toggle="modal" data-target="#modal-cadastro-imagem" class="nav-link">
+                        Cadastrate new image
+                    </a>
+                </p>                
+            </div>
+
+            <cr-listar-cards-imagem
+                [todasImagens]="todasImagens"
+                [classificationDatabase]="classificationDatabase"
+                #atualizarPaginacaoViewChild>
+            </cr-listar-cards-imagem>
+        </div>
+    </div>
+
+    <!-- Modal Cadastrar Imagem(Cadastrar) -->
+    <cr-cadastrar-imagem
+        (novaImagemCadastradaEventEmiter)="atualizarListaImagens($event)">
+    </cr-cadastrar-imagem>
+</div>
