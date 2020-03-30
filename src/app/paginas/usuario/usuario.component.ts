@@ -7,7 +7,7 @@ import { HttpStatusCode } from 'src/app/utils/tratamento_erro/Http_Status_Code';
 @Component({
     selector: 'cr-usuario',
     templateUrl: './usuario.component.html',
-    styleUrls: ['./usuario.component.css']
+    styleUrls: ['./usuario.component.scss']
 })
 
 export class UsuarioComponent implements OnInit {

@@ -1,1 +1,0 @@
-A imagem exibida nas páginas de detalhes de imagem tem largura padrão de 950px e na página de classificação tem largura padrão de 950px. Existe uma forma de parametrizar esse valor para chamar esse parâmetro no CSS em vez de definir de forma estática?

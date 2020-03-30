@@ -6,7 +6,7 @@ import { ArmazenamentoBrowser } from './utils/browser_storage/browser_storage';
 @Component({
     selector: 'cr-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 

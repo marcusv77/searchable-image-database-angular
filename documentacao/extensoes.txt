@@ -1,3 +1,0 @@
-Prettier - Code formatter{
-    ctrl+alt+f => Formata o documento
-}

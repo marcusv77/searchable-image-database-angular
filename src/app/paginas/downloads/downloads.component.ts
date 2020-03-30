@@ -12,7 +12,7 @@ import { Mensagens } from 'src/app/utils/mensagens';
 @Component({
     selector: 'cr-downloads',
     templateUrl: './downloads.component.html',
-    styleUrls: ['./downloads.component.css']
+    styleUrls: ['./downloads.component.scss']
 })
 export class DownloadsComponent implements OnInit, OnDestroy {
 

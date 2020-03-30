@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 @Component({
     selector: 'cr-index',
     templateUrl: './index.component.html',
-    styleUrls: ['./index.component.css']
+    styleUrls: ['./index.component.scss']
 })
 
 export class IndexComponent implements OnInit, OnDestroy {
