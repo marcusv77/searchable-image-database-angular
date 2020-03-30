@@ -1,6 +1,6 @@
 FROM node:13.10.1-buster as base
-LABEL   version="0.1.0" \
-        description="Backend in Node.js for CRIC Searchable Image Database" \
+LABEL   version="0.1.1" \
+        description="Frontend in Angular for CRIC Searchable Image Database" \
         maintainer="raniere@rgaiacs.com"
 # Create project directory
 WORKDIR /opt/cric/frontend
