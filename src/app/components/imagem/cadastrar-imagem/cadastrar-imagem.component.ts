@@ -12,7 +12,7 @@ import { ILesaoModelResultado } from 'src/app/models/imagem/lesao.model';
 @Component({
     selector: 'cr-cadastrar-imagem',
     templateUrl: './cadastrar-imagem.component.html',
-    styleUrls: ['./cadastrar-imagem.component.css']
+    styleUrls: ['./cadastrar-imagem.component.scss']
 })
 
 export class CadastrarImagemComponent implements OnInit, OnDestroy {

@@ -7,7 +7,7 @@ import { Parametros } from 'src/app/utils/parametros';
 @Component({
     selector: 'cr-listar-cards-imagem',
     templateUrl: './listar-cards-imagem.component.html',
-    styleUrls: ['./listar-cards-imagem.component.css']
+    styleUrls: ['./listar-cards-imagem.component.scss']
 })
 
 export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterContentInit {

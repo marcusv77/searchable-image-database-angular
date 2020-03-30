@@ -13,7 +13,7 @@ import { ChavesArmazenamentoBrowser } from 'src/app/utils/chaves_armazenamento_b
 @Component({
     selector: 'cr-segmentation-database',
     templateUrl: './segmentation-database.component.html',
-    styleUrls: ['./segmentation-database.component.css']
+    styleUrls: ['./segmentation-database.component.scss']
 })
 
 export class SegmentationDatabaseComponent implements OnInit, OnDestroy {

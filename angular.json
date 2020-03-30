@@ -120,6 +120,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "cric"
+    }
+  },
+  "defaultProject": "cric",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

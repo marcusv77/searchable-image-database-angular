@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 @Component({
     selector: 'cr-cadastro-visitante',
     templateUrl: './cadastro-visitante.component.html',
-    styleUrls: ['./cadastro-visitante.component.css']
+    styleUrls: ['./cadastro-visitante.component.scss']
 })
 export class CadastroVisitanteComponent implements OnInit, OnDestroy {
 

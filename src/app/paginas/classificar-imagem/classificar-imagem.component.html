@@ -23,6 +23,15 @@
         <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-3" id="selecionador">
 
+                <div>
+                    <div class="image_info">
+                        <h5> Information </h5>
+                        <p> <span> Microscope slide: </span> {{imagem?.codigo_lamina}} </p>
+                        <p> <span> Acquisition date: </span> {{ imagem?.dt_aquisicao | date}} </p>
+                        <p> <span> Lesion: </span> {{imagem?.lesao?.nome}} </p>
+                    </div>  
+                </div>
+
                 <!-- ListarClassificacoes realizadas INICIO -->
                 <label for="id_generico"> <span class="label_personalizado"> Load classification data </span> </label>
                 <div>
@@ -46,15 +55,9 @@
 
                     <!-- Codigo leitura de dados INICO -->
                     <div *ngIf="!atualizarInformacoes">
-                        <h5> Image information </h5>
-
-                        <p> <span> Lesion: </span> {{imagem?.lesao?.nome}} </p>
-                        <p> <span> Microscope slide: </span> {{imagem?.codigo_lamina}} </p>
-                        <p> <span> Acquisition date: </span> {{ imagem?.dt_aquisicao | date}} </p>
-
                         <h5> Nucleus information </h5>
                         <p> <span> Lesion type: </span> {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.nome}} </p>
-                        <p> <span> Lesion details: </span> {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes}} </p>
+                        <p *ngIf="todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes"> <span> Lesion details: </span> {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes}} </p>
                     </div>
                     <!-- Codigo leitura de dados FIM -->
 

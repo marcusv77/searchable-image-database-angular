@@ -25,7 +25,7 @@ declare const obterLarguraAlturaAtualCanvas: any;
 @Component({
     selector: 'cr-classificar-imagem',
     templateUrl: './classificar-imagem.component.html',
-    styleUrls: ['./classificar-imagem.component.css'],
+    styleUrls: ['./classificar-imagem.component.scss'],
     providers: [DatePipe]
 })
 

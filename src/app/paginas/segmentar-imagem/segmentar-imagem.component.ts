@@ -25,7 +25,7 @@ declare const exibirSegmentacoes: any; //Função javascript
 @Component({
     selector: "cr-segmentar-imagem",
     templateUrl: "./segmentar-imagem.component.html",
-    styleUrls: ["./segmentar-imagem.component.css"]
+    styleUrls: ["./segmentar-imagem.component.scss"]
 })
 
 export class SegmentarImagemComponent implements OnInit, OnDestroy {

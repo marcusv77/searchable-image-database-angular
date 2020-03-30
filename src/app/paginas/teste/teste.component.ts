@@ -4,7 +4,7 @@ import { Chart } from 'angular-highcharts';
 @Component({
     selector: 'cr-teste',
     templateUrl: './teste.component.html',
-    styleUrls: ['./teste.component.css']
+    styleUrls: ['./teste.component.scss']
 })
 
 export class TesteComponent implements OnInit, OnDestroy {

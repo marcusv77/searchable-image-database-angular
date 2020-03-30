@@ -12,7 +12,7 @@ import { ChavesArmazenamentoBrowser } from 'src/app/utils/chaves_armazenamento_b
 @Component({
     selector: 'cr-classification-database',
     templateUrl: './classification-database.component.html',
-    styleUrls: ['./classification-database.component.css']
+    styleUrls: ['./classification-database.component.scss']
 })
 
 export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
