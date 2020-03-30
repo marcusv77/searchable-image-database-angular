@@ -1,4 +1,7 @@
-FROM node:13.10.1-buster
+FROM node:13.10.1-buster as base
+LABEL   version="0.1.0" \
+        description="Backend in Node.js for CRIC Searchable Image Database" \
+        maintainer="raniere@rgaiacs.com"
 # Create project directory
 WORKDIR /opt/cric/frontend
 # Install app dependencies
@@ -9,4 +12,7 @@ ENV PATH /opt/cric/frontend/node_modules/.bin:$PATH
 # Expose port. Otherwise, we will have "This site can’t be reached"
 # https://stackoverflow.com/a/46779529
 EXPOSE 4200
-# We don't copy ./src because it will be mapped by docker-compose
+
+FROM base as production
+# Copy ./src
+COPY . ./
