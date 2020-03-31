@@ -56,6 +56,9 @@
                     <!-- Codigo leitura de dados INICO -->
                     <div *ngIf="!atualizarInformacoes">
                         <h5> Nucleus information </h5>
+                        <p> 
+                            <span>Usuário:</span> {{todasClassificacoes.analista?.id}}
+                        </p>
                         <p> <span> Lesion type: </span> {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.nome}} </p>
                         <p *ngIf="todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes"> <span> Lesion details: </span> {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes}} </p>
                     </div>
