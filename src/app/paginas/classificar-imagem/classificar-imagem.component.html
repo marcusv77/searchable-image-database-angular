@@ -26,6 +26,12 @@
                 <div>
                     <div class="image_info">
                         <h5> Information </h5>
+                        <p>
+                            <span>
+                                User
+                            </span>
+                            {{imagem?.id_usuario}}
+                        </p>
                         <p> <span> Microscope slide: </span> {{imagem?.codigo_lamina}} </p>
                         <p> <span> Acquisition date: </span> {{ imagem?.dt_aquisicao | date}} </p>
                         <p> <span> Lesion: </span> {{imagem?.lesao?.nome}} </p>
