@@ -35,7 +35,7 @@ const routes: Routes = [
   {path: 'lista_de_imagens', component: ListarCardsImagemComponent, canActivate: [GuardaAutenticacao]},
   {path: 'erro', component: PaginaDeErroComponent},
   {path: 'segmentation_database/segment_imagem/:id', component: SegmentarImagemComponent, canActivate: [GuardaAutenticacao]},
-  {path: 'classification_database/clasify_image/:id', component: ClassificarImagemComponent, canActivate: [GuardaAutenticacao]},
+  {path: 'classification_database/classify_image/:id', component: ClassificarImagemComponent, canActivate: [GuardaAutenticacao]},
   {path: 'usuarios', component: UsuarioComponent, canActivate: [GuardaAutenticacao]},
   {path: 'teste', component: TesteComponent},
   {path: '**', component :PaginaDeErroComponent, canActivate: [GuardaAutenticacao]},
