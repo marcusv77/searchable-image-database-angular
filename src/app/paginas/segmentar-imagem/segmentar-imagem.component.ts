@@ -480,7 +480,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
         console.log('The cytoplasm was registered. Please segment the nucleus.');
     }
 
-    cadastrarSegmentacaoElementoAnucleado() {
+    cadastrarSegmentacaoElementoAnucleado(valor: boolean) {
         this.obterIdDescricao();
         this.cadastrarSegmentacao(false);
     }
