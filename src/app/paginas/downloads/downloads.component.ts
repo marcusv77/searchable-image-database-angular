@@ -20,7 +20,7 @@ export class DownloadsComponent implements OnInit, OnDestroy {
     private objetoSessao: IObjetoSessaoModel;
     private objetoErro: ObjetoErro;
     private fazerDownloadImagensBaseSubscription: Subscription;
-    private carregando = false;
+    public carregando = false;
 
 
     constructor(private imagemServico: ImagemService) {

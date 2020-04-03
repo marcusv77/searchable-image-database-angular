@@ -16,7 +16,7 @@ export class CadastroVisitanteComponent implements OnInit, OnDestroy {
 
     //#region Propriedades
     private objetoErro: ObjetoErro;
-    private formularioVisitante: FormGroup;
+    public formularioVisitante: FormGroup;
     private usuarioLogin: UsuarioLogin;
     private idLoginPadrao: number;
     private solicitarCadastroVisitanteSubscription: Subscription;

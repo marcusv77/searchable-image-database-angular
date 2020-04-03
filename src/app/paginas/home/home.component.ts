@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     public graficoPizza: Chart;
     private objetoErro: ObjetoErro;
     private obterContagemCelulasSubscription: Subscription;
-    private carregando: boolean;
+    public carregando: boolean;
     //#endregion
 
     //#region Construtor
