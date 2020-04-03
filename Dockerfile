@@ -13,6 +13,16 @@ ENV PATH /opt/cric/frontend/node_modules/.bin:$PATH
 # https://stackoverflow.com/a/46779529
 EXPOSE 4200
 
-FROM base as production
+FROM base as build
 # Copy ./src
 COPY . ./
+RUN ng build --prod --build-optimizer
+
+# Build a small nginx image with static website
+FROM nginx:alpine as production
+RUN rm -rf /usr/share/nginx/html/*
+COPY nginx.conf /etc/nginx/nginx.conf
+# --from sets the source location to a previous build stage
+COPY --from=build /app/dist /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
