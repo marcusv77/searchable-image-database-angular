@@ -41,22 +41,22 @@ export class UsuarioComponent implements OnInit {
                 switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.NOT_FOUND: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     default: {
-                        alert(erro);
+                        console.log(erro);
                         break;
                     }
                 }
