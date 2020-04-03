@@ -91,7 +91,7 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
             this.imagemService.cadastrarImagem(formularioFormData)
             .subscribe(
                 (retorno) => {
-                    alert('Image successfully registered');
+                    console.log('Image successfully registered');
                     this.novaImagemCadastradaEventEmiter.emit(false);
                 },
                 (erro) => {
@@ -101,32 +101,32 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
                     switch(this.objetoErro.status_code) {
 
                         case HttpStatusCode.UNAUTHORIZED: {
-                            alert(this.objetoErro.mensagem);
+                            console.log(this.objetoErro.mensagem);
                             break;
                         }
 
                         case HttpStatusCode.BAD_REQUEST: {
-                            alert(this.objetoErro.mensagem);
+                            console.log(this.objetoErro.mensagem);
                             break;
                         }
 
                         case HttpStatusCode.NOT_FOUND: {
-                            alert(this.objetoErro.mensagem);
+                            console.log(this.objetoErro.mensagem);
                             break;
                         }
 
                         case HttpStatusCode.FORBIDDEN: {
-                            alert(this.objetoErro.mensagem);
+                            console.log(this.objetoErro.mensagem);
                             break;
                         }
 
                         case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                            alert(this.objetoErro.mensagem);
+                            console.log(this.objetoErro.mensagem);
                             break;
                         }
 
                         default: {
-                            alert(erro);
+                            console.log(erro);
                             break;
                         }
                     }
@@ -134,7 +134,7 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
             );
         }
         else {
-            alert('Could not retrieve informations from form. Plase, try again.');
+            console.log('Could not retrieve informations from form. Plase, try again.');
         }
     }
 
@@ -162,22 +162,22 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
                 switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.NOT_FOUND: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     default: {
-                        alert(erro);
+                        console.log(erro);
                         break;
                     }
                 }

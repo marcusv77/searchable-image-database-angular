@@ -124,32 +124,32 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                 switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.BAD_REQUEST: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.NOT_FOUND: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.FORBIDDEN: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     default: {
-                        alert(erro);
+                        console.log(erro);
                         break;
                     }
                 }
@@ -180,7 +180,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                 this.definirListaDescricoesInicial();
                 this.indiceSelecionado = -1;
                 this.listarTodasSegmentacoesDeDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
-                alert('Segmentation saved');
+                console.log('Segmentation saved');
             },
             (erro) => {
                 this.carregando = false;
@@ -189,33 +189,33 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                 switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.BAD_REQUEST: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.NOT_FOUND: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.FORBIDDEN: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         this.desfazerSegmentacao();
                         break;
                     }
 
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     default: {
-                        alert(erro);
+                        console.log(erro);
                         break;
                     }
                 }
@@ -246,27 +246,27 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                 switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.BAD_REQUEST: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.NOT_FOUND: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     default: {
-                        alert(erro);
+                        console.log(erro);
                         break;
                     }
                 }
@@ -292,22 +292,22 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                 switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.NOT_FOUND: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                        alert(this.objetoErro.mensagem);
+                        console.log(this.objetoErro.mensagem);
                         break;
                     }
 
                     default: {
-                        alert(erro);
+                        console.log(erro);
                         break;
                     }
                 }
@@ -380,32 +380,32 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                     switch(this.objetoErro.status_code) {
 
                         case HttpStatusCode.UNAUTHORIZED: {
-                            alert(this.objetoErro.mensagem);
+                            console.log(this.objetoErro.mensagem);
                             break;
                         }
     
                         case HttpStatusCode.BAD_REQUEST: {
-                            alert(this.objetoErro.mensagem);
+                            console.log(this.objetoErro.mensagem);
                             break;
                         }
     
                         case HttpStatusCode.NOT_FOUND: {
-                            alert(this.objetoErro.mensagem);
+                            console.log(this.objetoErro.mensagem);
                             break;
                         }
     
                         case HttpStatusCode.FORBIDDEN: {
-                            alert(this.objetoErro.mensagem);
+                            console.log(this.objetoErro.mensagem);
                             break;
                         }
     
                         case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                            alert(this.objetoErro.mensagem);
+                            console.log(this.objetoErro.mensagem);
                             break;
                         }
     
                         default: {
-                            alert(erro);
+                            console.log(erro);
                             break;
                         }
                     }
@@ -477,7 +477,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
 
     validarSegmetacaoDoCitoplasma() {
         this.obterIdDescricao();
-        alert('The cytoplasm was registered. Please segment the nucleus.');
+        console.log('The cytoplasm was registered. Please segment the nucleus.');
     }
 
     cadastrarSegmentacaoElementoAnucleado() {
