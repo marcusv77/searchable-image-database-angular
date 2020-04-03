@@ -27,6 +27,7 @@
                     <input
                         [(ngModel)]="usuarioLogin.senha"
                         type="password" value="" id="senha-login" class="form-control"
+                        (keydown.enter) = "fazerLogin()"
                     >                            
                 </div>
             </div>
