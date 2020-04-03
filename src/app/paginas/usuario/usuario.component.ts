@@ -14,7 +14,7 @@ export class UsuarioComponent implements OnInit {
 
     @Output() public todosUsuarios: IUsuarioBaseModel[];
     private objetoErro: ObjetoErro;
-    private carregando: boolean;
+    public carregando: boolean;
 
     constructor(private usuarioService: UsuarioService) {
     }

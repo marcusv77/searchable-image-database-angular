@@ -10,7 +10,7 @@ import { UsuarioLogin } from 'src/app/services/login/usuario_login';
 export class LoginComponent implements OnInit {
 
     //#region Propriedades
-    private usuarioLogin: UsuarioLogin;
+    public usuarioLogin: UsuarioLogin;
     private idLoginPadrao: number;
     //#endregion
 

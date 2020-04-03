@@ -55,8 +55,8 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
     private listarSegmentacoesCelulaSubscription: Subscription;
     private listarDescricoesSubscription: Subscription;
     private excluirRegistroDeSegmentacaoSubscription: Subscription;
-    private carregando = false;
-    private rotulo = true;
+    public carregando = false;
+    public rotulo = true;
     //#endregion
 
     //#region Construtores
