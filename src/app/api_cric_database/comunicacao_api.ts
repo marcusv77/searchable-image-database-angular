@@ -1,11 +1,12 @@
+import { environment } from '../../environments/environment';
+
 // Contem a url_base para o servidor da api
 const BASE_URL_API = 'http://localhost:3000';
 const BASE_URL_API_PRODUCAO = 'http://projetosfagner.com.br';
 
 export class ComunicacaoApi {
 
-    private UrlBaseApiLocalhost: string;
-    private UrlBaseApiProducao: string;
+    private UrlBaseApi: string;
     private UrlCaminhoBaseInterna: string;
     private UrlCaminhoBaseExterna: string;
     private UrlCaminhoBaseThumbnail: string;
@@ -13,8 +14,7 @@ export class ComunicacaoApi {
     private ambienteProducao: boolean;
 
     public constructor () {
-        this.UrlBaseApiLocalhost = BASE_URL_API;
-        this.UrlBaseApiProducao = BASE_URL_API_PRODUCAO;
+        this.UrlBaseApi = environment.api_url;
         this.UrlCaminhoBaseInterna = 'imagens/base_interna';
         this.UrlCaminhoBaseExterna = 'imagens/base_externa';
         this.UrlCaminhoBaseThumbnail = 'imagens/base_thumbnail';
@@ -23,12 +23,7 @@ export class ComunicacaoApi {
     }
 
     public obterUrlBaseApi(): string {
-        if(this.ambienteProducao) {
-            return this.UrlBaseApiProducao;
-        }
-        else{
-            return this.UrlBaseApiLocalhost;
-        }
+        return this.UrlBaseApi;
     }
 
     public obterUrlBaseInterna(): string {
