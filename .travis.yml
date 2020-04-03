@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "9"
+dist: trusty
+sudo: required
+
+install:
+  - npm install
+
+before_script:
+  - npm install -g @angular/cli
+
+script:
+  - ng build --prod --build-optimizer
