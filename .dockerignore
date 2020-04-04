@@ -24,4 +24,4 @@ yarn-error.log*
 node_modules/
 
 # Others
-documentacao
+docs
