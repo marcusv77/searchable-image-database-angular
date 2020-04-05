@@ -17,7 +17,6 @@ import { DownloadsComponent } from './paginas/downloads/downloads.component';
 import { PublicationsComponent } from './paginas/publications/publications.component';
 import { IndexComponent } from './paginas/index/index.component';
 import { ListarCardsImagemComponent } from './components/imagem/listar-cards-imagem/listar-cards-imagem.component';
-import { AtlasComponent } from './paginas/atlas/atlas.component';
 import { PaginaDeErroComponent } from './paginas/pagina_de_erro/pagina-de-erro.component';
 import { SegmentarImagemComponent } from './paginas/segmentar-imagem/segmentar-imagem.component';
 import { ClassificarImagemComponent } from './paginas/classificar-imagem/classificar-imagem.component';
@@ -47,7 +46,6 @@ import { AnimacaoCarregamentoComponent } from './components/sistema/animacao-car
         DownloadsComponent,
         PublicationsComponent,
         IndexComponent,
-        AtlasComponent,
         ListarCardsImagemComponent,
         PaginaDeErroComponent,
         SegmentarImagemComponent,

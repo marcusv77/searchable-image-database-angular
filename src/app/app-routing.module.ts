@@ -10,7 +10,6 @@ import { ClassificationDatabaseComponent } from './paginas/classification-databa
 import { DownloadsComponent } from './paginas/downloads/downloads.component';
 import { PublicationsComponent } from './paginas/publications/publications.component';
 import { IndexComponent } from './paginas/index/index.component';
-import { AtlasComponent } from './paginas/atlas/atlas.component';
 import { PaginaDeErroComponent } from './paginas/pagina_de_erro/pagina-de-erro.component';
 import { SegmentarImagemComponent } from './paginas/segmentar-imagem/segmentar-imagem.component';
 
@@ -31,7 +30,6 @@ const routes: Routes = [
   {path: 'classification_database', component: ClassificationDatabaseComponent, canActivate: [GuardaAutenticacao]},
   {path: 'downloads', component: DownloadsComponent, canActivate: [GuardaAutenticacao]},
   {path: 'publications', component: PublicationsComponent, canActivate: [GuardaAutenticacao]},
-  {path: 'atlas', component: AtlasComponent, canActivate: [GuardaAutenticacao]},
   {path: 'lista_de_imagens', component: ListarCardsImagemComponent, canActivate: [GuardaAutenticacao]},
   {path: 'erro', component: PaginaDeErroComponent},
   {path: 'segmentation_database/segment_imagem/:id', component: SegmentarImagemComponent, canActivate: [GuardaAutenticacao]},
