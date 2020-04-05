@@ -1,5 +1,8 @@
-Developer
-=========
+Angular CLI
+===========
+
+We use `Angular CLI <https://cli.angular.io/>`_
+to do some repetitives tasks.
 
 Development server
 ------------------
