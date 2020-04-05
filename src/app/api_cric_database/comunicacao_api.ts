@@ -1,9 +1,5 @@
 import { environment } from '../../environments/environment';
 
-// Contem a url_base para o servidor da api
-const BASE_URL_API = 'http://localhost:3000';
-const BASE_URL_API_PRODUCAO = 'http://projetosfagner.com.br';
-
 export class ComunicacaoApi {
 
     private UrlBaseApi: string;
@@ -19,7 +15,6 @@ export class ComunicacaoApi {
         this.UrlCaminhoBaseExterna = 'imagens/base_externa';
         this.UrlCaminhoBaseThumbnail = 'imagens/base_thumbnail';
         this.TokenCuringa = 'bac8db9147ac80b4ba8a05bb0de7c4fd';
-        this.ambienteProducao = false;
     }
 
     public obterUrlBaseApi(): string {
