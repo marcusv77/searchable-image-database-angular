@@ -8,6 +8,7 @@ import { LinksExternos } from "src/app/utils/links_externos";
 })
 export class FooterComponent implements OnInit {
 
+    public linkContactUs: string;
     public linkUfop: string;
     public linkDecom: string;
     public linkEscolafarmacia: string;
@@ -15,6 +16,7 @@ export class FooterComponent implements OnInit {
     public linkFaceBook: string;
 
     constructor() {
+        this.linkContactUs = LinksExternos.CONTACT_US;
         this.linkUfop = LinksExternos.UNIVERSIDADE_FEDERAL_OURO_PRETO;
         this.linkDecom = LinksExternos.DEPARTAMENTO_COMPUTACAO_UFOP;
         this.linkEscolafarmacia = LinksExternos.ESCOLA_FARMACIA_UFOP;
