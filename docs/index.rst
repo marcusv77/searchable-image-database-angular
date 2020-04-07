@@ -33,8 +33,10 @@ Developers
     :maxdepth: 2
     :caption: Contents:
 
+    dependencies
     settings
     cli
+    style
 
 Indices and tables
 ------------------
