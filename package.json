@@ -4,9 +4,10 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --build-optmizer",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "tslint 'src/**/*.ts?(x)'",
+    "fix": "tslint --fix 'src/**/*.ts?(x)'",
     "e2e": "ng e2e"
   },
   "private": true,

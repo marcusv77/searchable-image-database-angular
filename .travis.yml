@@ -11,5 +11,5 @@ before_script:
   - npm install -g @angular/cli
 
 script:
-  - tslint
-  - ng build --prod --build-optimizer
+  - npm run lint
+  - npm rum build
