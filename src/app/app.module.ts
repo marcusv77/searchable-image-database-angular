@@ -7,8 +7,6 @@ import { HttpClientModule } from "@angular/common/http";
 // Componentes
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-
-import { HomeComponent } from "./paginas/home/home.component";
 import { HeaderComponent } from "./paginas/templates/header/header.component";
 import { FooterComponent } from "./paginas/templates/footer/footer.component";
 import { AboutComponent } from "./paginas/about/about.component";
@@ -44,7 +42,6 @@ import { AnimacaoCarregamentoComponent } from "./components/sistema/animacao-car
 @NgModule({
     declarations: [
         AppComponent,
-        HomeComponent,
         LicenseComponent,
         PrivacyComponent,
         TermsComponent,
