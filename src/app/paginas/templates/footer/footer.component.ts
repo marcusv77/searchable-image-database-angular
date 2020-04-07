@@ -8,11 +8,13 @@ import { LinksExternos } from "src/app/utils/links_externos";
 })
 export class FooterComponent implements OnInit {
 
+    public linkContactUs: string;
     public linkUFOP: string;
     public linkUFOC: string;
     public linkUC_BERKELEY: string;
 
     constructor() {
+        this.linkContactUs = LinksExternos.CONTACT_US;
         this.linkUFOP = LinksExternos.UFOP;
         this.linkUFOC = LinksExternos.UFC;
         this.linkUC_BERKELEY = LinksExternos.UC_BERKELEY;
