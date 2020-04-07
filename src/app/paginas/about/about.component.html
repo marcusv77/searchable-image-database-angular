@@ -29,17 +29,32 @@
                 Image segmentation database will be available soon.
             </p>
 
-            <h3>Cite us</h3>
-            <mat-tab-group>
-                <mat-tab label="mla">
-                    <h1>MLA</h1>
-                    <p>CRIC</p>
-                </mat-tab>
-                <mat-tab label="bibtex">
-                    <h1>BibTeX</h1>
-                    <p>CRIC</p>
-                </mat-tab>
-            </mat-tab-group>
+            <h3 id="cite-us">Cite us</h3>
+            <!-- Bootstrap Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#mla">MLA</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#bibtex">BibTeX</a>
+                </li>
+            </ul>
+            
+            <!-- Bootstrap Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane container active" id="mla">
+                    Rezende, Mariana Trevisan, et al. CRIC.
+                </div>
+                <div class="tab-pane container fade" id="bibtex">
+                    <pre>
+                        <code>@misc cri
+                            author  "Mariana Trevisan Rezende and Raniere Silva and Andrea Gomes Campos Bianchi and Claudia Martins Carneiro",
+                            title = "BIBTEXing",
+                            year = "2020",
+                        </code>
+                    </pre>
+                </div>
+            </div>
             
         </div>
     </div>
