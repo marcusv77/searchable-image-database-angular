@@ -14,7 +14,6 @@ import { AboutComponent } from "./paginas/about/about.component";
 import { SegmentationDatabaseComponent } from "./paginas/segmentation-database/segmentation-database.component";
 import { ClassificationDatabaseComponent } from "./paginas/classification-database/classification-database.component";
 import { DownloadsComponent } from "./paginas/downloads/downloads.component";
-import { PublicationsComponent } from "./paginas/publications/publications.component";
 import { IndexComponent } from "./paginas/index/index.component";
 import { ListarCardsImagemComponent } from "./components/imagem/listar-cards-imagem/listar-cards-imagem.component";
 import { PaginaDeErroComponent } from "./paginas/pagina_de_erro/pagina-de-erro.component";
@@ -44,7 +43,6 @@ import { AnimacaoCarregamentoComponent } from "./components/sistema/animacao-car
         SegmentationDatabaseComponent,
         ClassificationDatabaseComponent,
         DownloadsComponent,
-        PublicationsComponent,
         IndexComponent,
         ListarCardsImagemComponent,
         PaginaDeErroComponent,
