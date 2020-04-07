@@ -1,8 +1,6 @@
 export enum LinksExternos {
     CONTACT_US = "mailto:cric@ufop.edu.br",
-    UNIVERSIDADE_FEDERAL_OURO_PRETO = "https://www.ufop.br/",
-    DEPARTAMENTO_COMPUTACAO_UFOP = "http://www3.decom.ufop.br/decom/inicio/",
-    ESCOLA_FARMACIA_UFOP = "https://escoladefarmacia.ufop.br/",
-    PARCEIRO_BERKELEY = "https://www.berkeley.edu/",
-    FACEBOOK = "https://www.facebook.com/cricdatabase",
+    UFOP = "https://www.ufop.br/",
+    UFC = "http://www.ufc.br/",
+    UC_BERKELEY = "https://www.berkeley.edu/",
 }

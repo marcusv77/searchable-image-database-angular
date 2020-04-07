@@ -9,19 +9,15 @@ import { LinksExternos } from "src/app/utils/links_externos";
 export class FooterComponent implements OnInit {
 
     public linkContactUs: string;
-    public linkUfop: string;
-    public linkDecom: string;
-    public linkEscolafarmacia: string;
-    public linkParceiroBerkeley: string;
-    public linkFaceBook: string;
+    public linkUFOP: string;
+    public linkUFOC: string;
+    public linkUC_BERKELEY: string;
 
     constructor() {
         this.linkContactUs = LinksExternos.CONTACT_US;
-        this.linkUfop = LinksExternos.UNIVERSIDADE_FEDERAL_OURO_PRETO;
-        this.linkDecom = LinksExternos.DEPARTAMENTO_COMPUTACAO_UFOP;
-        this.linkEscolafarmacia = LinksExternos.ESCOLA_FARMACIA_UFOP;
-        this.linkParceiroBerkeley = LinksExternos.PARCEIRO_BERKELEY;
-        this.linkFaceBook = LinksExternos.FACEBOOK;
+        this.linkUFOP = LinksExternos.UFOP;
+        this.linkUFOC = LinksExternos.UFC;
+        this.linkUC_BERKELEY = LinksExternos.UC_BERKELEY;
     }
 
     ngOnInit() { }
