@@ -1,13 +1,13 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output } from "@angular/core";
 import { IUsuarioBaseModel } from "../../models/usuario/usuario_base.model";
 import { UsuarioService } from "../../services/usuarios/usuarios.service";
-import { ObjetoErro } from 'src/app/utils/tratamento_erro/ObjetoErro';
-import { HttpStatusCode } from 'src/app/utils/tratamento_erro/Http_Status_Code';
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
+import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
 
 @Component({
-    selector: 'cr-usuario',
-    templateUrl: './usuario.component.html',
-    styleUrls: ['./usuario.component.scss']
+    selector: "cr-usuario",
+    templateUrl: "./usuario.component.html",
+    styleUrls: ["./usuario.component.scss"]
 })
 
 export class UsuarioComponent implements OnInit {

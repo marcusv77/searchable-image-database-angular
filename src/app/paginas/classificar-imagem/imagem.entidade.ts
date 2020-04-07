@@ -1,4 +1,4 @@
-import { LesaoEntidade } from './lesao.entidade';
+import { LesaoEntidade } from "./lesao.entidade";
 
 export class ImagemEntidade {
     id: number;

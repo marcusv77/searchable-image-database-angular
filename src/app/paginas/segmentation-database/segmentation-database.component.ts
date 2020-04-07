@@ -1,26 +1,25 @@
-import { Component, OnInit, Output, Input, OnDestroy, EventEmitter, ViewChild } from '@angular/core';
-import { ImagemService } from 'src/app/services/imagens_service/imagens.service';
-import { IImagemModelResultado } from 'src/app/models/imagem/imagem.model';
-import { ObjetoErro } from 'src/app/utils/tratamento_erro/ObjetoErro';
-import { HttpStatusCode } from 'src/app/utils/tratamento_erro/Http_Status_Code';
-import { ComunicacaoApi } from 'src/app/api_cric_database/comunicacao_api';
-import { Subscription } from 'rxjs';
-import { IObjetoSessaoModel } from 'src/app/models/autenticacao/objeto_sessao.model';
-import { ArmazenamentoBrowser } from 'src/app/utils/browser_storage/browser_storage';
-import { ChavesArmazenamentoBrowser } from 'src/app/utils/chaves_armazenamento_browser';
-
+import { Component, OnInit, Output, Input, OnDestroy, EventEmitter, ViewChild } from "@angular/core";
+import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
+import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
+import { ComunicacaoApi } from "src/app/api_cric_database/comunicacao_api";
+import { Subscription } from "rxjs";
+import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
+import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
+import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
 
 @Component({
-    selector: 'cr-segmentation-database',
-    templateUrl: './segmentation-database.component.html',
-    styleUrls: ['./segmentation-database.component.scss']
+    selector: "cr-segmentation-database",
+    templateUrl: "./segmentation-database.component.html",
+    styleUrls: ["./segmentation-database.component.scss"]
 })
 
 export class SegmentationDatabaseComponent implements OnInit, OnDestroy {
 
     @Output() public todasImagens: IImagemModelResultado[];
     @Output() public segmentationDatabase: boolean;
-    @ViewChild('atualizarPaginacaoViewChild', null) public atualizacaoDePaginaViewChild: any;
+    @ViewChild("atualizarPaginacaoViewChild", null) public atualizacaoDePaginaViewChild: any;
     private objetoErro: ObjetoErro;
     private comunicacaoApi: ComunicacaoApi;
     private objetoSessao: IObjetoSessaoModel;
@@ -42,7 +41,7 @@ export class SegmentationDatabaseComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.listarImagensSubscription) {this.listarImagensSubscription.unsubscribe()};
+        if(this.listarImagensSubscription) {this.listarImagensSubscription.unsubscribe();}
     }
 
     listarImagens() {
@@ -88,10 +87,11 @@ export class SegmentationDatabaseComponent implements OnInit, OnDestroy {
 
     construirUrlCaminhoImagemThumbnail(listaImagens: IImagemModelResultado[]) {
 
-        listaImagens.forEach(imagem => {
+        listaImagens.forEach((imagem) => {
             const urlImg = `${this.comunicacaoApi.obterUrlBaseApi()}/${this.comunicacaoApi.obterUrlBaseThumbnail()}/${imagem.nome}`;
             imagem.caminho_imagem = urlImg;
         });
+
         return listaImagens;
     }
 

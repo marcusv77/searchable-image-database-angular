@@ -1,17 +1,17 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Chart } from 'angular-highcharts';
-import { ImagemService } from 'src/app/services/imagens_service/imagens.service';
-import { IEstatisticaCelulasDoentesModelResultado } from 'src/app/models/imagem/estatistica_celulas_doentes.model';
-import { ObjetoErro } from 'src/app/utils/tratamento_erro/ObjetoErro';
-import { HttpStatusCode } from 'src/app/utils/tratamento_erro/Http_Status_Code';
-import { TipoLesao } from 'src/app/utils/tipo_doencas';
-import { Subscription } from 'rxjs';
-import * as Highcharts from 'highcharts';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Chart } from "angular-highcharts";
+import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+import { IEstatisticaCelulasDoentesModelResultado } from "src/app/models/imagem/estatistica_celulas_doentes.model";
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
+import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
+import { TipoLesao } from "src/app/utils/tipo_doencas";
+import { Subscription } from "rxjs";
+import * as Highcharts from "highcharts";
 
 @Component({
-    selector: 'cr-home',
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.scss']
+    selector: "cr-home",
+    templateUrl: "./home.component.html",
+    styleUrls: ["./home.component.scss"]
 })
 
 export class HomeComponent implements OnInit, OnDestroy {
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.obterContagemCelulasSubscription) {this.obterContagemCelulasSubscription.unsubscribe()};
+        if(this.obterContagemCelulasSubscription) {this.obterContagemCelulasSubscription.unsubscribe();}
     }
 
     obterContagemCelulasDoentes() {
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             (erro) => {
                 this.carregando = false;
                 this.objetoErro = erro.error;
-                
+
                 switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
@@ -81,20 +81,20 @@ export class HomeComponent implements OnInit, OnDestroy {
 
         return new Chart({
             chart: {
-                type: 'pie'
+                type: "pie"
             },
             title: {
-                text: 'Classified nucleis in the imagem database'
+                text: "Classified nucleis in the imagem database"
             },
             subtitle: {
-                text: ''
+                text: ""
             },
             credits: {
                 enabled: true
             },
             tooltip: {
-                pointFormat: '{series.name}: <b>{point.y}</b>',
-                //valueSuffix: '%'
+                pointFormat: "{series.name}: <b>{point.y}</b>",
+                // valueSuffix: '%'
             },
             plotOptions: {
                 series: {
@@ -103,12 +103,12 @@ export class HomeComponent implements OnInit, OnDestroy {
                 pie: {
                     dataLabels: {
                         enabled: false,
-                        connectorColor: 'silver'
+                        connectorColor: "silver"
                     },
                     shadow: false,
-                    center: ['50%', '50%'],
+                    center: ["50%", "50%"],
                     allowPointSelect: true,
-                    cursor: 'pointer',
+                    cursor: "pointer",
                     showInLegend: true
                 }
             },
@@ -127,7 +127,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             series: [
                 {
                     type: null,
-                    name: 'Nuclei sample',
+                    name: "Nuclei sample",
                     colorByPoint: true,
                     data: [
                         { name: TipoLesao.NORMAL, y: this.contagemCelulas.Normal },

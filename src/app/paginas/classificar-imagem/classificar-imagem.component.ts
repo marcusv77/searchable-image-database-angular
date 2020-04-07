@@ -1,21 +1,21 @@
-import { Subscription } from 'rxjs';
-import { Component, OnInit, Input, OnDestroy, AfterContentInit, AfterViewInit, AfterViewChecked } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { ImagemService } from 'src/app/services/imagens_service/imagens.service';
-import { IImagemModelResultado } from 'src/app/models/imagem/imagem.model';
-import { IUsuarioBaseModel } from 'src/app/models/usuario/usuario_base.model';
+import { Subscription } from "rxjs";
+import { Component, OnInit, Input, OnDestroy, AfterContentInit, AfterViewInit, AfterViewChecked } from "@angular/core";
+import { ActivatedRoute, ParamMap } from "@angular/router";
+import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
+import { IUsuarioBaseModel } from "src/app/models/usuario/usuario_base.model";
 import { HttpStatusCode } from "../../utils/tratamento_erro/Http_Status_Code";
 import { ChavesArmazenamentoBrowser } from "../../utils/chaves_armazenamento_browser";
 import { IObjetoSessaoModel } from "../../models/autenticacao/objeto_sessao.model";
-import { ILesaoModelResultado } from 'src/app/models/imagem/lesao.model';
-import { ArmazenamentoBrowser } from 'src/app/utils/browser_storage/browser_storage';
-import { IClassificacaoCelulaModelResultado } from 'src/app/models/classificacao/classificacao_celula.model';
-import { ObjetoErro } from 'src/app/utils/tratamento_erro/ObjetoErro';
+import { ILesaoModelResultado } from "src/app/models/imagem/lesao.model";
+import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
+import { IClassificacaoCelulaModelResultado } from "src/app/models/classificacao/classificacao_celula.model";
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
 import { ComunicacaoApi } from "../../api_cric_database/comunicacao_api";
-import { CadastrarClassificacaoRequisicao } from './requisicao';
-import { LesaoEntidade } from './lesao.entidade';
-import { Mensagens } from 'src/app/utils/mensagens';
-import { ImagemEntidade } from './imagem.entidade';
+import { CadastrarClassificacaoRequisicao } from "./requisicao";
+import { LesaoEntidade } from "./lesao.entidade";
+import { Mensagens } from "src/app/utils/mensagens";
+import { ImagemEntidade } from "./imagem.entidade";
 import {DatePipe} from "@angular/common";
 
 declare const draw: any;
@@ -23,9 +23,9 @@ declare const exibirClassificacoes: any;
 declare const obterLarguraAlturaAtualCanvas: any;
 
 @Component({
-    selector: 'cr-classificar-imagem',
-    templateUrl: './classificar-imagem.component.html',
-    styleUrls: ['./classificar-imagem.component.scss'],
+    selector: "cr-classificar-imagem",
+    templateUrl: "./classificar-imagem.component.html",
+    styleUrls: ["./classificar-imagem.component.scss"],
     providers: [DatePipe]
 })
 
@@ -98,7 +98,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         if (this.obterUmaImagemSubscription) { this.obterUmaImagemSubscription.unsubscribe();}
         if (this.cadastrarClassificacaoSubscription) { this.cadastrarClassificacaoSubscription.unsubscribe();}
-        if (this.listarTodasLesoesSubscription) { this.listarTodasLesoesSubscription.unsubscribe();};
+        if (this.listarTodasLesoesSubscription) { this.listarTodasLesoesSubscription.unsubscribe();}
         if (this.listarClassificacoesDeCelulaSubscription) { this.listarClassificacoesDeCelulaSubscription.unsubscribe();}
         if(this.excluirRegistroDeClassificacaoSubscription) {this.excluirRegistroDeClassificacaoSubscription.unsubscribe();}
         if(this.listarDescricoesSubscription) {this.listarDescricoesSubscription.unsubscribe();}
@@ -138,7 +138,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
                 setTimeout(() => {
                     this.listarClassificacoesDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
-                }, 500);
+                },         500);
                 this.carregando = false;
             },
             (erro) => {
@@ -185,7 +185,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
         this.carregando = true;
         this.exibirModal = false;
-        this.requisicao.id_lesao = this.id_lesao;        
+        this.requisicao.id_lesao = this.id_lesao;
         this.requisicao.alturaOriginalImg = this.imagem.altura;
         this.requisicao.larguraOriginalImg = this.imagem.largura;
 
@@ -199,7 +199,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                 this.indiceSelecionado = -1;
                 this.listarClassificacoesDeCelula(this.imagem.id, this.objetoSessao.id_usuario);
                 this.carregando = false;
-                console.log('Classification saved');
+                console.log("Classification saved");
             },
             (erro) => {
                 this.carregando = false;
@@ -253,7 +253,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             },
             (erro) => {
                 this.carregando = false;
-                this.objetoErro = erro.error;                
+                this.objetoErro = erro.error;
 
                 switch(this.objetoErro.status_code) {
 
@@ -294,7 +294,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             },
             (erro) => {
                 this.carregando = false;
-                this.objetoErro = erro.error;                
+                this.objetoErro = erro.error;
 
                 switch(this.objetoErro.status_code) {
 
@@ -340,7 +340,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             this.lesao.nome = this.todasClassificacoes.celulas[this.indiceSelecionado].lesao.nome;
             this.lesao.detalhes = this.todasClassificacoes.celulas[this.indiceSelecionado].lesao.detalhes;
         }
-        
+
         exibirClassificacoes(this.todasClassificacoes.celulas, Number(this.indiceSelecionado));
     }
 
@@ -371,13 +371,13 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
         if(houveMudanca) {
 
-            console.log('******** A data de aquisicao nao esta atualizando ********');
-            let requisicao = {
+            console.log("******** A data de aquisicao nao esta atualizando ********");
+            const requisicao = {
                 codigo_lamina: this.imagemAtualizacao.codigo_lamina,
                 dt_aquisicao: this.imagemAtualizacao.dt_aquisicao,
                 id_lesao_celula: this.lesao.id,
                 id_celula: this.todasClassificacoes.celulas[indiceSelecionado].id_celula
-            }
+            };
 
             this.atualizarDadosImagemSubscription =
             this.imagemService.atualizarDadosImagem(this.imagem.id, this.objetoSessao.id_usuario, requisicao)
@@ -427,7 +427,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         else{
             this.carregando = false;
             this.atualizarInformacoes = false;
-            console.log('No one change made');
+            console.log("No one change made");
         }
     }
 
@@ -464,27 +464,27 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                             console.log(this.objetoErro.mensagem);
                             break;
                         }
-    
+
                         case HttpStatusCode.BAD_REQUEST: {
                             console.log(this.objetoErro.mensagem);
                             break;
                         }
-    
+
                         case HttpStatusCode.NOT_FOUND: {
                             console.log(this.objetoErro.mensagem);
                             break;
                         }
-    
+
                         case HttpStatusCode.FORBIDDEN: {
                             console.log(this.objetoErro.mensagem);
                             break;
                         }
-    
+
                         case HttpStatusCode.INTERNAL_SERVER_ERROR: {
                             console.log(this.objetoErro.mensagem);
                             break;
                         }
-    
+
                         default: {
                             console.log(erro);
                             break;
@@ -499,5 +499,3 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     }
     //#endregion
 }
-
-

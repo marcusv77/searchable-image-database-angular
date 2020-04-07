@@ -1,17 +1,17 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Injectable } from "@angular/core";
 
-import { ComunicacaoApi } from '../../api_cric_database/comunicacao_api';
-import { IImagemModelResultado } from '../../models/imagem/imagem.model';
-import { ArmazenamentoBrowser } from 'src/app/utils/browser_storage/browser_storage';
-import { ChavesArmazenamentoBrowser } from 'src/app/utils/chaves_armazenamento_browser';
-import { ILesaoModelResultado } from 'src/app/models/imagem/lesao.model';
-import { IDescricaoModelResultado } from 'src/app/models/imagem/descricao.model';
-import { IClassificacaoCelulaModelResultado } from 'src/app/models/classificacao/classificacao_celula.model';
-import { ISegmentacaoCelulaModelResultado } from 'src/app/models/segmentacao/segmentacao_celula.model';
-import { IObjetoSessaoModel } from 'src/app/models/autenticacao/objeto_sessao.model';
-import { IEstatisticaCelulasDoentesModelResultado } from 'src/app/models/imagem/estatistica_celulas_doentes.model';
+import { ComunicacaoApi } from "../../api_cric_database/comunicacao_api";
+import { IImagemModelResultado } from "../../models/imagem/imagem.model";
+import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
+import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
+import { ILesaoModelResultado } from "src/app/models/imagem/lesao.model";
+import { IDescricaoModelResultado } from "src/app/models/imagem/descricao.model";
+import { IClassificacaoCelulaModelResultado } from "src/app/models/classificacao/classificacao_celula.model";
+import { ISegmentacaoCelulaModelResultado } from "src/app/models/segmentacao/segmentacao_celula.model";
+import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
+import { IEstatisticaCelulasDoentesModelResultado } from "src/app/models/imagem/estatistica_celulas_doentes.model";
 
 @Injectable()
 export class ImagemService {
@@ -37,7 +37,7 @@ export class ImagemService {
         this.api = new ComunicacaoApi();
 
         this.headerApplicationJson = new HttpHeaders({
-            'content-type': 'application/json; charset=utf-8',
+            "content-type": "application/json; charset=utf-8",
             token_autenticacao: this.objetoSessao.token_autenticacao
         });
 
@@ -47,10 +47,10 @@ export class ImagemService {
 
         this.headerDownloadArquivo = new HttpHeaders({
             token_autenticacao: this.objetoSessao.token_autenticacao,
-            responseType: 'blob'
+            responseType: "blob"
         });
 
-        console.log('URL base api', this.api.obterUrlBaseApi());
+        console.log("URL base api", this.api.obterUrlBaseApi());
     }
 
     cadastrarImagem(formulario: FormData): Observable<any> {
@@ -160,7 +160,7 @@ export class ImagemService {
 
         return this.httpClient.get(url, {
             headers: this.headerDownloadArquivo,
-            responseType: 'blob'
+            responseType: "blob"
         });
     }
 
@@ -171,7 +171,7 @@ export class ImagemService {
 
         return this.httpClient.get(url, {
             headers: this.headerDownloadArquivo,
-            responseType: 'blob'
+            responseType: "blob"
         });
     }
 

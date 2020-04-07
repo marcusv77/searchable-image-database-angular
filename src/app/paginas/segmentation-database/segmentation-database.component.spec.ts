@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SegmentationDatabaseComponent } from './segmentation-database.component';
+import { SegmentationDatabaseComponent } from "./segmentation-database.component";
 
-describe('SegmentationDatabaseComponent', () => {
+describe("SegmentationDatabaseComponent", () => {
   let component: SegmentationDatabaseComponent;
   let fixture: ComponentFixture<SegmentationDatabaseComponent>;
 
@@ -19,7 +19,7 @@ describe('SegmentationDatabaseComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

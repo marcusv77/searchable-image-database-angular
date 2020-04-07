@@ -1,26 +1,26 @@
-import { Subscription } from 'rxjs';
+import { Subscription } from "rxjs";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
 import { IImagemModelResultado } from "../../models/imagem/imagem.model";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ImagemService } from "src/app/services/imagens_service/imagens.service";
-import { HttpStatusCode } from 'src/app/utils/tratamento_erro/Http_Status_Code';
-import { IDescricaoModelResultado } from 'src/app/models/imagem/descricao.model';
-import { ObjetoErro } from 'src/app/utils/tratamento_erro/ObjetoErro';
-import { IObjetoSessaoModel } from 'src/app/models/autenticacao/objeto_sessao.model';
-import { ArmazenamentoBrowser } from 'src/app/utils/browser_storage/browser_storage';
-import { ChavesArmazenamentoBrowser } from 'src/app/utils/chaves_armazenamento_browser';
-import { ISegmentacaoCelulaModelResultado } from 'src/app/models/segmentacao/segmentacao_celula.model';
-import { ComunicacaoApi } from '../../api_cric_database/comunicacao_api';
-import { DescricaoCelulaEntidade } from './descricao_celula.entidade';
-import { Mensagens } from 'src/app/utils/mensagens';
-import { SegmentacaoHelper } from 'src/app/helper/segmentacao.helper';
+import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
+import { IDescricaoModelResultado } from "src/app/models/imagem/descricao.model";
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
+import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
+import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
+import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
+import { ISegmentacaoCelulaModelResultado } from "src/app/models/segmentacao/segmentacao_celula.model";
+import { ComunicacaoApi } from "../../api_cric_database/comunicacao_api";
+import { DescricaoCelulaEntidade } from "./descricao_celula.entidade";
+import { Mensagens } from "src/app/utils/mensagens";
+import { SegmentacaoHelper } from "src/app/helper/segmentacao.helper";
 
-declare const getModal: any; //Função javascript
-declare const setModal: any; //Função javascript
-declare const segmentos: any; //Função javascript
-declare const initCanvas: any; //Função javascript
-declare const limparVetorSegmentos: any; //Função javascript
-declare const exibirSegmentacoes: any; //Função javascript
+declare const getModal: any; // Função javascript
+declare const setModal: any; // Função javascript
+declare const segmentos: any; // Função javascript
+declare const initCanvas: any; // Função javascript
+declare const limparVetorSegmentos: any; // Função javascript
+declare const exibirSegmentacoes: any; // Função javascript
 
 @Component({
     selector: "cr-segmentar-imagem",
@@ -35,13 +35,13 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
     public id_imagem: number;
     public caminho_imagem: string;
     public vetorDePontos: any;
-    public todasDescricoes: IDescricaoModelResultado[];    
+    public todasDescricoes: IDescricaoModelResultado[];
     public id_descricao: number;
     public permitirCadastroSegmentacao: boolean;
     private objetoSessao: IObjetoSessaoModel;
     private armazenamentoBrowser: ArmazenamentoBrowser;
     public todasSegmentacoes: ISegmentacaoCelulaModelResultado;
-    public indiceSelecionado: number;    
+    public indiceSelecionado: number;
     public indiceSelecionadoPadrao: number;
     public descricao: DescricaoCelulaEntidade;
     public vetorSelecaoDescricao: Array<IDescricaoModelResultado[]>;
@@ -79,7 +79,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
     ngOnInit() {
 
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
-            let id = Number(params.get("id"));
+            const id = Number(params.get("id"));
             this.id_imagem = id;
         });
 
@@ -91,7 +91,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
 
         setTimeout(() => {
             this.iniciarSegmentacao();
-        }, 500);
+        },         500);
     }
 
     ngOnDestroy() {
@@ -170,7 +170,6 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
             segmentos_nucleo: possuiNucleoSegmentado ? this.vetorDePontos[1] : []
         };
 
-
         this.cadastrarSegmentacaoSubscription =
         this.imagemService.cadastrarSegmentacao(this.id_imagem, this.objetoSessao.id_usuario, requisicao)
         .subscribe(
@@ -180,7 +179,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                 this.definirListaDescricoesInicial();
                 this.indiceSelecionado = -1;
                 this.listarTodasSegmentacoesDeDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
-                console.log('Segmentation saved');
+                console.log("Segmentation saved");
             },
             (erro) => {
                 this.carregando = false;
@@ -321,7 +320,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
             this.descricao.id = this.todasSegmentacoes.celulas[this.indiceSelecionado].descricao.id;
             this.descricao.nome = this.todasSegmentacoes.celulas[this.indiceSelecionado].descricao.nome;
             this.descricao.codigo = this.todasSegmentacoes.celulas[this.indiceSelecionado].descricao.codigo;
-            this.descricao.detalhes = 'Pegar estes detalhes pelo codigo que gera a arvore de informacoes';
+            this.descricao.detalhes = "Pegar estes detalhes pelo codigo que gera a arvore de informacoes";
         }
         this.rotulo = true;
         exibirSegmentacoes(this.todasSegmentacoes, Number(this.indiceSelecionado), this.rotulo);
@@ -351,7 +350,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
         limparVetorSegmentos();
         this.vetorDePontos = segmentos;
     }
-    
+
     excluitSegmentacao(indiceSelecionado: number) {
 
         this.carregando = true;
@@ -383,27 +382,27 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                             console.log(this.objetoErro.mensagem);
                             break;
                         }
-    
+
                         case HttpStatusCode.BAD_REQUEST: {
                             console.log(this.objetoErro.mensagem);
                             break;
                         }
-    
+
                         case HttpStatusCode.NOT_FOUND: {
                             console.log(this.objetoErro.mensagem);
                             break;
                         }
-    
+
                         case HttpStatusCode.FORBIDDEN: {
                             console.log(this.objetoErro.mensagem);
                             break;
                         }
-    
+
                         case HttpStatusCode.INTERNAL_SERVER_ERROR: {
                             console.log(this.objetoErro.mensagem);
                             break;
                         }
-    
+
                         default: {
                             console.log(erro);
                             break;
@@ -426,14 +425,14 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
 
         this.permitirCadastro(false);
 
-        //Encontra o indice da descrição atual
-        let indiceCodigoDescricao = indice -1;
+        // Encontra o indice da descrição atual
+        const indiceCodigoDescricao = indice -1;
 
         const numeroCaracteresProximoIndice = this.codigoDescricao[indiceCodigoDescricao].toString().length + 1;
-        let todasDescricoesFiltradas = this.SegmentacaoHelper.filtrarDescricoesPorCodigo(this.todasDescricoes, numeroCaracteresProximoIndice);
+        const todasDescricoesFiltradas = this.SegmentacaoHelper.filtrarDescricoesPorCodigo(this.todasDescricoes, numeroCaracteresProximoIndice);
         this.vetorSelecaoDescricao[indice] = this.SegmentacaoHelper.filtrarDescricoesPorPrefixo(todasDescricoesFiltradas, this.codigoDescricao[indiceCodigoDescricao].toString());
 
-        //Mantem os arrays limpos quando não possuir valores utilizados
+        // Mantem os arrays limpos quando não possuir valores utilizados
         if(this.indiceAnterior > indice) {
             for(let i = indice +1; i < this.vetorSelecaoDescricao.length; i++) {
                 this.vetorSelecaoDescricao[i] = [];
@@ -445,8 +444,8 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
 
         this.indiceAnterior = indice;
 
-        //Realizar cadastro conforme a estrutura segmentada
-        if((this.vetorSelecaoDescricao[indice].length == 0) && this.codigoDescricao.toString()[0] == '1') {
+        // Realizar cadastro conforme a estrutura segmentada
+        if((this.vetorSelecaoDescricao[indice].length == 0) && this.codigoDescricao.toString()[0] == "1") {
             this.permitirCadastro(true);
         }
         else if (this.vetorSelecaoDescricao[indice].length == 0){
@@ -456,8 +455,8 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
 
     obterIdDescricao() {
 
-        let ultimoCodigo = this.codigoDescricao.length - 1;
-        this.todasDescricoes.forEach(descricao => {
+        const ultimoCodigo = this.codigoDescricao.length - 1;
+        this.todasDescricoes.forEach((descricao) => {
             if(descricao.codigo == this.codigoDescricao[ultimoCodigo]) {
                 this.id_descricao = descricao.id;
             }
@@ -477,7 +476,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
 
     validarSegmetacaoDoCitoplasma() {
         this.obterIdDescricao();
-        console.log('The cytoplasm was registered. Please segment the nucleus.');
+        console.log("The cytoplasm was registered. Please segment the nucleus.");
     }
 
     cadastrarSegmentacaoElementoAnucleado(valor: boolean) {

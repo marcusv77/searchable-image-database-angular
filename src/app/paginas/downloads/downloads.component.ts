@@ -1,18 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ImagemService } from 'src/app/services/imagens_service/imagens.service';
-import { ArmazenamentoBrowser } from 'src/app/utils/browser_storage/browser_storage';
-import { ChavesArmazenamentoBrowser } from 'src/app/utils/chaves_armazenamento_browser';
-import { IObjetoSessaoModel } from 'src/app/models/autenticacao/objeto_sessao.model';
-import { ObjetoErro } from 'src/app/utils/tratamento_erro/ObjetoErro';
-import { Subscription } from 'rxjs';
-import { saveAs } from 'file-saver';
-import { HttpStatusCode } from 'src/app/utils/tratamento_erro/Http_Status_Code';
-import { Mensagens } from 'src/app/utils/mensagens';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
+import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
+import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
+import { Subscription } from "rxjs";
+import { saveAs } from "file-saver";
+import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
+import { Mensagens } from "src/app/utils/mensagens";
 
 @Component({
-    selector: 'cr-downloads',
-    templateUrl: './downloads.component.html',
-    styleUrls: ['./downloads.component.scss']
+    selector: "cr-downloads",
+    templateUrl: "./downloads.component.html",
+    styleUrls: ["./downloads.component.scss"]
 })
 export class DownloadsComponent implements OnInit, OnDestroy {
 
@@ -21,7 +21,6 @@ export class DownloadsComponent implements OnInit, OnDestroy {
     private objetoErro: ObjetoErro;
     private fazerDownloadImagensBaseSubscription: Subscription;
     public carregando = false;
-
 
     constructor(private imagemServico: ImagemService) {
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
@@ -32,7 +31,7 @@ export class DownloadsComponent implements OnInit, OnDestroy {
     ngOnInit() { }
 
     ngOnDestroy() {
-        if (this.fazerDownloadImagensBaseSubscription) { this.fazerDownloadImagensBaseSubscription.unsubscribe() }
+        if (this.fazerDownloadImagensBaseSubscription) { this.fazerDownloadImagensBaseSubscription.unsubscribe(); }
     }
 
     solicitarDownloadImagens() {
@@ -44,7 +43,7 @@ export class DownloadsComponent implements OnInit, OnDestroy {
                 this.imagemServico.fazerDownloadImagensBaseInterna(this.objetoSessao.id_usuario.toString())
                     .subscribe(
                         (retorno) => {
-                            saveAs(retorno, 'base.zip');
+                            saveAs(retorno, "base.zip");
                             this.carregando = false;
                         },
                         (erro) => {

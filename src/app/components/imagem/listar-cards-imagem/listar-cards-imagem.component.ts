@@ -1,21 +1,21 @@
-import { IImagemModelResultado } from '../../../models/imagem/imagem.model';
-import { Component, OnInit, Input, OnDestroy, AfterContentInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { PaginaImagemEntidade } from './pagina_imagem.entidede';
-import { Parametros } from 'src/app/utils/parametros';
+import { IImagemModelResultado } from "../../../models/imagem/imagem.model";
+import { Component, OnInit, Input, OnDestroy, AfterContentInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { PaginaImagemEntidade } from "./pagina_imagem.entidede";
+import { Parametros } from "src/app/utils/parametros";
 
 @Component({
-    selector: 'cr-listar-cards-imagem',
-    templateUrl: './listar-cards-imagem.component.html',
-    styleUrls: ['./listar-cards-imagem.component.scss']
+    selector: "cr-listar-cards-imagem",
+    templateUrl: "./listar-cards-imagem.component.html",
+    styleUrls: ["./listar-cards-imagem.component.scss"]
 })
 
 export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterContentInit {
 
     @Input() todasImagens: IImagemModelResultado[];
     public paginaDeImagens: Array<PaginaImagemEntidade>;
-    @Input() segmentationDatabase: boolean = false;
-    @Input() classificationDatabase: boolean = false;
+    @Input() segmentationDatabase = false;
+    @Input() classificationDatabase = false;
     public Imagem: IImagemModelResultado;
     public contadorPaginaA: number;
     public contadorPaginaB: number;
@@ -25,7 +25,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     public seletorDePagina: number;
     private paginaSelecionada: number;
     private limiteInferiorIndice: number;
-    private numeroImagensPorPagina: number; //Determina a quantidade de registros que cada pagina ira conter
+    private numeroImagensPorPagina: number; // Determina a quantidade de registros que cada pagina ira conter
     public totalPaginas: number;
     public desabilitarAvancarPagina: boolean;
     public desabilitarVoltarPagina: boolean;
@@ -57,7 +57,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     ngAfterContentInit(): void {
         setTimeout(() => {
             this.criarPagina(this.paginaSelecionada);
-        }, 250);
+        },         250);
     }
     ngOnDestroy() { }
 
@@ -67,23 +67,23 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
         this.Imagem = img;
 
         if (this.classificationDatabase) {
-            this.router.navigate(['classification_database/classify_image/', this.Imagem.id]);
+            this.router.navigate(["classification_database/classify_image/", this.Imagem.id]);
         }
 
         if (this.segmentationDatabase) {
-            this.router.navigate(['segmentation_database/segment_imagem/', this.Imagem.id]);
+            this.router.navigate(["segmentation_database/segment_imagem/", this.Imagem.id]);
         }
     }
 
     proximaPagina(evento) {
 
         evento.preventDefault();
-        if(this.seletorDePagina >= this.totalPaginas) {                
+        if(this.seletorDePagina >= this.totalPaginas) {
             this.desabilitarAvancarPagina = true;
         }
         else if (this.seletorDePagina >= this.limiteInferiorIndice && this.seletorDePagina < this.totalPaginas) {
 
-            //Garante que o seletor estara no intervalo valido            
+            // Garante que o seletor estara no intervalo valido
             this.seletorDePagina++;
             this.paginaSelecionada = this.seletorDePagina;
             this.definirValoresContadorPagina(this.paginaSelecionada);
@@ -92,7 +92,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
         }
         else if(this.seletorDePagina >= this.totalPaginas || (this.totalPaginas - this.seletorDePagina) <= 0) {
 
-            //muda o seletor para o intervalo valido caso esteja maior que o devido            
+            // muda o seletor para o intervalo valido caso esteja maior que o devido
             this.seletorDePagina = this.totalPaginas;
             this.paginaSelecionada = this.seletorDePagina;
             this.definirValoresContadorPagina(this.paginaSelecionada);
@@ -105,8 +105,8 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
 
         evento.preventDefault();
         if (this.seletorDePagina <= this.limiteInferiorIndice) {
-                        
-            //Garante que o seletor nao fica abaixo do que deve
+
+            // Garante que o seletor nao fica abaixo do que deve
             this.seletorDePagina = this.limiteInferiorIndice;
             this.paginaSelecionada = this.seletorDePagina;
             this.definirValoresContadorPagina(this.paginaSelecionada);
@@ -114,8 +114,8 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
             this.criarPagina(this.paginaSelecionada);
         }
         else {
-            
-            //Decrementa o contador de pagina
+
+            // Decrementa o contador de pagina
             this.seletorDePagina--;
             this.paginaSelecionada = this.seletorDePagina;
             this.definirValoresContadorPagina(this.paginaSelecionada);
@@ -146,11 +146,11 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
 
             if (this.totalPaginas == paginaSelecionada) {
 
-                let inicio = (paginaSelecionada - 1) * this.numeroImagensPorPagina;
-                let limite = this.todasImagens.length;
+                const inicio = (paginaSelecionada - 1) * this.numeroImagensPorPagina;
+                const limite = this.todasImagens.length;
 
                 for (let i = inicio, j = 0; i < limite; i++ , j++) {
-                    let imagem = new PaginaImagemEntidade();
+                    const imagem = new PaginaImagemEntidade();
                     imagem.altura = this.todasImagens[i].altura;
                     imagem.caminho_imagem = this.todasImagens[i].caminho_imagem;
                     imagem.classificacao_aprovada = this.todasImagens[i].classificacao_aprovada;
@@ -170,12 +170,12 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
                 }
             }
             else {
-                //Calcula quais imagens estarão na pagina
-                let inicio = (paginaSelecionada - 1) * this.numeroImagensPorPagina;
-                let limite = paginaSelecionada * this.numeroImagensPorPagina;
+                // Calcula quais imagens estarão na pagina
+                const inicio = (paginaSelecionada - 1) * this.numeroImagensPorPagina;
+                const limite = paginaSelecionada * this.numeroImagensPorPagina;
 
                 for (let i = inicio, j = 0; i < limite; i++ , j++) {
-                    let imagem = new PaginaImagemEntidade();
+                    const imagem = new PaginaImagemEntidade();
                     imagem.altura = this.todasImagens[i].altura;
                     imagem.caminho_imagem = this.todasImagens[i].caminho_imagem;
                     imagem.classificacao_aprovada = this.todasImagens[i].classificacao_aprovada;
@@ -209,20 +209,20 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     definirValoresContadorPagina(paginaSelecionada: number) {
         this.contadorpaginaAtual = paginaSelecionada;
         this.contadorPaginaA = this.contadorpaginaAtual -2;
-        this.contadorPaginaB = this.contadorpaginaAtual - 1;        
+        this.contadorPaginaB = this.contadorpaginaAtual - 1;
         this.contadorPaginaC = this.contadorpaginaAtual + 1;
         this.contadorPaginaD = this.contadorpaginaAtual + 2;
     }
 
-    atualizarPagina() {        
+    atualizarPagina() {
         if(this.todasImagens && this.tamanhoArrayImagens != this.todasImagens.length) {
 
             this.seletorDePagina = 1;
             this.contadorpaginaAtual = this.seletorDePagina;
-            this.criarPagina(this.contadorpaginaAtual);            
+            this.criarPagina(this.contadorpaginaAtual);
         }
         else{
             setTimeout(() => { this.atualizarPagina();}, 200);
-        }        
+        }
     }
 }

@@ -1,25 +1,25 @@
-import { IObjetoSessaoModel } from './../../models/autenticacao/objeto_sessao.model';
-import { Component, OnInit, Output, OnDestroy, ViewChild } from '@angular/core';
-import { ImagemService } from 'src/app/services/imagens_service/imagens.service';
-import { IImagemModelResultado } from 'src/app/models/imagem/imagem.model';
-import { ObjetoErro } from 'src/app/utils/tratamento_erro/ObjetoErro';
-import { HttpStatusCode } from 'src/app/utils/tratamento_erro/Http_Status_Code';
-import { ComunicacaoApi } from 'src/app/api_cric_database/comunicacao_api';
-import { Subscription } from 'rxjs';
-import { ArmazenamentoBrowser } from 'src/app/utils/browser_storage/browser_storage';
-import { ChavesArmazenamentoBrowser } from 'src/app/utils/chaves_armazenamento_browser';
+import { IObjetoSessaoModel } from "./../../models/autenticacao/objeto_sessao.model";
+import { Component, OnInit, Output, OnDestroy, ViewChild } from "@angular/core";
+import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
+import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
+import { ComunicacaoApi } from "src/app/api_cric_database/comunicacao_api";
+import { Subscription } from "rxjs";
+import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
+import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
 
 @Component({
-    selector: 'cr-classification-database',
-    templateUrl: './classification-database.component.html',
-    styleUrls: ['./classification-database.component.scss']
+    selector: "cr-classification-database",
+    templateUrl: "./classification-database.component.html",
+    styleUrls: ["./classification-database.component.scss"]
 })
 
 export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
 
     @Output() public todasImagens: IImagemModelResultado[];
-    @Output() public classificationDatabase: boolean = false;
-    @ViewChild('atualizarPaginacaoViewChild', null) public atualizacaoDePaginaViewChild: any;
+    @Output() public classificationDatabase = false;
+    @ViewChild("atualizarPaginacaoViewChild", null) public atualizacaoDePaginaViewChild: any;
     private objetoErro: ObjetoErro;
     private objetoSessao: IObjetoSessaoModel;
     private comunicacaoApi: ComunicacaoApi;
@@ -39,12 +39,12 @@ export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
     }
 
     // Inicialzia o componente e busca todas as imagens do "banco de dados"
-    ngOnInit() {        
+    ngOnInit() {
         this.listarImagens();
     }
 
     ngOnDestroy() {
-        if (this.listarImagensSubscription) { this.listarImagensSubscription.unsubscribe() };
+        if (this.listarImagensSubscription) { this.listarImagensSubscription.unsubscribe(); }
     }
 
     listarImagens() {
@@ -90,10 +90,11 @@ export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
 
     construirUrlCaminhoImagem(listaImagens: IImagemModelResultado[]) {
 
-        listaImagens.forEach(imagem => {
+        listaImagens.forEach((imagem) => {
             const urlImg = `${this.comunicacaoApi.obterUrlBaseApi()}/${this.comunicacaoApi.obterUrlBaseThumbnail()}/${imagem.nome}`;
             imagem.caminho_imagem = urlImg;
         });
+
         return listaImagens;
     }
 
@@ -106,6 +107,6 @@ export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
             this.carregando = false;
             this.listarImagens();
             this.atualizacaoDePaginaViewChild.atualizarPagina();
-        }        
+        }
     }
 }

@@ -1,4 +1,4 @@
-import { environment } from '../../environments/environment';
+import { environment } from "../../environments/environment";
 
 export class ComunicacaoApi {
 
@@ -11,10 +11,10 @@ export class ComunicacaoApi {
 
     public constructor () {
         this.UrlBaseApi = environment.api_url;
-        this.UrlCaminhoBaseInterna = 'imagens/base_interna';
-        this.UrlCaminhoBaseExterna = 'imagens/base_externa';
-        this.UrlCaminhoBaseThumbnail = 'imagens/base_thumbnail';
-        this.TokenCuringa = 'bac8db9147ac80b4ba8a05bb0de7c4fd';
+        this.UrlCaminhoBaseInterna = "imagens/base_interna";
+        this.UrlCaminhoBaseExterna = "imagens/base_externa";
+        this.UrlCaminhoBaseThumbnail = "imagens/base_thumbnail";
+        this.TokenCuringa = "bac8db9147ac80b4ba8a05bb0de7c4fd";
     }
 
     public obterUrlBaseApi(): string {

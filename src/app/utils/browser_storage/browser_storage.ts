@@ -1,7 +1,7 @@
 
 export class ArmazenamentoBrowser {
 
-    public armazenarDadoSessao(chave: string, registro: object): void {        
+    public armazenarDadoSessao(chave: string, registro: object): void {
         window.sessionStorage.setItem(chave, JSON.stringify(registro));
     }
 
@@ -13,7 +13,7 @@ export class ArmazenamentoBrowser {
         window.sessionStorage.removeItem(chave);
     }
 
-    public armazenarDadoLocal(chave: string, registro: object): void {        
+    public armazenarDadoLocal(chave: string, registro: object): void {
         window.localStorage.setItem(chave, JSON.stringify(registro));
     }
 

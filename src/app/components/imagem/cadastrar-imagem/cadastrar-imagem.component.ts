@@ -1,18 +1,18 @@
-import { Component, OnInit, EventEmitter, Output, Input, OnDestroy } from '@angular/core';
-import { ObjetoErro } from 'src/app/utils/tratamento_erro/ObjetoErro';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { IObjetoSessaoModel } from 'src/app/models/autenticacao/objeto_sessao.model';
-import { ArmazenamentoBrowser } from 'src/app/utils/browser_storage/browser_storage';
-import { ChavesArmazenamentoBrowser } from 'src/app/utils/chaves_armazenamento_browser';
-import { ImagemService } from 'src/app/services/imagens_service/imagens.service';
-import { HttpStatusCode } from 'src/app/utils/tratamento_erro/Http_Status_Code';
-import { Subscription } from 'rxjs';
-import { ILesaoModelResultado } from 'src/app/models/imagem/lesao.model';
+import { Component, OnInit, EventEmitter, Output, Input, OnDestroy } from "@angular/core";
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
+import { FormGroup, Validators, FormBuilder } from "@angular/forms";
+import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
+import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
+import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
+import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
+import { Subscription } from "rxjs";
+import { ILesaoModelResultado } from "src/app/models/imagem/lesao.model";
 
 @Component({
-    selector: 'cr-cadastrar-imagem',
-    templateUrl: './cadastrar-imagem.component.html',
-    styleUrls: ['./cadastrar-imagem.component.scss']
+    selector: "cr-cadastrar-imagem",
+    templateUrl: "./cadastrar-imagem.component.html",
+    styleUrls: ["./cadastrar-imagem.component.scss"]
 })
 
 export class CadastrarImagemComponent implements OnInit, OnDestroy {
@@ -26,7 +26,7 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
     public arquivoSelecionado: boolean;
     private solicitarCadastroImagemSubscription: Subscription;
     private listarTodasLesoesSubscription: Subscription;
-    
+
     @Output() public novaImagemCadastradaEventEmiter = new EventEmitter<boolean>();
     //#endregion
 
@@ -40,7 +40,7 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
         this.formularioImagem = this.formBuilder.group({
             codigo_lamina:
                 [
-                    '',
+                    "",
                     Validators.compose([
                         Validators.required,
                         Validators.minLength(3),
@@ -49,14 +49,14 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
                 ],
             dt_aquisicao:
                 [
-                    '',
+                    "",
                     Validators.compose([
                         Validators.required
                     ])
                 ],
             lesao_imagem:
                 [
-                    '',
+                    "",
                     Validators.compose([
                         Validators.required
                     ])
@@ -66,12 +66,12 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.listarTodasLesoes()
+        this.listarTodasLesoes();
     }
 
     ngOnDestroy() {
-        if(this.solicitarCadastroImagemSubscription) {this.solicitarCadastroImagemSubscription.unsubscribe()}
-        if(this.listarTodasLesoesSubscription) {this.listarTodasLesoesSubscription.unsubscribe()}
+        if(this.solicitarCadastroImagemSubscription) {this.solicitarCadastroImagemSubscription.unsubscribe();}
+        if(this.listarTodasLesoesSubscription) {this.listarTodasLesoesSubscription.unsubscribe();}
     }
 
     //#region Metodos
@@ -80,24 +80,24 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
         if (this.formularioImagem.valid) {
 
             this.novaImagemCadastradaEventEmiter.emit(true);
-            let formularioFormData: FormData = new FormData();
-            formularioFormData.append('id_usuario', this.objetoSessao.id_usuario.toString());
-            formularioFormData.append('codigo_lamina', this.formularioImagem.get('codigo_lamina').value);
-            formularioFormData.append('dt_aquisicao', this.formularioImagem.get('dt_aquisicao').value);
-            formularioFormData.append('id_lesao', this.formularioImagem.get('lesao_imagem').value);
-            formularioFormData.append('file', this.formularioImagem.get('arquivo_imagem').value);
+            const formularioFormData: FormData = new FormData();
+            formularioFormData.append("id_usuario", this.objetoSessao.id_usuario.toString());
+            formularioFormData.append("codigo_lamina", this.formularioImagem.get("codigo_lamina").value);
+            formularioFormData.append("dt_aquisicao", this.formularioImagem.get("dt_aquisicao").value);
+            formularioFormData.append("id_lesao", this.formularioImagem.get("lesao_imagem").value);
+            formularioFormData.append("file", this.formularioImagem.get("arquivo_imagem").value);
 
             this.solicitarCadastroImagemSubscription =
             this.imagemService.cadastrarImagem(formularioFormData)
             .subscribe(
                 (retorno) => {
-                    console.log('Image successfully registered');
+                    console.log("Image successfully registered");
                     this.novaImagemCadastradaEventEmiter.emit(false);
                 },
                 (erro) => {
 
                     this.novaImagemCadastradaEventEmiter.emit(false);
-                    this.objetoErro = erro.error;                    
+                    this.objetoErro = erro.error;
                     switch(this.objetoErro.status_code) {
 
                         case HttpStatusCode.UNAUTHORIZED: {
@@ -134,7 +134,7 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
             );
         }
         else {
-            console.log('Could not retrieve informations from form. Plase, try again.');
+            console.log("Could not retrieve informations from form. Plase, try again.");
         }
     }
 
@@ -144,7 +144,7 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
         this.formularioImagem.patchValue({
             arquivo_imagem: arquivo
         });
-        this.formularioImagem.get('arquivo_imagem').updateValueAndValidity();
+        this.formularioImagem.get("arquivo_imagem").updateValueAndValidity();
         this.arquivoSelecionado = true;
     }
 
@@ -187,15 +187,15 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
 
     // Propriedades do formulário que vamos utilizar para obter os erros
     get codigo_lamina() {
-        return this.formularioImagem.get('codigo_lamina');
+        return this.formularioImagem.get("codigo_lamina");
     }
 
     get dt_aquisicao() {
-        return this.formularioImagem.get('dt_aquisicao');
+        return this.formularioImagem.get("dt_aquisicao");
     }
 
     get lesao_imagem() {
-        return this.formularioImagem.get('lesao_imagem');
+        return this.formularioImagem.get("lesao_imagem");
     }
     //#endregion
 }

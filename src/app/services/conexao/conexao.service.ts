@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { ComunicacaoApi } from 'src/app/api_cric_database/comunicacao_api';
-import { Observable } from 'rxjs';
-import { IStatusSistemaResultado } from 'src/app/models/sistema/status_sistema.model';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { ComunicacaoApi } from "src/app/api_cric_database/comunicacao_api";
+import { Observable } from "rxjs";
+import { IStatusSistemaResultado } from "src/app/models/sistema/status_sistema.model";
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: "root"
 })
 export class ConexaoService {
 
@@ -20,7 +20,7 @@ export class ConexaoService {
     //#region Metodos
 
     inicializarServicos() {
-        this.api = new ComunicacaoApi();        
+        this.api = new ComunicacaoApi();
     }
 
     verificarEstadoDaConexao(): Observable<IStatusSistemaResultado> {

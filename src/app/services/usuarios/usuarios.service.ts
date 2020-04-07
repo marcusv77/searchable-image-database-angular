@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
-import { ComunicacaoApi } from '../../api_cric_database/comunicacao_api';
-import { IUsuarioBaseModel } from 'src/app/models/usuario/usuario_base.model';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { IObjetoSessaoModel } from 'src/app/models/autenticacao/objeto_sessao.model';
-import { ArmazenamentoBrowser } from 'src/app/utils/browser_storage/browser_storage';
-import { ChavesArmazenamentoBrowser } from 'src/app/utils/chaves_armazenamento_browser';
+import { ComunicacaoApi } from "../../api_cric_database/comunicacao_api";
+import { IUsuarioBaseModel } from "src/app/models/usuario/usuario_base.model";
+import { Observable } from "rxjs";
+import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
+import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
+import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
+import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
 
 @Injectable()
 export class UsuarioService {
@@ -33,26 +33,26 @@ export class UsuarioService {
 
         this.api = new ComunicacaoApi();
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
-        this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));        
+        this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
         this.autenicacaoApiParaLogin = this.api.obterTokenCuringa();
         this.autenticacaoCadastroVisitante = this.api.obterTokenCuringa();
 
         if(this.objetoSessao) {
 
             this.headerApplicationJsonTokenSessao = new HttpHeaders({
-                'content-type': 'application/json',
-                'token_autenticacao': this.objetoSessao.token_autenticacao
+                "content-type": "application/json",
+                token_autenticacao: this.objetoSessao.token_autenticacao
             });
         }
 
-        console.log('URL base api', this.api.obterUrlBaseApi());
+        console.log("URL base api", this.api.obterUrlBaseApi());
     }
 
     obterTodosUsuarios(): Observable<IUsuarioBaseModel[]> {
 
         this.inicializarServicos();
         const url = `${this.api.obterUrlBaseApi()}/api/v1/usuarios`;
-        
+
         return this.httpClient.get<IUsuarioBaseModel[]>(url, {
             headers: this.headerApplicationJsonTokenSessao
         });
@@ -75,8 +75,8 @@ export class UsuarioService {
 
         return this.httpClient.post(url, body, {
             headers: new HttpHeaders({
-                'content-type': 'application/json; charset=utf-8',
-                'token_autenticacao': this.autenicacaoApiParaLogin
+                "content-type": "application/json; charset=utf-8",
+                token_autenticacao: this.autenicacaoApiParaLogin
             })
         });
     }
@@ -88,7 +88,7 @@ export class UsuarioService {
 
         return this.httpClient.post(url, body, {
             headers: new HttpHeaders({
-                'content-type': 'application/json',
+                "content-type": "application/json",
             })
         });
     }
@@ -100,8 +100,8 @@ export class UsuarioService {
 
         return this.httpClient.delete(url, {
             headers: new HttpHeaders({
-                'content-type': 'application/json',
-                'token_autenticacao': token_autenticacao
+                "content-type": "application/json",
+                token_autenticacao
             })
         });
     }
@@ -109,14 +109,14 @@ export class UsuarioService {
     cadastrarAnalista(id_usuario: number): Observable<any> {
 
         this.inicializarServicos();
-        let body = {nome: 'teste' };
-        
+        const body = {nome: "teste" };
+
         const url = `${this.api.obterUrlBaseApi()}/api/v1/usuarios/analista/${id_usuario}`;
 
         return this.httpClient.post(url, body,{
             headers: new HttpHeaders({
-                'content-type': 'application/json; charset=utf-8',
-                'token_autenticacao': this.autenticacaoCadastroVisitante
+                "content-type": "application/json; charset=utf-8",
+                token_autenticacao: this.autenticacaoCadastroVisitante
             })
         });
     }

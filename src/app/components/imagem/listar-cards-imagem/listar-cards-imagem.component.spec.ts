@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ListarCardsImagemComponent } from './listar-cards-imagem.component';
+import { ListarCardsImagemComponent } from "./listar-cards-imagem.component";
 
-describe('ListarCardsImagemComponent', () => {
+describe("ListarCardsImagemComponent", () => {
   let component: ListarCardsImagemComponent;
   let fixture: ComponentFixture<ListarCardsImagemComponent>;
 
@@ -19,7 +19,7 @@ describe('ListarCardsImagemComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

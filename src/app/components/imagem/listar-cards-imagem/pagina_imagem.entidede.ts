@@ -1,4 +1,4 @@
-import { LesaoEntidade } from './../../../paginas/classificar-imagem/lesao.entidade';
+import { LesaoEntidade } from "./../../../paginas/classificar-imagem/lesao.entidade";
 
 export class PaginaImagemEntidade {
     id: number;

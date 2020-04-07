@@ -5,5 +5,5 @@ export class FormularioVisitante {
     senha: string;
     pais: string;
     estado_regiao: string;
-    cidade: string
+    cidade: string;
 }
