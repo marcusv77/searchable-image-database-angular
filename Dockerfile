@@ -17,7 +17,7 @@ FROM base as development
 RUN npm install && npm cache clean --force
 LABEL   version="0.1.6-development"
 
-FROM base as production
+FROM development as production
 # Copy ./src
 COPY . ./
 LABEL   version="0.1.6-production"
