@@ -1,133 +1,132 @@
 <cr-animacao-carregamento *ngIf="carregando"></cr-animacao-carregamento>
-<div class="container-fluid">
-    <div class="row">
-        <div class=" formatacao-conteudo-pagina formatacao-pagina-classificar-imagem">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <h3> Classification </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae maxime commodi quos perferendis
-                        ea vitae
-                        magnam illum porro odio similique quidem inventore provident, quasi, ratione excepturi?
-                        Praesentium autem
-                        repellat iusto!
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="container">
+
+    <h3> Classification </h3>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae maxime commodi quos perferendis
+        ea vitae
+        magnam illum porro odio similique quidem inventore provident, quasi, ratione excepturi?
+        Praesentium autem
+        repellat iusto!
+    </p>
+
 </div>
 
 <div class="container-fluid">
-    <div class="formatacao-conteudo-pagina">
-        <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-3" id="selecionador">
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-3" id="selecionador">
 
-                <div>
-                    <div class="image_info">
-                        <h5> Information </h5>
-                        <p> <span> Microscope slide: </span> {{imagem?.codigo_lamina}} </p>
-                        <p> <span> Acquisition date: </span> {{ imagem?.dt_aquisicao | date}} </p>
-                        <p> <span> Lesion: </span> {{imagem?.lesao?.nome}} </p>
-                    </div>  
-                </div>
-
-                <!-- ListarClassificacoes realizadas INICIO -->
-                <label for="id_generico"> <span class="label_personalizado"> Load classification data </span> </label>
-                <div>
-                    <select [(ngModel)]="indiceSelecionado" (ngModelChange)="exibirClassificacoesFormaSeletiva(); cancelarAtualizacao()"
-                        class="browser-default custom-select" id="id_generico" name="">
-
-                        <option value="-1" selected>
-                            See all classifications
-                        </option>
-
-                        <option *ngFor="let celula of todasClassificacoes?.celulas; let i = index " [value]="i">
-                            {{i + 1}} - {{celula.lesao.nome}}
-                        </option>
-
-                    </select>
-                </div>
-                <!-- ListarClassificacoes realizadas FIM -->
-
-                <!-- Atualizacao de dados INICIO -->
-                <div *ngIf="indiceSelecionado != -1" class="box_info">
-
-                    <!-- Codigo leitura de dados INICO -->
-                    <div *ngIf="!atualizarInformacoes">
-                        <h5> Nucleus information </h5>
-                        <p> <span> Lesion type: </span> {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.nome}} </p>
-                        <p *ngIf="todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes"> <span> Lesion details: </span> {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes}} </p>
-                    </div>
-                    <!-- Codigo leitura de dados FIM -->
-
-                    <!-- Codigo de atualizar dados INICIO -->
-                    <div *ngIf="atualizarInformacoes" class="form-group">
-
-                        <h5> Image informations </h5>
-
-                        <label for="imagem_atualizacao_lamina"> <span> Microscope slide </span> </label>
-                        <input class="form-control" type="text" [value]="imagem.codigo_lamina" [(ngModel)]="imagemAtualizacao.codigo_lamina" id="imagem_atualizacao_lamina"> <br>
-
-                        <label for="imagem_atualizacao_dt_aquisicao"> <span> Acquisition date </span> </label>
-                        <input class="form-control" type="date" [value]="datepipe.transform(imagemAtualizacao.dt_aquisicao, 'yyyy-MM-dd')" id="imagem_atualizacao_dt_aquisicao"> <br>
-
-                        <h5> Nucleus informations </h5>
-                        <label for="input_lesao_atualizacao"> <span> Lesion </span> </label>
-                        <select [(ngModel)]="lesao.id" class="browser-default custom-select" id="input_lesao_atualizacao" name="">
-
-                            <option value="lesao?.id" selected></option>
-                            <option *ngFor="let lesao of todasLesoes" [value]="lesao?.id">
-                                {{lesao.nome}}
-                            </option>
-
-                        </select> <br>
-                    </div>
-                    <!-- Codigo de atualizar dados INICIO -->
-
-                    <!-- Botões de ação INICIO -->
-                    <div class="d-flex flex-row-reverse bd-highlight">
-                        <div *ngIf="!atualizarInformacoes" class="p-2 bd-highlight">
-                            <button type="submit" class="btn btn-danger" (click)="excluitClassificacao(indiceSelecionado)">
-                                Delete
-                            </button>
-                        </div>
-
-                        <div *ngIf="!atualizarInformacoes" class="p-2 bd-highlight">
-                            <button type="submit" class="btn btn-warning taab" (click)="solicitarAtualizacaoDeDados()">
-                                Update
-                            </button>
-                        </div>
-
-                        <div *ngIf="atualizarInformacoes" class="p-2 bd-highlight">
-                            <button type="submit" class="btn btn-primary taab" (click)="atualizarClassificacao(indiceSelecionado)">
-                                Save
-                            </button>
-                        </div>
-
-                        <div *ngIf="atualizarInformacoes" class="p-2 bd-highlight">
-                            <button type="submit" class="btn btn-danger" (click)="cancelarAtualizacao()">
-                                Cancel
-                            </button>
-                        </div>
-                    </div>
-                    <!-- Botões de ação FIM -->
+            <div>
+                <div class="image_info">
+                    <h5> Information </h5>
+                    <p> <span> Microscope slide: </span> {{imagem?.codigo_lamina}} </p>
+                    <p> <span> Acquisition date: </span> {{ imagem?.dt_aquisicao | date}} </p>
+                    <p> <span> Lesion: </span> {{imagem?.lesao?.nome}} </p>
                 </div>
             </div>
-            <!-- Atualizacao de dados FIM -->
 
-            <!-- Canvas Imagem INICIO -->
-            <div class="col-sm-12 col-md-8 col-lg-9">
-                <div *ngIf="imagem" style="width: 100%; height: 100%">
-                    <canvas id="canvas" (click)="registrarPonto($event)"
-                        [ngStyle]="{'background-image': 'url('+caminho_imagem+')','background-repeat': 'no-repeat', 'height': 'auto'}"
-                        width="{{imagem.largura}}" height="{{imagem.altura}}">
-                    </canvas>
-                </div>
+            <!-- ListarClassificacoes realizadas INICIO -->
+            <label for="id_generico"> <span class="label_personalizado"> Load classification data </span> </label>
+            <div>
+                <select [(ngModel)]="indiceSelecionado"
+                    (ngModelChange)="exibirClassificacoesFormaSeletiva(); cancelarAtualizacao()"
+                    class="browser-default custom-select" id="id_generico" name="">
+
+                    <option value="-1" selected>
+                        See all classifications
+                    </option>
+
+                    <option *ngFor="let celula of todasClassificacoes?.celulas; let i = index " [value]="i">
+                        {{i + 1}} - {{celula.lesao.nome}}
+                    </option>
+
+                </select>
             </div>
-            <!-- Canvas Imagem INICIO -->
+            <!-- ListarClassificacoes realizadas FIM -->
 
+            <!-- Atualizacao de dados INICIO -->
+            <div *ngIf="indiceSelecionado != -1" class="box_info">
+
+                <!-- Codigo leitura de dados INICO -->
+                <div *ngIf="!atualizarInformacoes">
+                    <h5> Nucleus information </h5>
+                    <p> <span> Lesion type: </span> {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.nome}} </p>
+                    <p *ngIf="todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes"> <span> Lesion details:
+                        </span> {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes}} </p>
+                </div>
+                <!-- Codigo leitura de dados FIM -->
+
+                <!-- Codigo de atualizar dados INICIO -->
+                <div *ngIf="atualizarInformacoes" class="form-group">
+
+                    <h5> Image informations </h5>
+
+                    <label for="imagem_atualizacao_lamina"> <span> Microscope slide </span> </label>
+                    <input class="form-control" type="text" [value]="imagem.codigo_lamina"
+                        [(ngModel)]="imagemAtualizacao.codigo_lamina" id="imagem_atualizacao_lamina"> <br>
+
+                    <label for="imagem_atualizacao_dt_aquisicao"> <span> Acquisition date </span> </label>
+                    <input class="form-control" type="date"
+                        [value]="datepipe.transform(imagemAtualizacao.dt_aquisicao, 'yyyy-MM-dd')"
+                        id="imagem_atualizacao_dt_aquisicao"> <br>
+
+                    <h5> Nucleus informations </h5>
+                    <label for="input_lesao_atualizacao"> <span> Lesion </span> </label>
+                    <select [(ngModel)]="lesao.id" class="browser-default custom-select" id="input_lesao_atualizacao"
+                        name="">
+
+                        <option value="lesao?.id" selected></option>
+                        <option *ngFor="let lesao of todasLesoes" [value]="lesao?.id">
+                            {{lesao.nome}}
+                        </option>
+
+                    </select> <br>
+                </div>
+                <!-- Codigo de atualizar dados INICIO -->
+
+                <!-- Botões de ação INICIO -->
+                <div class="d-flex flex-row-reverse bd-highlight">
+                    <div *ngIf="!atualizarInformacoes" class="p-2 bd-highlight">
+                        <button type="submit" class="btn btn-danger" (click)="excluitClassificacao(indiceSelecionado)">
+                            Delete
+                        </button>
+                    </div>
+
+                    <div *ngIf="!atualizarInformacoes" class="p-2 bd-highlight">
+                        <button type="submit" class="btn btn-warning taab" (click)="solicitarAtualizacaoDeDados()">
+                            Update
+                        </button>
+                    </div>
+
+                    <div *ngIf="atualizarInformacoes" class="p-2 bd-highlight">
+                        <button type="submit" class="btn btn-primary taab"
+                            (click)="atualizarClassificacao(indiceSelecionado)">
+                            Save
+                        </button>
+                    </div>
+
+                    <div *ngIf="atualizarInformacoes" class="p-2 bd-highlight">
+                        <button type="submit" class="btn btn-danger" (click)="cancelarAtualizacao()">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+                <!-- Botões de ação FIM -->
+            </div>
         </div>
+        <!-- Atualizacao de dados FIM -->
+
+        <!-- Canvas Imagem INICIO -->
+        <div class="col-sm-12 col-md-8 col-lg-9">
+            <div *ngIf="imagem" style="width: 100%; height: 100%">
+                <canvas id="canvas" (click)="registrarPonto($event)"
+                    [ngStyle]="{'background-image': 'url('+caminho_imagem+')','background-repeat': 'no-repeat', 'height': 'auto'}"
+                    width="{{imagem.largura}}" height="{{imagem.altura}}">
+                </canvas>
+            </div>
+        </div>
+        <!-- Canvas Imagem INICIO -->
+
     </div>
 </div>
 

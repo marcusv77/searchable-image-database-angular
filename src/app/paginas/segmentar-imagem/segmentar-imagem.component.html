@@ -1,90 +1,78 @@
 <cr-animacao-carregamento *ngIf="carregando"></cr-animacao-carregamento>
 <div class="container-fluid">
-    <div class="row">
-        <div class=" formatacao-conteudo-pagina formatacao-pagina-segmentar_imagem">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <h3> Segmentation </h3>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae maxime commodi quos perferendis
-                        ea vitae
-                        magnam illum porro odio similique quidem inventore provident, quasi, ratione excepturi?
-                        Praesentium autem
-                        repellat iusto!
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    
+    <h3> Segmentation </h3>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae maxime commodi quos perferendis
+        ea vitae
+        magnam illum porro odio similique quidem inventore provident, quasi, ratione excepturi?
+        Praesentium autem
+        repellat iusto!
+    </p>
+
 </div>
 
 <div class="container-fluid">
-    <div class="formatacao-conteudo-pagina">
-        <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-3">
-                <label for="id_generico">
-                    <span class="label_personalizado"> Load data set and: </span>
-                    <button id="botao_download" type="submit" class="btn "
-                            [ngClass]="rotulo?'btn-primary':'btn-secondary'" [disabled]="indiceSelecionado!=-1"
-                            (click)="dasabilitarRotulo()">
-                        {{rotulo ? 'Disable label' : 'Enable label'}}
-                    </button>
-                </label>
-                <div>
-                    <select [(ngModel)]="indiceSelecionado" (ngModelChange)="exibirSegmentacaoFormaSeletiva()"
-                            class="browser-default custom-select" id="id_generico" name="">
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-3">
+            <label for="id_generico">
+                <span class="label_personalizado"> Load data set and: </span>
+                <button id="botao_download" type="submit" class="btn " [ngClass]="rotulo?'btn-primary':'btn-secondary'"
+                    [disabled]="indiceSelecionado!=-1" (click)="dasabilitarRotulo()">
+                    {{rotulo ? 'Disable label' : 'Enable label'}}
+                </button>
+            </label>
+            <div>
+                <select [(ngModel)]="indiceSelecionado" (ngModelChange)="exibirSegmentacaoFormaSeletiva()"
+                    class="browser-default custom-select" id="id_generico" name="">
 
-                        <option value="-1" selected>
-                            See all segmentations
-                        </option>
+                    <option value="-1" selected>
+                        See all segmentations
+                    </option>
 
-                        <option *ngFor="let celulaSegmentada of todasSegmentacoes?.celulas; let i = index "
-                                [value]="i">
-                            {{i + 1}} - {{celulaSegmentada?.descricao?.nome}}
-                        </option>
+                    <option *ngFor="let celulaSegmentada of todasSegmentacoes?.celulas; let i = index " [value]="i">
+                        {{i + 1}} - {{celulaSegmentada?.descricao?.nome}}
+                    </option>
 
-                    </select>
-                </div>
+                </select>
+            </div>
 
-                <div *ngIf="indiceSelecionado != -1" class="box_info">
+            <div *ngIf="indiceSelecionado != -1" class="box_info">
 
-                    <h5> Segmentation information </h5>
-                    <p><span> Description Id:</span>
-                        {{descricao.id}}
-                    </p>
+                <h5> Segmentation information </h5>
+                <p><span> Description Id:</span>
+                    {{descricao.id}}
+                </p>
 
-                    <p><span> Description name: </span>
-                        {{descricao.nome}}
-                    </p>
+                <p><span> Description name: </span>
+                    {{descricao.nome}}
+                </p>
 
-                    <p><span> Description code: </span>
-                        {{descricao.codigo}}
-                    </p>
+                <p><span> Description code: </span>
+                    {{descricao.codigo}}
+                </p>
 
-                    <p><span> Description details: </span>
-                        {{descricao.detalhes}}
-                    </p>
+                <p><span> Description details: </span>
+                    {{descricao.detalhes}}
+                </p>
 
-                    <div class="d-flex flex-row-reverse bd-highlight">
-                        <div class="p-2 bd-highlight">
-                            <button type="submit" class="btn btn-danger"
-                                    (click)="excluitSegmentacao(indiceSelecionado)">
-                                Delete
-                            </button>
-                        </div>
+                <div class="d-flex flex-row-reverse bd-highlight">
+                    <div class="p-2 bd-highlight">
+                        <button type="submit" class="btn btn-danger" (click)="excluitSegmentacao(indiceSelecionado)">
+                            Delete
+                        </button>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-sm-12 col-md-8 col-lg-9">
-                <div *ngIf="imagem" id="teste">
-                    <canvas id="canvas" (click)="iniciarSegmentacao()" width="{{imagem.largura}}"
-                            height="{{imagem.altura}}" onfocus
-                            [ngStyle]="{'background-image': 'url('+caminho_imagem+')','background-repeat': 'no-repeat'}">
-                    </canvas>
-                </div>
+        <div class="col-sm-12 col-md-8 col-lg-9">
+            <div *ngIf="imagem" id="teste">
+                <canvas id="canvas" (click)="iniciarSegmentacao()" width="{{imagem.largura}}" height="{{imagem.altura}}"
+                    onfocus
+                    [ngStyle]="{'background-image': 'url('+caminho_imagem+')','background-repeat': 'no-repeat'}">
+                </canvas>
             </div>
-
         </div>
     </div>
 </div>
