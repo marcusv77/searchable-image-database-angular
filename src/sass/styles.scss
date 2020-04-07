@@ -1,15 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* Import do Bootstrap 4 */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import url(https://fonts.googleapis.com/css?family=Dosis&subset=latin,latin-ext);
+@import './variables';
+@import './mixins';
 
-/**************************Padrão Mobile First*************************
-
-O estilo geral se aplica à tamanhos de telas menores que 576 pixels.
-As media query abaixo se aplicam quando o tamanho da tela ficar igual ou maior ao valor especificado entre parenteses.*/
-
-/***********************************Estilo personalizado************************************/
 body{
     font-family: "Dosis", 'Helvetica Neue', sans-serif;
     font-size: 1.00rem;
@@ -18,16 +11,16 @@ body{
 header{
     padding: 0.5rem 1.25rem 0.5rem 1.25rem;
     position: relative;
-    background-color: #fafafa;
+    background-color: $background-white;
     top: 0px;
-    box-shadow: 5px 0px 4px #cccccc;
+    box-shadow: 5px 0px 4px $background-shadow;
 }
 
 footer{
     padding: 0.75rem 1.25rem 0.75rem 1.25rem;
     position: relative;
-    background-color: #2f9fae;
-    box-shadow: 0px 0px 5px #2f9fae;
+    background-color: $cric-blue;
+    box-shadow: 0px 0px 5px $cric-blue;
 }
 
 ul{
@@ -35,29 +28,29 @@ ul{
 }
 
 h1{
-    color:#2f9fae;
+    color:$cric-blue;
     margin-bottom: 3vh;
 }
 
 h2{
-    color:#2f9fae;
+    color:$cric-blue;
     margin-bottom: 3vh;
 }
 
 h3{
-    color:#333333;
+    color:$text-black;
     font-weight: bold;
     margin-bottom: 3vh;
 }
 
 h4{
-    color:#333333;
+    color:$text-black;
     font-weight: bold;
     margin-bottom: 3vh;
 }
 
 h5{
-    color:#333333;
+    color:$text-black;
     font-weight: bold;
     margin-bottom: 3vh;
 }
