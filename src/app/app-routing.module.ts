@@ -18,10 +18,16 @@ import { ClassificarImagemComponent } from "./paginas/classificar-imagem/classif
 import { UsuarioComponent } from "./paginas/usuario/usuario.component";
 import { GuardaAutenticacao } from "./guardas/guarda-autenticacao";
 import { TesteComponent } from "./paginas/teste/teste.component";
+import { LicenseComponent } from "./paginas/license/license.component";
+import { PrivacyComponent } from "./paginas/privacy/privacy.component";
+import { TermsComponent } from "./paginas/terms/terms.component";
 
 /*Rotas do sistema */
 const routes: Routes = [
   {path: "", component: IndexComponent},
+  {path: "license", component: LicenseComponent},
+  {path: "privacy", component: PrivacyComponent},
+  {path: "terms", component: TermsComponent},
   {path: "home", component: HomeComponent, canActivate: [GuardaAutenticacao]},
   {path: "about", component: AboutComponent, canActivate: [GuardaAutenticacao]},
   {path: "segmentation_database", component: SegmentationDatabaseComponent, canActivate: [GuardaAutenticacao]},
