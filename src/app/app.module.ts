@@ -7,6 +7,7 @@ import { HttpClientModule } from "@angular/common/http";
 // Componentes
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+
 import { HomeComponent } from "./paginas/home/home.component";
 import { HeaderComponent } from "./paginas/templates/header/header.component";
 import { FooterComponent } from "./paginas/templates/footer/footer.component";
@@ -15,16 +16,23 @@ import { SegmentationDatabaseComponent } from "./paginas/segmentation-database/s
 import { ClassificationDatabaseComponent } from "./paginas/classification-database/classification-database.component";
 import { DownloadsComponent } from "./paginas/downloads/downloads.component";
 import { IndexComponent } from "./paginas/index/index.component";
-import { ListarCardsImagemComponent } from "./components/imagem/listar-cards-imagem/listar-cards-imagem.component";
+
+import { LicenseComponent } from "./paginas/license/license.component";
+import { PrivacyComponent } from "./paginas/privacy/privacy.component";
+import { TermsComponent } from "./paginas/terms/terms.component";
 import { PaginaDeErroComponent } from "./paginas/pagina_de_erro/pagina-de-erro.component";
 import { SegmentarImagemComponent } from "./paginas/segmentar-imagem/segmentar-imagem.component";
 import { ClassificarImagemComponent } from "./paginas/classificar-imagem/classificar-imagem.component";
 import { UsuarioComponent } from "./paginas/usuario/usuario.component";
+import { TesteComponent } from "./paginas/teste/teste.component";
+
+import { ListarCardsImagemComponent } from "./components/imagem/listar-cards-imagem/listar-cards-imagem.component";
 import { LoginComponent } from "./components/login/login.component";
-import { GuardaAutenticacao } from "./guardas/guarda-autenticacao";
 import { CadastroVisitanteComponent } from "./components/usuario/cadastro-visitante/cadastro-visitante.component";
 import { CadastrarImagemComponent } from "./components/imagem/cadastrar-imagem/cadastrar-imagem.component";
-import { TesteComponent } from "./paginas/teste/teste.component";
+
+import { GuardaAutenticacao } from "./guardas/guarda-autenticacao";
+
 import { ChartModule } from "angular-highcharts";
 
 // Services
@@ -37,6 +45,9 @@ import { AnimacaoCarregamentoComponent } from "./components/sistema/animacao-car
     declarations: [
         AppComponent,
         HomeComponent,
+        LicenseComponent,
+        PrivacyComponent,
+        TermsComponent,
         HeaderComponent,
         FooterComponent,
         AboutComponent,
