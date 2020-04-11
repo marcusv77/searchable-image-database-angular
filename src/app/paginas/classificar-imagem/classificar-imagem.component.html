@@ -85,7 +85,7 @@
                 <!-- Codigo de atualizar dados INICIO -->
 
                 <!-- Botões de ação INICIO -->
-                <div class="d-flex flex-row-reverse bd-highlight">
+                <div *ngIf="objetoSessao" class="d-flex flex-row-reverse bd-highlight">
                     <div *ngIf="!atualizarInformacoes" class="p-2 bd-highlight">
                         <button type="submit" class="btn btn-danger" (click)="excluitClassificacao(indiceSelecionado)">
                             Delete
@@ -119,7 +119,7 @@
         <!-- Canvas Imagem INICIO -->
         <div class="col-sm-12 col-md-8 col-lg-9">
             <div *ngIf="imagem" style="width: 100%; height: 100%">
-                <canvas id="canvas" (click)="registrarPonto($event)"
+                <canvas id="canvas" (click)="!objetoSessao || registrarPonto($event)"
                     [ngStyle]="{'background-image': 'url('+caminho_imagem+')','background-repeat': 'no-repeat', 'height': 'auto'}"
                     width="{{imagem.largura}}" height="{{imagem.altura}}">
                 </canvas>

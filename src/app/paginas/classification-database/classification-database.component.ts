@@ -49,10 +49,15 @@ export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
 
     listarImagens() {
 
+        let user_id = 1;
+        if(this.objetoSessao) {
+            user_id = this.objetoSessao.id_usuario;
+        }
+
         this.todasImagens = null;
         this.carregando = true;
         this.listarImagensSubscription =
-        this.imagemService.listarTodasImagens(this.objetoSessao.id_usuario)
+        this.imagemService.listarTodasImagens(user_id)
         .subscribe(
             (retorno) => {
                 this.todasImagens = this.construirUrlCaminhoImagem(retorno);
