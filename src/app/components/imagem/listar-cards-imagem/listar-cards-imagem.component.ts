@@ -67,11 +67,11 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
         this.Imagem = img;
 
         if (this.classificationDatabase) {
-            this.router.navigate(["classification_database/classify_image/", this.Imagem.id]);
+            this.router.navigate(["classification/image/", this.Imagem.id]);
         }
 
         if (this.segmentationDatabase) {
-            this.router.navigate(["segmentation_database/segment_imagem/", this.Imagem.id]);
+            this.router.navigate(["segmentation/image/", this.Imagem.id]);
         }
     }
 
