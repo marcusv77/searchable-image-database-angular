@@ -55,7 +55,7 @@ export class AutenticacaoService implements OnInit, OnDestroy {
                 };
 
                 this.armazenamentoBrowser.armazenarDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO, usuarioLogado);
-                this.router.navigate(["/home"]);
+                this.router.navigate([""]);
             },
             (erro) => {
                 this.objetoErro = erro.error;

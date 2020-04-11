@@ -79,7 +79,6 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
     //#region Inicializacao
     ngOnInit() {
-
         this.indiceSelecionado = this.indiceSelecionadoPadrao;
         this.exibirModal = false;
         this.permitirCadastroClassificacao = false;
@@ -137,7 +136,8 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                 this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
 
                 setTimeout(() => {
-                    this.listarClassificacoesDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
+                    // this.listarClassificacoesDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
+                    this.listarClassificacoesDeCelula(this.id_imagem, 4);
                 },         500);
                 this.carregando = false;
             },

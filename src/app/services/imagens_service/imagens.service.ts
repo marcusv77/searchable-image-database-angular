@@ -38,15 +38,16 @@ export class ImagemService {
 
         this.headerApplicationJson = new HttpHeaders({
             "content-type": "application/json; charset=utf-8",
-            token_autenticacao: this.objetoSessao.token_autenticacao
+            token_autenticacao: "bac8db9147ac80b4ba8a05bb0de7c4fd"
         });
 
         this.headerMultipartFormData = new HttpHeaders({
-            token_autenticacao: this.objetoSessao.token_autenticacao
+            // FIXME
+            token_autenticacao: "bac8db9147ac80b4ba8a05bb0de7c4fd"
         });
 
         this.headerDownloadArquivo = new HttpHeaders({
-            token_autenticacao: this.objetoSessao.token_autenticacao,
+            token_autenticacao: "bac8db9147ac80b4ba8a05bb0de7c4fd",
             responseType: "blob"
         });
 
