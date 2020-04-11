@@ -1,0 +1,37 @@
+<cr-animacao-carregamento *ngIf="carregando"></cr-animacao-carregamento>
+<div class="container">
+    <div class="row">
+        <div class="formatacao-conteudo-pagina formatacao-pagina-segmentation_database">
+
+            <div class="flex">
+                <h3>Segmentation</h3>
+                <p>
+                    This page will provide examples about image segmentation of cervical cells (including nucleus and cytoplasm) in a whole image. Segmentation was designed by a cytopathologist. Click image to zoom and have access to segmentation. Download segmentation database will be available soon.
+                </p>
+            </div>
+            <hr>
+
+            <div>
+                <p>
+                    <a href="#" data-toggle="modal" data-target="#modal-cadastro-imagem" class="nav-link">
+                        Cadastrate new image
+                    </a>
+                </p>                
+            </div>
+
+            <cr-listar-cards-imagem
+                [todasImagens]="todasImagens"
+                [segmentationDatabase]="segmentationDatabase"
+                #atualizarPaginacaoViewChild>                
+            </cr-listar-cards-imagem>
+
+        </div>
+    </div>
+
+    <!-- Modal Cadastrar Imagem(Cadastrar) -->
+    <!-- [propriedadeDesteComponente]="valorASerRecebidoDeOutroComponente" (situacao da segunda linha apos esta)-->
+    <cr-cadastrar-imagem
+        (novaImagemCadastradaEventEmiter)="atualizarListaImagens($event)">
+    </cr-cadastrar-imagem>
+
+</div>

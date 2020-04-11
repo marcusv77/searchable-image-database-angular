@@ -1,0 +1,19 @@
+<cr-animacao-carregamento *ngIf="carregando"></cr-animacao-carregamento>
+<section class="flex">
+  <div *ngFor="let usuario of todosUsuarios" class="card-flex-box">
+    <!--So renderiza o card se o objeto img estiver pronto evita erros NotFound no console-->
+    <div *ngIf="usuario">
+        <div>
+          <p>Id: {{usuario.id}}</p>
+          <p>Nome: {{usuario.primeiro_nome}}</p>
+          <p>Ultimo nome: {{usuario.ultimo_nome}}</p>
+          <p>Email: {{usuario.email}}</p>
+          <p>Senha: {{usuario.senha}}</p>
+          <p>Ativo: {{usuario.ativo}}</p>
+          <p>Criado em: {{usuario.createdAt}}</p>
+          <p>Modificado em: {{usuario.updatedAt}}</p>
+        </div>
+      <hr>
+    </div>
+  </div>
+</section>

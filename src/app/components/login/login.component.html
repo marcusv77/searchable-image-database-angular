@@ -1,0 +1,44 @@
+<div class="modal-content">   
+
+    <!-- Cabeçalho -->
+    <div class="modal-header">
+        <h5 class="modal-title">Access the platform</h5>
+        <!-- fecha o modal -->
+        <button type="button" class="close" data-dismiss="modal">
+            <span>x</span>
+        </button>
+    </div>
+
+    <!-- Conteudo -->
+    <div class="modal-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="email-login" class="activate">E-mail</label>
+                    <input
+                        [(ngModel)]="usuarioLogin.email"
+                        type="text" value="" id="email-login" class="form-control"
+                    >                            
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="senha-login" class="activate">Password</label>
+                    <input
+                        [(ngModel)]="usuarioLogin.senha"
+                        type="password" value="" id="senha-login" class="form-control"
+                    >                            
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rodape -->
+    <div class="modal-footer">
+        <button
+            type="submit" class="btn btn-primary" data-dismiss="modal" name="action" (click) = "fazerLogin()"
+        >
+            Login
+        </button>
+    </div>
+</div>
