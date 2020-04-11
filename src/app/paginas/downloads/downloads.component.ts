@@ -37,14 +37,12 @@ export class DownloadsComponent implements OnInit, OnDestroy {
     solicitarDownloadImagens() {
 
         this.carregando = true;
-        if (confirm(Mensagens.CONFIRMACAO_DOWNLOAD_BASE)) {
-
-            let user_id = 1;
-            if(this.objetoSessao) {
+        let user_id = 1;
+        if(this.objetoSessao) {
                 user_id = this.objetoSessao.id_usuario.toString();
             }
 
-            this.fazerDownloadImagensBaseSubscription =
+        this.fazerDownloadImagensBaseSubscription =
                 this.imagemServico.fazerDownloadImagensBaseInterna("1")
                     .subscribe(
                         (retorno) => {
@@ -87,9 +85,5 @@ export class DownloadsComponent implements OnInit, OnDestroy {
                             }
                         }
                     );
-        }
-        else {
-            this.carregando = false;
-        }
     }
 }
