@@ -115,7 +115,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                 const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
                 this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
                 this.carregando = false;
-                this.listarTodasSegmentacoesDeDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
+                this.listarTodasSegmentacoesDeDeCelula(this.id_imagem, 4);
             },
             (erro) => {
                 this.carregando = false;
