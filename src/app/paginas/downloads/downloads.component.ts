@@ -39,8 +39,13 @@ export class DownloadsComponent implements OnInit, OnDestroy {
         this.carregando = true;
         if (confirm(Mensagens.CONFIRMACAO_DOWNLOAD_BASE)) {
 
+            let user_id = 1;
+            if(this.objetoSessao) {
+                user_id = this.objetoSessao.id_usuario.toString();
+            }
+
             this.fazerDownloadImagensBaseSubscription =
-                this.imagemServico.fazerDownloadImagensBaseInterna(this.objetoSessao.id_usuario.toString())
+                this.imagemServico.fazerDownloadImagensBaseInterna("1")
                     .subscribe(
                         (retorno) => {
                             saveAs(retorno, "base.zip");
