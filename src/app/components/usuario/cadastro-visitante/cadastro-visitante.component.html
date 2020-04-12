@@ -4,7 +4,9 @@
     <div class="modal-header">
         <h5 class="modal-title">Register to join us</h5>
         <!-- fecha o modal -->
-        <button type="button" class="close" data-dismiss="modal">
+        <button type="button"
+                class="close"
+                data-dismiss="modal">
             <span>x</span>
         </button>
     </div>
@@ -15,9 +17,13 @@
             <form [formGroup]="formularioVisitante">
                 <div class="form-group">
 
-                    <label for="primeiro_nome" class="activate">Fist name</label>
-                    <input formControlName="primeiro_nome" type="text" id="primeiro_nome" class="form-control"
-                        placeholder="First name" >
+                    <label for="primeiro_nome"
+                            class="activate">Fist name</label>
+                    <input formControlName="primeiro_nome"
+                            type="text"
+                            id="primeiro_nome"
+                            class="form-control"
+                            placeholder="First name">
 
                     <div *ngIf="(!primeiro_nome.pristine && primeiro_nome.errors) || (primeiro_nome.errors && primeiro_nome.touched)">
                         <p *ngIf="primeiro_nome.errors.required">
@@ -27,15 +33,19 @@
                             Nome deve ter no mínimo 3 caracters.
                         </p>
                         <p *ngIf="primeiro_nome.errors.pattern">
-                          Não são permitidos caracteres especiais, ex:(!,.) e números neste campo.
+                            Não são permitidos caracteres especiais, ex:(!,.) e números neste campo.
                         </p>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="ultimo_nome" class="activate">Last name</label>
-                    <input formControlName="ultimo_nome" type="text" id="ultimo_nome" class="form-control"
-                        placeholder="Last name">
+                    <label for="ultimo_nome"
+                            class="activate">Last name</label>
+                    <input formControlName="ultimo_nome"
+                            type="text"
+                            id="ultimo_nome"
+                            class="form-control"
+                            placeholder="Last name">
 
                     <div *ngIf="(!ultimo_nome.pristine && ultimo_nome.errors) || (ultimo_nome.errors && ultimo_nome.touched)">
                         <p *ngIf="ultimo_nome.errors.required">
@@ -45,15 +55,19 @@
                             Ultimo nome deve ter no mínimo 3 caracters.
                         </p>
                         <p *ngIf="ultimo_nome.errors.pattern">
-                          Números não são permitidos neste campo.
+                            Números não são permitidos neste campo.
                         </p>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email" class="activate">Email</label>
-                    <input formControlName="email" type="email" id="email" class="form-control"
-                        placeholder="name@email.com">
+                    <label for="email"
+                            class="activate">Email</label>
+                    <input formControlName="email"
+                            type="email"
+                            id="email"
+                            class="form-control"
+                            placeholder="name@email.com">
 
                     <div *ngIf="(!email.pristine && email.errors) || (email.errors && email.touched)">
                         <p *ngIf="email.errors.required">
@@ -66,9 +80,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="senha" class="activate">Passowrd</label>
-                    <input formControlName="senha" type="password" id="senha" class="form-control"
-                        placeholder="Password">
+                    <label for="senha"
+                            class="activate">Passowrd</label>
+                    <input formControlName="senha"
+                            type="password"
+                            id="senha"
+                            class="form-control"
+                            placeholder="Password">
 
                     <div *ngIf="(!senha.pristine && senha.errors) || (senha.errors && senha.touched)">
                         <p *ngIf="senha.errors.required">
@@ -84,70 +102,86 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="pais" class="activate">Country</label>
-                    <input formControlName="pais" type="text" id="pais" class="form-control" placeholder="Country">
+                    <label for="pais"
+                            class="activate">Country</label>
+                    <input formControlName="pais"
+                            type="text"
+                            id="pais"
+                            class="form-control"
+                            placeholder="Country">
 
                     <div *ngIf="(!pais.pristine && pais.errors) || (pais.errors && pais.touched)">
                         <p *ngIf="pais.errors.required">
-                          pais é obrigatório.
+                            pais é obrigatório.
                         </p>
                         <p *ngIf="pais.errors.minlength">
-                          pais deve conter no mínimo 2 caracters.
+                            pais deve conter no mínimo 2 caracters.
                         </p>
                         <p *ngIf="pais.errors.maxLength">
-                          pais deve conter no máximo 70 caracters.
+                            pais deve conter no máximo 70 caracters.
                         </p>
                         <p *ngIf="pais.errors.pattern">
-                          Números não são permitidos neste campo.
+                            Números não são permitidos neste campo.
                         </p>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="estado_regiao" class="activate">State</label>
-                    <input formControlName="estado_regiao" type="text" id="estado_regiao" class="form-control"
-                        placeholder="State">
+                    <label for="estado_regiao"
+                            class="activate">State</label>
+                    <input formControlName="estado_regiao"
+                            type="text"
+                            id="estado_regiao"
+                            class="form-control"
+                            placeholder="State">
 
                     <div *ngIf="(!estado_regiao.pristine && estado_regiao.errors) || (estado_regiao.errors && estado_regiao.touched)">
                         <p *ngIf="estado_regiao.errors.required">
-                          Estado é obrigatório.
+                            Estado é obrigatório.
                         </p>
                         <p *ngIf="estado_regiao.errors.minlength">
-                          Estado deve conter no mínimo 2 caracters.
+                            Estado deve conter no mínimo 2 caracters.
                         </p>
                         <p *ngIf="estado_regiao.errors.maxLength">
-                          Estado deve conter no máximo 70 caracters.
+                            Estado deve conter no máximo 70 caracters.
                         </p>
                         <p *ngIf="estado_regiao.errors.pattern">
-                          Números não são permitidos neste campo.
+                            Números não são permitidos neste campo.
                         </p>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="cidade" class="activate">City</label>
-                    <input formControlName="cidade" type="text" id="cidade" class="form-control" placeholder="City">
+                    <label for="cidade"
+                            class="activate">City</label>
+                    <input formControlName="cidade"
+                            type="text"
+                            id="cidade"
+                            class="form-control"
+                            placeholder="City">
 
                     <div *ngIf="(!cidade.pristine && cidade.errors) || (cidade.errors && cidade.touched)">
                         <p *ngIf="cidade.errors.required">
-                          Cidade é obrigatório.
+                            Cidade é obrigatório.
                         </p>
                         <p *ngIf="cidade.errors.minlength">
-                          Cidade deve conter no mínimo 2 caracters.
+                            Cidade deve conter no mínimo 2 caracters.
                         </p>
                         <p *ngIf="cidade.errors.maxLength">
-                          Cidade deve conter no máximo 70 caracters.
+                            Cidade deve conter no máximo 70 caracters.
                         </p>
                         <p *ngIf="cidade.errors.pattern">
-                          Números não são permitidos neste campo.
+                            Números não são permitidos neste campo.
                         </p>
                     </div>
                 </div>
 
                 <div>
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal"
-                        [disabled]="!formularioVisitante.valid"
-                        (click)="solicitarCadastroVisitante()">
+                    <button type="submit"
+                            class="btn btn-primary"
+                            data-dismiss="modal"
+                            [disabled]="!formularioVisitante.valid"
+                            (click)="solicitarCadastroVisitante()">
                         Sigin
                     </button>
                 </div>

@@ -14,37 +14,44 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 col-md-4 col-lg-3" id="selecionador">
+        <div class="col-sm-12 col-md-4 col-lg-3"
+                id="selecionador">
 
             <div>
                 <div class="image_info">
                     <h5> Information </h5>
                     <p>
-                      <span> Author: </span>
-                      Núcleo de Pesquisas em Ciências Biológicas,
-                      Universidade Federal de Ouro Preto
+                        <span> Author: </span>
+                        Núcleo de Pesquisas em Ciências Biológicas,
+                        Universidade Federal de Ouro Preto
                     </p>
                     <p> <span> Microscope slide: </span> {{imagem?.codigo_lamina}} </p>
 
                     <p> <span> Lesion: </span> {{imagem?.lesao?.nome}} </p>
-<div class="collapse" id="more-info">
-                    <p> <span> Acquisition date: </span> {{ imagem?.dt_aquisicao | date}} </p>
-    <p>
-      <span>Dimension (in pixels):</span>
-      1384 x 1036
-    </p>
-</div>
+                    <div class="collapse"
+                            id="more-info">
+                        <p> <span> Acquisition date: </span> {{ imagem?.dt_aquisicao | date}} </p>
+                        <p>
+                            <span>Dimension (in pixels):</span>
+                            1384 x 1036
+                        </p>
+                    </div>
 
-<p>
-  <a class="btn btn-primary collapsed" data-toggle="collapse" href="#more-info" role="button" aria-expanded="false" aria-controls="collapseExample">
-    <span class="collapse-on">
-    More information
-    </span>
-    <span class="collapse-off">
-      Less information
-    </span>
-  </a>
-</p>
+                    <p>
+                        <a class="btn btn-primary collapsed"
+                                data-toggle="collapse"
+                                href="#more-info"
+                                role="button"
+                                aria-expanded="false"
+                                aria-controls="collapseExample">
+                            <span class="collapse-on">
+                                More information
+                            </span>
+                            <span class="collapse-off">
+                                Less information
+                            </span>
+                        </a>
+                    </p>
 
                 </div>
             </div>
@@ -53,14 +60,18 @@
             <label for="id_generico"> <span class="label_personalizado"> Load classification data </span> </label>
             <div>
                 <select [(ngModel)]="indiceSelecionado"
-                    (ngModelChange)="exibirClassificacoesFormaSeletiva(); cancelarAtualizacao()"
-                    class="browser-default custom-select" id="id_generico" name="">
+                        (ngModelChange)="exibirClassificacoesFormaSeletiva(); cancelarAtualizacao()"
+                        class="browser-default custom-select"
+                        id="id_generico"
+                        name="">
 
-                    <option value="-1" selected>
+                    <option value="-1"
+                            selected>
                         See all classifications
                     </option>
 
-                    <option *ngFor="let celula of todasClassificacoes?.celulas; let i = index " [value]="i">
+                    <option *ngFor="let celula of todasClassificacoes?.celulas; let i = index "
+                            [value]="i">
                         {{i + 1}} - {{celula.lesao.nome}}
                     </option>
 
@@ -69,7 +80,8 @@
             <!-- ListarClassificacoes realizadas FIM -->
 
             <!-- Atualizacao de dados INICIO -->
-            <div *ngIf="indiceSelecionado != -1" class="box_info">
+            <div *ngIf="indiceSelecionado != -1"
+                    class="box_info">
 
                 <!-- Codigo leitura de dados INICO -->
                 <div *ngIf="!atualizarInformacoes">
@@ -81,26 +93,35 @@
                 <!-- Codigo leitura de dados FIM -->
 
                 <!-- Codigo de atualizar dados INICIO -->
-                <div *ngIf="atualizarInformacoes" class="form-group">
+                <div *ngIf="atualizarInformacoes"
+                        class="form-group">
 
                     <h5> Image informations </h5>
 
                     <label for="imagem_atualizacao_lamina"> <span> Microscope slide </span> </label>
-                    <input class="form-control" type="text" [value]="imagem.codigo_lamina"
-                        [(ngModel)]="imagemAtualizacao.codigo_lamina" id="imagem_atualizacao_lamina"> <br>
+                    <input class="form-control"
+                            type="text"
+                            [value]="imagem.codigo_lamina"
+                            [(ngModel)]="imagemAtualizacao.codigo_lamina"
+                            id="imagem_atualizacao_lamina"> <br>
 
                     <label for="imagem_atualizacao_dt_aquisicao"> <span> Acquisition date </span> </label>
-                    <input class="form-control" type="date"
-                        [value]="datepipe.transform(imagemAtualizacao.dt_aquisicao, 'yyyy-MM-dd')"
-                        id="imagem_atualizacao_dt_aquisicao"> <br>
+                    <input class="form-control"
+                            type="date"
+                            [value]="datepipe.transform(imagemAtualizacao.dt_aquisicao, 'yyyy-MM-dd')"
+                            id="imagem_atualizacao_dt_aquisicao"> <br>
 
                     <h5> Nucleus informations </h5>
                     <label for="input_lesao_atualizacao"> <span> Lesion </span> </label>
-                    <select [(ngModel)]="lesao.id" class="browser-default custom-select" id="input_lesao_atualizacao"
-                        name="">
+                    <select [(ngModel)]="lesao.id"
+                            class="browser-default custom-select"
+                            id="input_lesao_atualizacao"
+                            name="">
 
-                        <option value="lesao?.id" selected></option>
-                        <option *ngFor="let lesao of todasLesoes" [value]="lesao?.id">
+                        <option value="lesao?.id"
+                                selected></option>
+                        <option *ngFor="let lesao of todasLesoes"
+                                [value]="lesao?.id">
                             {{lesao.nome}}
                         </option>
 
@@ -109,28 +130,40 @@
                 <!-- Codigo de atualizar dados INICIO -->
 
                 <!-- Botões de ação INICIO -->
-                <div *ngIf="objetoSessao" class="d-flex flex-row-reverse bd-highlight">
-                    <div *ngIf="!atualizarInformacoes" class="p-2 bd-highlight">
-                        <button type="submit" class="btn btn-danger" (click)="excluitClassificacao(indiceSelecionado)">
+                <div *ngIf="objetoSessao"
+                        class="d-flex flex-row-reverse bd-highlight">
+                    <div *ngIf="!atualizarInformacoes"
+                            class="p-2 bd-highlight">
+                        <button type="submit"
+                                class="btn btn-danger"
+                                (click)="excluitClassificacao(indiceSelecionado)">
                             Delete
                         </button>
                     </div>
 
-                    <div *ngIf="!atualizarInformacoes" class="p-2 bd-highlight">
-                        <button type="submit" class="btn btn-warning taab" (click)="solicitarAtualizacaoDeDados()">
+                    <div *ngIf="!atualizarInformacoes"
+                            class="p-2 bd-highlight">
+                        <button type="submit"
+                                class="btn btn-warning taab"
+                                (click)="solicitarAtualizacaoDeDados()">
                             Update
                         </button>
                     </div>
 
-                    <div *ngIf="atualizarInformacoes" class="p-2 bd-highlight">
-                        <button type="submit" class="btn btn-primary taab"
-                            (click)="atualizarClassificacao(indiceSelecionado)">
+                    <div *ngIf="atualizarInformacoes"
+                            class="p-2 bd-highlight">
+                        <button type="submit"
+                                class="btn btn-primary taab"
+                                (click)="atualizarClassificacao(indiceSelecionado)">
                             Save
                         </button>
                     </div>
 
-                    <div *ngIf="atualizarInformacoes" class="p-2 bd-highlight">
-                        <button type="submit" class="btn btn-danger" (click)="cancelarAtualizacao()">
+                    <div *ngIf="atualizarInformacoes"
+                            class="p-2 bd-highlight">
+                        <button type="submit"
+                                class="btn btn-danger"
+                                (click)="cancelarAtualizacao()">
                             Cancel
                         </button>
                     </div>
@@ -142,10 +175,13 @@
 
         <!-- Canvas Imagem INICIO -->
         <div class="col-sm-12 col-md-8 col-lg-9">
-            <div *ngIf="imagem" style="width: 100%; height: 100%">
-                <canvas id="canvas" (click)="!objetoSessao || registrarPonto($event)"
-                    [ngStyle]="{'background-image': 'url('+caminho_imagem+')','background-repeat': 'no-repeat', 'height': 'auto'}"
-                    width="{{imagem.largura}}" height="{{imagem.altura}}">
+            <div *ngIf="imagem"
+                    style="width: 100%; height: 100%">
+                <canvas id="canvas"
+                        (click)="!objetoSessao || registrarPonto($event)"
+                        [ngStyle]="{'background-image': 'url('+caminho_imagem+')','background-repeat': 'no-repeat', 'height': 'auto'}"
+                        width="{{imagem.largura}}"
+                        height="{{imagem.altura}}">
                 </canvas>
             </div>
         </div>
@@ -155,10 +191,14 @@
 </div>
 
 <!-- Modal cadastrar classificação -->
-<div class="modal fade" [ngClass]="(exibirModal === true)?'show':''"
-    [ngStyle]="{display : (exibirModal === true)?'block':'none'}" id="modal-cadastrar-classificacao" tabindex="-1"
-    role=" dialog">
-    <div class="modal-dialog" role="document">
+<div class="modal fade"
+        [ngClass]="(exibirModal === true)?'show':''"
+        [ngStyle]="{display : (exibirModal === true)?'block':'none'}"
+        id="modal-cadastrar-classificacao"
+        tabindex="-1"
+        role=" dialog">
+    <div class="modal-dialog"
+            role="document">
         <!-- inserir conteudo do modal -->
         <div class="modal-content">
 
@@ -166,8 +206,10 @@
             <div class="modal-header">
                 <h5 class="modal-title">Register classification</h5>
                 <!-- fecha o modal -->
-                <button type="button" class="close" data-dismiss="modal"
-                    (click)="exibirModal = false; indiceSelecionado = -1; exibirClassificacoesFormaSeletiva(); permitirCadastro(false)">
+                <button type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        (click)="exibirModal = false; indiceSelecionado = -1; exibirClassificacoesFormaSeletiva(); permitirCadastro(false)">
                     <span> x </span>
                 </button>
             </div>
@@ -176,13 +218,19 @@
             <div class="modal-body">
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-md-12" *ngIf="todasLesoes">
+                        <div class="col-md-12"
+                                *ngIf="todasLesoes">
                             <p>
                                 Choose a lesion definition.
                             </p>
-                            <select [(ngModel)]="id_lesao" (ngModelChange)="permitirCadastro(true)" class="browser-default custom-select" id="" name="">
+                            <select [(ngModel)]="id_lesao"
+                                    (ngModelChange)="permitirCadastro(true)"
+                                    class="browser-default custom-select"
+                                    id=""
+                                    name="">
 
-                                <option *ngFor="let lesao of todasLesoes; let i = index " [value]="lesao?.id">
+                                <option *ngFor="let lesao of todasLesoes; let i = index "
+                                        [value]="lesao?.id">
                                     {{lesao.nome}}
                                 </option>
 
@@ -194,9 +242,12 @@
 
             <!-- Rodape -->
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" data-dismiss="modal" name="action"
-                    [disabled]="!permitirCadastroClassificacao"
-                    (click)="cadastrarClassificacao(); permitirCadastro(true)">
+                <button type="submit"
+                        class="btn btn-primary"
+                        data-dismiss="modal"
+                        name="action"
+                        [disabled]="!permitirCadastroClassificacao"
+                        (click)="cadastrarClassificacao(); permitirCadastro(true)">
                     Save classification
                 </button>
             </div>

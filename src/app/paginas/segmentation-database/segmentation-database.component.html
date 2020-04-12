@@ -8,13 +8,18 @@
     </p>
 
     <p>
-        <a *ngIf="objetoSessao" href="#" data-toggle="modal" data-target="#modal-cadastro-imagem" class="nav-link">
+        <a *ngIf="objetoSessao"
+                href="#"
+                data-toggle="modal"
+                data-target="#modal-cadastro-imagem"
+                class="nav-link">
             Cadastrate new image
         </a>
     </p>
 
-    <cr-listar-cards-imagem [todasImagens]="todasImagens" [segmentationDatabase]="segmentationDatabase"
-        #atualizarPaginacaoViewChild>
+    <cr-listar-cards-imagem [todasImagens]="todasImagens"
+            [segmentationDatabase]="segmentationDatabase"
+            #atualizarPaginacaoViewChild>
     </cr-listar-cards-imagem>
 
 </div>

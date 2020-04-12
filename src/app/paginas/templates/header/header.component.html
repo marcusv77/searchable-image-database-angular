@@ -1,48 +1,67 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-lignt">
 
-        <a class="nav-link navbar-brand" [routerLink]="['']">
-            <img class="img-responsive logoIndexHeader" src="./assets/img/logo/cric_horizontal_color.png" alt="Logotipo - CRIC Center for Recognition and Inspection of Cells">
+        <a class="nav-link navbar-brand"
+                [routerLink]="['']">
+            <img class="img-responsive logoIndexHeader"
+                    src="./assets/img/logo/cric_horizontal_color.png"
+                    alt="Logotipo - CRIC Center for Recognition and Inspection of Cells">
         </a>
 
         <!-- Botão para esconder e exibir o menu em telas menores -->
         <button class="navbar-toggler"
-        type="button" data-toggle="collapse" data-target="#navbar_id">
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbar_id">
             <span class="navbar-toggler-icon">
             </span>
         </button>
 
         <div class="col-sm-3 col-md-3 col-lg-8">
-            <div class="collapse navbar-collapse estilo-personalizado-menu" id="navbar_id">
+            <div class="collapse navbar-collapse estilo-personalizado-menu"
+                    id="navbar_id">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['']">Home</a>
+                        <a class="nav-link"
+                                [routerLink]="['']">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/about']">About</a>
+                        <a class="nav-link"
+                                [routerLink]="['/about']">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" [routerLink]="['/segmentation']">Segmentation</a>
+                        <a class="nav-link"
+                                [routerLink]="['/segmentation']">Segmentation</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " [routerLink]="['/classification']">Classification</a>
+                        <a class="nav-link "
+                                [routerLink]="['/classification']">Classification</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " [routerLink]="['/downloads']">Downloads</a>
+                        <a class="nav-link "
+                                [routerLink]="['/downloads']">Downloads</a>
                     </li>
 
                 </ul>
-            </div></div>
+            </div>
+        </div>
 
         <div class="col-sm-3 col-md-3 col-lg-2">
             <ul class="navbar-nav">
-                <li *ngIf="!usuarioAutenticado" class="nav-item">
-                    <a href="#" data-toggle="modal" data-target="#modal-login" class="nav-link entrar">
+                <li *ngIf="!usuarioAutenticado"
+                        class="nav-item">
+                    <a href="#"
+                            data-toggle="modal"
+                            data-target="#modal-login"
+                            class="nav-link entrar">
                         Login
                     </a>
                 </li>
-                <li *ngIf="usuarioAutenticado" class="nav-item">
-                    <a href="#" class="nav-link sair" (click)="fazerLogOut($event)">Leave</a>
+                <li *ngIf="usuarioAutenticado"
+                        class="nav-item">
+                    <a href="#"
+                            class="nav-link sair"
+                            (click)="fazerLogOut($event)">Leave</a>
                 </li>
             </ul>
         </div>
@@ -50,16 +69,24 @@
 </header>
 
 <!-- Modal login(Entrar) -->
-<div class="modal fade" id="modal-login" tabindex="-1" role=" dialog">
-    <div class="modal-dialog" role="document">
+<div class="modal fade"
+        id="modal-login"
+        tabindex="-1"
+        role=" dialog">
+    <div class="modal-dialog"
+            role="document">
         <!-- inserir conteudo do modal -->
         <cr-login></cr-login>
     </div>
 </div>
 
 <!-- Modal sigin(Cadastrar) -->
-<div class="modal fade" id="modal-cadastro-visitante" tabindex="-1" role=" dialog">
-    <div class="modal-dialog" role="document">
+<div class="modal fade"
+        id="modal-cadastro-visitante"
+        tabindex="-1"
+        role=" dialog">
+    <div class="modal-dialog"
+            role="document">
         <!-- inserir conteudo do modal -->
         <cr-cadastro-visitante></cr-cadastro-visitante>
     </div>
