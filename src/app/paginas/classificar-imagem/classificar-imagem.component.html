@@ -19,9 +19,30 @@
             <div>
                 <div class="image_info">
                     <h5> Information </h5>
+                    <p>
+                      <span> Author: </span>
+                      Núcleo de Pesquisas em Ciências Biológicas,
+                      Universidade Federal de Ouro Preto
+                    </p>
                     <p> <span> Microscope slide: </span> {{imagem?.codigo_lamina}} </p>
-                    <p> <span> Acquisition date: </span> {{ imagem?.dt_aquisicao | date}} </p>
+
                     <p> <span> Lesion: </span> {{imagem?.lesao?.nome}} </p>
+
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#more-info" role="button" aria-expanded="false" aria-controls="collapseExample">
+    More information
+  </a>
+</p>
+<div class="collapse" id="more-info">
+  <div class="card card-body">
+                    <p> <span> Acquisition date: </span> {{ imagem?.dt_aquisicao | date}} </p>
+    <p>
+      <span>Dimension (in pixels):</span>
+      1384 x 1036
+    </p>
+  </div>
+</div>
+
                 </div>
             </div>
 
