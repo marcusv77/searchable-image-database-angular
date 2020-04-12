@@ -50,8 +50,6 @@ export class ImagemService {
             token_autenticacao: "bac8db9147ac80b4ba8a05bb0de7c4fd",
             responseType: "blob"
         });
-
-        console.log("URL base api", this.api.obterUrlBaseApi());
     }
 
     cadastrarImagem(formulario: FormData): Observable<any> {

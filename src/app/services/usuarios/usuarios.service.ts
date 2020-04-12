@@ -44,8 +44,6 @@ export class UsuarioService {
                 token_autenticacao: this.objetoSessao.token_autenticacao
             });
         }
-
-        console.log("URL base api", this.api.obterUrlBaseApi());
     }
 
     obterTodosUsuarios(): Observable<IUsuarioBaseModel[]> {
