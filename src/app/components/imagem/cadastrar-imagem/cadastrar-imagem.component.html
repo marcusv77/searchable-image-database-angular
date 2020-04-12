@@ -18,38 +18,48 @@
                     <form [formGroup]="formularioImagem" id="formularioImagem">
 
                         <div class="form-group">
-                            <label for="codigo_lamina" class="activate"> Microscope slide code </label>
+                            <label for="codigo_lamina" class="activate"> Microscope slide's code </label>
                             <input type="text" class="form-control" id="codigo_lamina" formControlName="codigo_lamina" placeholder="Enter the code">
+                            <small
+                              id="codigo_laminaHelp"
+                              class="form-text text-muted">
+                              For example, 123.
+                              else.
+                            </small>
 
                             <div
                                 *ngIf="(!codigo_lamina.pristine && codigo_lamina.errors) || (codigo_lamina.errors && codigo_lamina.touched)">
                                 <p *ngIf="codigo_lamina.errors.required">
-                                    Microscope slide code is required
+                                    Microscope slide's code is required
                                 </p>
                                 <p *ngIf="codigo_lamina.errors.minlength">
-                                    Minimun of 3 characters
+                                    Microscope slide must have at least 3 characters
                                 </p>
                             </div>
 
                         </div>
 
                         <div class="form-group">
-                            <label for="dt_aquisicao" class="activate">Acquisition Date</label>
+                          <label
+                            for="dt_aquisicao"
+                            class="activate">
+                            Date of microscope slide creation
+                          </label>
                             <input type="date" class="form-control" id="dt_aquisicao" formControlName="dt_aquisicao" placeholder="data de aquisicao">
 
                             <div
                                 *ngIf="(!dt_aquisicao.pristine && dt_aquisicao.errors) || (dt_aquisicao.errors && dt_aquisicao.touched)">
                                 <p *ngIf="dt_aquisicao.errors.required">
-                                    Acquisition Date is required
+                                    Date of microscope slide creationAcquisition Date
                                 </p>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="lesao_imagem" class="activate">Image lesion</label>
+                            <label for="lesao_imagem" class="activate">Diagnostic</label>
                             <select class="form-control" id="lesao_imagem" formControlName="lesao_imagem">
 
-                                <option [ngValue]="null" disabled hidden>Choose a lesion</option>
+                                <option [ngValue]="null" disabled hidden>Choose a diagnostic</option>
                                 <option *ngFor="let lesao of todasLesoes" [ngValue]="lesao.id">
                                     {{ lesao.nome }}
                                 </option>
@@ -64,7 +74,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label id="arquivo_imagem_label" for="arquivo_imagem" class="activate">Upload a image</label>
+                            <label id="arquivo_imagem_label" for="arquivo_imagem" class="activate">Upload image</label>
                             <input type="file" class="form-control" id="arquivo_imagem" accept="image/*"  (change)="tratarUpload($event)">
                         </div>
 
