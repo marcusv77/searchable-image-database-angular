@@ -57,7 +57,9 @@
             </div>
 
             <!-- ListarClassificacoes realizadas INICIO -->
-            <label for="id_generico"> <span class="label_personalizado"> Load classification data </span> </label>
+            <label for="id_generico">
+              Load classification data
+            </label>
             <div>
                 <select [(ngModel)]="indiceSelecionado"
                         (ngModelChange)="exibirClassificacoesFormaSeletiva(); cancelarAtualizacao()"
@@ -85,10 +87,22 @@
 
                 <!-- Codigo leitura de dados INICO -->
                 <div *ngIf="!atualizarInformacoes">
-                    <h5> Nucleus information </h5>
-                    <p> <span> Lesion type: </span> {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.nome}} </p>
-                    <p *ngIf="todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes"> <span> Lesion details:
-                        </span> {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes}} </p>
+                    <h5>
+                        Nucleus information
+                    </h5>
+                    <p>
+                        <span> Author: </span>
+                        Núcleo de Pesquisas em Ciências Biológicas,
+                        Universidade Federal de Ouro Preto
+                    </p>
+                    <p>
+                        <span> Lesion type: </span>
+                        {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.nome}}
+                    </p>
+                    <p *ngIf="todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes">
+                        <span> Lesion details: </span>
+                        {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes}}
+                    </p>
                 </div>
                 <!-- Codigo leitura de dados FIM -->
 
@@ -133,7 +147,7 @@
                 <div *ngIf="objetoSessao"
                         class="d-flex flex-row-reverse bd-highlight">
                     <div *ngIf="!atualizarInformacoes"
-                            class="p-2 bd-highlight">
+                            class="bd-highlight">
                         <button type="submit"
                                 class="btn btn-danger"
                                 (click)="excluitClassificacao(indiceSelecionado)">
@@ -142,16 +156,16 @@
                     </div>
 
                     <div *ngIf="!atualizarInformacoes"
-                            class="p-2 bd-highlight">
+                            class="bd-highlight">
                         <button type="submit"
-                                class="btn btn-warning taab"
+                                class="btn btn-warning"
                                 (click)="solicitarAtualizacaoDeDados()">
                             Update
                         </button>
                     </div>
 
                     <div *ngIf="atualizarInformacoes"
-                            class="p-2 bd-highlight">
+                            class="bd-highlight">
                         <button type="submit"
                                 class="btn btn-primary taab"
                                 (click)="atualizarClassificacao(indiceSelecionado)">
@@ -160,7 +174,7 @@
                     </div>
 
                     <div *ngIf="atualizarInformacoes"
-                            class="p-2 bd-highlight">
+                            class="bd-highlight">
                         <button type="submit"
                                 class="btn btn-danger"
                                 (click)="cancelarAtualizacao()">

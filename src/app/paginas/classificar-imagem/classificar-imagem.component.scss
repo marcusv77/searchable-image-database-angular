@@ -30,77 +30,33 @@ canvas{
     }
 }
 
-/*Estilo box de informação Inicio*/
 .box_info {
-    box-shadow: 0px 0px 3px 1px rgba(47, 159, 174, 0.4);
     margin-top: 3vh;
     margin-bottom: 3vh;
-    padding: 5px;
     font-size: 0.9rem;
+
+    h5,
+    p {
+        margin-bottom: 0px;
+    }
+    
+    span {
+        font-weight: bold;
+    }
 }
 
-.taab {
-    margin-right: 1vh;
-}
-
-.btn-danger {
-    padding: 3px, 5px, 3px, 5px;
-    font-size: 0.9rem;
-}
-
+.btn-danger,
+.btn-primary,
 .btn-warning {
     padding: 3px, 5px, 3px, 5px;
     font-size: 0.9rem;
+
+    &:hover {
+        opacity: 0.8;
+    }
 }
 
 .btn-primary {
-    padding: 3px, 5px, 3px, 5px;
-    font-size: 0.9rem;
-    background-color: #2f9fae;
-    border-color: #2f9fae;
-}
-
-.p-2 {
-    padding: 0.1rem!important;
-    padding-top: 0.1rem !important;
-    padding-right: 0.1rem !important;
-    padding-bottom: 0.1rem !important;
-    padding-left: 0.1rem !important;
-}
-
-/*Estilo box de informação FIM*/
-
-.label_personalizado {
-    font-weight: bold;
-}
-
-.btn-primary:hover {
-    opacity: 0.8;
-}
-
-select {
-  margin-bottom: 1vh;
-}
-
-/* Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {
-
-}
-
-/* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {
-
-}
-
-/* Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
-}
-
-/* Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-
-}
-
-@media (min-width: 1400px) {
-
+    background-color: $cric-blue;
+    border-color: $cric-blue;
 }
