@@ -29,7 +29,8 @@
                         <a class="nav-link"
                                 [routerLink]="['/about']">About</a>
                     </li>
-                    <li *ngIf="!usuarioAutenticado" class="nav-item">
+                    <li *ngIf="usuarioAutenticado"
+                            class="nav-item">
                         <a class="nav-link"
                                 [routerLink]="['/segmentation']">Segmentation</a>
                     </li>
