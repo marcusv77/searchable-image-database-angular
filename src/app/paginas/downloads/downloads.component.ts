@@ -37,13 +37,13 @@ export class DownloadsComponent implements OnInit, OnDestroy {
     solicitarDownloadImagens() {
 
         this.carregando = true;
-        let user_id = 1;
+        let user_id = "1";
         if(this.objetoSessao) {
                 user_id = this.objetoSessao.id_usuario.toString();
             }
 
         this.fazerDownloadImagensBaseSubscription =
-                this.imagemServico.fazerDownloadImagensBaseInterna("1")
+                this.imagemServico.fazerDownloadImagensBaseInterna(user_id)
                     .subscribe(
                         (retorno) => {
                             saveAs(retorno, "base.zip");
