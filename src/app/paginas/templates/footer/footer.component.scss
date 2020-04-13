@@ -1,22 +1,23 @@
 footer {
     margin-top: 1vh;
-}
-
-p{
-    margin: 1px;
-}
-
-.nav-link-footer{
     color: #fafafa;
-}
 
-img.logoIndexFooter{
-    width: 250px;
-    margin-left: 2vw;
-}
+    p{
+        color: inherit;
+        margin: 1px;
+        font-size: 1.00rem;
 
-a{
-    font-size: 1.00rem;
+        a{
+            color: inherit;
+            font-size: inherit;
+        }
+
+    }
+
+    img.logoIndexFooter{
+        width: 250px;
+        margin-left: 2vw;
+    }
 }
 
 /* Small devices (landscape phones, 576px and up)*/
