@@ -72,6 +72,11 @@ img{
 .btn-primary {
     background-color: $cric-blue;
     border-color: $cric-blue;
+
+    &:hover {
+        background-color: $cric-blue;
+        border-color: $cric-blue;
+    }
 }
 
 /* Classes Gerais */
