@@ -44,19 +44,3 @@ canvas{
         font-weight: bold;
     }
 }
-
-.btn-danger,
-.btn-primary,
-.btn-warning {
-    padding: 3px, 5px, 3px, 5px;
-    font-size: 0.9rem;
-
-    &:hover {
-        opacity: 0.8;
-    }
-}
-
-.btn-primary {
-    background-color: $cric-blue;
-    border-color: $cric-blue;
-}
