@@ -136,8 +136,12 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                 this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
 
                 setTimeout(() => {
-                    // this.listarClassificacoesDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
-                    this.listarClassificacoesDeCelula(this.id_imagem, 4);
+                    if(this.objetoSessao){
+                        this.listarClassificacoesDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
+                    }
+                    else{
+                        this.listarClassificacoesDeCelula(this.id_imagem, 1);
+                    }
                 },         500);
                 this.carregando = false;
             },
