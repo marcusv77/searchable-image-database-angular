@@ -32,7 +32,7 @@ h3,
 h4,
 h5,
 h6{
-    color:$cric-blue;
+    color: $cric-blue;
     font-weight: bold;
     margin-bottom: 3vh;
 }
@@ -83,6 +83,25 @@ img{
 .formatacao-conteudo-pagina{
     padding: 5vh 2vw 5vh 2vw;
     min-height: 92vh;
+}
+
+.cric-dashboard {
+    height: 100vh;
+
+    &::nth-child(1) {
+        height: 10vh;
+    }
+
+    &::nth-child(2) {
+        height: 90vh;
+    }
+
+    canvas {
+        height: 85vh;
+        background-size: contain;
+        display: block;
+        box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.2);
+    }
 }
 
 /* Small devices (landscape phones, 576px and up)*/
