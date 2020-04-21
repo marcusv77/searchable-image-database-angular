@@ -20,13 +20,13 @@ export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
     @Output() public todasImagens: IImagemModelResultado[];
     @Output() public classificationDatabase = false;
     @ViewChild("atualizarPaginacaoViewChild", null) public atualizacaoDePaginaViewChild: any;
-    private objetoErro: ObjetoErro;
-    private objetoSessao: IObjetoSessaoModel;
-    private comunicacaoApi: ComunicacaoApi;
     private armazenamentoBrowser: ArmazenamentoBrowser;
+    private comunicacaoApi: ComunicacaoApi;
     private listarImagensSubscription: Subscription;
-    public carregando: boolean;
+    private objetoErro: ObjetoErro;
     public cadastrandoImagem: boolean;
+    public carregando: boolean;
+    public objetoSessao: IObjetoSessaoModel;
 
     constructor(private imagemService: ImagemService) {
         this.objetoErro = new ObjetoErro();

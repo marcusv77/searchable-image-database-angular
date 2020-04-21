@@ -30,34 +30,32 @@ declare const exibirSegmentacoes: any; // Função javascript
 
 export class SegmentarImagemComponent implements OnInit, OnDestroy {
 
-    //#region Propriedades
-    public imagem: IImagemModelResultado;
-    public id_imagem: number;
-    public caminho_imagem: string;
-    public vetorDePontos: any;
-    public todasDescricoes: IDescricaoModelResultado[];
-    public id_descricao: number;
-    public permitirCadastroSegmentacao: boolean;
-    private objetoSessao: IObjetoSessaoModel;
+    private SegmentacaoHelper: SegmentacaoHelper;
     private armazenamentoBrowser: ArmazenamentoBrowser;
-    public todasSegmentacoes: ISegmentacaoCelulaModelResultado;
+    private cadastrarSegmentacaoSubscription: Subscription;
+    private comunicacaoApi: ComunicacaoApi;
+    private excluirRegistroDeSegmentacaoSubscription: Subscription;
+    private indiceAnterior: number;
+    private listarDescricoesSubscription: Subscription;
+    private listarSegmentacoesCelulaSubscription: Subscription;
+    private objetoErro: ObjetoErro;
+    private obterImagemSubscription: Subscription;
+    public caminho_imagem: string;
+    public carregando = false;
+    public codigoDescricao: Array<number>;
+    public descricao: DescricaoCelulaEntidade;
+    public id_descricao: number;
+    public id_imagem: number;
+    public imagem: IImagemModelResultado;
     public indiceSelecionado: number;
     public indiceSelecionadoPadrao: number;
-    public descricao: DescricaoCelulaEntidade;
-    public vetorSelecaoDescricao: Array<IDescricaoModelResultado[]>;
-    public codigoDescricao: Array<number>;
-    private indiceAnterior: number;
-    private objetoErro: ObjetoErro;
-    private comunicacaoApi: ComunicacaoApi;
-    private SegmentacaoHelper: SegmentacaoHelper;
-    private obterImagemSubscription: Subscription;
-    private cadastrarSegmentacaoSubscription: Subscription;
-    private listarSegmentacoesCelulaSubscription: Subscription;
-    private listarDescricoesSubscription: Subscription;
-    private excluirRegistroDeSegmentacaoSubscription: Subscription;
-    public carregando = false;
+    public objetoSessao: IObjetoSessaoModel;
+    public permitirCadastroSegmentacao: boolean;
     public rotulo = true;
-    //#endregion
+    public todasDescricoes: IDescricaoModelResultado[];
+    public todasSegmentacoes: ISegmentacaoCelulaModelResultado;
+    public vetorDePontos: any;
+    public vetorSelecaoDescricao: Array<IDescricaoModelResultado[]>;
 
     //#region Construtores
     constructor(private imagemService: ImagemService, private activatedRoute: ActivatedRoute) {
