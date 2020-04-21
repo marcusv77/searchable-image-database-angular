@@ -20,12 +20,12 @@ export class SegmentationDatabaseComponent implements OnInit, OnDestroy {
     @Output() public todasImagens: IImagemModelResultado[];
     @Output() public segmentationDatabase: boolean;
     @ViewChild("atualizarPaginacaoViewChild", null) public atualizacaoDePaginaViewChild: any;
-    private objetoErro: ObjetoErro;
-    private comunicacaoApi: ComunicacaoApi;
-    private objetoSessao: IObjetoSessaoModel;
     private armazenamentoBrowser: ArmazenamentoBrowser;
+    private comunicacaoApi: ComunicacaoApi;
     private listarImagensSubscription: Subscription;
+    private objetoErro: ObjetoErro;
     public carregando: boolean;
+    public objetoSessao: IObjetoSessaoModel;
 
     constructor(private imagemService: ImagemService) {
         this.objetoErro = new ObjetoErro();

@@ -31,37 +31,35 @@ declare const obterLarguraAlturaAtualCanvas: any;
 
 export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
-    //#region Propriedades
-    public id_imagem: number;
-    public imagem: IImagemModelResultado;
-    public imagemAtualizacao: ImagemEntidade;
-    public todosUsuarios: IUsuarioBaseModel[];
+    private armazenamentoBrowser: ArmazenamentoBrowser;
+    private atualizarDadosImagemSubscription: Subscription;
+    private cadastrarClassificacaoSubscription: Subscription;
+    private comunicacaoApi: ComunicacaoApi;
+    private excluirRegistroDeClassificacaoSubscription: Subscription;
+    private listarClassificacoesDeCelulaSubscription: Subscription;
+    private listarDescricoesSubscription: Subscription;
+    private listarTodasLesoesSubscription: Subscription;
+    private objetoErro: ObjetoErro;
+    private obterUmaImagemSubscription: Subscription;
+    private requisicao: CadastrarClassificacaoRequisicao;
+    public atualizarInformacoes: boolean;
     public caminho_imagem: string;
-    public id_lesao: number;
+    public carregando: boolean;
     public coord_x: number;
     public coord_y: number;
-    public todasLesoes: ILesaoModelResultado[];
-    public lesao: LesaoEntidade;
-    private objetoSessao: IObjetoSessaoModel;
-    private armazenamentoBrowser: ArmazenamentoBrowser;
-    public todasClassificacoes: IClassificacaoCelulaModelResultado;
-    public indiceSelecionado: number;
     public exibirModal: boolean;
-    public permitirCadastroClassificacao: boolean;
-    public atualizarInformacoes: boolean;
-    private objetoErro: ObjetoErro;
-    private comunicacaoApi: ComunicacaoApi;
-    private requisicao: CadastrarClassificacaoRequisicao;
+    public id_imagem: number;
+    public id_lesao: number;
+    public imagem: IImagemModelResultado;
+    public imagemAtualizacao: ImagemEntidade;
+    public indiceSelecionado: number;
     public indiceSelecionadoPadrao: number;
-    public carregando: boolean;
-    private obterUmaImagemSubscription: Subscription;
-    private cadastrarClassificacaoSubscription: Subscription;
-    private listarTodasLesoesSubscription: Subscription;
-    private listarClassificacoesDeCelulaSubscription: Subscription;
-    private excluirRegistroDeClassificacaoSubscription: Subscription;
-    private listarDescricoesSubscription: Subscription;
-    private atualizarDadosImagemSubscription: Subscription;
-    //#endregion
+    public lesao: LesaoEntidade;
+    public objetoSessao: IObjetoSessaoModel;
+    public permitirCadastroClassificacao: boolean;
+    public todasClassificacoes: IClassificacaoCelulaModelResultado;
+    public todasLesoes: ILesaoModelResultado[];
+    public todosUsuarios: IUsuarioBaseModel[];
 
     //#region Construtor
     constructor(private imagemService: ImagemService, private activatedRoute: ActivatedRoute, public datepipe: DatePipe) {
