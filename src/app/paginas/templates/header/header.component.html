@@ -34,9 +34,21 @@
                         <a class="nav-link"
                                 [routerLink]="['/segmentation']">Segmentation</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link "
-                                [routerLink]="['/classification']">Classification</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false">
+                            Classification
+                        </a>
+                        <div class="dropdown-menu"
+                                aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item"
+                                    [routerLink]="['/classification']">Cervix Collection</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link "
