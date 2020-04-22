@@ -2,8 +2,8 @@
   "name": "cric",
   "version": "0.1.10",
   "scripts": {
-    "start-dev": "ng serve --host 0.0.0.0",
-    "start-prod": "ng serve --host 0.0.0.0 --prod",
+    "start-dev": "ng serve --host 0.0.0.0 --disable-host-check",
+    "start-prod": "ng serve --host 0.0.0.0 --disable-host-check --prod",
     "build": "ng build --prod --build-optmizer",
     "test": "ng test",
     "lint": "tslint 'src/**/*.ts?(x)'",
