@@ -38,6 +38,7 @@ import { AutenticacaoService } from "./services/login/autenticacao.service";
 import { ImagemService } from "./services/imagens_service/imagens.service";
 import { ConexaoService } from "./services/conexao/conexao.service";
 import { AnimacaoCarregamentoComponent } from "./components/sistema/animacao-carregamento/animacao-carregamento.component";
+import { CiteUsComponent } from "./components/sistema/cite-us/cite-us.component";
 
 @NgModule({
     declarations: [
@@ -61,7 +62,8 @@ import { AnimacaoCarregamentoComponent } from "./components/sistema/animacao-car
         CadastroVisitanteComponent,
         CadastrarImagemComponent,
         TesteComponent,
-        AnimacaoCarregamentoComponent
+        AnimacaoCarregamentoComponent,
+        CiteUsComponent
     ],
     imports: [
         BrowserModule,
