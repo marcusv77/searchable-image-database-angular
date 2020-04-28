@@ -1,6 +1,6 @@
 {
   "name": "cric",
-  "version": "0.1.10",
+  "version": "0.2.0",
   "scripts": {
     "start-dev": "ng serve --host 0.0.0.0 --disable-host-check",
     "start-prod": "ng serve --host 0.0.0.0 --disable-host-check --prod",
