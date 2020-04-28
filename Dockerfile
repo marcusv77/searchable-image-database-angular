@@ -1,4 +1,4 @@
-FROM node:13.10.1-buster as base
+FROM node:13.13-buster as base
 # Create project directory
 WORKDIR /opt/cric/frontend
 # Install app dependencies
