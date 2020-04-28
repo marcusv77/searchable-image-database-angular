@@ -13,8 +13,20 @@ This documentation is for the reference implementation written in Angular.
 More documentation about CRIC Searchable Image Database
 is available at https://cric-database.readthedocs.io/.
 
-Pages
------
+Anonymous User
+--------------
+
+..  toctree::
+    :maxdepth: 2
+    :caption: Contents:
+
+    anonymous-user/home
+    anonymous-user/about
+    anonymous-user/classification
+    anonymous-user/downloads
+
+Login User
+----------
 
 ..  toctree::
     :maxdepth: 2

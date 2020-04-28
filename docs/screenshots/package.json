@@ -1,0 +1,15 @@
+{
+  "name": "screenshots",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "all": "node admin.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^2.1.1",
+    "puppeteer-extra": "^3.1.9",
+    "puppeteer-extra-plugin-angular": "^3.2.1"
+  }
+}
