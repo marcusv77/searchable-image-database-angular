@@ -6,15 +6,12 @@ export class ComunicacaoApi {
     private UrlCaminhoBaseInterna: string;
     private UrlCaminhoBaseExterna: string;
     private UrlCaminhoBaseThumbnail: string;
-    private TokenCuringa: string;
-    private ambienteProducao: boolean;
 
     public constructor () {
         this.UrlBaseApi = environment.api_url;
         this.UrlCaminhoBaseInterna = "imagens/base_interna";
         this.UrlCaminhoBaseExterna = "imagens/base_externa";
         this.UrlCaminhoBaseThumbnail = "imagens/base_thumbnail";
-        this.TokenCuringa = "bac8db9147ac80b4ba8a05bb0de7c4fd";
     }
 
     public obterUrlBaseApi(): string {
@@ -33,7 +30,4 @@ export class ComunicacaoApi {
         return this.UrlCaminhoBaseThumbnail;
     }
 
-    public obterTokenCuringa(): string {
-        return this.TokenCuringa;
-    }
 }

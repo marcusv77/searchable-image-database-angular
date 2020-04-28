@@ -41,7 +41,7 @@ export class AutenticacaoService implements OnInit, OnDestroy {
     autenticarUsuario(id_usuario: number = 0, dadosLogin: any = null)
     {
         this.autenticarUsuarioSubscription =
-        this.usuarioService.obterUsuarioCompletoParaLogin(id_usuario, dadosLogin)
+        this.usuarioService.obterUsuarioCompletoParaLogin(dadosLogin)
         .subscribe(
             (retorno) => {
                 this.usuarioBanco = retorno;

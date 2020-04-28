@@ -19,7 +19,6 @@ export class UsuarioService {
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private objetoSessao: IObjetoSessaoModel;
     private headerApplicationJsonTokenSessao: HttpHeaders;
-    private headerApplicationJsonTokenCuringa: HttpHeaders;
     private api: ComunicacaoApi;
     //#endregion
 
@@ -34,8 +33,6 @@ export class UsuarioService {
         this.api = new ComunicacaoApi();
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
         this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
-        this.autenicacaoApiParaLogin = this.api.obterTokenCuringa();
-        this.autenticacaoCadastroVisitante = this.api.obterTokenCuringa();
 
         if(this.objetoSessao) {
 
@@ -66,15 +63,14 @@ export class UsuarioService {
         });
     }
 
-    obterUsuarioCompletoParaLogin(id: number = 0, body: any): Observable<any> {
+    obterUsuarioCompletoParaLogin(body: any): Observable<any> {
 
         this.inicializarServicos();
-        const url = `${this.api.obterUrlBaseApi()}/api/v1/usuarios/${id}`;
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/login/`;
 
         return this.httpClient.post(url, body, {
             headers: new HttpHeaders({
-                "content-type": "application/json; charset=utf-8",
-                token_autenticacao: this.autenicacaoApiParaLogin
+                "content-type": "application/json; charset=utf-8"
             })
         });
     }
