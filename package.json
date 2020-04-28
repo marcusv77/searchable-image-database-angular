@@ -9,6 +9,7 @@
     "lint": "tslint 'src/**/*.ts?(x)'",
     "fix": "tslint --fix 'src/**/*.ts?(x)'",
     "html": "js-beautify -r --type html 'src/**/*.html'",
+    "screenshot": "node docs/screenshots/anonymous.js",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -52,6 +53,7 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3",
-    "js-beautify": "^1.11.0"
+    "js-beautify": "^1.11.0",
+    "puppeteer": "^2.1.1"
   }
 }

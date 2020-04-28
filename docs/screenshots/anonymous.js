@@ -1,3 +1,5 @@
+const path = require('path');
+
 const puppeteer = require('puppeteer');
 
 /*
@@ -10,6 +12,8 @@ Screen size
 - 
 */
 
+const DOMAIN = 'http://localhost:8080';
+
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -18,9 +22,22 @@ Screen size
         height: 1080,
         deviceScaleFactor: 1,
     });
-    await page.goto('http://localhost:8080/', {waitUntil: 'networkidle0'});
-    await page.screenshot({path: 'anonymous-index.png'});
-    await Promise.all([
+
+    await page.goto(
+        `${DOMAIN}/`,
+        {
+            waitUntil: 'networkidle0'
+        }
+    );
+    await page.screenshot(
+        {
+            path: path.join(
+                __dirname,
+                'anonymous-index.png'
+            )
+        }
+    );
+    /*await Promise.all([
         page.waitForNavigation({waitUntil: 'networkidle0'}),
         page.click('a[href="/about"]'),
       ]);
@@ -38,7 +55,7 @@ Screen size
         page.waitForNavigation({waitUntil: 'networkidle0'}),
         page.click('a[href="/downloads"]'),
       ]);
-    await page.screenshot({path: 'anonymous-downloads.png'});
+    await page.screenshot({path: 'anonymous-downloads.png'});*/
     
     await browser.close();
 })();
