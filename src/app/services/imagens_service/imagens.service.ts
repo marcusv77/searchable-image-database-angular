@@ -36,19 +36,33 @@ export class ImagemService {
         this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
         this.api = new ComunicacaoApi();
 
-        this.headerApplicationJson = new HttpHeaders({
-            "content-type": "application/json; charset=utf-8",
-            token_autenticacao: this.objetoSessao.token_autenticacao
-        });
-
-        this.headerMultipartFormData = new HttpHeaders({
-            token_autenticacao: this.objetoSessao.token_autenticacao
-        });
-
-        this.headerDownloadArquivo = new HttpHeaders({
-            token_autenticacao: this.objetoSessao.token_autenticacao,
-            responseType: "blob"
-        });
+        if (this.objetoSessao) {
+            this.headerApplicationJson = new HttpHeaders({
+                "content-type": "application/json; charset=utf-8",
+                token_autenticacao: this.objetoSessao.token_autenticacao
+            });
+    
+            this.headerMultipartFormData = new HttpHeaders({
+                token_autenticacao: this.objetoSessao.token_autenticacao
+            });
+    
+            this.headerDownloadArquivo = new HttpHeaders({
+                token_autenticacao: this.objetoSessao.token_autenticacao,
+                responseType: "blob"
+            });
+        }
+        else {
+            this.headerApplicationJson = new HttpHeaders({
+                "content-type": "application/json; charset=utf-8"
+            });
+    
+            this.headerMultipartFormData = new HttpHeaders({
+            });
+    
+            this.headerDownloadArquivo = new HttpHeaders({
+                responseType: "blob"
+            });
+        }
     }
 
     cadastrarImagem(formulario: FormData): Observable<any> {
