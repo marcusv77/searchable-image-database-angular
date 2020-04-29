@@ -51,11 +51,7 @@ async def main():
         ),
     )
     await asyncio.gather(
-        page.waitForNavigation(
-            {
-                'waitUntil': 'networkidle0'
-            }
-        ),
+        page.waitForSelector('.card-flex-box'),
         page.click(
             'a[href="/classification"]'
         ),
