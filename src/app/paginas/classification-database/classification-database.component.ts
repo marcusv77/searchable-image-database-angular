@@ -44,7 +44,9 @@ export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if (this.listarImagensSubscription) { this.listarImagensSubscription.unsubscribe(); }
+        if (this.listarImagensSubscription) {
+            this.listarImagensSubscription.unsubscribe();
+        }
     }
 
     listarImagens() {
@@ -58,16 +60,16 @@ export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
         this.carregando = true;
         this.listarImagensSubscription =
         this.imagemService.listarTodasImagens(user_id)
-        .subscribe(
-            (retorno) => {
-                this.todasImagens = this.construirUrlCaminhoImagem(retorno);
-                this.carregando = false;
-            },
-            (erro) => {
-                this.carregando = false;
-                this.objetoErro = erro.error;
+            .subscribe(
+                (retorno) => {
+                    this.todasImagens = this.construirUrlCaminhoImagem(retorno);
+                    this.carregando = false;
+                },
+                (erro) => {
+                    this.carregando = false;
+                    this.objetoErro = erro.error;
 
-                switch (this.objetoErro.status_code) {
+                    switch (this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -88,9 +90,9 @@ export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
     construirUrlCaminhoImagem(listaImagens: IImagemModelResultado[]) {

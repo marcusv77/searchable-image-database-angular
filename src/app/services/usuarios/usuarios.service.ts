@@ -82,7 +82,7 @@ export class UsuarioService {
 
         return this.httpClient.post(url, body, {
             headers: new HttpHeaders({
-                "content-type": "application/json",
+                "content-type": "application/json"
             })
         });
     }
@@ -107,7 +107,7 @@ export class UsuarioService {
 
         const url = `${this.api.obterUrlBaseApi()}/api/v1/usuarios/analista/${id_usuario}`;
 
-        return this.httpClient.post(url, body,{
+        return this.httpClient.post(url, body, {
             headers: new HttpHeaders({
                 "content-type": "application/json; charset=utf-8",
                 token_autenticacao: this.autenticacaoCadastroVisitante

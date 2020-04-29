@@ -27,7 +27,7 @@ export class TesteComponent implements OnInit, OnDestroy {
             enabled: false
         },
         tooltip: {
-            pointFormat: "{series.name}: <b>{point.y}</b>",
+            pointFormat: "{series.name}: <b>{point.y}</b>"
             // valueSuffix: '%'
         },
         plotOptions: {

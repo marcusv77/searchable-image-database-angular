@@ -59,6 +59,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
             this.criarPagina(this.paginaSelecionada);
         },         250);
     }
+
     ngOnDestroy() { }
 
     detalheDeUmaImagem($event, img) {
@@ -149,7 +150,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
                 const inicio = (paginaSelecionada - 1) * this.numeroImagensPorPagina;
                 const limite = this.todasImagens.length;
 
-                for (let i = inicio, j = 0; i < limite; i++ , j++) {
+                for (let i = inicio, j = 0; i < limite; i++, j++) {
                     const imagem = new PaginaImagemEntidade();
                     imagem.altura = this.todasImagens[i].altura;
                     imagem.caminho_imagem = this.todasImagens[i].caminho_imagem;
@@ -174,7 +175,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
                 const inicio = (paginaSelecionada - 1) * this.numeroImagensPorPagina;
                 const limite = paginaSelecionada * this.numeroImagensPorPagina;
 
-                for (let i = inicio, j = 0; i < limite; i++ , j++) {
+                for (let i = inicio, j = 0; i < limite; i++, j++) {
                     const imagem = new PaginaImagemEntidade();
                     imagem.altura = this.todasImagens[i].altura;
                     imagem.caminho_imagem = this.todasImagens[i].caminho_imagem;
@@ -196,7 +197,9 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
             }
         }
         else {
-            setTimeout(() => {this.criarPagina(this.paginaSelecionada);}, 200);
+            setTimeout(() => {
+                this.criarPagina(this.paginaSelecionada);
+            }, 200);
         }
     }
 
@@ -222,7 +225,9 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
             this.criarPagina(this.contadorpaginaAtual);
         }
         else{
-            setTimeout(() => { this.atualizarPagina();}, 200);
+            setTimeout(() => {
+                this.atualizarPagina();
+            }, 200);
         }
     }
 }

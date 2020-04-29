@@ -84,22 +84,36 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
 
         this.activatedRoute.paramMap
-        .subscribe((params: ParamMap) => {
-            this.id_imagem = Number(params.get("id"));
-            this.obterUmaImagem(this.id_imagem);
-        });
+            .subscribe((params: ParamMap) => {
+                this.id_imagem = Number(params.get("id"));
+                this.obterUmaImagem(this.id_imagem);
+            });
 
         this.listarTodasLesoes();
     }
 
     ngOnDestroy() {
-        if (this.obterUmaImagemSubscription) { this.obterUmaImagemSubscription.unsubscribe();}
-        if (this.cadastrarClassificacaoSubscription) { this.cadastrarClassificacaoSubscription.unsubscribe();}
-        if (this.listarTodasLesoesSubscription) { this.listarTodasLesoesSubscription.unsubscribe();}
-        if (this.listarClassificacoesDeCelulaSubscription) { this.listarClassificacoesDeCelulaSubscription.unsubscribe();}
-        if(this.excluirRegistroDeClassificacaoSubscription) {this.excluirRegistroDeClassificacaoSubscription.unsubscribe();}
-        if(this.listarDescricoesSubscription) {this.listarDescricoesSubscription.unsubscribe();}
-        if(this.atualizarDadosImagemSubscription) {this.atualizarDadosImagemSubscription.unsubscribe();}
+        if (this.obterUmaImagemSubscription) {
+            this.obterUmaImagemSubscription.unsubscribe();
+        }
+        if (this.cadastrarClassificacaoSubscription) {
+            this.cadastrarClassificacaoSubscription.unsubscribe();
+        }
+        if (this.listarTodasLesoesSubscription) {
+            this.listarTodasLesoesSubscription.unsubscribe();
+        }
+        if (this.listarClassificacoesDeCelulaSubscription) {
+            this.listarClassificacoesDeCelulaSubscription.unsubscribe();
+        }
+        if(this.excluirRegistroDeClassificacaoSubscription) {
+            this.excluirRegistroDeClassificacaoSubscription.unsubscribe();
+        }
+        if(this.listarDescricoesSubscription) {
+            this.listarDescricoesSubscription.unsubscribe();
+        }
+        if(this.atualizarDadosImagemSubscription) {
+            this.atualizarDadosImagemSubscription.unsubscribe();
+        }
     }
     //#endregion
 
@@ -127,27 +141,27 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         this.carregando = true;
         this.obterUmaImagemSubscription =
         this.imagemService.obterImagem(id_imagem)
-        .subscribe(
-            (retorno) => {
-                this.imagem = retorno;
-                const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
-                this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
+            .subscribe(
+                (retorno) => {
+                    this.imagem = retorno;
+                    const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
+                    this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
 
-                setTimeout(() => {
-                    if(this.objetoSessao){
-                        this.listarClassificacoesDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
-                    }
-                    else{
-                        this.listarClassificacoesDeCelula(this.id_imagem, 1);
-                    }
-                },         500);
-                this.carregando = false;
-            },
-            (erro) => {
-                this.carregando = false;
-                this.objetoErro = erro.error;
+                    setTimeout(() => {
+                        if(this.objetoSessao){
+                            this.listarClassificacoesDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
+                        }
+                        else{
+                            this.listarClassificacoesDeCelula(this.id_imagem, 1);
+                        }
+                    },         500);
+                    this.carregando = false;
+                },
+                (erro) => {
+                    this.carregando = false;
+                    this.objetoErro = erro.error;
 
-                switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -178,9 +192,9 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
     async cadastrarClassificacao() {
@@ -193,21 +207,21 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
         this.cadastrarClassificacaoSubscription =
         this.imagemService.cadastrarClassificacao(this.id_imagem, this.objetoSessao.id_usuario, this.requisicao)
-        .subscribe(
-            (retorno) => {
-                this.imagem = retorno;
-                const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
-                this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
-                this.indiceSelecionado = -1;
-                this.listarClassificacoesDeCelula(this.imagem.id, this.objetoSessao.id_usuario);
-                this.carregando = false;
-                console.log("Classification saved");
-            },
-            (erro) => {
-                this.carregando = false;
-                this.objetoErro = erro.error;
+            .subscribe(
+                (retorno) => {
+                    this.imagem = retorno;
+                    const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
+                    this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
+                    this.indiceSelecionado = -1;
+                    this.listarClassificacoesDeCelula(this.imagem.id, this.objetoSessao.id_usuario);
+                    this.carregando = false;
+                    console.log("Classification saved");
+                },
+                (erro) => {
+                    this.carregando = false;
+                    this.objetoErro = erro.error;
 
-                switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -238,9 +252,9 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
     listarTodasLesoes() {
@@ -248,16 +262,16 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         this.carregando = true;
         this.listarTodasLesoesSubscription =
         this.imagemService.listarLesoes()
-        .subscribe(
-            (retorno) => {
-                this.todasLesoes = retorno;
-                this.carregando = false;
-            },
-            (erro) => {
-                this.carregando = false;
-                this.objetoErro = erro.error;
+            .subscribe(
+                (retorno) => {
+                    this.todasLesoes = retorno;
+                    this.carregando = false;
+                },
+                (erro) => {
+                    this.carregando = false;
+                    this.objetoErro = erro.error;
 
-                switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -278,9 +292,9 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
     listarClassificacoesDeCelula(id_imagem: number, id_analista: number) {
@@ -288,17 +302,17 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         this.carregando = true;
         this.listarClassificacoesDeCelulaSubscription =
         this.imagemService.listarClassificacoesCelula(id_imagem, id_analista)
-        .subscribe(
-            (retorno) => {
-                this.todasClassificacoes = retorno;
-                exibirClassificacoes(this.todasClassificacoes.celulas, this.indiceSelecionado);
-                this.carregando = false;
-            },
-            (erro) => {
-                this.carregando = false;
-                this.objetoErro = erro.error;
+            .subscribe(
+                (retorno) => {
+                    this.todasClassificacoes = retorno;
+                    exibirClassificacoes(this.todasClassificacoes.celulas, this.indiceSelecionado);
+                    this.carregando = false;
+                },
+                (erro) => {
+                    this.carregando = false;
+                    this.objetoErro = erro.error;
 
-                switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -329,9 +343,9 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
     exibirClassificacoesFormaSeletiva() {
@@ -383,20 +397,20 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
             this.atualizarDadosImagemSubscription =
             this.imagemService.atualizarDadosImagem(this.imagem.id, this.objetoSessao.id_usuario, requisicao)
-            .subscribe(
-                (retorno) => {
-                    this.imagem = retorno;
-                    const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
-                    this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
-                    this.listarClassificacoesDeCelula(this.imagem.id, this.objetoSessao.id_usuario);
-                    this.carregando = false;
-                    this.atualizarInformacoes = false;
-                },
-                (erro) => {
-                    this.carregando = false;
-                    this.objetoErro = erro.error;
+                .subscribe(
+                    (retorno) => {
+                        this.imagem = retorno;
+                        const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
+                        this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
+                        this.listarClassificacoesDeCelula(this.imagem.id, this.objetoSessao.id_usuario);
+                        this.carregando = false;
+                        this.atualizarInformacoes = false;
+                    },
+                    (erro) => {
+                        this.carregando = false;
+                        this.objetoErro = erro.error;
 
-                    switch(this.objetoErro.status_code) {
+                        switch(this.objetoErro.status_code) {
 
                         case HttpStatusCode.UNAUTHORIZED: {
                             console.log(this.objetoErro.mensagem);
@@ -422,9 +436,9 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                             console.log(erro);
                             break;
                         }
+                        }
                     }
-                }
-            );
+                );
         }
         else{
             this.carregando = false;
@@ -446,21 +460,21 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
             this.excluirRegistroDeClassificacaoSubscription =
             this.imagemService.excluirRegistroDeClassificacao(parametrosRequisicao)
-            .subscribe(
-                (retorno) => {
-                    this.imagem = retorno;
-                    const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
-                    this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
-                    this.listarClassificacoesDeCelula(this.imagem.id, this.objetoSessao.id_usuario);
-                    this.indiceSelecionado = -1;
-                    exibirClassificacoes(this.todasClassificacoes.celulas);
-                    this.carregando = false;
-                },
-                (erro) => {
-                    this.carregando = false;
-                    this.objetoErro = erro.error;
+                .subscribe(
+                    (retorno) => {
+                        this.imagem = retorno;
+                        const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
+                        this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
+                        this.listarClassificacoesDeCelula(this.imagem.id, this.objetoSessao.id_usuario);
+                        this.indiceSelecionado = -1;
+                        exibirClassificacoes(this.todasClassificacoes.celulas);
+                        this.carregando = false;
+                    },
+                    (erro) => {
+                        this.carregando = false;
+                        this.objetoErro = erro.error;
 
-                    switch(this.objetoErro.status_code) {
+                        switch(this.objetoErro.status_code) {
 
                         case HttpStatusCode.UNAUTHORIZED: {
                             console.log(this.objetoErro.mensagem);
@@ -491,9 +505,9 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                             console.log(erro);
                             break;
                         }
+                        }
                     }
-                }
-            );
+                );
         }
         else {
             this.carregando = false;

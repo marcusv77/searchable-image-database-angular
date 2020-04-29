@@ -41,11 +41,11 @@ export class ImagemService {
                 "content-type": "application/json; charset=utf-8",
                 token_autenticacao: this.objetoSessao.token_autenticacao
             });
-    
+
             this.headerMultipartFormData = new HttpHeaders({
                 token_autenticacao: this.objetoSessao.token_autenticacao
             });
-    
+
             this.headerDownloadArquivo = new HttpHeaders({
                 token_autenticacao: this.objetoSessao.token_autenticacao,
                 responseType: "blob"
@@ -55,10 +55,10 @@ export class ImagemService {
             this.headerApplicationJson = new HttpHeaders({
                 "content-type": "application/json; charset=utf-8"
             });
-    
+
             this.headerMultipartFormData = new HttpHeaders({
             });
-    
+
             this.headerDownloadArquivo = new HttpHeaders({
                 responseType: "blob"
             });
