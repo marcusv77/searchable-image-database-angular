@@ -49,6 +49,7 @@ Developers
     settings
     cli
     style
+    faq
 
 Indices and tables
 ------------------
