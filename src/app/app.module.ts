@@ -14,7 +14,7 @@ import { SegmentationDatabaseComponent } from "./paginas/segmentation-database/s
 import { ClassificationDatabaseComponent } from "./paginas/classification-database/classification-database.component";
 import { DownloadsComponent } from "./paginas/downloads/downloads.component";
 import { IndexComponent } from "./paginas/index/index.component";
-import { UploadImageComponent } from './paginas/upload-image/upload-image.component';
+import { UploadImageComponent } from "./paginas/upload-image/upload-image.component";
 
 import { PrivacyComponent } from "./paginas/privacy/privacy.component";
 import { TermsComponent } from "./paginas/terms/terms.component";

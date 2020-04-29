@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 import { LinksExternos } from "src/app/utils/links_externos";
-import { environment } from 'src/environments/environment';
+import { environment } from "src/environments/environment";
 
 @Component({
     selector: "cr-footer",

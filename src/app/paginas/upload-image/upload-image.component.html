@@ -3,25 +3,35 @@
 
     <div *ngIf="!new_image_uploaded">
         <h1>Upload New Image</h1>
-        <form [formGroup]="formularioImagem" id="formularioImagem">
+        <form [formGroup]="formularioImagem"
+                id="formularioImagem">
 
             <div class="form-group">
-                <label id="arquivo_imagem_label" for="arquivo_imagem" class="activate">Upload image</label>
-                <input type="file" class="form-control" id="arquivo_imagem" accept="image/*"
-                    (change)="tratarUpload($event)">
+                <label id="arquivo_imagem_label"
+                        for="arquivo_imagem"
+                        class="activate">Upload image</label>
+                <input type="file"
+                        class="form-control"
+                        id="arquivo_imagem"
+                        accept="image/*"
+                        (change)="tratarUpload($event)">
             </div>
 
             <div class="form-group">
-                <label for="codigo_lamina" class="activate"> Microscope slide's code </label>
-                <input type="text" class="form-control" id="codigo_lamina" formControlName="codigo_lamina"
-                    placeholder="Enter the code">
-                <small id="codigo_laminaHelp" class="form-text text-muted">
+                <label for="codigo_lamina"
+                        class="activate"> Microscope slide's code </label>
+                <input type="text"
+                        class="form-control"
+                        id="codigo_lamina"
+                        formControlName="codigo_lamina"
+                        placeholder="Enter the code">
+                <small id="codigo_laminaHelp"
+                        class="form-text text-muted">
                     For example, 123.
                     else.
                 </small>
 
-                <div
-                    *ngIf="(!codigo_lamina.pristine && codigo_lamina.errors) || (codigo_lamina.errors && codigo_lamina.touched)">
+                <div *ngIf="(!codigo_lamina.pristine && codigo_lamina.errors) || (codigo_lamina.errors && codigo_lamina.touched)">
                     <p *ngIf="codigo_lamina.errors.required">
                         Microscope slide's code is required
                     </p>
@@ -33,14 +43,17 @@
             </div>
 
             <div class="form-group">
-                <label for="dt_aquisicao" class="activate">
+                <label for="dt_aquisicao"
+                        class="activate">
                     Date of microscope slide creation
                 </label>
-                <input type="date" class="form-control" id="dt_aquisicao" formControlName="dt_aquisicao"
-                    placeholder="data de aquisicao">
+                <input type="date"
+                        class="form-control"
+                        id="dt_aquisicao"
+                        formControlName="dt_aquisicao"
+                        placeholder="data de aquisicao">
 
-                <div
-                    *ngIf="(!dt_aquisicao.pristine && dt_aquisicao.errors) || (dt_aquisicao.errors && dt_aquisicao.touched)">
+                <div *ngIf="(!dt_aquisicao.pristine && dt_aquisicao.errors) || (dt_aquisicao.errors && dt_aquisicao.touched)">
                     <p *ngIf="dt_aquisicao.errors.required">
                         Date of microscope slide creationAcquisition Date
                     </p>
@@ -48,17 +61,22 @@
             </div>
 
             <div class="form-group">
-                <label for="lesao_imagem" class="activate">Diagnostic</label>
-                <select class="form-control" id="lesao_imagem" formControlName="lesao_imagem">
+                <label for="lesao_imagem"
+                        class="activate">Diagnostic</label>
+                <select class="form-control"
+                        id="lesao_imagem"
+                        formControlName="lesao_imagem">
 
-                    <option [ngValue]="null" disabled hidden>Choose a diagnostic</option>
-                    <option *ngFor="let lesao of todasLesoes" [ngValue]="lesao.id">
+                    <option [ngValue]="null"
+                            disabled
+                            hidden>Choose a diagnostic</option>
+                    <option *ngFor="let lesao of todasLesoes"
+                            [ngValue]="lesao.id">
                         {{ lesao.nome }}
                     </option>
 
                 </select>
-                <div
-                    *ngIf="(!lesao_imagem.pristine && lesao_imagem.errors) || (lesao_imagem.errors && lesao_imagem.touched)">
+                <div *ngIf="(!lesao_imagem.pristine && lesao_imagem.errors) || (lesao_imagem.errors && lesao_imagem.touched)">
                     <p *ngIf="lesao_imagem.errors.required">
                         Image lesion
                     </p>
@@ -66,8 +84,11 @@
             </div>
 
             <div>
-                <button type="submit" class="btn btn-primary btn-lg btn-block" data-dismiss="modal" (click)="solicitarCadastroImagem()"
-                    [disabled]="!formularioImagem.valid || !arquivoSelecionado">
+                <button type="submit"
+                        class="btn btn-primary btn-lg btn-block"
+                        data-dismiss="modal"
+                        (click)="solicitarCadastroImagem()"
+                        [disabled]="!formularioImagem.valid || !arquivoSelecionado">
                     Send
                 </button>
             </div>
@@ -82,11 +103,15 @@
         <h2>Next Steps</h2>
         <div class="row">
             <div class="col">
-                <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Segmentation</a>
+                <a class="btn btn-primary btn-lg btn-block"
+                        href="#"
+                        role="button">Segmentation</a>
             </div>
             <div class="col">
-                <a class="btn btn-primary btn-lg btn-block" href="#" role="button">Classification</a>
+                <a class="btn btn-primary btn-lg btn-block"
+                        href="#"
+                        role="button">Classification</a>
             </div>
-          </div>
+        </div>
     </div>
 </div>

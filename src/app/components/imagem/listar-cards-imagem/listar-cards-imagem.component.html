@@ -1,3 +1,42 @@
+<div class="form-inline">
+    <label class="sr-only"
+            for="ID-filter">Image ID</label>
+    <input type="text"
+            class="form-control mb-2 mr-sm-2"
+            id="ID-filter"
+            [(ngModel)]="filter_id"
+            placeholder="400">
+
+    <label class="sr-only"
+            for="DOI-filter">Image DOI</label>
+    <input type="text"
+            class="form-control mb-2 mr-sm-2"
+            id="DOI-filter"
+            [(ngModel)]="filter_doi"
+            placeholder="figshare/">
+
+    <label class="my-1 mr-2"
+            for="classification-filter">Classification</label>
+    <select class="custom-select my-1 mr-sm-2"
+            id="classification-filter"
+            [(ngModel)]="filter_injury">
+        <option value="1">Negative</option>
+        <option value="2">ASC-US</option>
+        <option value="3">LSIL</option>
+        <option value="4">ASC-H</option>
+        <option value="5">HSIL</option>
+        <option value="6">SCC</option>
+    </select>
+
+    <button (click)="filterImages()"
+            class="btn btn-primary mb-2">Filter</button>
+
+    <button *ngIf="being_filtered"
+            (click)="resetFilterImages()"
+            class="btn btn-danger mb-2">Reset</button>
+</div>
+
+
 <section class="flex">
     <div id="renderiza_imagens"
             *ngFor="let imagem of paginaDeImagens"
