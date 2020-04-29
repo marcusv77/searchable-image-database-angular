@@ -24,8 +24,7 @@ export class AutenticacaoService implements OnInit, OnDestroy {
     //#endregion
 
     //#region Construtor
-    constructor(private router: Router, private usuarioService: UsuarioService)
-    {
+    constructor(private router: Router, private usuarioService: UsuarioService) {
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
         this.objetoErro = new ObjetoErro();
     }
@@ -34,36 +33,37 @@ export class AutenticacaoService implements OnInit, OnDestroy {
     ngOnInit() { }
 
     ngOnDestroy() {
-        if(this.autenticarUsuarioSubscription) {this.autenticarUsuarioSubscription.unsubscribe();}
+        if(this.autenticarUsuarioSubscription) {
+            this.autenticarUsuarioSubscription.unsubscribe();
+        }
     }
 
     //#region Metodos
-    autenticarUsuario(id_usuario: number = 0, dadosLogin: any = null)
-    {
+    autenticarUsuario(id_usuario: number = 0, dadosLogin: any = null) {
         this.autenticarUsuarioSubscription =
         this.usuarioService.obterUsuarioCompletoParaLogin(dadosLogin)
-        .subscribe(
-            (retorno) => {
-                this.usuarioBanco = retorno;
-                this.usuarioAutenticado = true;
-                this.usuarioLogadoEventEmitter.emit(true);
+            .subscribe(
+                (retorno) => {
+                    this.usuarioBanco = retorno;
+                    this.usuarioAutenticado = true;
+                    this.usuarioLogadoEventEmitter.emit(true);
 
-                const usuarioLogado = {
-                    id_usuario: this.usuarioBanco.usuario.id,
-                    email: this.usuarioBanco.usuario.email,
-                    token_autenticacao: this.usuarioBanco.token_autenticacao
-                };
+                    const usuarioLogado = {
+                        id_usuario: this.usuarioBanco.usuario.id,
+                        email: this.usuarioBanco.usuario.email,
+                        token_autenticacao: this.usuarioBanco.token_autenticacao
+                    };
 
-                this.armazenamentoBrowser.armazenarDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO, usuarioLogado);
-                this.router.navigate([""]);
-            },
-            (erro) => {
-                this.objetoErro = erro.error;
-                this.usuarioAutenticado = false;
-                this.usuarioLogadoEventEmitter.emit(false);
-                this.router.navigate([""]);
+                    this.armazenamentoBrowser.armazenarDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO, usuarioLogado);
+                    this.router.navigate([""]);
+                },
+                (erro) => {
+                    this.objetoErro = erro.error;
+                    this.usuarioAutenticado = false;
+                    this.usuarioLogadoEventEmitter.emit(false);
+                    this.router.navigate([""]);
 
-                switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -84,9 +84,9 @@ export class AutenticacaoService implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
     usuarioEstaAutenticado(): boolean {

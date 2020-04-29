@@ -70,8 +70,12 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.solicitarCadastroImagemSubscription) {this.solicitarCadastroImagemSubscription.unsubscribe();}
-        if(this.listarTodasLesoesSubscription) {this.listarTodasLesoesSubscription.unsubscribe();}
+        if(this.solicitarCadastroImagemSubscription) {
+            this.solicitarCadastroImagemSubscription.unsubscribe();
+        }
+        if(this.listarTodasLesoesSubscription) {
+            this.listarTodasLesoesSubscription.unsubscribe();
+        }
     }
 
     //#region Metodos
@@ -89,16 +93,16 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
 
             this.solicitarCadastroImagemSubscription =
             this.imagemService.cadastrarImagem(formularioFormData)
-            .subscribe(
-                (retorno) => {
-                    console.log("Image successfully registered");
-                    this.novaImagemCadastradaEventEmiter.emit(false);
-                },
-                (erro) => {
+                .subscribe(
+                    (retorno) => {
+                        console.log("Image successfully registered");
+                        this.novaImagemCadastradaEventEmiter.emit(false);
+                    },
+                    (erro) => {
 
-                    this.novaImagemCadastradaEventEmiter.emit(false);
-                    this.objetoErro = erro.error;
-                    switch(this.objetoErro.status_code) {
+                        this.novaImagemCadastradaEventEmiter.emit(false);
+                        this.objetoErro = erro.error;
+                        switch(this.objetoErro.status_code) {
 
                         case HttpStatusCode.UNAUTHORIZED: {
                             console.log(this.objetoErro.mensagem);
@@ -129,9 +133,9 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
                             console.log(erro);
                             break;
                         }
+                        }
                     }
-                }
-            );
+                );
         }
         else {
             console.log("Could not retrieve informations from form. Plase, try again.");
@@ -152,14 +156,14 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
 
         this.listarTodasLesoesSubscription =
         this.imagemService.listarLesoes()
-        .subscribe(
-            (retorno) => {
-                this.todasLesoes = retorno;
-            },
-            (erro) => {
+            .subscribe(
+                (retorno) => {
+                    this.todasLesoes = retorno;
+                },
+                (erro) => {
 
-                this.objetoErro = erro.error;
-                switch(this.objetoErro.status_code) {
+                    this.objetoErro = erro.error;
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -180,9 +184,9 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
     // Propriedades do formulário que vamos utilizar para obter os erros

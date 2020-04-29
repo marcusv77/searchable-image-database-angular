@@ -23,19 +23,19 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private objetoErro: ObjetoErro;
     private fazerLogOutSubscription: Subscription;
 
-    constructor(private autenticacaoService: AutenticacaoService, private router: Router, private usuarioService: UsuarioService)
-    {}
+    constructor(private autenticacaoService: AutenticacaoService, private router: Router, private usuarioService: UsuarioService) {}
 
     ngOnInit() {
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
     }
 
     ngOnDestroy() {
-        if(this.fazerLogOutSubscription) {this.fazerLogOutSubscription.unsubscribe();}
+        if(this.fazerLogOutSubscription) {
+            this.fazerLogOutSubscription.unsubscribe();
+        }
     }
 
-    fazerLogOut($event)
-    {
+    fazerLogOut($event) {
         $event.preventDefault();
         this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
         this.autenticacaoService.solicitarLogOff();
@@ -45,13 +45,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
         this.fazerLogOutSubscription =
         this.usuarioService.fazerLogOff(this.objetoSessao.token_autenticacao)
-        .subscribe(
-            (retorno) => {
-            },
-            (erro) => {
+            .subscribe(
+                (retorno) => {
+                },
+                (erro) => {
 
-                this.objetoErro = erro.error;
-                switch(this.objetoErro.status_code) {
+                    this.objetoErro = erro.error;
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -72,9 +72,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
 }

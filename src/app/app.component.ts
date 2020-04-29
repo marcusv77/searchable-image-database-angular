@@ -23,8 +23,7 @@ export class AppComponent {
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
 
         // Autenticar no refresh da pagina
-        if(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO))
-        {
+        if(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO)) {
             this.autenticacaoService.setUsuarioAutenticado(true);
             this.usuarioAutenticado = true;
             this.autenticacaoService.usuarioLogadoEventEmitter.emit(true);
@@ -32,11 +31,10 @@ export class AppComponent {
 
         // Autenticar no login
         this.autenticacaoService.usuarioLogadoEventEmitter
-        .subscribe(
-            (autenticado: boolean) =>
-            {
-                this.usuarioAutenticado = autenticado;
-            }
-        );
+            .subscribe(
+                (autenticado: boolean) => {
+                    this.usuarioAutenticado = autenticado;
+                }
+            );
     }
 }

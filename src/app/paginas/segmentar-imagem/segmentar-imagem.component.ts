@@ -93,11 +93,21 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        if(this.obterImagemSubscription) {this.obterImagemSubscription.unsubscribe();}
-        if(this.cadastrarSegmentacaoSubscription) {this.cadastrarSegmentacaoSubscription.unsubscribe();}
-        if(this.listarSegmentacoesCelulaSubscription) {this.listarSegmentacoesCelulaSubscription.unsubscribe();}
-        if(this.listarDescricoesSubscription) {this.listarDescricoesSubscription.unsubscribe();}
-        if(this.excluirRegistroDeSegmentacaoSubscription) {this.excluirRegistroDeSegmentacaoSubscription.unsubscribe();}
+        if(this.obterImagemSubscription) {
+            this.obterImagemSubscription.unsubscribe();
+        }
+        if(this.cadastrarSegmentacaoSubscription) {
+            this.cadastrarSegmentacaoSubscription.unsubscribe();
+        }
+        if(this.listarSegmentacoesCelulaSubscription) {
+            this.listarSegmentacoesCelulaSubscription.unsubscribe();
+        }
+        if(this.listarDescricoesSubscription) {
+            this.listarDescricoesSubscription.unsubscribe();
+        }
+        if(this.excluirRegistroDeSegmentacaoSubscription) {
+            this.excluirRegistroDeSegmentacaoSubscription.unsubscribe();
+        }
     }
     //#endregion
 
@@ -107,24 +117,24 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
         this.carregando = true;
         this.obterImagemSubscription =
         this.imagemService.obterImagem(id_imagem)
-        .subscribe(
-            (retorno) => {
-                this.imagem = retorno;
-                const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
-                this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
-                this.carregando = false;
-                if(this.objetoSessao){
-                    this.listarTodasSegmentacoesDeDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
-                }
-                else{
-                    this.listarTodasSegmentacoesDeDeCelula(this.id_imagem, 1);
-                }
-            },
-            (erro) => {
-                this.carregando = false;
-                this.objetoErro = erro.error;
+            .subscribe(
+                (retorno) => {
+                    this.imagem = retorno;
+                    const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
+                    this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
+                    this.carregando = false;
+                    if(this.objetoSessao){
+                        this.listarTodasSegmentacoesDeDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
+                    }
+                    else{
+                        this.listarTodasSegmentacoesDeDeCelula(this.id_imagem, 1);
+                    }
+                },
+                (erro) => {
+                    this.carregando = false;
+                    this.objetoErro = erro.error;
 
-                switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -155,9 +165,9 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
     cadastrarSegmentacao(possuiNucleoSegmentado: boolean) {
@@ -175,20 +185,20 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
 
         this.cadastrarSegmentacaoSubscription =
         this.imagemService.cadastrarSegmentacao(this.id_imagem, this.objetoSessao.id_usuario, requisicao)
-        .subscribe(
-            (retorno) => {
-                this.todasSegmentacoes = retorno;
-                this.carregando = false;
-                this.definirListaDescricoesInicial();
-                this.indiceSelecionado = -1;
-                this.listarTodasSegmentacoesDeDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
-                console.log("Segmentation saved");
-            },
-            (erro) => {
-                this.carregando = false;
-                this.objetoErro = erro.error;
+            .subscribe(
+                (retorno) => {
+                    this.todasSegmentacoes = retorno;
+                    this.carregando = false;
+                    this.definirListaDescricoesInicial();
+                    this.indiceSelecionado = -1;
+                    this.listarTodasSegmentacoesDeDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
+                    console.log("Segmentation saved");
+                },
+                (erro) => {
+                    this.carregando = false;
+                    this.objetoErro = erro.error;
 
-                switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -220,9 +230,9 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
 
         this.definirEstadoModal(false);
         this.limparTodasSegmentacoes();
@@ -233,19 +243,19 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
         this.carregando = true;
         this.listarSegmentacoesCelulaSubscription =
         this.imagemService.listarSegmentacoesCelula(id_imagem, id_analista)
-        .subscribe(
-            (retorno) => {
+            .subscribe(
+                (retorno) => {
 
-                this.todasSegmentacoes = retorno;
-                exibirSegmentacoes(this.todasSegmentacoes, this.indiceSelecionado, this.rotulo);
-                this.carregando = false;
-            },
-            (erro) => {
+                    this.todasSegmentacoes = retorno;
+                    exibirSegmentacoes(this.todasSegmentacoes, this.indiceSelecionado, this.rotulo);
+                    this.carregando = false;
+                },
+                (erro) => {
 
-                this.carregando = false;
-                this.objetoErro = erro.error;
+                    this.carregando = false;
+                    this.objetoErro = erro.error;
 
-                switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -271,9 +281,9 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
     obterTodasDescricoes() {
@@ -281,17 +291,17 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
         this.carregando = true;
         this.listarDescricoesSubscription =
         this.imagemService.listarDescricoes()
-        .subscribe(
-            (retorno) => {
-                this.todasDescricoes = retorno;
-                this.definirListaDescricoesInicial();
-                this.carregando = false;
-            },
-            (erro) => {
-                this.carregando = false;
-                this.objetoErro = erro.error;
+            .subscribe(
+                (retorno) => {
+                    this.todasDescricoes = retorno;
+                    this.definirListaDescricoesInicial();
+                    this.carregando = false;
+                },
+                (erro) => {
+                    this.carregando = false;
+                    this.objetoErro = erro.error;
 
-                switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -312,9 +322,9 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
     exibirSegmentacaoFormaSeletiva() {
@@ -367,19 +377,19 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
 
             this.excluirRegistroDeSegmentacaoSubscription =
             this.imagemService.excluirRegistroDeSegmentacao(parametrosRequisicao)
-            .subscribe(
-                (retorno) => {
-                    this.todasSegmentacoes = retorno;
-                    this.limparTodasSegmentacoes();
-                    this.indiceSelecionado = -1;
-                    exibirSegmentacoes(this.todasSegmentacoes,this.indiceSelecionado,this.rotulo);
-                    this.carregando = false;
-                },
-                (erro) => {
-                    this.carregando = false;
-                    this.objetoErro = erro.error;
+                .subscribe(
+                    (retorno) => {
+                        this.todasSegmentacoes = retorno;
+                        this.limparTodasSegmentacoes();
+                        this.indiceSelecionado = -1;
+                        exibirSegmentacoes(this.todasSegmentacoes, this.indiceSelecionado, this.rotulo);
+                        this.carregando = false;
+                    },
+                    (erro) => {
+                        this.carregando = false;
+                        this.objetoErro = erro.error;
 
-                    switch(this.objetoErro.status_code) {
+                        switch(this.objetoErro.status_code) {
 
                         case HttpStatusCode.UNAUTHORIZED: {
                             console.log(this.objetoErro.mensagem);
@@ -410,9 +420,9 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
                             console.log(erro);
                             break;
                         }
+                        }
                     }
-                }
-            );
+                );
         }
         else {
             this.carregando = false;

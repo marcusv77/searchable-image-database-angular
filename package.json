@@ -6,8 +6,8 @@
     "start-prod": "ng serve --host 0.0.0.0 --disable-host-check --prod",
     "build": "ng build --prod --build-optmizer",
     "test": "ng test",
-    "lint": "tslint 'src/**/*.ts?(x)'",
-    "fix": "tslint --fix 'src/**/*.ts?(x)'",
+    "lint": "eslint src --ext .ts",
+    "fix": "eslint --fix --fix-type layout src --ext .ts",
     "html": "js-beautify -r --type html 'src/**/*.html'",
     "screenshot": "node docs/screenshots/anonymous.js",
     "e2e": "ng e2e"
@@ -51,8 +51,9 @@
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
-    "tslint": "~5.15.0",
     "typescript": "~3.5.3",
+    "@typescript-eslint/parser": "^2.29.0",
+    "eslint": "^6.8.0",
     "js-beautify": "^1.11.0"
   }
 }

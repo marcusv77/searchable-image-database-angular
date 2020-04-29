@@ -18,25 +18,25 @@ import { PrivacyComponent } from "./paginas/privacy/privacy.component";
 import { TermsComponent } from "./paginas/terms/terms.component";
 
 const routes: Routes = [
-  {path: "", component: IndexComponent},
-  {path: "license", component: LicenseComponent},
-  {path: "privacy", component: PrivacyComponent},
-  {path: "terms", component: TermsComponent},
-  {path: "about", component: AboutComponent},
-  {path: "segmentation", component: SegmentationDatabaseComponent},
-  {path: "classification", component: ClassificationDatabaseComponent},
-  {path: "downloads", component: DownloadsComponent},
-  {path: "image", component: ListarCardsImagemComponent},
-  {path: "erro", component: PaginaDeErroComponent},
-  {path: "segmentation/image/:id", component: SegmentarImagemComponent},
-  {path: "classification/image/:id", component: ClassificarImagemComponent},
-  {path: "user", component: UsuarioComponent, canActivate: [GuardaAutenticacao]},
-  {path: "**", component: PaginaDeErroComponent},
+    {path: "", component: IndexComponent},
+    {path: "license", component: LicenseComponent},
+    {path: "privacy", component: PrivacyComponent},
+    {path: "terms", component: TermsComponent},
+    {path: "about", component: AboutComponent},
+    {path: "segmentation", component: SegmentationDatabaseComponent},
+    {path: "classification", component: ClassificationDatabaseComponent},
+    {path: "downloads", component: DownloadsComponent},
+    {path: "image", component: ListarCardsImagemComponent},
+    {path: "erro", component: PaginaDeErroComponent},
+    {path: "segmentation/image/:id", component: SegmentarImagemComponent},
+    {path: "classification/image/:id", component: ClassificarImagemComponent},
+    {path: "user", component: UsuarioComponent, canActivate: [GuardaAutenticacao]},
+    {path: "**", component: PaginaDeErroComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {anchorScrolling:"enabled"})],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes, {anchorScrolling:"enabled"})],
+    exports: [RouterModule]
 })
 
 export class AppRoutingModule { }

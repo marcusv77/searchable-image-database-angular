@@ -27,6 +27,8 @@ export class IndexComponent implements OnInit, OnDestroy {
     ngOnInit() { }
 
     ngOnDestroy() {
-        if(this.verificarConexaoSubscription) {this.verificarConexaoSubscription.unsubscribe();}
+        if(this.verificarConexaoSubscription) {
+            this.verificarConexaoSubscription.unsubscribe();
+        }
     }
 }

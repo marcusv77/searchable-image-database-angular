@@ -29,16 +29,16 @@ export class UsuarioComponent implements OnInit {
     listarTodosUsuarios() {
         this.carregando = true;
         this.usuarioService.obterTodosUsuarios()
-        .subscribe(
-            (todosUsuarios) => {
-                this.todosUsuarios = todosUsuarios;
-                this.carregando = false;
-            },
-            (erro) => {
-                this.carregando = false;
-                this.objetoErro = erro.error;
+            .subscribe(
+                (todosUsuarios) => {
+                    this.todosUsuarios = todosUsuarios;
+                    this.carregando = false;
+                },
+                (erro) => {
+                    this.carregando = false;
+                    this.objetoErro = erro.error;
 
-                switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -59,8 +59,8 @@ export class UsuarioComponent implements OnInit {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 }

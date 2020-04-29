@@ -98,8 +98,12 @@ export class CadastroVisitanteComponent implements OnInit, OnDestroy {
     ngOnInit() { }
 
     ngOnDestroy() {
-        if (this.solicitarCadastroVisitanteSubscription) { this.solicitarCadastroVisitanteSubscription.unsubscribe(); }
-        if (this.cadastrarAnalistaSubscription) { this.cadastrarAnalistaSubscription.unsubscribe(); }
+        if (this.solicitarCadastroVisitanteSubscription) {
+            this.solicitarCadastroVisitanteSubscription.unsubscribe();
+        }
+        if (this.cadastrarAnalistaSubscription) {
+            this.cadastrarAnalistaSubscription.unsubscribe();
+        }
     }
     //#endregion
 
@@ -108,17 +112,17 @@ export class CadastroVisitanteComponent implements OnInit, OnDestroy {
 
         this.solicitarCadastroVisitanteSubscription =
         this.usuarioService.cadastrarVisitante(this.formularioVisitante.value)
-        .subscribe(
-            (retorno) => {
-                this.usuarioLogin.email = this.formularioVisitante.value.email;
-                this.usuarioLogin.senha = this.formularioVisitante.value.senha;
-                this.formularioVisitante.reset();
-                this.solicitarCadastroAnalista(retorno.id);
-            },
-            (erro) => {
+            .subscribe(
+                (retorno) => {
+                    this.usuarioLogin.email = this.formularioVisitante.value.email;
+                    this.usuarioLogin.senha = this.formularioVisitante.value.senha;
+                    this.formularioVisitante.reset();
+                    this.solicitarCadastroAnalista(retorno.id);
+                },
+                (erro) => {
 
-                this.objetoErro = erro.error;
-                switch(this.objetoErro.status_code) {
+                    this.objetoErro = erro.error;
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -144,23 +148,23 @@ export class CadastroVisitanteComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
     solicitarCadastroAnalista(id_analista: number) {
 
         this.cadastrarAnalistaSubscription =
         this.usuarioService.cadastrarAnalista(id_analista)
-        .subscribe(
-            (retorno) => {
-                this.autenticacaoService.autenticarUsuario(this.idLoginPadrao, this.usuarioLogin);
-            },
-            (erro) => {
-                this.objetoErro = erro.error;
+            .subscribe(
+                (retorno) => {
+                    this.autenticacaoService.autenticarUsuario(this.idLoginPadrao, this.usuarioLogin);
+                },
+                (erro) => {
+                    this.objetoErro = erro.error;
 
-                switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status_code) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);
@@ -196,9 +200,9 @@ export class CadastroVisitanteComponent implements OnInit, OnDestroy {
                         console.log(erro);
                         break;
                     }
+                    }
                 }
-            }
-        );
+            );
     }
 
     // Propriedades do formulário que vamos utilizar para obter os erros

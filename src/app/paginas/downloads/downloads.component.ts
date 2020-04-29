@@ -31,7 +31,9 @@ export class DownloadsComponent implements OnInit, OnDestroy {
     ngOnInit() { }
 
     ngOnDestroy() {
-        if (this.fazerDownloadImagensBaseSubscription) { this.fazerDownloadImagensBaseSubscription.unsubscribe(); }
+        if (this.fazerDownloadImagensBaseSubscription) {
+            this.fazerDownloadImagensBaseSubscription.unsubscribe();
+        }
     }
 
     solicitarDownloadImagens() {
@@ -39,8 +41,8 @@ export class DownloadsComponent implements OnInit, OnDestroy {
         this.carregando = true;
         let user_id = "1";
         if(this.objetoSessao) {
-                user_id = this.objetoSessao.id_usuario.toString();
-            }
+            user_id = this.objetoSessao.id_usuario.toString();
+        }
 
         this.fazerDownloadImagensBaseSubscription =
                 this.imagemServico.fazerDownloadImagensBaseInterna(user_id)
@@ -58,30 +60,30 @@ export class DownloadsComponent implements OnInit, OnDestroy {
 
                             switch (this.objetoErro.status_code) {
 
-                                case HttpStatusCode.UNAUTHORIZED: {
-                                    console.log(this.objetoErro.mensagem);
-                                    break;
-                                }
+                            case HttpStatusCode.UNAUTHORIZED: {
+                                console.log(this.objetoErro.mensagem);
+                                break;
+                            }
 
-                                case HttpStatusCode.BAD_REQUEST: {
-                                    console.log(this.objetoErro.mensagem);
-                                    break;
-                                }
+                            case HttpStatusCode.BAD_REQUEST: {
+                                console.log(this.objetoErro.mensagem);
+                                break;
+                            }
 
-                                case HttpStatusCode.NOT_FOUND: {
-                                    console.log(this.objetoErro.mensagem);
-                                    break;
-                                }
+                            case HttpStatusCode.NOT_FOUND: {
+                                console.log(this.objetoErro.mensagem);
+                                break;
+                            }
 
-                                case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                                    console.log(this.objetoErro.mensagem);
-                                    break;
-                                }
+                            case HttpStatusCode.INTERNAL_SERVER_ERROR: {
+                                console.log(this.objetoErro.mensagem);
+                                break;
+                            }
 
-                                default: {
-                                    console.log(erro);
-                                    break;
-                                }
+                            default: {
+                                console.log(erro);
+                                break;
+                            }
                             }
                         }
                     );
