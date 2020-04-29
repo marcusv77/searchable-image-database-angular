@@ -1,55 +1,3 @@
-<!-- Se atenta a mudanças no array de imagens -->
-<!-- Paginacao INICIO -->
-<div class="paginacao_customizada container">
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link"
-                        href="#"
-                        [class.desabilitarLink]="desabilitarVoltarPagina"
-                        (click)="paginaAnterior($event)"> Previous page </a>
-            </li>
-            <li class="page-item"
-                    *ngIf="(contadorPaginaA > 0)">
-                <a class="page-link"
-                        href="#"
-                        (click)="selecionarPagina($event, contadorPaginaA)"> {{contadorPaginaA}} </a>
-            </li>
-            <li class="page-item"
-                    *ngIf="(contadorPaginaB > 0)">
-                <a class="page-link"
-                        href="#"
-                        (click)="selecionarPagina($event, contadorPaginaB)"> {{contadorPaginaB}} </a>
-            </li>
-            <li class="page-item">
-                <a id="pagina_selecionada"
-                        class="page-link"
-                        href="#"
-                        (click)="selecionarPagina($event, contadorpaginaAtual)"> {{contadorpaginaAtual}} </a>
-            </li>
-            <li class="page-item"
-                    *ngIf="(contadorPaginaC <= totalPaginas)">
-                <a class="page-link"
-                        href="#"
-                        (click)="selecionarPagina($event, contadorPaginaC)"> {{contadorPaginaC}} </a>
-            </li>
-            <li class="page-item"
-                    *ngIf="(contadorPaginaD <= totalPaginas)">
-                <a class="page-link"
-                        href="#"
-                        (click)="selecionarPagina($event, contadorPaginaD)"> {{contadorPaginaD}} </a>
-            </li>
-            <li class="page-item">
-                <a class="page-link"
-                        href="#"
-                        [class.desabilitarLink]="desabilitarAvancarPagina"
-                        (click)="proximaPagina($event)"> Next page </a>
-            </li>
-        </ul>
-    </nav>
-</div>
-<!-- Paginacao FIM -->
-
 <section class="flex">
     <div id="renderiza_imagens"
             *ngFor="let imagem of paginaDeImagens"
@@ -90,53 +38,23 @@
     </div>
 </section>
 
-<!-- Paginacao INICIO -->
-<div class="paginacao_customizada container">
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link"
-                        href="#"
-                        [class.desabilitarLink]="desabilitarVoltarPagina"
-                        (click)="paginaAnterior($event)"> Previous page </a>
-            </li>
-            <li class="page-item"
-                    *ngIf="(contadorPaginaA > 0)">
-                <a class="page-link"
-                        href="#"
-                        (click)="selecionarPagina($event, contadorPaginaA)"> {{contadorPaginaA}} </a>
-            </li>
-            <li class="page-item"
-                    *ngIf="(contadorPaginaB > 0)">
-                <a class="page-link"
-                        href="#"
-                        (click)="selecionarPagina($event, contadorPaginaB)"> {{contadorPaginaB}} </a>
-            </li>
-            <li class="page-item">
-                <a id="pagina_selecionada"
-                        class="page-link"
-                        href="#"
-                        (click)="selecionarPagina($event, contadorpaginaAtual)"> {{contadorpaginaAtual}} </a>
-            </li>
-            <li class="page-item"
-                    *ngIf="(contadorPaginaC <= totalPaginas)">
-                <a class="page-link"
-                        href="#"
-                        (click)="selecionarPagina($event, contadorPaginaC)"> {{contadorPaginaC}} </a>
-            </li>
-            <li class="page-item"
-                    *ngIf="(contadorPaginaD <= totalPaginas)">
-                <a class="page-link"
-                        href="#"
-                        (click)="selecionarPagina($event, contadorPaginaD)"> {{contadorPaginaD}} </a>
-            </li>
-            <li class="page-item">
-                <a class="page-link"
-                        href="#"
-                        [class.desabilitarLink]="desabilitarAvancarPagina"
-                        (click)="proximaPagina($event)"> Next page </a>
-            </li>
-        </ul>
-    </nav>
-</div>
-<!-- Paginacao FIM -->
+<nav aria-label="Classification navigation">
+    <ul class="pagination justify-content-center">
+        <li class="page-item"
+                [class.disabled]="desabilitarVoltarPagina">
+            <a class="page-link"
+                    href="#"
+                    (click)="paginaAnterior($event)">
+                Previous
+            </a>
+        </li>
+        <li class="page-item"
+                [class.disabled]="desabilitarAvancarPagina">
+            <a class="page-link"
+                    href="#"
+                    (click)="proximaPagina($event)">
+                Next
+            </a>
+        </li>
+    </ul>
+</nav>

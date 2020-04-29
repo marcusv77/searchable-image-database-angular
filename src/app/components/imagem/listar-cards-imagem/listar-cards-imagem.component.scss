@@ -1,3 +1,5 @@
+@import 'variables';
+
 .card-personalizado{
     -webkit-box-shadow: 0 0 5px 2px #cccccc;
     -moz-box-shadow: 0 0 5px 2px #cccccc;
@@ -78,38 +80,20 @@
     line-height: 40px;
 }
 
-.page-link {
-    font-size: 0.9rem;
-    padding: 0.2rem 0.50rem;
-    margin-left: -1px;
-    line-height: 1.0;
-    color: #423c3c;
-    padding-bottom: 4px;
-}
+ul.pagination {
+    li {
+        a {
+            color: $text-black;
+            font-size: 1rem;
+            padding: 0.2rem 0.50rem;
+            line-height: 1.0;
+            padding-bottom: 4px;
 
-.page-link:hover {
-    background-color: #2f9fae;
-    color: #fafafa;
-}
-
-.paginacao_customizada {
-    padding-top: 1vh;
-    align-items: center;
-}
-
-.desabilitarLink {
-    cursor: not-allowed;
-}
-
-.botao_paginacao {
-    background-color: #2f9fae;
-    margin: 4px;
-    height: 4vh;
-}
-
-#pagina_selecionada {
-    color: #fafafa;
-    background-color: #2f9fae;
+            &:hover {
+                color: $cric-blue;
+            }
+        }
+    }
 }
 
 /* Small devices (landscape phones, 576px and up)*/
