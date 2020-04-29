@@ -63,6 +63,19 @@ async def main():
         }
     )
 
+    await page.goto(
+        '{}/classification/image/1'.format(DOMAIN),
+        {
+            'waitUntil': 'networkidle0'
+        }
+    )
+    await page.screenshot(
+        {
+            'path': 'anonymous-classification-details.jpg',  
+            'quality': 60,
+        }
+    )
+
     await asyncio.gather(
         page.waitForNavigation(
             {
