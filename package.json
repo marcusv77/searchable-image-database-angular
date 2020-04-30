@@ -1,77 +1,77 @@
 {
-    "name": "searchable-image-database-angular",
-    "version": "0.2.0",
-    "description": "CRIC Searchable Image Database is a public cervical cell image database aiming supporting cervical cancer analysis of Pap smear.",
-    "keywords": [
-        "cervical cell",
-        "Pap smear"
-    ],
-    "homepage": "https://github.com/CRICDatabase/searchable-image-database-angular",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/CRICDatabase/searchable-image-database-angular.git"
-    },
-    "bugs": {
-        "url": "https://github.com/CRICDatabase/searchable-image-database-angular/issues"
-    },
-    "author": "CRIC",
-    "contributors": [
-        "Fagner de Oliveira Bernardo <fagner.bernardo@aluno.ufop.edu.br>",
-        "Raniere Silva <raniere@rgaiacs.com>"
-    ],
-    "license": "AGPL-3.0-or-later",
-    "scripts": {
-        "start-dev": "ng serve --host 0.0.0.0 --disable-host-check",
-        "start-prod": "ng serve --host 0.0.0.0 --disable-host-check --prod",
-        "build": "ng build --prod --build-optmizer",
-        "test": "ng test",
-        "lint": "eslint src --ext .ts",
-        "fix": "eslint --fix --fix-type layout src --ext .ts",
-        "html": "js-beautify -r --type html 'src/**/*.html'",
-        "screenshot": "node docs/screenshots/anonymous.js",
-        "e2e": "ng e2e"
-    },
-    "dependencies": {
-        "@angular/animations": "~8.2.6",
-        "@angular/common": "~8.2.6",
-        "@angular/compiler": "~8.2.6",
-        "@angular/core": "~8.2.6",
-        "@angular/forms": "~8.2.6",
-        "@angular/platform-browser": "~8.2.6",
-        "@angular/platform-browser-dynamic": "~8.2.6",
-        "@angular/router": "~8.2.6",
-        "angular-highcharts": "^8.0.3",
-        "bootstrap": "^4.3.1",
-        "file-saver": "^2.0.2",
-        "highcharts": "^8.0.0",
-        "jquery": "^3.4.1",
-        "normalize.css": "^8.0.1",
-        "popper": "^1.0.1",
-        "rxjs": "~6.5.3",
-        "tslib": "^1.10.0",
-        "zone.js": "~0.9.1"
-    },
-    "devDependencies": {
-        "@angular-devkit/build-angular": "^0.803.23",
-        "@angular/cli": "~8.3.4",
-        "@angular/compiler-cli": "~8.2.6",
-        "@angular/language-service": "~8.2.6",
-        "@types/jasmine": "~3.3.8",
-        "@types/jasminewd2": "~2.0.3",
-        "@types/node": "^8.9.5",
-        "codelyzer": "^5.0.0",
-        "jasmine-core": "~3.4.0",
-        "jasmine-spec-reporter": "~4.2.1",
-        "karma": "~4.1.0",
-        "karma-chrome-launcher": "~2.2.0",
-        "karma-coverage-istanbul-reporter": "~2.0.1",
-        "karma-jasmine": "~2.0.1",
-        "karma-jasmine-html-reporter": "^1.4.0",
-        "protractor": "~5.4.0",
-        "ts-node": "~7.0.0",
-        "typescript": "~3.5.3",
-        "@typescript-eslint/parser": "^2.29.0",
-        "eslint": "^6.8.0",
-        "js-beautify": "^1.11.0"
-    }
+  "name": "searchable-image-database-angular",
+  "version": "0.2.0",
+  "description": "CRIC Searchable Image Database is a public cervical cell image database aiming supporting cervical cancer analysis of Pap smear.",
+  "keywords": [
+    "cervical cell",
+    "Pap smear"
+  ],
+  "homepage": "https://github.com/CRICDatabase/searchable-image-database-angular",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CRICDatabase/searchable-image-database-angular.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CRICDatabase/searchable-image-database-angular/issues"
+  },
+  "author": "CRIC",
+  "contributors": [
+    "Fagner de Oliveira Bernardo <fagner.bernardo@aluno.ufop.edu.br>",
+    "Raniere Silva <raniere@rgaiacs.com>"
+  ],
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "start-dev": "ng serve --host 0.0.0.0 --disable-host-check",
+    "start-prod": "ng serve --host 0.0.0.0 --disable-host-check --prod",
+    "build": "ng build --prod --build-optmizer",
+    "test": "ng test",
+    "lint": "eslint src --ext .ts",
+    "fix": "eslint --fix --fix-type layout src --ext .ts",
+    "html": "js-beautify -r --type html 'src/**/*.html'",
+    "screenshot": "node docs/screenshots/anonymous.js",
+    "e2e": "ng e2e"
+  },
+  "dependencies": {
+    "@angular/animations": "~9.1.4",
+    "@angular/common": "~9.1.4",
+    "@angular/compiler": "~9.1.4",
+    "@angular/core": "~9.1.4",
+    "@angular/forms": "~9.1.4",
+    "@angular/platform-browser": "~9.1.4",
+    "@angular/platform-browser-dynamic": "~9.1.4",
+    "@angular/router": "~9.1.4",
+    "angular-highcharts": "^8.0.3",
+    "bootstrap": "^4.3.1",
+    "file-saver": "^2.0.2",
+    "highcharts": "^8.0.0",
+    "jquery": "^3.4.1",
+    "normalize.css": "^8.0.1",
+    "popper": "^1.0.1",
+    "rxjs": "~6.5.3",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.901.4",
+    "@angular/cli": "~9.1.4",
+    "@angular/compiler-cli": "~9.1.4",
+    "@angular/language-service": "~9.1.4",
+    "@types/jasmine": "~3.3.8",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^5.1.2",
+    "jasmine-core": "~3.4.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~4.1.0",
+    "karma-chrome-launcher": "~2.2.0",
+    "karma-coverage-istanbul-reporter": "~2.0.1",
+    "karma-jasmine": "~2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.0",
+    "protractor": "~5.4.0",
+    "ts-node": "~7.0.0",
+    "typescript": "~3.8.3",
+    "@typescript-eslint/parser": "^2.29.0",
+    "eslint": "^6.8.0",
+    "js-beautify": "^1.11.0"
+  }
 }
