@@ -4,7 +4,8 @@
     <div class="modal-header">
         <h5 class="modal-title">Access the platform</h5>
         <!-- fecha o modal -->
-        <button type="button"
+        <button #login_close
+                type="button"
                 class="close"
                 data-dismiss="modal">
             <span>x</span>
@@ -44,7 +45,6 @@
     <div class="modal-footer">
         <button type="submit"
                 class="btn btn-primary"
-                data-dismiss="modal"
                 name="action"
                 (click)="fazerLogin()">
             Login

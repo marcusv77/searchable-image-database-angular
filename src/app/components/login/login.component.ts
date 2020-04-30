@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { AutenticacaoService } from "src/app/services/login/autenticacao.service";
 import { UsuarioLogin } from "src/app/services/login/usuario_login";
 
@@ -9,10 +9,9 @@ import { UsuarioLogin } from "src/app/services/login/usuario_login";
 })
 export class LoginComponent implements OnInit {
 
-    //#region Propriedades
+    @ViewChild("login_close", {}) login_close: any;
     public usuarioLogin: UsuarioLogin;
     private idLoginPadrao: number;
-    //#endregion
 
     constructor(private autenticacaoService: AutenticacaoService){
         this.usuarioLogin = new UsuarioLogin();
@@ -23,7 +22,8 @@ export class LoginComponent implements OnInit {
     }
 
     fazerLogin() {
-        this.autenticacaoService.autenticarUsuario(this.idLoginPadrao, this.usuarioLogin);
+        const is_authenticated = this.autenticacaoService.autenticarUsuario(this.idLoginPadrao, this.usuarioLogin);
+        this.login_close.nativeElement.click();
     }
 
 }
