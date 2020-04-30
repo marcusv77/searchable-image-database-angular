@@ -9,15 +9,15 @@ ENV PATH /opt/cric/frontend/node_modules/.bin:$PATH
 # Expose port. Otherwise, we will have "This site can’t be reached"
 # https://stackoverflow.com/a/46779529
 EXPOSE 4200
-LABEL   version="0.2.0-base" \
+LABEL   version="1.1.0-base" \
         description="Frontend in Angular for CRIC Searchable Image Database" \
         maintainer="raniere@rgaiacs.com"
 
 FROM base as development
 RUN npm install && npm cache clean --force
-LABEL   version="0.2.0-development"
+LABEL   version="1.1.0-development"
 
 FROM development as production
 # Copy ./src
 COPY . ./
-LABEL   version="0.2.0-production"
+LABEL   version="1.1.0-production"
