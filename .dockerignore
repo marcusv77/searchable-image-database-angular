@@ -24,4 +24,6 @@ yarn-error.log*
 node_modules/
 
 # Others
+.readthedocs.yml
 docs
+*.sh
