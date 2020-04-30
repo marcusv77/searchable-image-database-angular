@@ -15,7 +15,6 @@ import { ClassificationDatabaseComponent } from "./paginas/classification-databa
 import { DownloadsComponent } from "./paginas/downloads/downloads.component";
 import { IndexComponent } from "./paginas/index/index.component";
 
-import { LicenseComponent } from "./paginas/license/license.component";
 import { PrivacyComponent } from "./paginas/privacy/privacy.component";
 import { TermsComponent } from "./paginas/terms/terms.component";
 import { PaginaDeErroComponent } from "./paginas/pagina_de_erro/pagina-de-erro.component";
@@ -43,7 +42,6 @@ import { CiteUsComponent } from "./components/sistema/cite-us/cite-us.component"
 @NgModule({
     declarations: [
         AppComponent,
-        LicenseComponent,
         PrivacyComponent,
         TermsComponent,
         HeaderComponent,

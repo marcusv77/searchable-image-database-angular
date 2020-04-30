@@ -13,13 +13,11 @@ import { SegmentarImagemComponent } from "./paginas/segmentar-imagem/segmentar-i
 import { ListarCardsImagemComponent } from "./components/imagem/listar-cards-imagem/listar-cards-imagem.component";
 import { ClassificarImagemComponent } from "./paginas/classificar-imagem/classificar-imagem.component";
 import { UsuarioComponent } from "./paginas/usuario/usuario.component";
-import { LicenseComponent } from "./paginas/license/license.component";
 import { PrivacyComponent } from "./paginas/privacy/privacy.component";
 import { TermsComponent } from "./paginas/terms/terms.component";
 
 const routes: Routes = [
     {path: "", component: IndexComponent},
-    {path: "license", component: LicenseComponent},
     {path: "privacy", component: PrivacyComponent},
     {path: "terms", component: TermsComponent},
     {path: "about", component: AboutComponent},
