@@ -19,7 +19,7 @@ export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
 
     @Output() public todasImagens: IImagemModelResultado[];
     @Output() public classificationDatabase = false;
-    @ViewChild("atualizarPaginacaoViewChild", null) public atualizacaoDePaginaViewChild: any;
+    @ViewChild("atualizarPaginacaoViewChild", {}) public atualizacaoDePaginaViewChild: any;
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private comunicacaoApi: ComunicacaoApi;
     private listarImagensSubscription: Subscription;
