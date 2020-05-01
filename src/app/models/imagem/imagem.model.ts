@@ -3,6 +3,7 @@ import { ILesaoModelResultado } from "./lesao.model";
 export interface IImagemModelResultado {
     id: number;
     nome: string;
+    doi: string;
     codigo_lamina: string;
     excluida: number;
     classificacao_aprovada: number;
