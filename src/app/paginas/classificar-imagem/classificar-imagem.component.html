@@ -25,8 +25,8 @@
                         Federal University of Ouro Preto
                     </p>
                     <p> <span> Microscope slide: </span> {{imagem?.codigo_lamina}} </p>
-                    <p> <span> DOI: </span>
-                        <a href="https://doi.org/{{imagem.doi}}">{{imagem.doi}}</a>
+                    <p *ngIf="imagem?.doi"> <span> DOI: </span>
+                        <a href="https://doi.org/{{imagem?.doi}}">{{imagem?.doi}}</a>
                     </p>
                     <p> <span> Lesion: </span> {{imagem?.lesao?.nome}} </p>
                     <div class="collapse"
