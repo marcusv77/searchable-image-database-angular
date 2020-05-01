@@ -75,7 +75,7 @@
 
                     <option *ngFor="let celula of todasClassificacoes?.celulas; let i = index "
                             [value]="i">
-                        {{i + 1}} - {{celula.lesao.nome}}
+                        {{celula.id}} - {{celula.lesao.nome}}
                     </option>
 
                 </select>
