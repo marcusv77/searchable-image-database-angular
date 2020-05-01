@@ -14,40 +14,40 @@ async def main():
         }
     )
 
+
     await go4screenshot(
         page,
         '/',
-        'anonymous-home.jpg'
+        'admin-home.jpg'
+    )
+
+    await asyncio.gather(
+        page.waitForSelector('input#email-login'),
+        page.click(
+            'a#login'
+        ),
+    )
+    await screenshot(
+        page,
+        'admin-login.jpg'
     )
 
     await go4screenshot(
         page,
         '/classification',
-        'anonymous-classification-list.jpg'
+        'admin-classification.jpg'
     )
 
     await go4screenshot(
         page,
-        '/classification/image/1#dashboard',
-        'anonymous-classification-view.jpg'
-    )
-
-    #await asyncio.gather(
-    #    page.waitForSelector('#box_info'),
-    #    page.select(
-    #        'select',
-    #        '0'
-    #    ),
-    #)
-    await screenshot(
-        page,
-        'anonymous-classification-details.jpg'
+        '/classification/image/1',
+        'admin-classification-details.jpg'
     )
 
     await go4screenshot(
         page,
         '/downloads',
-        'anonymous-downloads.jpg'
+        'admin-downloads.jpg'
     )
 
     await browser.close()

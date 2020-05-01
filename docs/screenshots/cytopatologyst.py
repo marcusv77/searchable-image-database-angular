@@ -14,40 +14,39 @@ async def main():
         }
     )
 
+
     await go4screenshot(
         page,
         '/',
-        'anonymous-home.jpg'
+        'cytopatologyst-home.jpg'
+    )
+
+    await asyncio.gather(
+        page.click(
+            'a#login'
+        ),
+    )
+    await screenshot(
+        page,
+        'cytopatologyst-login.jpg'
     )
 
     await go4screenshot(
         page,
         '/classification',
-        'anonymous-classification-list.jpg'
+        'cytopatologyst-classification.jpg'
     )
 
     await go4screenshot(
         page,
-        '/classification/image/1#dashboard',
-        'anonymous-classification-view.jpg'
-    )
-
-    #await asyncio.gather(
-    #    page.waitForSelector('#box_info'),
-    #    page.select(
-    #        'select',
-    #        '0'
-    #    ),
-    #)
-    await screenshot(
-        page,
-        'anonymous-classification-details.jpg'
+        '/classification/image/1',
+        'cytopatologyst-classification-details.jpg'
     )
 
     await go4screenshot(
         page,
         '/downloads',
-        'anonymous-downloads.jpg'
+        'cytopatologyst-downloads.jpg'
     )
 
     await browser.close()

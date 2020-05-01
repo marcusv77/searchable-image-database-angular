@@ -20,23 +20,44 @@ Anonymous User
     :maxdepth: 2
     :caption: Contents:
 
-    anonymous-user/home
-    anonymous-user/about
-    anonymous-user/classification
-    anonymous-user/downloads
+    anonymous/home
+    anonymous/classification
+    anonymous/downloads
 
-Login User
-----------
+Cytopatologyst
+--------------
 
 ..  toctree::
     :maxdepth: 2
     :caption: Contents:
 
-    home
-    about
-    segmentation
-    classification
-    downloads
+    cytopatologyst/home
+    cytopatologyst/segmentation
+    cytopatologyst/classification
+    cytopatologyst/downloads
+
+Administrator
+-------------
+
+..  toctree::
+    :maxdepth: 2
+    :caption: Contents:
+
+    admin/home
+    admin/segmentation
+    admin/classification
+    admin/downloads
+
+Other Static Pages
+------------------
+
+..  toctree::
+    :maxdepth: 2
+    :caption: Contents:
+
+    other-pages/about
+    other-pages/privacy
+    other-pages/terms
 
 Developers
 ----------
