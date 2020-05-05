@@ -52,7 +52,7 @@ function exibirClassificacoes(classificacoes, indice = -1) {
             inicio_desenho_y = Math.round(classificacoes[i].coord_centro_nucleo_y) - Math.round(altura / 2);
 
             ctx.font = "30px Arial";
-            ctx.fillText('' + Number((Number(i)+1)), classificacoes[i].coord_centro_nucleo_x, classificacoes[i].coord_centro_nucleo_y);
+            ctx.fillText(classificacoes[i].id_celula, classificacoes[i].coord_centro_nucleo_x, classificacoes[i].coord_centro_nucleo_y);
 
             ctx.strokeRect(inicio_desenho_x, inicio_desenho_y, largura, altura);
             ctx.stroke();
