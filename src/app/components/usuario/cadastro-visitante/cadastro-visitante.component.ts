@@ -14,16 +14,13 @@ import { Subscription } from "rxjs";
 })
 export class CadastroVisitanteComponent implements OnInit, OnDestroy {
 
-    //#region Propriedades
     private objetoErro: ObjetoErro;
     public formularioVisitante: FormGroup;
     private usuarioLogin: UsuarioLogin;
     private idLoginPadrao: number;
     private solicitarCadastroVisitanteSubscription: Subscription;
     private cadastrarAnalistaSubscription: Subscription;
-    //#endregion
 
-    //#region Construtor
     constructor(private usuarioService: UsuarioService, private formBuilder: FormBuilder, private autenticacaoService: AutenticacaoService) {
 
         this.idLoginPadrao = 0;
@@ -92,9 +89,7 @@ export class CadastroVisitanteComponent implements OnInit, OnDestroy {
             ]
         });
     }
-    //#endregion
 
-    //#region Inicializacao
     ngOnInit() { }
 
     ngOnDestroy() {
@@ -105,9 +100,7 @@ export class CadastroVisitanteComponent implements OnInit, OnDestroy {
             this.cadastrarAnalistaSubscription.unsubscribe();
         }
     }
-    //#endregion
 
-    //#region Métodos
     solicitarCadastroVisitante() {
 
         this.solicitarCadastroVisitanteSubscription =
@@ -240,5 +233,4 @@ export class CadastroVisitanteComponent implements OnInit, OnDestroy {
 
         return test ? { branco: true } : null;
     }
-    //#endregion
 }

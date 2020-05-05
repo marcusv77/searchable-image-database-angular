@@ -16,20 +16,15 @@ import { IEstatisticaCelulasDoentesModelResultado } from "src/app/models/imagem/
 @Injectable()
 export class ImagemService {
 
-    //#region Propriedades
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private objetoSessao: IObjetoSessaoModel;
     private headerApplicationJson: HttpHeaders;
     private headerMultipartFormData: HttpHeaders;
     private headerDownloadArquivo: HttpHeaders;
     private api: ComunicacaoApi;
-    //#endregion
 
-    //#region constructor
     constructor(private httpClient: HttpClient) { }
-    //#endregion
 
-    //#region Metodos
     inicializarServicos() {
 
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
@@ -216,5 +211,4 @@ export class ImagemService {
             headers: this.headerApplicationJson
         });
     }
-    //#endregion
 }

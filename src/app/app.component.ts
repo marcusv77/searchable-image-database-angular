@@ -10,10 +10,8 @@ import { ArmazenamentoBrowser } from "./utils/browser_storage/browser_storage";
 })
 export class AppComponent {
 
-    //#region Propriedades
     @Output() usuarioAutenticado = false;
     private armazenamentoBrowser: ArmazenamentoBrowser;
-    //#endregion
 
     // Construtor
     constructor(private autenticacaoService: AutenticacaoService) { }

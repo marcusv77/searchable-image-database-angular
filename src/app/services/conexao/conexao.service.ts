@@ -9,15 +9,10 @@ import { IStatusSistemaResultado } from "src/app/models/sistema/status_sistema.m
 })
 export class ConexaoService {
 
-    //#region Propriedades
     private api: ComunicacaoApi;
-    //#endregion
 
-    //#region constructor
     constructor(private httpClient: HttpClient) { }
-    //#endregion
 
-    //#region Metodos
 
     inicializarServicos() {
         this.api = new ComunicacaoApi();

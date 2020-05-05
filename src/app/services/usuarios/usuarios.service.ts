@@ -11,22 +11,15 @@ import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_b
 @Injectable()
 export class UsuarioService {
 
-    //#region Constantes
     private autenicacaoApiParaLogin: string;
     private autenticacaoCadastroVisitante: string;
-    //#endregion
-    //#region Propriedades
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private objetoSessao: IObjetoSessaoModel;
     private headerApplicationJsonTokenSessao: HttpHeaders;
     private api: ComunicacaoApi;
-    //#endregion
 
-    //#region Construtor
     constructor(private httpClient: HttpClient) {  }
-    //#endregion
 
-    //#region Metodos
 
     inicializarServicos() {
 
@@ -114,5 +107,4 @@ export class UsuarioService {
             })
         });
     }
-    //#endregion
 }

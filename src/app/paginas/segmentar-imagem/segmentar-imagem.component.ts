@@ -57,7 +57,6 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
     public vetorDePontos: any;
     public vetorSelecaoDescricao: Array<IDescricaoModelResultado[]>;
 
-    //#region Construtores
     constructor(private imagemService: ImagemService, private activatedRoute: ActivatedRoute) {
         this.comunicacaoApi = new ComunicacaoApi();
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
@@ -71,9 +70,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
         this.SegmentacaoHelper = new SegmentacaoHelper();
         this.vetorSelecaoDescricao = new Array<IDescricaoModelResultado[]>();
     }
-    //#endregion
 
-    //#region inicializacao
     ngOnInit() {
 
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
@@ -109,9 +106,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
             this.excluirRegistroDeSegmentacaoSubscription.unsubscribe();
         }
     }
-    //#endregion
 
-    //#region Metodos
     obterUmaImagem(id_imagem: number) {
 
         this.carregando = true;
@@ -501,5 +496,4 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
         this.rotulo = !this.rotulo;
         exibirSegmentacoes(this.todasSegmentacoes, this.indiceSelecionado, this.rotulo);
     }
-    //#endregion
 }

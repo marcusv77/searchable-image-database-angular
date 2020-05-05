@@ -17,7 +17,6 @@ import { ILesaoModelResultado } from "src/app/models/imagem/lesao.model";
 
 export class CadastrarImagemComponent implements OnInit, OnDestroy {
 
-    //#region Propriedades
     private objetoErro: ObjetoErro;
     private objetoSessao: IObjetoSessaoModel;
     private armazenamentoBrouser: ArmazenamentoBrowser;
@@ -28,7 +27,6 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
     private listarTodasLesoesSubscription: Subscription;
 
     @Output() public novaImagemCadastradaEventEmiter = new EventEmitter<boolean>();
-    //#endregion
 
     constructor(private imagemService: ImagemService, private formBuilder: FormBuilder) {
 
@@ -78,7 +76,6 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
         }
     }
 
-    //#region Metodos
     solicitarCadastroImagem() {
 
         if (this.formularioImagem.valid) {
@@ -201,5 +198,4 @@ export class CadastrarImagemComponent implements OnInit, OnDestroy {
     get lesao_imagem() {
         return this.formularioImagem.get("lesao_imagem");
     }
-    //#endregion
 }

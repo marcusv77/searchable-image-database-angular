@@ -14,21 +14,17 @@ import { Subscription } from "rxjs";
 
 export class AutenticacaoService implements OnInit, OnDestroy {
 
-    //#region Propriedades
     private usuarioBanco: UsuarioAutenticacaoModelRequisicao;
     private usuarioAutenticado = false;
     public usuarioLogadoEventEmitter = new EventEmitter<boolean>();
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private objetoErro: ObjetoErro;
     private autenticarUsuarioSubscription: Subscription;
-    //#endregion
 
-    //#region Construtor
     constructor(private router: Router, private usuarioService: UsuarioService) {
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
         this.objetoErro = new ObjetoErro();
     }
-    //#endregion
 
     ngOnInit() { }
 
@@ -38,7 +34,6 @@ export class AutenticacaoService implements OnInit, OnDestroy {
         }
     }
 
-    //#region Metodos
     autenticarUsuario(id_usuario: number = 0, dadosLogin: any = null) {
         this.autenticarUsuarioSubscription =
         this.usuarioService.obterUsuarioCompletoParaLogin(dadosLogin)
@@ -100,5 +95,4 @@ export class AutenticacaoService implements OnInit, OnDestroy {
     solicitarLogOff() {
         this.usuarioAutenticado = false;
     }
-    //#endregion
 }

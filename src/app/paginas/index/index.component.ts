@@ -13,16 +13,12 @@ import { Subscription } from "rxjs";
 
 export class IndexComponent implements OnInit, OnDestroy {
 
-    //#region Propriedades
     public statusDaConexao: IStatusSistemaResultado;
     private objetoErro: ObjetoErro;
     private verificarConexaoSubscription: Subscription;
     public carregando: boolean;
-    //#endregion
 
-    //#region Construtor
     constructor(private conexaoService: ConexaoService) { }
-    //#endregion
 
     ngOnInit() { }
 

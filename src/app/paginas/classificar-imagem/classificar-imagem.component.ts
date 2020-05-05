@@ -61,7 +61,6 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     public todasLesoes: ILesaoModelResultado[];
     public todosUsuarios: IUsuarioBaseModel[];
 
-    //#region Construtor
     constructor(private imagemService: ImagemService, private activatedRoute: ActivatedRoute, public datepipe: DatePipe) {
         this.comunicacaoApi = new ComunicacaoApi();
         this.requisicao = new CadastrarClassificacaoRequisicao();
@@ -73,9 +72,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         this.imagemAtualizacao = new ImagemEntidade();
         this.imagemAtualizacao.lesao = new LesaoEntidade();
     }
-    //#endregion
 
-    //#region Inicializacao
     ngOnInit() {
         this.indiceSelecionado = this.indiceSelecionadoPadrao;
         this.exibirModal = false;
@@ -115,9 +112,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             this.atualizarDadosImagemSubscription.unsubscribe();
         }
     }
-    //#endregion
 
-    //#region Metodos
     registrarPonto($event) {
         this.carregando = true;
         const div = document.getElementById("canvas");
@@ -513,5 +508,4 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             this.carregando = false;
         }
     }
-    //#endregion
 }
