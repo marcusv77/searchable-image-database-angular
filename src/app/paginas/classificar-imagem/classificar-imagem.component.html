@@ -58,27 +58,31 @@
             </div>
 
             <!-- ListarClassificacoes realizadas INICIO -->
-            <label for="id_generico">
-                Load classification data
-            </label>
             <div>
-                <select [(ngModel)]="indiceSelecionado"
-                        (ngModelChange)="exibirClassificacoesFormaSeletiva(); cancelarAtualizacao()"
-                        class="browser-default custom-select"
-                        id="id_generico"
-                        name="">
+                <h5> Filter </h5>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="cellGroupSelect">Cell</label>
+                    </div>
+                    <select [(ngModel)]="indiceSelecionado"
+                    (ngModelChange)="exibirClassificacoesFormaSeletiva(); cancelarAtualizacao()"
+                    class="browser-default custom-select"
+                    class="custom-select"
+                    id="cellGroupSelect"
+                    name="">
 
-                    <option value="-1"
-                            selected>
-                        See all classifications
-                    </option>
+                        <option value="-1"
+                                selected>
+                            All cells
+                        </option>
 
-                    <option *ngFor="let celula of todasClassificacoes?.celulas; let i = index "
-                            [value]="i">
-                        {{celula.id_celula}} - {{celula.lesao.nome}}
-                    </option>
+                        <option *ngFor="let celula of todasClassificacoes?.celulas; let i = index "
+                                [value]="i">
+                            {{celula.id_celula}} - {{celula.lesao.nome}}
+                        </option>
 
-                </select>
+                    </select>
+                </div>
             </div>
             <!-- ListarClassificacoes realizadas FIM -->
 
