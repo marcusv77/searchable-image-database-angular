@@ -57,7 +57,6 @@
                 </div>
             </div>
 
-            <!-- ListarClassificacoes realizadas INICIO -->
             <div>
                 <h5> Filter </h5>
                 <div class="input-group mb-3">
@@ -84,9 +83,7 @@
                     </select>
                 </div>
             </div>
-            <!-- ListarClassificacoes realizadas FIM -->
 
-            <!-- Atualizacao de dados INICIO -->
             <div *ngIf="indiceSelecionado != -1"
                     class="box_info">
 
@@ -109,9 +106,7 @@
                         {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes}}
                     </p>
                 </div>
-                <!-- Codigo leitura de dados FIM -->
 
-                <!-- Codigo de atualizar dados INICIO -->
                 <div *ngIf="atualizarInformacoes"
                         class="form-group">
 
@@ -146,9 +141,7 @@
 
                     </select> <br>
                 </div>
-                <!-- Codigo de atualizar dados INICIO -->
 
-                <!-- Botões de ação INICIO -->
                 <div *ngIf="objetoSessao"
                         class="d-flex flex-row-reverse bd-highlight">
                     <div *ngIf="!atualizarInformacoes"
@@ -187,12 +180,9 @@
                         </button>
                     </div>
                 </div>
-                <!-- Botões de ação FIM -->
             </div>
         </div>
-        <!-- Atualizacao de dados FIM -->
 
-        <!-- Canvas Imagem INICIO -->
         <div class="col-sm-12 col-md-8 col-lg-9">
             <div *ngIf="imagem">
                 <canvas id="canvas"
@@ -203,7 +193,6 @@
                 </canvas>
             </div>
         </div>
-        <!-- Canvas Imagem INICIO -->
 
     </div>
 </div>
