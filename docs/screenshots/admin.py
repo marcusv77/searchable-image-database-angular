@@ -22,7 +22,13 @@ async def main():
     )
 
     await asyncio.gather(
-        page.waitForSelector('input#email-login'),
+        page.waitFor(2_000),  # For modal to show
+        page.waitForSelector(
+            'input#email-login',
+            {
+                "visible": True
+            }
+        ),
         page.click(
             'a#login'
         ),
@@ -30,6 +36,19 @@ async def main():
     await screenshot(
         page,
         'admin-login.jpg'
+    )
+
+    # Perform login
+    await page.focus('input#email-login')
+    await page.keyboard.type('admin@test.database.cric.com.br')
+    await page.focus('input#senha-login')
+    await page.keyboard.type('123.456')
+    await page.keyboard.down('Enter')
+    await page.waitForSelector(
+        'a.sair',
+        {
+            "visible": True
+        }
     )
 
     await go4screenshot(
