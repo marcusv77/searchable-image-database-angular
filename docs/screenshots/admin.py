@@ -53,6 +53,18 @@ async def main():
 
     await go4screenshot(
         page,
+        '/segmentation',
+        'admin-segmentation-list.jpg'
+    )
+
+    await go4screenshot(
+        page,
+        '/segmentation/image/1#dashboard',
+        'admin-segmentation-view.jpg'
+    )
+
+    await go4screenshot(
+        page,
         '/classification',
         'admin-classification-list.jpg'
     )
@@ -78,6 +90,23 @@ async def main():
     await screenshot(
         page,
         'admin-classification-details.jpg'
+    )
+
+    await asyncio.gather(
+        page.waitFor(2_000),  # For modal to show
+        page.waitForSelector(
+            '#cancel',
+            {
+                "visible": True
+            }
+        ),
+        page.click(
+            '#update'
+        ),
+    )
+    await screenshot(
+        page,
+        'admin-classification-update.jpg'
     )
 
     await go4screenshot(
