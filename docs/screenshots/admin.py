@@ -63,6 +63,23 @@ async def main():
         'admin-classification-details.jpg'
     )
 
+    await asyncio.gather(
+        page.waitForSelector(
+            'div.box_info',
+            {
+                "visible": True
+            }
+        ),
+        page.select(
+            'select',
+            '0'
+        ),
+    )
+    await screenshot(
+        page,
+        'admin-classification-more-details.jpg'
+    )
+
     await go4screenshot(
         page,
         '/downloads',
