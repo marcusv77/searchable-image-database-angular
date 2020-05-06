@@ -13,58 +13,43 @@ This documentation is for the reference implementation written in Angular.
 More documentation about CRIC Searchable Image Database
 is available at https://cric-database.readthedocs.io/.
 
-Anonymous User
---------------
-
 ..  toctree::
     :maxdepth: 2
-    :caption: Contents:
+    :caption: Anonymous User
 
     anonymous/home
     anonymous/classification
     anonymous/downloads
 
-Cytopatologyst
---------------
-
 ..  toctree::
     :maxdepth: 2
-    :caption: Contents:
+    :caption: Cytopatologyst
 
     cytopatologyst/home
     cytopatologyst/segmentation
     cytopatologyst/classification
     cytopatologyst/downloads
 
-Administrator
--------------
-
 ..  toctree::
     :maxdepth: 2
-    :caption: Contents:
+    :caption: Administrator
 
     admin/home
     admin/segmentation
     admin/classification
     admin/downloads
 
-Other Static Pages
-------------------
-
 ..  toctree::
     :maxdepth: 2
-    :caption: Contents:
+    :caption: Other Static Pages
 
     other-pages/about
     other-pages/privacy
     other-pages/terms
 
-Developers
-----------
-
 ..  toctree::
     :maxdepth: 2
-    :caption: Contents:
+    :caption: Developers
 
     dependencies
     settings
