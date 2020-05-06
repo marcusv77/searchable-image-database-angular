@@ -2,7 +2,7 @@
 
     <!-- Cabeçalho -->
     <div class="modal-header">
-        <h5 class="modal-title">Access the platform</h5>
+        <h5 class="modal-title">Access the platform {{is_invalid}}</h5>
         <!-- fecha o modal -->
         <button #login_close
                 type="button"
@@ -23,7 +23,11 @@
                             type="text"
                             value=""
                             id="email-login"
+                            [class.is-invalid]="is_invalid"
                             class="form-control">
+                    <div *ngIf="is_invalid" class="invalid-feedback">
+                        Username isn't correct.
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -34,8 +38,12 @@
                             type="password"
                             value=""
                             id="senha-login"
+                            [class.is-invalid]="is_invalid"
                             class="form-control"
                             (keydown.enter)="fazerLogin()">
+                    <div *ngIf="is_invalid" class="invalid-feedback">
+                        Password isn't correct.
+                    </div>
                 </div>
             </div>
         </div>
