@@ -25,7 +25,8 @@
                             id="email-login"
                             [class.is-invalid]="is_invalid"
                             class="form-control">
-                    <div *ngIf="is_invalid" class="invalid-feedback">
+                    <div *ngIf="is_invalid"
+                            class="invalid-feedback">
                         Username isn't correct.
                     </div>
                 </div>
@@ -41,7 +42,8 @@
                             [class.is-invalid]="is_invalid"
                             class="form-control"
                             (keydown.enter)="fazerLogin()">
-                    <div *ngIf="is_invalid" class="invalid-feedback">
+                    <div *ngIf="is_invalid"
+                            class="invalid-feedback">
                         Password isn't correct.
                     </div>
                 </div>

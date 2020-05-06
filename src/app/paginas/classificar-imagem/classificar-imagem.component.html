@@ -17,26 +17,36 @@
             <div>
                 <div class="image_info">
                     <h5> Image Information </h5>
-                    <p>
-                        <span> Author: </span>
-                        Cytology Laboratory,
-                        Pharmacy School & Microscopy Facilities,
-                        Biological Sciences Research Center,
-                        Federal University of Ouro Preto
-                    </p>
-                    <p> <span> Microscope slide: </span> {{imagem?.codigo_lamina}} </p>
-                    <p *ngIf="imagem?.doi"> <span> DOI: </span>
-                        <a href="https://doi.org/{{imagem?.doi}}">{{imagem?.doi}}</a>
-                    </p>
-                    <p> <span> Lesion: </span> {{imagem?.lesao?.nome}} </p>
-                    <div class="collapse"
-                            id="more-info">
-                        <p> <span> Acquisition date: </span> {{ imagem?.dt_aquisicao | date}} </p>
-                        <p>
-                            <span>Dimension (in pixels):</span>
-                            1384 x 1036
-                        </p>
-                    </div>
+                    <dl>
+                        <dt>Collection</dt>
+                        <dd>Cervix</dd>
+
+                        <dt>Author</dt>
+                        <dd>
+                            Cytology Laboratory,
+                            Pharmacy School & Microscopy Facilities,
+                            Biological Sciences Research Center,
+                            Federal University of Ouro Preto
+                        </dd>
+
+                        <dt>Microscope slide</dt>
+                        <dd>{{imagem?.codigo_lamina}}</dd>
+
+                        <dt *ngIf="imagem?.doi">DOI</dt>
+                        <dd *ngIf="imagem?.doi"><a href="https://doi.org/{{imagem?.doi}}">{{imagem?.doi}}</a></dd>
+
+                        <dt>Lesion</dt>
+                        <dd>{{imagem?.lesao?.nome}}</dd>
+
+                        <div class="collapse"
+                                id="more-info">
+                            <dt>Acquisition date</dt>
+                            <dd>{{ imagem?.dt_aquisicao | date}}</dd>
+
+                            <dt>Dimension (in pixels)</dt>
+                            <dd>1384 x 1036</dd>
+                        </div>
+                    </dl>
 
                     <p>
                         <a class="btn btn-primary collapsed"
@@ -57,18 +67,19 @@
                 </div>
             </div>
 
-            <div>
+            <div class="box_filter">
                 <h5> Filter </h5>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <label class="input-group-text" for="cellGroupSelect">Cell</label>
+                        <label class="input-group-text"
+                                for="cellGroupSelect">Cell</label>
                     </div>
                     <select [(ngModel)]="indiceSelecionado"
-                    (ngModelChange)="exibirClassificacoesFormaSeletiva(); cancelarAtualizacao()"
-                    class="browser-default custom-select"
-                    class="custom-select"
-                    id="cellGroupSelect"
-                    name="">
+                            (ngModelChange)="exibirClassificacoesFormaSeletiva(); cancelarAtualizacao()"
+                            class="browser-default custom-select"
+                            class="custom-select"
+                            id="cellGroupSelect"
+                            name="">
 
                         <option value="-1"
                                 selected>
@@ -87,63 +98,69 @@
             <div *ngIf="indiceSelecionado != -1"
                     class="box_info">
 
-                <!-- Codigo leitura de dados INICO -->
                 <div *ngIf="!atualizarInformacoes">
                     <h5>
-                        Nucleus information
+                        Nucleus Information
                     </h5>
-                    <p>
-                        <span> Author: </span>
-                        Núcleo de Pesquisas em Ciências Biológicas,
-                        Universidade Federal de Ouro Preto
-                    </p>
-                    <p>
-                        <span> Lesion type: </span>
-                        {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.nome}}
-                    </p>
-                    <p *ngIf="todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes">
-                        <span> Lesion details: </span>
-                        {{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes}}
-                    </p>
+                    <dl>
+                        <dt>Author</dt>
+                        <dd>
+                            Cytology Laboratory,
+                            Pharmacy School & Microscopy Facilities,
+                            Biological Sciences Research Center,
+                            Federal University of Ouro Preto
+                        </dd>
+
+                        <dt>Lesion</dt>
+                        <dd>{{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.nome}}</dd>
+
+                        <dt *ngIf="todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes">Details</dt>
+                        <dd *ngIf="todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes">{{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.nome}}</dd>
+                    </dl>
                 </div>
 
                 <div *ngIf="atualizarInformacoes"
                         class="form-group">
+                    <h5>
+                        Nucleus Information
+                    </h5>
 
-                    <h5> Image informations </h5>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text"
+                                    for="authorTextarea">Author</label>
+                        </div>
+                        <input readonly
+                                type="text"
+                                class="form-control"
+                                id="authorTextarea"
+                                aria-label="Author"
+                                placeholder="Cytology Laboratory, Pharmacy School & Microscopy Facilities, Biological Sciences Research Center, Federal University of Ouro Preto">
+                    </div>
 
-                    <label for="imagem_atualizacao_lamina"> <span> Microscope slide </span> </label>
-                    <input class="form-control"
-                            type="text"
-                            [value]="imagem.codigo_lamina"
-                            [(ngModel)]="imagemAtualizacao.codigo_lamina"
-                            id="imagem_atualizacao_lamina"> <br>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text"
+                                    for="input_lesao_atualizacao">Lesion</label>
+                        </div>
+                        <select [(ngModel)]="lesao.id"
+                                class="browser-default custom-select"
+                                id="input_lesao_atualizacao"
+                                name="">
 
-                    <label for="imagem_atualizacao_dt_aquisicao"> <span> Acquisition date </span> </label>
-                    <input class="form-control"
-                            type="date"
-                            [value]="datepipe.transform(imagemAtualizacao.dt_aquisicao, 'yyyy-MM-dd')"
-                            id="imagem_atualizacao_dt_aquisicao"> <br>
+                            <option value="lesao?.id"
+                                    selected></option>
+                            <option *ngFor="let lesao of todasLesoes"
+                                    [value]="lesao?.id">
+                                {{lesao.nome}}
+                            </option>
 
-                    <h5> Nucleus informations </h5>
-                    <label for="input_lesao_atualizacao"> <span> Lesion </span> </label>
-                    <select [(ngModel)]="lesao.id"
-                            class="browser-default custom-select"
-                            id="input_lesao_atualizacao"
-                            name="">
-
-                        <option value="lesao?.id"
-                                selected></option>
-                        <option *ngFor="let lesao of todasLesoes"
-                                [value]="lesao?.id">
-                            {{lesao.nome}}
-                        </option>
-
-                    </select> <br>
+                        </select>
+                    </div>
                 </div>
 
                 <div *ngIf="objetoSessao"
-                        class="d-flex flex-row-reverse bd-highlight">
+                        class="d-flex flex-row-reverse">
                     <div *ngIf="!atualizarInformacoes"
                             class="bd-highlight">
                         <button type="submit"
@@ -165,7 +182,7 @@
                     <div *ngIf="atualizarInformacoes"
                             class="bd-highlight">
                         <button type="submit"
-                                class="btn btn-primary taab"
+                                class="btn btn-primary"
                                 (click)="atualizarClassificacao(indiceSelecionado)">
                             Save
                         </button>

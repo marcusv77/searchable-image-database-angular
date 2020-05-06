@@ -1,18 +1,34 @@
 @import '../../../sass/variables';
 
-.image_info {
+.image_info,
+.box_filter,
+.box_info {
     font-size: 0.9rem;
     color: $text-black;
 
     h5,
-    p {
+    p,
+    dl,
+    dt,
+    dd {
         margin-bottom: 0px;
     }
-    
-    span {
-        font-weight: bold;
+
+    dt {
+        float: left;
+
+        &::after {
+            content: ": ";
+            white-space: pre;
+        }
     }
 
+    .bd-highlight + .bd-highlight {
+        margin-right: 1vw;
+    }
+}
+
+.image_info {
     .btn:not(.collapsed) span.collapse-on {
         display: none;
     }
@@ -22,17 +38,9 @@
     }
 }
 
-.box_info {
-    margin-top: 3vh;
-    margin-bottom: 3vh;
-    font-size: 0.9rem;
-
-    h5,
-    p {
-        margin-bottom: 0px;
-    }
-    
-    span {
-        font-weight: bold;
+.box_filter {
+    label,
+    option {
+        font-size: 0.9rem;
     }
 }
