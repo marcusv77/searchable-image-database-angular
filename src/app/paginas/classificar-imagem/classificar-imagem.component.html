@@ -163,7 +163,8 @@
                         class="d-flex flex-row-reverse">
                     <div *ngIf="!atualizarInformacoes"
                             class="bd-highlight">
-                        <button type="submit"
+                        <button id="delete"
+                                type="submit"
                                 class="btn btn-danger"
                                 (click)="excluitClassificacao(indiceSelecionado)">
                             Delete
@@ -172,7 +173,8 @@
 
                     <div *ngIf="!atualizarInformacoes"
                             class="bd-highlight">
-                        <button type="submit"
+                        <button id="update"
+                                type="submit"
                                 class="btn btn-warning"
                                 (click)="solicitarAtualizacaoDeDados()">
                             Update
@@ -181,7 +183,8 @@
 
                     <div *ngIf="atualizarInformacoes"
                             class="bd-highlight">
-                        <button type="submit"
+                        <button id="save"
+                                type="submit"
                                 class="btn btn-primary"
                                 (click)="atualizarClassificacao(indiceSelecionado)">
                             Save
@@ -190,7 +193,8 @@
 
                     <div *ngIf="atualizarInformacoes"
                             class="bd-highlight">
-                        <button type="submit"
+                        <button id="cancel"
+                                type="submit"
                                 class="btn btn-danger"
                                 (click)="cancelarAtualizacao()">
                             Cancel
