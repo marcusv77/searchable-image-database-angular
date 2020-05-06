@@ -32,13 +32,18 @@ async def main():
         'anonymous-classification-view.jpg'
     )
 
-    #await asyncio.gather(
-    #    page.waitForSelector('#box_info'),
-    #    page.select(
-    #        'select',
-    #        '0'
-    #    ),
-    #)
+    await asyncio.gather(
+        page.waitForSelector(
+            'div.box_info',
+            {
+                "visible": True
+            }
+        ),
+        page.select(
+            'select',
+            '0'
+        ),
+    )
     await screenshot(
         page,
         'anonymous-classification-details.jpg'

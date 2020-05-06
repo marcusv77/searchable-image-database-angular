@@ -54,13 +54,13 @@ async def main():
     await go4screenshot(
         page,
         '/classification',
-        'admin-classification.jpg'
+        'admin-classification-list.jpg'
     )
 
     await go4screenshot(
         page,
-        '/classification/image/1',
-        'admin-classification-details.jpg'
+        '/classification/image/1#dashboard',
+        'admin-classification-view.jpg'
     )
 
     await asyncio.gather(
@@ -77,7 +77,7 @@ async def main():
     )
     await screenshot(
         page,
-        'admin-classification-more-details.jpg'
+        'admin-classification-details.jpg'
     )
 
     await go4screenshot(
