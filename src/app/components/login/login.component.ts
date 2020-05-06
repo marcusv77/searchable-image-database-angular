@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
     @ViewChild("login_close", {}) login_close: any;
     public usuarioLogin: UsuarioLogin;
+    public is_valid: boolean;
     private idLoginPadrao: number;
 
     constructor(private autenticacaoService: AutenticacaoService){
@@ -19,11 +20,23 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.idLoginPadrao = 0;
+        this.is_invalid = false;
     }
 
     fazerLogin() {
-        const is_authenticated = this.autenticacaoService.autenticarUsuario(this.idLoginPadrao, this.usuarioLogin);
-        this.login_close.nativeElement.click();
+        this.autenticacaoService.autenticarUsuario(
+            this.usuarioLogin
+        )
+        .subscribe(
+            () => {
+                this.is_invalid = false;
+                this.login_close.nativeElement.click();
+            },
+            (err) => {
+                this.is_invalid = true;
+                console.log(err);
+            }
+        );
     }
 
 }

@@ -1,12 +1,11 @@
 import { Injectable, EventEmitter, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 import { UsuarioService } from "../usuarios/usuarios.service";
-import { HttpStatusCode } from "../../utils/tratamento_erro/Http_Status_Code";
 import { ChavesArmazenamentoBrowser } from "../../utils/chaves_armazenamento_browser";
 import { UsuarioAutenticacaoModelRequisicao } from "src/app/models/autenticacao/usuario_autenticacao.model";
 import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
 import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
-import { Subscription } from "rxjs";
+import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: "root"
@@ -18,8 +17,6 @@ export class AutenticacaoService implements OnInit, OnDestroy {
     private usuarioAutenticado = false;
     public usuarioLogadoEventEmitter = new EventEmitter<boolean>();
     private armazenamentoBrowser: ArmazenamentoBrowser;
-    private objetoErro: ObjetoErro;
-    private autenticarUsuarioSubscription: Subscription;
 
     constructor(private router: Router, private usuarioService: UsuarioService) {
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
@@ -28,16 +25,16 @@ export class AutenticacaoService implements OnInit, OnDestroy {
 
     ngOnInit() { }
 
-    ngOnDestroy() {
-        if(this.autenticarUsuarioSubscription) {
-            this.autenticarUsuarioSubscription.unsubscribe();
-        }
-    }
+    ngOnDestroy() { }
 
-    autenticarUsuario(id_usuario: number = 0, dadosLogin: any = null) {
-        this.autenticarUsuarioSubscription =
-        this.usuarioService.obterUsuarioCompletoParaLogin(dadosLogin)
-            .subscribe(
+    autenticarUsuario(
+        dadosLogin: any = null,
+    ): Observable<any> {
+        return this.usuarioService.obterUsuarioCompletoParaLogin(
+            dadosLogin
+        )
+        .pipe(
+            map(
                 (retorno) => {
                     this.usuarioBanco = retorno;
                     this.usuarioAutenticado = true;
@@ -51,37 +48,11 @@ export class AutenticacaoService implements OnInit, OnDestroy {
 
                     this.armazenamentoBrowser.armazenarDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO, usuarioLogado);
                     this.router.navigate([""]);
-                },
-                (erro) => {
-                    this.objetoErro = erro.error;
-                    this.usuarioAutenticado = false;
-                    this.usuarioLogadoEventEmitter.emit(false);
-                    this.router.navigate([""]);
 
-                    switch(this.objetoErro.status_code) {
-
-                    case HttpStatusCode.UNAUTHORIZED: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.NOT_FOUND: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    default: {
-                        console.log(erro);
-                        break;
-                    }
-                    }
+                    return true;
                 }
-            );
+            )
+        );
     }
 
     usuarioEstaAutenticado(): boolean {
