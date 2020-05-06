@@ -15,9 +15,10 @@ the classifications of the cells.
     :alt: Screenshot of Classification Details for anonymous user
     :align: center
 
-Users can select single cell
+Users can filter the cell
 from the drop down menu
-to acess more information.
+and
+will have access to information related to the cell.
 
 ..  image:: ../screenshots/anonymous-classification-details.jpg
     :alt: Screenshot of Classification Details for anonymous user
