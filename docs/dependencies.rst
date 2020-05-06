@@ -2,7 +2,7 @@ Dependencies
 ============
 
 The frontend is build
-using `Angular <https://angular.io/>`_ 8
+using `Angular <https://angular.io/>`_ 9
 as framework.
 If you are new to Angular,
 we recommend you to have a look at
