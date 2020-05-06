@@ -11,15 +11,13 @@ export class LoginComponent implements OnInit {
 
     @ViewChild("login_close", {}) login_close: any;
     public usuarioLogin: UsuarioLogin;
-    public is_valid: boolean;
-    private idLoginPadrao: number;
+    public is_invalid: boolean;
 
     constructor(private autenticacaoService: AutenticacaoService){
         this.usuarioLogin = new UsuarioLogin();
     }
 
     ngOnInit() {
-        this.idLoginPadrao = 0;
         this.is_invalid = false;
     }
 

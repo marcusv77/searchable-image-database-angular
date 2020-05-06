@@ -1,11 +1,14 @@
 import { Injectable, EventEmitter, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
+
+import { Observable } from "rxjs";
+import { map } from 'rxjs/operators';
+
 import { UsuarioService } from "../usuarios/usuarios.service";
 import { ChavesArmazenamentoBrowser } from "../../utils/chaves_armazenamento_browser";
 import { UsuarioAutenticacaoModelRequisicao } from "src/app/models/autenticacao/usuario_autenticacao.model";
 import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
-import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
-import { map } from 'rxjs/operators';
+
 
 @Injectable({
     providedIn: "root"
@@ -20,7 +23,6 @@ export class AutenticacaoService implements OnInit, OnDestroy {
 
     constructor(private router: Router, private usuarioService: UsuarioService) {
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
-        this.objetoErro = new ObjetoErro();
     }
 
     ngOnInit() { }

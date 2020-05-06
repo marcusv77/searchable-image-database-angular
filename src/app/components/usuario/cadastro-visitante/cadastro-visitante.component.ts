@@ -17,13 +17,11 @@ export class CadastroVisitanteComponent implements OnInit, OnDestroy {
     private objetoErro: ObjetoErro;
     public formularioVisitante: FormGroup;
     private usuarioLogin: UsuarioLogin;
-    private idLoginPadrao: number;
     private solicitarCadastroVisitanteSubscription: Subscription;
     private cadastrarAnalistaSubscription: Subscription;
 
     constructor(private usuarioService: UsuarioService, private formBuilder: FormBuilder, private autenticacaoService: AutenticacaoService) {
 
-        this.idLoginPadrao = 0;
         this.usuarioLogin = new UsuarioLogin();
 
         this.formularioVisitante = this.formBuilder.group({
@@ -151,8 +149,8 @@ export class CadastroVisitanteComponent implements OnInit, OnDestroy {
         this.cadastrarAnalistaSubscription =
         this.usuarioService.cadastrarAnalista(id_analista)
             .subscribe(
-                (retorno) => {
-                    this.autenticacaoService.autenticarUsuario(this.idLoginPadrao, this.usuarioLogin);
+                () => {
+                    this.autenticacaoService.autenticarUsuario(this.usuarioLogin);
                 },
                 (erro) => {
                     this.objetoErro = erro.error;
