@@ -25,6 +25,31 @@ function draw(event, coord_click_x, coord_click_y) { // Método de classificaç�
     ctx.stroke();
 }
 
+function draw_classification(
+    ctx,
+    classication
+) {
+    const largura = 100;
+    const altura = 100;
+
+    ctx.beginPath();
+
+    ctx.strokeStyle = obterCorDaLesao(classication.lesao.nome.toString());
+
+    inicio_desenho_x = Math.round(classication.coord_centro_nucleo_x) - Math.round(largura / 2);
+    inicio_desenho_y = Math.round(classication.coord_centro_nucleo_y) - Math.round(altura / 2);
+
+    ctx.font = "30px Arial";
+    ctx.fillText(
+        classication.id_celula,
+        classication.coord_centro_nucleo_x,
+        classication.coord_centro_nucleo_y
+    );
+
+    ctx.strokeRect(inicio_desenho_x, inicio_desenho_y, largura, altura);
+    ctx.stroke();
+}
+
 function exibirClassificacoes(classificacoes, indice = -1) {
 
     var canvas = document.getElementById('canvas');
@@ -43,34 +68,17 @@ function exibirClassificacoes(classificacoes, indice = -1) {
 
     if (indice === -1) {
         for (i = 0; i < classificacoes.length; i++) {
-
-            ctx.beginPath();
-
-            ctx.strokeStyle = obterCorDaLesao(classificacoes[i].lesao.nome.toString());
-
-            inicio_desenho_x = Math.round(classificacoes[i].coord_centro_nucleo_x) - Math.round(largura / 2);
-            inicio_desenho_y = Math.round(classificacoes[i].coord_centro_nucleo_y) - Math.round(altura / 2);
-
-            ctx.font = "30px Arial";
-            ctx.fillText(classificacoes[i].id_celula, classificacoes[i].coord_centro_nucleo_x, classificacoes[i].coord_centro_nucleo_y);
-
-            ctx.strokeRect(inicio_desenho_x, inicio_desenho_y, largura, altura);
-            ctx.stroke();
+            draw_classification(
+                ctx,
+                classificacoes[i]
+            );
         }
     }
     else {
-        ctx.beginPath();
-
-        ctx.strokeStyle = obterCorDaLesao(classificacoes[indice].lesao.nome.toString());
-
-        inicio_desenho_x = classificacoes[indice].coord_centro_nucleo_x - Math.round(largura / 2);
-        inicio_desenho_y = classificacoes[indice].coord_centro_nucleo_y - Math.round(altura / 2);
-
-        ctx.font = "30px Arial";
-        ctx.fillText('' + Number((Number(indice)+1)), classificacoes[indice].coord_centro_nucleo_x, classificacoes[indice].coord_centro_nucleo_y);
-
-        ctx.strokeRect(inicio_desenho_x, inicio_desenho_y, largura, altura);
-        ctx.stroke();
+        draw_classification(
+            ctx,
+            classificacoes[indice]
+        );
     }
 }
 
