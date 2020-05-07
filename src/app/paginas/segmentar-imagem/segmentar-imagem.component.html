@@ -1,20 +1,21 @@
 <cr-animacao-carregamento *ngIf="carregando"></cr-animacao-carregamento>
-<div class="container-fluid">
 
-    <h3> Segmentation </h3>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae maxime commodi quos perferendis
-        ea vitae
-        magnam illum porro odio similique quidem inventore provident, quasi, ratione excepturi?
-        Praesentium autem
-        repellat iusto!
-    </p>
-
-</div>
-
-<div class="container-fluid">
+<div class="container-fluid cric-dashboard"
+        id="dashboard">
     <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-3">
+            <a class="btn btn-primary collapsed"
+                    [routerLink]="['/segmentation']">
+                Return to list of images
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-3"
+                id="selecionador">
+
+            <cr-image-info  [image]="imagem"></cr-image-info>
+
             <label for="id_generico">
                 <span class="label_personalizado"> Load data set and: </span>
                 <button id="botao_download"
