@@ -29,7 +29,7 @@ import { CadastroVisitanteComponent } from "./components/usuario/cadastro-visita
 import { CadastrarImagemComponent } from "./components/imagem/cadastrar-imagem/cadastrar-imagem.component";
 import { AnimacaoCarregamentoComponent } from "./components/sistema/animacao-carregamento/animacao-carregamento.component";
 import { CiteUsComponent } from "./components/sistema/cite-us/cite-us.component";
-import { ImageInfoComponent } from './components/imagem/image-info/image-info.component';
+import { ImageInfoComponent } from "./components/imagem/image-info/image-info.component";
 
 import { GuardaAutenticacao } from "./guardas/guarda-autenticacao";
 

@@ -21,7 +21,8 @@
         <dt>Lesion</dt>
         <dd>{{image?.lesao?.nome}}</dd>
 
-        <div class="collapse" id="more-info">
+        <div class="collapse"
+                id="more-info">
             <dt>Acquisition date</dt>
             <dd>{{ image?.dt_aquisicao | date}}</dd>
 
@@ -31,8 +32,12 @@
     </dl>
 
     <p>
-        <a class="btn btn-primary collapsed" data-toggle="collapse" href="#more-info" role="button"
-            aria-expanded="false" aria-controls="collapseExample">
+        <a class="btn btn-primary collapsed"
+                data-toggle="collapse"
+                href="#more-info"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExample">
             <span class="collapse-on">
                 More information
             </span>

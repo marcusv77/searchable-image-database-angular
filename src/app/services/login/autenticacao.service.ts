@@ -2,7 +2,7 @@ import { Injectable, EventEmitter, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { Observable } from "rxjs";
-import { map } from 'rxjs/operators';
+import { map } from "rxjs/operators";
 
 import { UsuarioService } from "../usuarios/usuarios.service";
 import { ChavesArmazenamentoBrowser } from "../../utils/chaves_armazenamento_browser";
@@ -30,31 +30,31 @@ export class AutenticacaoService implements OnInit, OnDestroy {
     ngOnDestroy() { }
 
     autenticarUsuario(
-        dadosLogin: any = null,
+        dadosLogin: any = null
     ): Observable<any> {
         return this.usuarioService.obterUsuarioCompletoParaLogin(
             dadosLogin
         )
-        .pipe(
-            map(
-                (retorno) => {
-                    this.usuarioBanco = retorno;
-                    this.usuarioAutenticado = true;
-                    this.usuarioLogadoEventEmitter.emit(true);
+            .pipe(
+                map(
+                    (retorno) => {
+                        this.usuarioBanco = retorno;
+                        this.usuarioAutenticado = true;
+                        this.usuarioLogadoEventEmitter.emit(true);
 
-                    const usuarioLogado = {
-                        id_usuario: this.usuarioBanco.usuario.id,
-                        email: this.usuarioBanco.usuario.email,
-                        token_autenticacao: this.usuarioBanco.token_autenticacao
-                    };
+                        const usuarioLogado = {
+                            id_usuario: this.usuarioBanco.usuario.id,
+                            email: this.usuarioBanco.usuario.email,
+                            token_autenticacao: this.usuarioBanco.token_autenticacao
+                        };
 
-                    this.armazenamentoBrowser.armazenarDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO, usuarioLogado);
-                    this.router.navigate([""]);
+                        this.armazenamentoBrowser.armazenarDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO, usuarioLogado);
+                        this.router.navigate([""]);
 
-                    return true;
-                }
-            )
-        );
+                        return true;
+                    }
+                )
+            );
     }
 
     usuarioEstaAutenticado(): boolean {

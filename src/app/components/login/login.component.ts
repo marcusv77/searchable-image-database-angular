@@ -25,16 +25,16 @@ export class LoginComponent implements OnInit {
         this.autenticacaoService.autenticarUsuario(
             this.usuarioLogin
         )
-        .subscribe(
-            () => {
-                this.is_invalid = false;
-                this.login_close.nativeElement.click();
-            },
-            (err) => {
-                this.is_invalid = true;
-                console.log(err);
-            }
-        );
+            .subscribe(
+                () => {
+                    this.is_invalid = false;
+                    this.login_close.nativeElement.click();
+                },
+                (err) => {
+                    this.is_invalid = true;
+                    console.log(err);
+                }
+            );
     }
 
 }
