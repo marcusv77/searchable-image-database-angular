@@ -1,99 +1,46 @@
-.formatacao-pagina-segmentar_imagem{
-    margin-bottom: 0vh;
-    margin-left: 10vw;
-    margin-right: 10vw;
-    min-height: 0vh;
-}
+@import '../../../sass/variables';
 
-canvas{
-    width:100%;
-    height:100%;
-    background-size: contain;
-    display: block;
-    box-shadow: 0px 0px 12px 4px rgba(0, 0, 0, 0.2);
-}
-
-/*Estilo box de informação Inicio*/
+.image_info,
+.box_filter,
 .box_info {
-    box-shadow: 0px 0px 3px 1px rgba(47, 159, 174, 0.4);
-    margin-top: 3vh;
-    margin-bottom: 3vh;
-    padding: 5px;
     font-size: 0.9rem;
+    color: $text-black;
+
+    h5,
+    p,
+    dl,
+    dt,
+    dd {
+        margin-bottom: 0px;
+    }
+
+    dt {
+        float: left;
+
+        &::after {
+            content: ": ";
+            white-space: pre;
+        }
+    }
+
+    .bd-highlight + .bd-highlight {
+        margin-right: 1vw;
+    }
 }
 
-span {
-    color: #212529;
-    font-weight: bold;
+.image_info {
+    .btn:not(.collapsed) span.collapse-on {
+        display: none;
+    }
+
+    .btn.collapsed span.collapse-off {
+        display: none;
+    }
 }
 
-p {
-    color: #02333a;
-}
-
-.taab {
-    margin-right: 1vh;
-}
-
-.btn-danger {
-    padding: 3px, 5px, 3px, 5px;
-    font-size: 0.9rem;
-}
-
-.btn-warning {
-    padding: 3px, 5px, 3px, 5px;
-    font-size: 0.9rem;
-}
-
-.label_personalizado {
-    font-weight: bold;
-}
-
-.btn-primary {
-    background-color: #2f9fae;
-    border-color: #2f9fae;
-}
-
-.btn-primary:hover {
-    opacity: 0.8;
-}
-
-.btn-primary, .btn-secondary {
-    padding: 3px, 5px, 3px, 5px;
-    font-size: 0.9rem
-}
-
-.p-2 {
-    padding: 0.1rem!important;
-    padding-top: 0.1rem !important;
-    padding-right: 0.1rem !important;
-    padding-bottom: 0.1rem !important;
-    padding-left: 0.1rem !important;
-}
-
-select {
-  margin-bottom: 1vh;
-}
-
-/* Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {
-
-}
-
-/* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) {
-
-}
-
-/* Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) {
-}
-
-/* Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-
-}
-
-@media (min-width: 1400px) {
-
+.box_filter {
+    label,
+    option {
+        font-size: 0.9rem;
+    }
 }
