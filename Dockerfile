@@ -17,7 +17,16 @@ FROM base as development
 RUN npm install && npm cache clean --force
 LABEL   version="1.1.0-development"
 
-FROM development as production
-# Copy ./src
+FROM development as builder
 COPY . ./
+RUN ng build --prod --build-optimizer
+LABEL   version="1.1.0-builder"
+
+# Build a small nginx image with static website
+FROM nginx:alpine as production
+COPY nginx.conf /etc/nginx/nginx.conf
+# --from sets the source location to a previous build stage
+COPY --from=builder /opt/cric/frontend/dist/cric /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
 LABEL   version="1.1.0-production"
