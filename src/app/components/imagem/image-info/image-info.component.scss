@@ -1,0 +1,35 @@
+@import '../../../../sass/variables';
+
+.image_info {
+    font-size: 0.9rem;
+    color: $text-black;
+
+    h5,
+    p,
+    dl,
+    dt,
+    dd {
+        margin-bottom: 0px;
+    }
+
+    dt {
+        float: left;
+
+        &::after {
+            content: ": ";
+            white-space: pre;
+        }
+    }
+
+    .bd-highlight + .bd-highlight {
+        margin-right: 1vw;
+    }
+
+    .btn:not(.collapsed) span.collapse-on {
+        display: none;
+    }
+
+    .btn.collapsed span.collapse-off {
+        display: none;
+    }
+}

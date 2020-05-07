@@ -1,0 +1,45 @@
+<div class="image_info">
+    <h5> Image Information </h5>
+    <dl>
+        <dt>Collection</dt>
+        <dd>Cervix</dd>
+
+        <dt>Author</dt>
+        <dd>
+            Cytology Laboratory,
+            Pharmacy School & Microscopy Facilities,
+            Biological Sciences Research Center,
+            Federal University of Ouro Preto
+        </dd>
+
+        <dt>Microscope slide</dt>
+        <dd>{{image?.codigo_lamina}}</dd>
+
+        <dt *ngIf="image?.doi">DOI</dt>
+        <dd *ngIf="image?.doi"><a href="https://doi.org/{{image?.doi}}">{{image?.doi}}</a></dd>
+
+        <dt>Lesion</dt>
+        <dd>{{image?.lesao?.nome}}</dd>
+
+        <div class="collapse" id="more-info">
+            <dt>Acquisition date</dt>
+            <dd>{{ image?.dt_aquisicao | date}}</dd>
+
+            <dt>Dimension (in pixels)</dt>
+            <dd>1384 x 1036</dd>
+        </div>
+    </dl>
+
+    <p>
+        <a class="btn btn-primary collapsed" data-toggle="collapse" href="#more-info" role="button"
+            aria-expanded="false" aria-controls="collapseExample">
+            <span class="collapse-on">
+                More information
+            </span>
+            <span class="collapse-off">
+                Less information
+            </span>
+        </a>
+    </p>
+
+</div>
