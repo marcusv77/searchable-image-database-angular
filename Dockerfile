@@ -9,18 +9,18 @@ ENV PATH /opt/cric/frontend/node_modules/.bin:$PATH
 # Expose port. Otherwise, we will have "This site can’t be reached"
 # https://stackoverflow.com/a/46779529
 EXPOSE 4200
-LABEL   version="2.0.0-base" \
+LABEL   version="2.0.3-base" \
         description="Frontend in Angular for CRIC Searchable Image Database" \
         maintainer="raniere@rgaiacs.com"
 
 FROM base as development
 RUN npm install && npm cache clean --force
-LABEL   version="2.0.0-development"
+LABEL   version="2.0.3-development"
 
 FROM development as builder
 COPY . ./
 RUN ng build --prod --build-optimizer
-LABEL   version="2.0.0-builder"
+LABEL   version="2.0.3-builder"
 
 # Build a small nginx image with static website
 FROM nginx:alpine as production
@@ -28,5 +28,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # --from sets the source location to a previous build stage
 COPY --from=builder /opt/cric/frontend/dist/cric /usr/share/nginx/html
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
-LABEL   version="2.0.0-production"
+LABEL   version="2.0.3-production"
