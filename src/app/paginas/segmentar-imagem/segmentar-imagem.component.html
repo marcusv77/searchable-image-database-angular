@@ -71,10 +71,13 @@
         </div>
 
         <div class="col-sm-12 col-md-8 col-lg-9">
-            <div *ngIf="imagem" id="teste">
-                <canvas id="canvas" (click)="!objetoSessao || iniciarSegmentacao()" width="{{imagem.largura}}"
-                    height="{{imagem.altura}}" onfocus
-                    [ngStyle]="{'background-image': 'url('+caminho_imagem+')','background-repeat': 'no-repeat'}">
+            <div *ngIf="imagem">
+                <canvas id="canvas"
+                    (click)="!objetoSessao || iniciarSegmentacao()"
+                    width="{{imagem.largura}}"
+                    height="{{imagem.altura}}"
+                    onfocus
+                    [ngStyle]="{'background-image': 'url('+caminho_imagem+')','background-repeat': 'no-repeat', 'height': 'auto'}">
                 </canvas>
             </div>
         </div>
