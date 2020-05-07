@@ -240,7 +240,6 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
         this.imagemService.listarSegmentacoesCelula(id_imagem, id_analista)
             .subscribe(
                 (retorno) => {
-
                     this.todasSegmentacoes = retorno;
                     exibirSegmentacoes(this.todasSegmentacoes, this.indiceSelecionado, this.rotulo);
                     this.carregando = false;

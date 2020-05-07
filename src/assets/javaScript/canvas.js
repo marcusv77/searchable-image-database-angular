@@ -207,6 +207,40 @@ function limparVetorSegmentos() {
     segmentos = [];
 }
 
+function draw_segmentation(
+    ctx,
+    cell,
+    label = true
+) {
+    ctx.beginPath();
+
+    if(label) {
+        ctx.font = "30px Arial";
+        ctx.fillText(
+            String(cell.id),
+            cell.segmentos_citoplasma[0].coord_x,
+            cell.segmentos_citoplasma[0].coord_y
+        );
+    }
+
+    for (let j = 0; j < cell.segmentos_citoplasma.length; j++) {
+        ctx.lineTo(
+            cell.segmentos_citoplasma[j].coord_x,
+            cell.segmentos_citoplasma[j].coord_y
+        );
+        ctx.stroke();
+    }
+
+    ctx.beginPath();
+    for (let j = 0; j < cell.segmentos_nucleo.length; j++) {
+        ctx.lineTo(
+            cell.segmentos_nucleo[j].coord_x,
+            cell.segmentos_nucleo[j].coord_y
+        );
+        ctx.stroke();
+    }
+}
+
 function exibirSegmentacoes(segmentacoes, indice = -1, label = true) {
 
     canvas = document.getElementById('canvas');
@@ -219,52 +253,20 @@ function exibirSegmentacoes(segmentacoes, indice = -1, label = true) {
     if (indice == -1) {
 
         for (let i = 0; i < segmentacoes.celulas.length; i++) {
-
-            ctx.beginPath();
-
-            if(label) {
-                ctx.font = "30px Arial";
-                var num = Number(i + 1);
-                ctx.fillText('' + num, segmentacoes.celulas[i].segmentos_citoplasma[0].coord_x, segmentacoes.celulas[i].segmentos_citoplasma[0].coord_y);
-            }
-
-            for (let j = 0; j < segmentacoes.celulas[i].segmentos_citoplasma.length; j++) {
-
-                ctx.lineTo(segmentacoes.celulas[i].segmentos_citoplasma[j].coord_x, segmentacoes.celulas[i].segmentos_citoplasma[j].coord_y);
-                ctx.stroke();
-            }
-
-            ctx.beginPath();
-            for (let j = 0; j < segmentacoes.celulas[i].segmentos_nucleo.length; j++) {
-
-                ctx.lineTo(segmentacoes.celulas[i].segmentos_nucleo[j].coord_x, segmentacoes.celulas[i].segmentos_nucleo[j].coord_y);
-                ctx.stroke();
-            }
+            draw_segmentation(
+                ctx,
+                segmentacoes.celulas[i],
+                label
+            )
         }
     }
     else {
-
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.beginPath();
-
-        if(label) {
-            ctx.font = "30px Arial";
-            const num = Number(indice + 1);
-            ctx.fillText('' + num, segmentacoes.celulas[indice].segmentos_citoplasma[0].coord_x, segmentacoes.celulas[indice].segmentos_citoplasma[0].coord_y);
-        }
-
-        for (let j = 0; j < segmentacoes.celulas[indice].segmentos_citoplasma.length; j++) {
-
-            ctx.lineTo(segmentacoes.celulas[indice].segmentos_citoplasma[j].coord_x, segmentacoes.celulas[indice].segmentos_citoplasma[j].coord_y);
-            ctx.stroke();
-        }
-
-        ctx.beginPath();
-        for (let j = 0; j < segmentacoes.celulas[indice].segmentos_nucleo.length; j++) {
-
-            ctx.lineTo(segmentacoes.celulas[indice].segmentos_nucleo[j].coord_x, segmentacoes.celulas[indice].segmentos_nucleo[j].coord_y);
-            ctx.stroke();
-        }
+        draw_segmentation(
+            ctx,
+            segmentacoes.celulas[indice],
+            label
+        )
     }
 }
 

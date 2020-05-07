@@ -1,8 +1,6 @@
-@import '../../../sass/variables';
+@import '../../../../sass/variables';
 
-.image_info,
-.box_filter,
-.box_info {
+.image_info {
     font-size: 0.9rem;
     color: $text-black;
 
@@ -26,21 +24,12 @@
     .bd-highlight + .bd-highlight {
         margin-right: 1vw;
     }
-}
 
-.image_info {
     .btn:not(.collapsed) span.collapse-on {
         display: none;
     }
 
     .btn.collapsed span.collapse-off {
         display: none;
-    }
-}
-
-.box_filter {
-    label,
-    option {
-        font-size: 0.9rem;
     }
 }

@@ -1,53 +1,47 @@
 <cr-animacao-carregamento *ngIf="carregando"></cr-animacao-carregamento>
-<div class="container-fluid">
 
-    <h3> Segmentation </h3>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae maxime commodi quos perferendis
-        ea vitae
-        magnam illum porro odio similique quidem inventore provident, quasi, ratione excepturi?
-        Praesentium autem
-        repellat iusto!
-    </p>
-
-</div>
-
-<div class="container-fluid">
+<div class="container-fluid cric-dashboard" id="dashboard">
     <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-3">
-            <label for="id_generico">
-                <span class="label_personalizado"> Load data set and: </span>
-                <button id="botao_download"
-                        type="submit"
-                        class="btn "
-                        [ngClass]="rotulo?'btn-primary':'btn-secondary'"
-                        [disabled]="indiceSelecionado!=-1"
-                        (click)="dasabilitarRotulo()">
-                    {{rotulo ? 'Disable label' : 'Enable label'}}
-                </button>
-            </label>
-            <div>
-                <select [(ngModel)]="indiceSelecionado"
-                        (ngModelChange)="exibirSegmentacaoFormaSeletiva()"
-                        class="browser-default custom-select"
-                        id="id_generico"
+            <a class="btn btn-primary collapsed" [routerLink]="['/segmentation']">
+                Return to list of images
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-4 col-lg-3" id="selecionador">
+
+            <cr-image-info [image]="imagem"></cr-image-info>
+
+            <div class="box_filter">
+                <h5> Filter </h5>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="segmentationGroupSelect">Segmentation</label>
+                    </div>
+                    <select [(ngModel)]="indiceSelecionado" (ngModelChange)="exibirSegmentacaoFormaSeletiva()"
+                        class="browser-default custom-select" class="custom-select" id="segmentationGroupSelect"
                         name="">
 
-                    <option value="-1"
-                            selected>
-                        See all segmentations
-                    </option>
+                        <option value="-1" selected>
+                            All segmentations
+                        </option>
 
-                    <option *ngFor="let celulaSegmentada of todasSegmentacoes?.celulas; let i = index "
-                            [value]="i">
-                        {{i + 1}} - {{celulaSegmentada?.descricao?.nome}}
-                    </option>
+                        <option *ngFor="let celulaSegmentada of todasSegmentacoes?.celulas; let i = index " [value]="i">
+                            {{celulaSegmentada?.id}} - {{celulaSegmentada?.descricao?.nome}}
+                        </option>
+                    </select>
+                </div>
 
-                </select>
+                <button id="label-button" type="submit" class="btn btn-block"
+                    [ngClass]="rotulo?'btn-primary':'btn-secondary'" [disabled]="indiceSelecionado!=-1"
+                    (click)="dasabilitarRotulo()">
+                    {{rotulo ? 'Disable label' : 'Enable label'}}
+                </button>
             </div>
 
-            <div *ngIf="indiceSelecionado != -1"
-                    class="box_info">
+
+            <div *ngIf="indiceSelecionado != -1" class="box_info">
 
                 <h5> Segmentation information </h5>
                 <p><span> Description Id:</span>
@@ -66,12 +60,9 @@
                     {{descricao.detalhes}}
                 </p>
 
-                <div *ngIf="objetoSessao"
-                        class="d-flex flex-row-reverse bd-highlight">
+                <div *ngIf="objetoSessao" class="d-flex flex-row-reverse bd-highlight">
                     <div class="p-2 bd-highlight">
-                        <button type="submit"
-                                class="btn btn-danger"
-                                (click)="excluitSegmentacao(indiceSelecionado)">
+                        <button type="submit" class="btn btn-danger" (click)="excluitSegmentacao(indiceSelecionado)">
                             Delete
                         </button>
                     </div>
@@ -80,14 +71,13 @@
         </div>
 
         <div class="col-sm-12 col-md-8 col-lg-9">
-            <div *ngIf="imagem"
-                    id="teste">
+            <div *ngIf="imagem">
                 <canvas id="canvas"
-                        (click)="!objetoSessao || iniciarSegmentacao()"
-                        width="{{imagem.largura}}"
-                        height="{{imagem.altura}}"
-                        onfocus
-                        [ngStyle]="{'background-image': 'url('+caminho_imagem+')','background-repeat': 'no-repeat'}">
+                    (click)="!objetoSessao || iniciarSegmentacao()"
+                    width="{{imagem.largura}}"
+                    height="{{imagem.altura}}"
+                    onfocus
+                    [ngStyle]="{'background-image': 'url('+caminho_imagem+')','background-repeat': 'no-repeat', 'height': 'auto'}">
                 </canvas>
             </div>
         </div>
@@ -95,15 +85,11 @@
 </div>
 
 <!-- Modal cadastrar segmentacao -->
-<div class="modal fade"
-        [ngClass]="(obterEstadoModal() === true)?'show':''"
-        [ngStyle]="{display : (obterEstadoModal() === true)?'block':'none'}"
-        id="modal-cadastrar-segmentacao"
-        tabindex="-1"
-        role=" dialog">
+<div class="modal fade" [ngClass]="(obterEstadoModal() === true)?'show':''"
+    [ngStyle]="{display : (obterEstadoModal() === true)?'block':'none'}" id="modal-cadastrar-segmentacao" tabindex="-1"
+    role=" dialog">
 
-    <div class="modal-dialog"
-            role="document">
+    <div class="modal-dialog" role="document">
         <!-- inserir conteudo do modal -->
         <div class="modal-content">
 
@@ -111,10 +97,7 @@
             <div class="modal-header">
                 <h5 class="modal-title">Register segmentation</h5>
                 <!-- fecha o modal -->
-                <button type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        (click)="definirEstadoModal(false);
+                <button type="button" class="close" data-dismiss="modal" (click)="definirEstadoModal(false);
                     permitirCadastro(false);
                     desfazerSegmentacao();
                     exibirSegmentacaoFormaSeletiva();
@@ -129,8 +112,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <div class="row">
-                        <div class="col-md-12"
-                                *ngIf="todasDescricoes">
+                        <div class="col-md-12" *ngIf="todasDescricoes">
 
                             <!-- Solicitar segmentacao do citoplasma -->
                             <div *ngIf="(vetorDePontos.length != 2)">
@@ -138,31 +120,24 @@
                                     Make a description to this segmentation.
                                 </p>
 
-                                <div class="form-group"
-                                        *ngIf="vetorSelecaoDescricao[0]">
-                                    <select [(ngModel)]="codigoDescricao[0]"
-                                            class="browser-default custom-select"
-                                            name=""
-                                            (change)="atualizarVetorDescricao(1)">
-                                        <option [value]="-1"
-                                                hidden></option>
+                                <div class="form-group" *ngIf="vetorSelecaoDescricao[0]">
+                                    <select [(ngModel)]="codigoDescricao[0]" class="browser-default custom-select"
+                                        name="" (change)="atualizarVetorDescricao(1)">
+                                        <option [value]="-1" hidden></option>
                                         <option *ngFor="let descricao of vetorSelecaoDescricao[0]; let i = index "
-                                                [value]="descricao.codigo">
+                                            [value]="descricao.codigo">
                                             {{descricao.nome}}
                                         </option>
                                     </select>
                                 </div>
 
                                 <div class="form-group"
-                                        *ngIf="(vetorSelecaoDescricao[1] && codigoDescricao[0]?.toString().length >= 1)">
+                                    *ngIf="(vetorSelecaoDescricao[1] && codigoDescricao[0]?.toString().length >= 1)">
                                     <div *ngIf="(vetorSelecaoDescricao[1].length > 0)">
-                                        <select [(ngModel)]="codigoDescricao[1]"
-                                                class="browser-default custom-select"
-                                                (change)="atualizarVetorDescricao(2)"
-                                                id=""
-                                                name="">
+                                        <select [(ngModel)]="codigoDescricao[1]" class="browser-default custom-select"
+                                            (change)="atualizarVetorDescricao(2)" id="" name="">
                                             <option *ngFor="let descricao of vetorSelecaoDescricao[1]; let i = index "
-                                                    [value]="descricao.codigo">
+                                                [value]="descricao.codigo">
                                                 {{descricao.nome}}
                                             </option>
                                         </select>
@@ -170,15 +145,12 @@
                                 </div>
 
                                 <div class="form-group"
-                                        *ngIf="(vetorSelecaoDescricao[2] && codigoDescricao[1]?.toString().length >= 2)">
+                                    *ngIf="(vetorSelecaoDescricao[2] && codigoDescricao[1]?.toString().length >= 2)">
                                     <div *ngIf="(vetorSelecaoDescricao[2].length > 0)">
-                                        <select [(ngModel)]="codigoDescricao[2]"
-                                                class="browser-default custom-select"
-                                                id=""
-                                                name=""
-                                                (change)="atualizarVetorDescricao(3)">
+                                        <select [(ngModel)]="codigoDescricao[2]" class="browser-default custom-select"
+                                            id="" name="" (change)="atualizarVetorDescricao(3)">
                                             <option *ngFor="let descricao of vetorSelecaoDescricao[2]; let i = index "
-                                                    [value]="descricao.codigo">
+                                                [value]="descricao.codigo">
                                                 {{descricao.nome}}
                                             </option>
                                         </select>
@@ -186,15 +158,12 @@
                                 </div>
 
                                 <div class="form-group"
-                                        *ngIf="(vetorSelecaoDescricao[3] && codigoDescricao[2]?.toString().length >= 3)">
+                                    *ngIf="(vetorSelecaoDescricao[3] && codigoDescricao[2]?.toString().length >= 3)">
                                     <div *ngIf="(vetorSelecaoDescricao[3].length > 0)">
-                                        <select [(ngModel)]="codigoDescricao[3]"
-                                                class="browser-default custom-select"
-                                                id=""
-                                                name=""
-                                                (change)="atualizarVetorDescricao(4)">
+                                        <select [(ngModel)]="codigoDescricao[3]" class="browser-default custom-select"
+                                            id="" name="" (change)="atualizarVetorDescricao(4)">
                                             <option *ngFor="let descricao of vetorSelecaoDescricao[3]; let i = index "
-                                                    [value]="descricao.codigo">
+                                                [value]="descricao.codigo">
                                                 {{descricao.nome}}
                                             </option>
                                         </select>
@@ -202,15 +171,12 @@
                                 </div>
 
                                 <div class="form-group"
-                                        *ngIf="(vetorSelecaoDescricao[4] && codigoDescricao[3]?.toString().length >= 4)">
+                                    *ngIf="(vetorSelecaoDescricao[4] && codigoDescricao[3]?.toString().length >= 4)">
                                     <div *ngIf="(vetorSelecaoDescricao[4].length > 0)">
-                                        <select [(ngModel)]="codigoDescricao[4]"
-                                                class="browser-default custom-select"
-                                                id=""
-                                                name=""
-                                                (change)="atualizarVetorDescricao(5)">
+                                        <select [(ngModel)]="codigoDescricao[4]" class="browser-default custom-select"
+                                            id="" name="" (change)="atualizarVetorDescricao(5)">
                                             <option *ngFor="let descricao of vetorSelecaoDescricao[4]; let i = index "
-                                                    [value]="descricao.codigo">
+                                                [value]="descricao.codigo">
                                                 {{descricao.nome}}
                                             </option>
                                         </select>
@@ -218,15 +184,12 @@
                                 </div>
 
                                 <div class="form-group"
-                                        *ngIf="(vetorSelecaoDescricao[5] && codigoDescricao[4]?.toString().length >= 5)">
+                                    *ngIf="(vetorSelecaoDescricao[5] && codigoDescricao[4]?.toString().length >= 5)">
                                     <div *ngIf="(vetorSelecaoDescricao[5].length > 0)">
-                                        <select [(ngModel)]="codigoDescricao[5]"
-                                                class="browser-default custom-select"
-                                                id=""
-                                                name=""
-                                                (change)="atualizarVetorDescricao(6)">
+                                        <select [(ngModel)]="codigoDescricao[5]" class="browser-default custom-select"
+                                            id="" name="" (change)="atualizarVetorDescricao(6)">
                                             <option *ngFor="let descricao of vetorSelecaoDescricao[5]; let i = index "
-                                                    [value]="descricao.codigo">
+                                                [value]="descricao.codigo">
                                                 {{descricao.nome}}
                                             </option>
                                         </select>
@@ -250,13 +213,10 @@
             <div class="modal-footer">
 
                 <!-- Botão de salvar a segmentação de estruturas sem nucleo -->
-                <div [ngStyle]="{display : (vetorDePontos.length == 1 && (codigoDescricao.toString()[0] != '1'))?'block':'none'}">
-                    <button type="submit"
-                            class="btn btn-primary"
-                            data-dismiss="modal"
-                            name="action"
-                            [disabled]="!permitirCadastroSegmentacao"
-                            (click)="definirEstadoModal(false);
+                <div
+                    [ngStyle]="{display : (vetorDePontos.length == 1 && (codigoDescricao.toString()[0] != '1'))?'block':'none'}">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" name="action"
+                        [disabled]="!permitirCadastroSegmentacao" (click)="definirEstadoModal(false);
                         permitirCadastro(false);
                         cadastrarSegmentacaoElementoAnucleado(false);
                         limparTodasSegmentacoes();
@@ -266,13 +226,10 @@
                 </div>
 
                 <!-- Botão de liberação de segmentacao do citoplasma -->
-                <div [ngStyle]="{display : (vetorDePontos.length == 1 && (codigoDescricao.toString()[0] == '1'))?'block':'none'}">
-                    <button type="submit"
-                            class="btn btn-primary"
-                            data-dismiss="modal"
-                            name="action"
-                            [disabled]="!permitirCadastroSegmentacao"
-                            (click)="definirEstadoModal(false);
+                <div
+                    [ngStyle]="{display : (vetorDePontos.length == 1 && (codigoDescricao.toString()[0] == '1'))?'block':'none'}">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" name="action"
+                        [disabled]="!permitirCadastroSegmentacao" (click)="definirEstadoModal(false);
                         validarSegmetacaoDoCitoplasma()">
                         Save cytoplasm segmentation
                     </button>
@@ -280,12 +237,8 @@
 
                 <!-- Botão de salvar a segmentação de estruturas com nucleo -->
                 <div [ngStyle]="{display : (vetorDePontos.length == 2)?'block':'none'}">
-                    <button type="submit"
-                            class="btn btn-primary"
-                            data-dismiss="modal"
-                            name="action"
-                            [disabled]="!permitirCadastroSegmentacao"
-                            (click)="definirEstadoModal(false);
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal" name="action"
+                        [disabled]="!permitirCadastroSegmentacao" (click)="definirEstadoModal(false);
                         cadastrarSegmentacao(true);
                         limparVetorSelecaoDescricao();
                         permitirCadastro(false);
