@@ -19,7 +19,7 @@ export class SegmentationDatabaseComponent implements OnInit, OnDestroy {
 
     @Output() public todasImagens: IImagemModelResultado[];
     @Output() public segmentationDatabase: boolean;
-    @ViewChild("atualizarPaginacaoViewChild", {}) public atualizacaoDePaginaViewChild: any;
+    @ViewChild("atualizarPaginacaoViewChild", { static: true }) public atualizacaoDePaginaViewChild: any;
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private comunicacaoApi: ComunicacaoApi;
     private listarImagensSubscription: Subscription;

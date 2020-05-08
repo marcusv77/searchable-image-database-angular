@@ -9,7 +9,7 @@ import { UsuarioLogin } from "src/app/services/login/usuario_login";
 })
 export class LoginComponent implements OnInit {
 
-    @ViewChild("login_close", {}) login_close: any;
+    @ViewChild("login_close", { static: true }) login_close: any;
     public usuarioLogin: UsuarioLogin;
     public is_invalid: boolean;
 
