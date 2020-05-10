@@ -18,23 +18,9 @@
         which are represented by bounding boxes (100pixels x 100pixels).
     </p>
 
-    <p>
-        <a *ngIf="objetoSessao"
-                href="#"
-                data-toggle="modal"
-                data-target="#modal-cadastro-imagem"
-                class="nav-link">
-            Cadastrate new image
-        </a>
-    </p>
-
     <cr-listar-cards-imagem [todasImagens]="todasImagens"
             [classificationDatabase]="classificationDatabase"
             #atualizarPaginacaoViewChild>
     </cr-listar-cards-imagem>
 
 </div>
-
-<!-- Modal Cadastrar Imagem(Cadastrar) -->
-<cr-cadastrar-imagem (novaImagemCadastradaEventEmiter)="atualizarListaImagens($event)">
-</cr-cadastrar-imagem>

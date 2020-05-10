@@ -27,7 +27,6 @@ import { TesteComponent } from "./paginas/teste/teste.component";
 import { ListarCardsImagemComponent } from "./components/imagem/listar-cards-imagem/listar-cards-imagem.component";
 import { LoginComponent } from "./components/login/login.component";
 import { CadastroVisitanteComponent } from "./components/usuario/cadastro-visitante/cadastro-visitante.component";
-import { CadastrarImagemComponent } from "./components/imagem/cadastrar-imagem/cadastrar-imagem.component";
 import { AnimacaoCarregamentoComponent } from "./components/sistema/animacao-carregamento/animacao-carregamento.component";
 import { CiteUsComponent } from "./components/sistema/cite-us/cite-us.component";
 import { ImageInfoComponent } from "./components/imagem/image-info/image-info.component";
@@ -62,7 +61,6 @@ import { ConexaoService } from "./services/conexao/conexao.service";
         UsuarioComponent,
         LoginComponent,
         CadastroVisitanteComponent,
-        CadastrarImagemComponent,
         TesteComponent,
         AnimacaoCarregamentoComponent,
         CiteUsComponent,
