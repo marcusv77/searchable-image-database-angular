@@ -35,7 +35,7 @@
                             All cells
                         </option>
 
-                        <option *ngFor="let celula of todasClassificacoes?.celulas; let i = index "
+                        <option *ngFor="let celula of todasClassificacoes; let i = index "
                                 [value]="i">
                             {{celula?.id_celula}} - {{celula?.lesao?.nome}}
                         </option>
@@ -61,10 +61,10 @@
                         </dd>
 
                         <dt>Lesion</dt>
-                        <dd>{{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.nome}}</dd>
+                        <dd>{{todasClassificacoes[indiceSelecionado]?.lesao?.nome}}</dd>
 
-                        <dt *ngIf="todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes">Details</dt>
-                        <dd *ngIf="todasClassificacoes.celulas[indiceSelecionado]?.lesao?.detalhes">{{todasClassificacoes.celulas[indiceSelecionado]?.lesao?.nome}}</dd>
+                        <dt *ngIf="todasClassificacoes[indiceSelecionado]?.lesao?.detalhes">Details</dt>
+                        <dd *ngIf="todasClassificacoes[indiceSelecionado]?.lesao?.detalhes">{{todasClassificacoes[indiceSelecionado]?.lesao?.nome}}</dd>
                     </dl>
                 </div>
 
