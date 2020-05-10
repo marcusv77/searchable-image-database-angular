@@ -15,6 +15,7 @@ import { ClassificarImagemComponent } from "./paginas/classificar-imagem/classif
 import { UsuarioComponent } from "./paginas/usuario/usuario.component";
 import { PrivacyComponent } from "./paginas/privacy/privacy.component";
 import { TermsComponent } from "./paginas/terms/terms.component";
+import { UploadImageComponent } from './paginas/upload-image/upload-image.component';
 
 const routes: Routes = [
     {path: "", component: IndexComponent},
@@ -22,12 +23,13 @@ const routes: Routes = [
     {path: "terms", component: TermsComponent},
     {path: "about", component: AboutComponent},
     {path: "segmentation", component: SegmentationDatabaseComponent},
+    {path: "segmentation/image/:id", component: SegmentarImagemComponent},
     {path: "classification", component: ClassificationDatabaseComponent},
+    {path: "classification/image/:id", component: ClassificarImagemComponent},
     {path: "downloads", component: DownloadsComponent},
     {path: "image", component: ListarCardsImagemComponent},
+    {path: "image/upload", component: UploadImageComponent},
     {path: "erro", component: PaginaDeErroComponent},
-    {path: "segmentation/image/:id", component: SegmentarImagemComponent},
-    {path: "classification/image/:id", component: ClassificarImagemComponent},
     {path: "user", component: UsuarioComponent, canActivate: [GuardaAutenticacao]},
     {path: "**", component: PaginaDeErroComponent}
 ];
