@@ -14,6 +14,7 @@ import { SegmentationDatabaseComponent } from "./paginas/segmentation-database/s
 import { ClassificationDatabaseComponent } from "./paginas/classification-database/classification-database.component";
 import { DownloadsComponent } from "./paginas/downloads/downloads.component";
 import { IndexComponent } from "./paginas/index/index.component";
+import { UploadImageComponent } from './paginas/upload-image/upload-image.component';
 
 import { PrivacyComponent } from "./paginas/privacy/privacy.component";
 import { TermsComponent } from "./paginas/terms/terms.component";
@@ -26,7 +27,6 @@ import { TesteComponent } from "./paginas/teste/teste.component";
 import { ListarCardsImagemComponent } from "./components/imagem/listar-cards-imagem/listar-cards-imagem.component";
 import { LoginComponent } from "./components/login/login.component";
 import { CadastroVisitanteComponent } from "./components/usuario/cadastro-visitante/cadastro-visitante.component";
-import { CadastrarImagemComponent } from "./components/imagem/cadastrar-imagem/cadastrar-imagem.component";
 import { AnimacaoCarregamentoComponent } from "./components/sistema/animacao-carregamento/animacao-carregamento.component";
 import { CiteUsComponent } from "./components/sistema/cite-us/cite-us.component";
 import { ImageInfoComponent } from "./components/imagem/image-info/image-info.component";
@@ -39,6 +39,7 @@ import { ChartModule } from "angular-highcharts";
 import { AutenticacaoService } from "./services/login/autenticacao.service";
 import { ImagemService } from "./services/imagens_service/imagens.service";
 import { ConexaoService } from "./services/conexao/conexao.service";
+
 
 
 @NgModule({
@@ -60,11 +61,11 @@ import { ConexaoService } from "./services/conexao/conexao.service";
         UsuarioComponent,
         LoginComponent,
         CadastroVisitanteComponent,
-        CadastrarImagemComponent,
         TesteComponent,
         AnimacaoCarregamentoComponent,
         CiteUsComponent,
-        ImageInfoComponent
+        ImageInfoComponent,
+        UploadImageComponent
     ],
     imports: [
         BrowserModule,
