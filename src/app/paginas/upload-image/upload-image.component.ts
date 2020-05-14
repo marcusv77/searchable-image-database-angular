@@ -23,6 +23,7 @@ export class UploadImageComponent implements OnInit, OnDestroy {
     private armazenamentoBrowser: ArmazenamentoBrowser;
     public todasLesoes: ILesaoModelResultado[];
     public formularioImagem: FormGroup;
+    public carregando: boolean;
     public arquivoSelecionado: boolean;
     public new_image_uploaded: boolean;
     public new_image: IImagemModelResultado;
@@ -36,6 +37,7 @@ export class UploadImageComponent implements OnInit, OnDestroy {
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
         this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
         this.objetoErro = new ObjetoErro();
+        this.carregando = false;
         this.arquivoSelecionado = false;
         this.new_image_uploaded = false;
 
@@ -83,6 +85,7 @@ export class UploadImageComponent implements OnInit, OnDestroy {
     solicitarCadastroImagem() {
 
         if (this.formularioImagem.valid) {
+            this.carregando = true;
             const formularioFormData: FormData = new FormData();
             formularioFormData.append("id_usuario", this.objetoSessao.id_usuario.toString());
             formularioFormData.append("codigo_lamina", this.formularioImagem.get("codigo_lamina").value);
@@ -94,6 +97,7 @@ export class UploadImageComponent implements OnInit, OnDestroy {
                 this.imagemService.cadastrarImagem(formularioFormData)
                     .subscribe(
                         (retorno) => {
+                            this.carregando = false;
                             console.log(retorno);
                             this.new_image = retorno;
                             const destino = this.new_image.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
