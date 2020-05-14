@@ -300,7 +300,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             .subscribe(
                 (retorno) => {
                     this.todasClassificacoes = retorno;
-                    exibirClassificacoes(this.todasClassificacoes.celulas, this.indiceSelecionado);
+                    exibirClassificacoes(this.todasClassificacoes, this.indiceSelecionado);
                     this.carregando = false;
                 },
                 (erro) => {
@@ -347,12 +347,12 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
         if(this.indiceSelecionado != this.indiceSelecionadoPadrao) {
 
-            this.lesao.id = this.todasClassificacoes.celulas[this.indiceSelecionado].lesao.id;
-            this.lesao.nome = this.todasClassificacoes.celulas[this.indiceSelecionado].lesao.nome;
-            this.lesao.detalhes = this.todasClassificacoes.celulas[this.indiceSelecionado].lesao.detalhes;
+            this.lesao.id = this.todasClassificacoes[this.indiceSelecionado].lesao.id;
+            this.lesao.nome = this.todasClassificacoes[this.indiceSelecionado].lesao.nome;
+            this.lesao.detalhes = this.todasClassificacoes[this.indiceSelecionado].lesao.detalhes;
         }
 
-        exibirClassificacoes(this.todasClassificacoes.celulas, Number(this.indiceSelecionado));
+        exibirClassificacoes(this.todasClassificacoes, Number(this.indiceSelecionado));
     }
 
     permitirCadastro(valor: boolean) {
@@ -378,7 +378,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         const houveMudanca =
             this.imagemAtualizacao.codigo_lamina != this.imagem.codigo_lamina ||
             this.imagemAtualizacao.dt_aquisicao != this.imagem.dt_aquisicao ||
-            this.lesao.id != this.todasClassificacoes.celulas[indiceSelecionado].lesao.id;
+            this.lesao.id != this.todasClassificacoes[indiceSelecionado].lesao.id;
 
         if(houveMudanca) {
 
@@ -387,7 +387,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                 codigo_lamina: this.imagemAtualizacao.codigo_lamina,
                 dt_aquisicao: this.imagemAtualizacao.dt_aquisicao,
                 id_lesao_celula: this.lesao.id,
-                id_celula: this.todasClassificacoes.celulas[indiceSelecionado].id_celula
+                id_celula: this.todasClassificacoes[indiceSelecionado].id_celula
             };
 
             this.atualizarDadosImagemSubscription =
@@ -449,7 +449,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
             const parametrosRequisicao = {
                 id_imagem: this.id_imagem,
-                id_celula: this.todasClassificacoes.celulas[indiceSelecionado].id_celula,
+                id_celula: this.todasClassificacoes[indiceSelecionado].id_celula,
                 id_usuario: this.objetoSessao.id_usuario
             };
 
@@ -462,7 +462,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                         this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
                         this.listarClassificacoesDeCelula(this.imagem.id, this.objetoSessao.id_usuario);
                         this.indiceSelecionado = -1;
-                        exibirClassificacoes(this.todasClassificacoes.celulas);
+                        exibirClassificacoes(this.todasClassificacoes);
                         this.carregando = false;
                     },
                     (erro) => {
