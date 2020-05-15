@@ -1,63 +1,60 @@
 <div class="modal-content">
 
-    <!-- Cabeçalho -->
     <div class="modal-header">
-        <h5 class="modal-title">Access the platform {{is_invalid}}</h5>
-        <!-- fecha o modal -->
-        <button #login_close
-                type="button"
-                class="close"
-                data-dismiss="modal">
+        <h5 class="modal-title">Access the platform</h5>
+        <button #login_close type="button" class="close" data-dismiss="modal">
             <span>x</span>
         </button>
     </div>
 
-    <!-- Conteudo -->
     <div class="modal-body">
-        <div class="form-group">
+        <div *ngIf="reset_complete" class="alert alert-success" role="alert">
+            We emailed your news password. Check your inbox.
+        </div>
+        <div id="login" *ngIf="!reset" class="form-group">
             <div class="row">
                 <div class="col-md-12">
-                    <label for="email-login"
-                            class="activate">E-mail</label>
-                    <input [(ngModel)]="usuarioLogin.email"
-                            type="text"
-                            value=""
-                            id="email-login"
-                            [class.is-invalid]="is_invalid"
-                            class="form-control">
-                    <div *ngIf="is_invalid"
-                            class="invalid-feedback">
+                    <label for="email-login" class="activate">E-mail</label>
+                    <input [(ngModel)]="usuarioLogin.email" type="text" value="" id="email-login"
+                        [class.is-invalid]="is_invalid" class="form-control">
+                    <div *ngIf="is_invalid" class="invalid-feedback">
                         Username isn't correct.
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <label for="senha-login"
-                            class="activate">Password</label>
-                    <input [(ngModel)]="usuarioLogin.senha"
-                            type="password"
-                            value=""
-                            id="senha-login"
-                            [class.is-invalid]="is_invalid"
-                            class="form-control"
-                            (keydown.enter)="fazerLogin()">
-                    <div *ngIf="is_invalid"
-                            class="invalid-feedback">
+                    <label for="senha-login" class="activate">Password</label>
+                    <input [(ngModel)]="usuarioLogin.senha" type="password" value="" id="senha-login"
+                        [class.is-invalid]="is_invalid" class="form-control" (keydown.enter)="fazerLogin()">
+                    <div *ngIf="is_invalid" class="invalid-feedback">
                         Password isn't correct.
                     </div>
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary" name="action" (click)="fazerLogin()">
+                Login
+            </button>
+            <button class="btn btn-link" name="action" (click)="ask2reset_password()">
+                Forgot password
+            </button>
+        </div>
+
+        <div id="reset" *ngIf="reset" class="form-group">
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="email-login" class="activate">E-mail</label>
+                    <input [(ngModel)]="usuarioLogin.email" type="text" value="" id="email-login"
+                        [class.is-invalid]="is_invalid" class="form-control">
+                    <div *ngIf="is_invalid" class="invalid-feedback">
+                        Username isn't correct.
+                    </div>
+                </div>
+            </div>
+            <button *ngIf="reset" type="submit" class="btn btn-primary" name="action" (click)="reset_password()">
+                Reset password
+            </button>
         </div>
     </div>
 
-    <!-- Rodape -->
-    <div class="modal-footer">
-        <button type="submit"
-                class="btn btn-primary"
-                name="action"
-                (click)="fazerLogin()">
-            Login
-        </button>
-    </div>
 </div>

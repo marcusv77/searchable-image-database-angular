@@ -80,6 +80,17 @@ export class UsuarioService {
         });
     }
 
+    reset_password(body: any): Observable<any> {
+        this.inicializarServicos();
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/reset-password`;
+
+        return this.httpClient.post(url, body, {
+            headers: new HttpHeaders({
+                "content-type": "application/json"
+            })
+        });
+    }
+
     fazerLogOff(token_autenticacao: string): Observable<any> {
 
         this.inicializarServicos();
