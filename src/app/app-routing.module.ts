@@ -15,7 +15,7 @@ import { ClassificarImagemComponent } from "./paginas/classificar-imagem/classif
 import { UsuarioComponent } from "./paginas/usuario/usuario.component";
 import { PrivacyComponent } from "./paginas/privacy/privacy.component";
 import { TermsComponent } from "./paginas/terms/terms.component";
-import { UploadImageComponent } from './paginas/upload-image/upload-image.component';
+import { UploadImageComponent } from "./paginas/upload-image/upload-image.component";
 
 const routes: Routes = [
     {path: "", component: IndexComponent},

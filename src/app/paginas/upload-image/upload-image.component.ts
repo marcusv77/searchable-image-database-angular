@@ -12,9 +12,9 @@ import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { ComunicacaoApi } from "../../api_cric_database/comunicacao_api";
 
 @Component({
-    selector: 'cr-upload-image',
-    templateUrl: './upload-image.component.html',
-    styleUrls: ['./upload-image.component.scss']
+    selector: "cr-upload-image",
+    templateUrl: "./upload-image.component.html",
+    styleUrls: ["./upload-image.component.scss"]
 })
 export class UploadImageComponent implements OnInit, OnDestroy {
 
@@ -109,35 +109,35 @@ export class UploadImageComponent implements OnInit, OnDestroy {
                             this.objetoErro = erro.error;
                             switch (this.objetoErro.status_code) {
 
-                                case HttpStatusCode.UNAUTHORIZED: {
-                                    console.log(this.objetoErro.mensagem);
-                                    break;
-                                }
+                            case HttpStatusCode.UNAUTHORIZED: {
+                                console.log(this.objetoErro.mensagem);
+                                break;
+                            }
 
-                                case HttpStatusCode.BAD_REQUEST: {
-                                    console.log(this.objetoErro.mensagem);
-                                    break;
-                                }
+                            case HttpStatusCode.BAD_REQUEST: {
+                                console.log(this.objetoErro.mensagem);
+                                break;
+                            }
 
-                                case HttpStatusCode.NOT_FOUND: {
-                                    console.log(this.objetoErro.mensagem);
-                                    break;
-                                }
+                            case HttpStatusCode.NOT_FOUND: {
+                                console.log(this.objetoErro.mensagem);
+                                break;
+                            }
 
-                                case HttpStatusCode.FORBIDDEN: {
-                                    console.log(this.objetoErro.mensagem);
-                                    break;
-                                }
+                            case HttpStatusCode.FORBIDDEN: {
+                                console.log(this.objetoErro.mensagem);
+                                break;
+                            }
 
-                                case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                                    console.log(this.objetoErro.mensagem);
-                                    break;
-                                }
+                            case HttpStatusCode.INTERNAL_SERVER_ERROR: {
+                                console.log(this.objetoErro.mensagem);
+                                break;
+                            }
 
-                                default: {
-                                    console.log(erro);
-                                    break;
-                                }
+                            default: {
+                                console.log(erro);
+                                break;
+                            }
                             }
                         }
                     );
@@ -169,25 +169,25 @@ export class UploadImageComponent implements OnInit, OnDestroy {
                         this.objetoErro = erro.error;
                         switch (this.objetoErro.status_code) {
 
-                            case HttpStatusCode.UNAUTHORIZED: {
-                                console.log(this.objetoErro.mensagem);
-                                break;
-                            }
+                        case HttpStatusCode.UNAUTHORIZED: {
+                            console.log(this.objetoErro.mensagem);
+                            break;
+                        }
 
-                            case HttpStatusCode.NOT_FOUND: {
-                                console.log(this.objetoErro.mensagem);
-                                break;
-                            }
+                        case HttpStatusCode.NOT_FOUND: {
+                            console.log(this.objetoErro.mensagem);
+                            break;
+                        }
 
-                            case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                                console.log(this.objetoErro.mensagem);
-                                break;
-                            }
+                        case HttpStatusCode.INTERNAL_SERVER_ERROR: {
+                            console.log(this.objetoErro.mensagem);
+                            break;
+                        }
 
-                            default: {
-                                console.log(erro);
-                                break;
-                            }
+                        default: {
+                            console.log(erro);
+                            break;
+                        }
                         }
                     }
                 );

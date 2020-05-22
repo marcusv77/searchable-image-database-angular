@@ -1,7 +1,10 @@
-import { IImagemModelResultado } from "../../../models/imagem/imagem.model";
 import { Component, OnInit, Input, OnDestroy, AfterContentInit } from "@angular/core";
 import { Router } from "@angular/router";
+
+import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
+
 import { PaginaImagemEntidade } from "./pagina_imagem.entidede";
+
 import { Parametros } from "src/app/utils/parametros";
 
 @Component({
@@ -13,6 +16,7 @@ import { Parametros } from "src/app/utils/parametros";
 export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterContentInit {
 
     @Input() todasImagens: IImagemModelResultado[];
+    public filteredImages: Array<PaginaImagemEntidade>;
     public paginaDeImagens: Array<PaginaImagemEntidade>;
     @Input() segmentationDatabase = false;
     @Input() classificationDatabase = false;
@@ -31,6 +35,10 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     public desabilitarVoltarPagina: boolean;
     public paginacaoSuave: boolean;
     public tamanhoArrayImagens: number;
+    public being_filtered: boolean;
+    public filter_id: number;
+    public filter_doi: string;
+    public filter_injury: number;
 
     constructor(private router: Router) {
         this.seletorDePagina = 1;
@@ -49,15 +57,24 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
         this.tamanhoArrayImagens = 0;
         this.desabilitarAvancarPagina = false;
         this.desabilitarVoltarPagina = false;
+        this.filteredImages = new Array<PaginaImagemEntidade>();
         this.paginaDeImagens = new Array<PaginaImagemEntidade>();
+        this.being_filtered = false;
+        this.filter_id = undefined;
+        this.filter_doi = undefined;
+        this.filter_injury = undefined;
     }
 
-    ngOnInit() { }
+    ngOnInit() {
+    }
 
     ngAfterContentInit(): void {
-        setTimeout(() => {
-            this.criarPagina(this.paginaSelecionada);
-        },         250);
+        setTimeout(
+            () => {
+                this.criarPagina(this.paginaSelecionada);
+            },
+            250
+        );
     }
 
     ngOnDestroy() { }
@@ -137,63 +154,31 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     }
 
     criarPagina(paginaSelecionada: number) {
+        let set_of_images;
+        if (this.being_filtered) {
+            set_of_images = this.filteredImages;
+        }
+        else {
+            set_of_images = this.todasImagens;
+        }
 
-        if (this.todasImagens) {
+        if (set_of_images) {
 
-            this.tamanhoArrayImagens = this.todasImagens.length;
+            this.tamanhoArrayImagens = set_of_images.length;
             this.removerElementosDaPagina();
-            this.totalPaginas = Math.ceil(this.todasImagens.length / this.numeroImagensPorPagina);
+            this.totalPaginas = Math.ceil(set_of_images.length / this.numeroImagensPorPagina);
             this.definirValoresContadorPagina(paginaSelecionada);
 
+            const inicio = (paginaSelecionada - 1) * this.numeroImagensPorPagina;
             if (this.totalPaginas == paginaSelecionada) {
-
-                const inicio = (paginaSelecionada - 1) * this.numeroImagensPorPagina;
-                const limite = this.todasImagens.length;
-
-                for (let i = inicio, j = 0; i < limite; i++, j++) {
-                    const imagem = new PaginaImagemEntidade();
-                    imagem.altura = this.todasImagens[i].altura;
-                    imagem.caminho_imagem = this.todasImagens[i].caminho_imagem;
-                    imagem.classificacao_aprovada = this.todasImagens[i].classificacao_aprovada;
-                    imagem.codigo_lamina = this.todasImagens[i].codigo_lamina;
-                    imagem.lesao = this.todasImagens[i].lesao;
-                    imagem.dt_aquisicao = this.todasImagens[i].dt_aquisicao;
-                    imagem.excluida = this.todasImagens[i].excluida;
-                    imagem.fonte_aquisicao = this.todasImagens[i].fonte_aquisicao;
-                    imagem.id = this.todasImagens[i].id;
-                    imagem.id_usuario = this.todasImagens[i].id_usuario;
-                    imagem.largura = this.todasImagens[i].largura;
-                    imagem.nome = this.todasImagens[i].nome;
-                    imagem.total_classificacoes = this.todasImagens[i].total_classificacoes;
-                    imagem.total_segmentacoes = this.todasImagens[i].total_segmentacoes;
-
-                    this.paginaDeImagens.push(imagem);
-                }
+                const limite = this.filteredImages.length;
             }
             else {
-                // Calcula quais imagens estarão na pagina
-                const inicio = (paginaSelecionada - 1) * this.numeroImagensPorPagina;
                 const limite = paginaSelecionada * this.numeroImagensPorPagina;
+            }
 
-                for (let i = inicio, j = 0; i < limite; i++, j++) {
-                    const imagem = new PaginaImagemEntidade();
-                    imagem.altura = this.todasImagens[i].altura;
-                    imagem.caminho_imagem = this.todasImagens[i].caminho_imagem;
-                    imagem.classificacao_aprovada = this.todasImagens[i].classificacao_aprovada;
-                    imagem.codigo_lamina = this.todasImagens[i].codigo_lamina;
-                    imagem.lesao = this.todasImagens[i].lesao;
-                    imagem.dt_aquisicao = this.todasImagens[i].dt_aquisicao;
-                    imagem.excluida = this.todasImagens[i].excluida;
-                    imagem.fonte_aquisicao = this.todasImagens[i].fonte_aquisicao;
-                    imagem.id = this.todasImagens[i].id;
-                    imagem.id_usuario = this.todasImagens[i].id_usuario;
-                    imagem.largura = this.todasImagens[i].largura;
-                    imagem.nome = this.todasImagens[i].nome;
-                    imagem.total_classificacoes = this.todasImagens[i].total_classificacoes;
-                    imagem.total_segmentacoes = this.todasImagens[i].total_segmentacoes;
-
-                    this.paginaDeImagens.push(imagem);
-                }
+            for (let i = inicio, j = 0; i < limite; i++, j++) {
+                this.paginaDeImagens.push(set_of_images[i]);
             }
         }
         else {
@@ -201,6 +186,49 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
                 this.criarPagina(this.paginaSelecionada);
             }, 200);
         }
+    }
+
+    filterImages() {
+        this.being_filtered = true;
+
+        this.filteredImages.splice(0, this.filteredImages.length);
+
+        const filter_id = Number(this.filter_id);
+        const filter_injury = Number(this.filter_injury);
+
+        for (const image of this.todasImagens) {
+            if (filter_id != NaN && filter_id === image.id) {
+                this.filteredImages.push(
+                    image
+                );
+                continue;
+            }
+
+            if (this.filter_doi != undefined && image.doi != undefined && image.doi.includes(this.filter_doi)) {
+                this.filteredImages.push(
+                    image
+                );
+                continue;
+            }
+
+            if (filter_injury != NaN && filter_injury === image.lesao.id) {
+                this.filteredImages.push(
+                    image
+                );
+                continue;
+            }
+        }
+        this.criarPagina(1);
+    }
+
+    resetFilterImages() {
+        this.being_filtered = false;
+
+        this.filter_id = undefined;
+        this.filter_doi = undefined;
+        this.filter_injury = undefined;
+
+        this.criarPagina(1);
     }
 
     removerElementosDaPagina() {
