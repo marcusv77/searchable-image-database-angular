@@ -5,8 +5,6 @@ import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 
 import { PaginaImagemEntidade } from "./pagina_imagem.entidede";
 
-import { Parametros } from "src/app/utils/parametros";
-
 @Component({
     selector: "cr-listar-cards-imagem",
     templateUrl: "./listar-cards-imagem.component.html",
@@ -48,7 +46,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
         this.contadorPaginaC = 4;
         this.contadorPaginaD = 5;
         this.limiteInferiorIndice = 1;
-        this.numeroImagensPorPagina = Parametros.TOTAL_IMAGENS_POR_PAGINA;
+        this.numeroImagensPorPagina = 12;  /* due Bootstrap grid layout */
         this.contadorPaginaA = this.paginaSelecionada -2;
         this.contadorPaginaB = this.paginaSelecionada - 1;
         this.contadorpaginaAtual = this.paginaSelecionada;
@@ -170,11 +168,12 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
             this.definirValoresContadorPagina(paginaSelecionada);
 
             const inicio = (paginaSelecionada - 1) * this.numeroImagensPorPagina;
+            let limite;
             if (this.totalPaginas == paginaSelecionada) {
-                const limite = this.filteredImages.length;
+                limite = this.filteredImages.length;
             }
             else {
-                const limite = paginaSelecionada * this.numeroImagensPorPagina;
+                limite = paginaSelecionada * this.numeroImagensPorPagina;
             }
 
             for (let i = inicio, j = 0; i < limite; i++, j++) {

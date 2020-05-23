@@ -37,43 +37,36 @@
 </div>
 
 
-<section class="flex">
-    <div id="renderiza_imagens"
-            *ngFor="let imagem of paginaDeImagens"
-            class="card-flex-box">
-        <!--So renderiza o card se o objeto img estiver pronto evita erros NotFound no console-->
-        <div id="verifica_imagem_existente"
-                *ngIf="imagem"
-                class="dimensionamento_ideal">
-            <div class="card-body card-personalizado">
-                <div class="efeito">
-                    <div>
-                        <a href="#"
-                                (click)="detalheDeUmaImagem($event, imagem)">
-                            <img class="img-responsive"
-                                    [src]="imagem.caminho_imagem"
-                                    alt="Image preview">
-                        </a>
-                    </div>
-                </div>
-                <div class="texto-card efeito">
-                    <p class="paragrafo-personalizado">
-                        {{imagem.codigo_lamina}} <br>
-                        {{imagem.lesao.nome}} <br>
-                        {{imagem.id_lesao}} <br>
-                    </p>
-                    <div>
-                        <a href="#"
-                                (click)="detalheDeUmaImagem($event, imagem)">
-                            <p class="detalhes"
-                                    *ngIf="classificationDatabase"> Classifications [{{imagem?.total_classificacoes}}] </p>
-                            <p class="detalhes"
-                                    *ngIf="segmentationDatabase"> Segmentations [{{imagem?.total_segmentacoes}}] </p>
-                        </a>
-                    </div>
-                </div>
+<section class="row row-cols-4">
+    <div *ngFor="let imagem of paginaDeImagens"
+            class="col">
+        <div class="card">
+
+            <img class="card-img-top"
+                    [src]="imagem?.caminho_imagem"
+                    alt="Image preview">
+            <div class="card-body">
+                <dl>
+                    <dt>Slide</dt>
+                    <dd>{{imagem?.codigo_lamina}}</dd>
+
+                    <dt>Lesion</dt>
+                    <dd>{{imagem?.lesao?.nome}}</dd>
+
+                    <dt *ngIf="classificationDatabase">Classifications</dt>
+                    <dd *ngIf="classificationDatabase">{{imagem?.total_classificacoes}}</dd>
+
+                    <dt *ngIf="segmentationDatabase">Segmentations</dt>
+                    <dd *ngIf="segmentationDatabase">{{imagem?.total_segmentacoes}}</dd>
+                </dl>
+
+                <a href="#"
+                        class="btn btn-primary btn-block"
+                        (click)="detalheDeUmaImagem($event, imagem)">More
+                    details</a>
             </div>
         </div>
+
     </div>
 </section>
 
