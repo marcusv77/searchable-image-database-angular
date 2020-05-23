@@ -1,153 +1,23 @@
 @import 'variables';
 
-.card-personalizado{
+.card {
     -webkit-box-shadow: 0 0 5px 2px #cccccc;
     -moz-box-shadow: 0 0 5px 2px #cccccc;
     box-shadow: 0 0 5px 2px #cccccc;
-    /* width: 150px; */
+    margin: 10px 0;
 }
 
-.dimensionamento_ideal {
-    width: 100%;
+dt,
+dd {
+    font-size: 0.9rem;
 }
 
-.card-personalizado > div > p {
-    overflow: hidden;
-}
+dt {
+    float: left;
 
-.paragrafo-personalizado{
-    font-size: 0.7rem;
-    text-align: center;
-}
-
-.efeito a {
-    color: #cccccc;
-    font-size: 1.00rem;
-    text-decoration: none;
-    /* background-color: transparent; */
-}
-
-.efeito a:hover {
-    color: #cccccc;
-    font-size: 1.05rem;
-    text-decoration: underline;    
-}
-
-.efeito a img{
-    opacity: 0.88;
-    transition: 0.08s ease-in
-}
-
-.efeito a:hover img{
-    opacity: 1;
-    box-shadow: 0 0 5px 2px #cccccc;
-    transform: scale(1.02);
-}
-
-/* Flexbox Responsividade sem precisar de media query! */
-.flex{
-    display: flex;
-    flex-wrap: wrap; /*Indica que o flex-wrap pode quebrar*/
-}
-
-.card-flex-box{
-    max-width: 500px;
-    display: flex;
-}
-
-.flex > div{
-    flex: 1 1 500px; /* Quebra linha se nao conseguir ter 500px de largura */
-    margin: 5px;
-}
-
-.card-body{
-    padding: 0.25rem;
-}
-
-.img-responsive {
-    width: 100%;
-}
-
-.texto-card{
-    text-align: center;
-    margin: 10px;
-}
-
-.detalhes{
-    background-color: #2f9fae;
-    border-radius: 2px;
-    color: #fafafa;
-    line-height: 40px;
-}
-
-ul.pagination {
-    li {
-        a {
-            color: $text-black;
-            font-size: 1rem;
-            padding: 0.2rem 0.50rem;
-            line-height: 1.0;
-            padding-bottom: 4px;
-
-            &:hover {
-                color: $cric-blue;
-            }
-        }
+    &::after {
+        content: ": ";
+        white-space: pre;
     }
 }
 
-/* Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {
-
-    .flex{
-        display: flex;
-        flex-wrap: wrap; /*Indica que o flex-wrap pode quebrar*/
-    }
-
-    .card-flex-box{
-        max-width: 230px;
-        display: flex;
-    }
-    
-    .flex > div{
-        flex: 1 1 230px; /* Quebra linha se nao conseguir ter 220px de largura */
-        margin: 5px;
-    }
-}
-
-/* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) { 
-
-    .flex{
-        display: flex;
-        flex-wrap: wrap; /*Indica que o flex-wrap pode quebrar*/
-    }
-
-    .card-flex-box{
-        max-width: 150px;
-        display: flex;
-    }
-    
-    .flex > div{
-        flex: 1 1 150px; /* Quebra linha se nao conseguir ter 150px de largura */
-        margin: 5px;
-    }
-
-    .paragrafo-personalizado{
-        font-size: 0.7rem;
-    }
-}
-
-/* Large devices (desktops, 992px and up)*/
-@media (min-width: 992px) { 
-    
-}
-
-/* Extra large devices (large desktops, 1200px and up)*/
-@media (min-width: 1200px) {
-
-}
-
-@media (min-width: 1400px) {
-
-}
