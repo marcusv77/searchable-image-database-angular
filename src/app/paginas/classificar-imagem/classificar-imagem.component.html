@@ -157,7 +157,7 @@
             <div *ngIf="imagem">
                 <canvas id="canvas"
                         (click)="!objetoSessao || registrarPonto($event)"
-                        [ngStyle]="{'background-image': 'url('+caminho_imagem+')','background-repeat': 'no-repeat', 'height': 'auto'}"
+                        [ngStyle]="{'background-image': 'url('+caminho_imagem+')'}"
                         width="{{imagem.largura}}"
                         height="{{imagem.altura}}">
                 </canvas>
