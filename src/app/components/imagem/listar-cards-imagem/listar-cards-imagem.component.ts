@@ -161,7 +161,6 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
         }
 
         if (set_of_images) {
-
             this.tamanhoArrayImagens = set_of_images.length;
             this.removerElementosDaPagina();
             this.totalPaginas = Math.ceil(set_of_images.length / this.numeroImagensPorPagina);
@@ -170,7 +169,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
             const inicio = (paginaSelecionada - 1) * this.numeroImagensPorPagina;
             let limite;
             if (this.totalPaginas == paginaSelecionada) {
-                limite = this.filteredImages.length;
+                limite = set_of_images.length;
             }
             else {
                 limite = paginaSelecionada * this.numeroImagensPorPagina;
