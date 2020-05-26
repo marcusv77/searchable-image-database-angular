@@ -82,13 +82,24 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
         $event.preventDefault();
         this.Imagem = img;
 
+        let route;
         if (this.classificationDatabase) {
-            this.router.navigate(["classification/image/", this.Imagem.id]);
+            route = "classification/image/";
+        }
+        if (this.segmentationDatabase) {
+            route = "segmentation/image/";
         }
 
-        if (this.segmentationDatabase) {
-            this.router.navigate(["segmentation/image/", this.Imagem.id]);
-        }
+        this.router.navigate(
+            [
+                "classification/image/",
+                this.Imagem.id,
+            ]
+        ).then(
+            ()=>{
+                window.location.hash="#dashboard";	
+            }
+        );
     }
 
     proximaPagina(evento) {
