@@ -1,4 +1,3 @@
-import { UsuarioService } from "src/app/services/usuarios/usuarios.service";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -36,7 +35,9 @@ import { GuardaAutenticacao } from "./guardas/guarda-autenticacao";
 import { ChartModule } from "angular-highcharts";
 
 // Services
+import { UsuarioService } from "src/app/services/usuarios/usuarios.service";
 import { AutenticacaoService } from "./services/login/autenticacao.service";
+import { SignUpService } from "./services/login/sign_up.service";
 import { ImagemService } from "./services/imagens_service/imagens.service";
 import { ConexaoService } from "./services/conexao/conexao.service";
 
@@ -79,6 +80,7 @@ import { ConexaoService } from "./services/conexao/conexao.service";
         ImagemService,
         UsuarioService,
         AutenticacaoService,
+        SignUpService,
         GuardaAutenticacao,
         ConexaoService
     ],

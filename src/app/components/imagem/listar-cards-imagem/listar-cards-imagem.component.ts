@@ -93,11 +93,11 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
         this.router.navigate(
             [
                 "classification/image/",
-                this.Imagem.id,
+                this.Imagem.id
             ]
         ).then(
             ()=>{
-                window.location.hash="#dashboard";	
+                window.location.hash="#dashboard";
             }
         );
     }
