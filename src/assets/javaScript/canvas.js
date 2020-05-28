@@ -287,3 +287,45 @@ function obterCorDaLesao(lesao) {
             return "#F15C80"; //Rosa
     }
 }
+
+function canvas2file(){
+    /* Based on https://stackoverflow.com/a/6957155/1802726 */
+    var canvas = document.getElementById("canvas");
+    var tmp_canvas = document.createElement('canvas');
+    var img = document.createElement('img');
+    var anchor = document.createElement('a');
+
+    var ctx = tmp_canvas.getContext ? tmp_canvas.getContext('2d') : null;
+
+    tmp_canvas.width = canvas.width;
+    tmp_canvas.height = canvas.height;
+
+    img.onload = function () {
+        ctx.drawImage(
+            img,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        ctx.drawImage(
+            canvas,
+            0,
+            0,
+            canvas.width,
+            canvas.height
+        );
+
+        anchor.setAttribute('href', tmp_canvas.toDataURL(
+            "image/png"
+        ));
+        anchor.setAttribute('download', "image.png");
+        anchor.click()
+    };
+
+    img.src = canvas.style.backgroundImage.substr(
+        5,  /* start, after url(" */
+        canvas.style.backgroundImage.length - 7
+    );
+}
