@@ -11,13 +11,13 @@
     </div>
 
     <div class="modal-body">
-        <div *ngIf="reset_complete"
+        <div *ngIf="reset_password_complete"
                 class="alert alert-success"
                 role="alert">
             We emailed your news password. Check your inbox.
         </div>
         <div id="login"
-                *ngIf="!reset"
+                *ngIf="!reset_password_view && !sign_up_view"
                 class="form-group">
             <div class="row">
                 <div class="col-md-12">
@@ -45,7 +45,7 @@
                             id="senha-login"
                             [class.is-invalid]="is_invalid"
                             class="form-control"
-                            (keydown.enter)="fazerLogin()">
+                            (keydown.enter)="sign_in()">
                     <div *ngIf="is_invalid"
                             class="invalid-feedback">
                         Password isn't correct.
@@ -55,7 +55,7 @@
             <button type="submit"
                     class="btn btn-primary"
                     name="action"
-                    (click)="fazerLogin()">
+                    (click)="sign_in()">
                 Login
             </button>
             <button class="btn btn-link"
@@ -63,10 +63,15 @@
                     (click)="ask2reset_password()">
                 Forgot password
             </button>
+            <button class="btn btn-link"
+                    name="action"
+                    (click)="ask2sign_up()">
+                Sign Up
+            </button>
         </div>
 
         <div id="reset"
-                *ngIf="reset"
+                *ngIf="reset_password_view"
                 class="form-group">
             <div class="row">
                 <div class="col-md-12">
@@ -84,12 +89,77 @@
                     </div>
                 </div>
             </div>
-            <button *ngIf="reset"
-                    type="submit"
+            <button type="submit"
                     class="btn btn-primary"
                     name="action"
                     (click)="reset_password()">
                 Reset password
+            </button>
+        </div>
+
+        <div id="sign_up"
+                *ngIf="sign_up_view"
+                class="form-group">
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="new-user-name"
+                            class="activate">Name</label>
+                    <input [(ngModel)]="new_user.primeiro_nome"
+                            type="text"
+                            value=""
+                            id="new-user-name"
+                            [class.is-invalid]="is_invalid"
+                            class="form-control">
+                    <div *ngIf="is_invalid"
+                            class="invalid-feedback">
+                        Name isn't correct.
+                    </div>
+
+                    <label for="new-user-family-name"
+                            class="activate">Family Name</label>
+                    <input [(ngModel)]="new_user.ultimo_nome"
+                            type="text"
+                            value=""
+                            id="new-user-family-name"
+                            [class.is-invalid]="is_invalid"
+                            class="form-control">
+                    <div *ngIf="is_invalid"
+                            class="invalid-feedback">
+                        Family name isn't correct.
+                    </div>
+
+                    <label for="new-user-email"
+                            class="activate">E-mail</label>
+                    <input [(ngModel)]="new_user.email"
+                            type="text"
+                            value=""
+                            id="new-user-email"
+                            [class.is-invalid]="is_invalid"
+                            class="form-control">
+                    <div *ngIf="is_invalid"
+                            class="invalid-feedback">
+                        E-mail isn't correct.
+                    </div>
+
+                    <label for="new-user-password"
+                            class="activate">Password</label>
+                    <input [(ngModel)]="new_user.senha"
+                            type="password"
+                            value=""
+                            id="new-user-password"
+                            [class.is-invalid]="is_invalid"
+                            class="form-control">
+                    <div *ngIf="is_invalid"
+                            class="invalid-feedback">
+                        Password isn't correct.
+                    </div>
+                </div>
+            </div>
+            <button type="submit"
+                    class="btn btn-primary"
+                    name="action"
+                    (click)="sign_up()">
+                Sign Up
             </button>
         </div>
     </div>

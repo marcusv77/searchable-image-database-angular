@@ -68,6 +68,18 @@ export class UsuarioService {
         });
     }
 
+    sign_up(body: any): Observable<any> {
+
+        this.inicializarServicos();
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/usuarios`;
+
+        return this.httpClient.post(url, body, {
+            headers: new HttpHeaders({
+                "content-type": "application/json"
+            })
+        });
+    }
+
     cadastrarVisitante(body: any): Observable<any> {
 
         this.inicializarServicos();
