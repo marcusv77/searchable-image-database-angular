@@ -21,6 +21,7 @@ import {DatePipe} from "@angular/common";
 declare const draw: any;
 declare const exibirClassificacoes: any;
 declare const obterLarguraAlturaAtualCanvas: any;
+declare const canvas2file: any;
 
 @Component({
     selector: "cr-classificar-imagem",
@@ -507,5 +508,9 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         else {
             this.carregando = false;
         }
+    }
+
+    save_image() {
+        canvas2file();  /* see canvas.js */
     }
 }
