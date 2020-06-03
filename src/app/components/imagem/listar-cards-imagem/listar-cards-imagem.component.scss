@@ -1,10 +1,24 @@
 @import 'variables';
 
 .card {
-    -webkit-box-shadow: 0 0 5px 2px #cccccc;
-    -moz-box-shadow: 0 0 5px 2px #cccccc;
-    box-shadow: 0 0 5px 2px #cccccc;
+    -webkit-box-shadow: 0 0 5px 2px $background-shadow;
+    -moz-box-shadow: 0 0 5px 2px $background-shadow;
+    box-shadow: 0 0 5px 2px $background-shadow;
     margin: 10px 0;
+
+    .card-img-container {
+        position: relative;
+
+        .card-img-annotation {
+            position: absolute;
+            bottom: 8px;
+            right: 16px;
+
+            svg {
+                color: $cric-blue;
+            }
+        }
+    }
 }
 
 dt,
