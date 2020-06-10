@@ -77,29 +77,30 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
 
     ngOnDestroy() { }
 
-    detalheDeUmaImagem($event, img) {
+    detalheDeUmaImagem(event, img) {
+        if (event.view.getSelection().type !== "Range") {
+            event.preventDefault();
+            this.Imagem = img;
 
-        $event.preventDefault();
-        this.Imagem = img;
-
-        let route;
-        if (this.classificationDatabase) {
-            route = "classification/image/";
-        }
-        if (this.segmentationDatabase) {
-            route = "segmentation/image/";
-        }
-
-        this.router.navigate(
-            [
-                "classification/image/",
-                this.Imagem.id
-            ]
-        ).then(
-            ()=>{
-                window.location.hash="#dashboard";
+            let route;
+            if (this.classificationDatabase) {
+                route = "classification/image/";
             }
-        );
+            if (this.segmentationDatabase) {
+                route = "segmentation/image/";
+            }
+
+            this.router.navigate(
+                [
+                    "classification/image/",
+                    this.Imagem.id
+                ]
+            ).then(
+                ()=>{
+                    window.location.hash="#dashboard";
+                }
+            );
+        }
     }
 
     proximaPagina(evento) {

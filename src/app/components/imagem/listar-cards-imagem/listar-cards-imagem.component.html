@@ -40,22 +40,37 @@
 <section class="row row-cols-4">
     <div *ngFor="let imagem of paginaDeImagens"
             class="col">
-        <div class="card">
+        <div class="card"
+                (click)="detalheDeUmaImagem($event, imagem)">
 
             <div class="card-img-container">
                 <img class="card-img-top"
                         [src]="imagem?.caminho_imagem"
                         alt="Image preview">
-                <div [attr.title]="imagem?.classificacao_aprovada ? 'Approved image' : 'Image submited by User'" class="card-img-annotation">
+                <div [attr.title]="imagem?.classificacao_aprovada ? 'Approved image' : 'Image submited by User'"
+                        class="card-img-annotation">
                     <!-- Bootstrap award fill icon -->
-                    <svg *ngIf="imagem?.classificacao_aprovada" class="bi bi-award-fill" width="1.5rem" height="1.5rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8 0l1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z"/>
-                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+                    <svg *ngIf="imagem?.classificacao_aprovada"
+                            class="bi bi-award-fill"
+                            width="1.5rem"
+                            height="1.5rem"
+                            viewBox="0 0 16 16"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 0l1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z" />
+                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
                     </svg>
                     <!-- Bootstrap person fill icon -->
-                    <svg *ngIf="!imagem?.classificacao_aprovada" class="bi bi-person-fill" width="1.5rem" height="1.5rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                      </svg>
+                    <svg *ngIf="!imagem?.classificacao_aprovada"
+                            class="bi bi-person-fill"
+                            width="1.5rem"
+                            height="1.5rem"
+                            viewBox="0 0 16 16"
+                            fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                                d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg>
                 </div>
             </div>
             <div class="card-body">
@@ -74,8 +89,7 @@
                 </dl>
 
                 <a href="#"
-                        class="btn btn-primary btn-block"
-                        (click)="detalheDeUmaImagem($event, imagem)">More
+                        class="btn btn-primary btn-block">More
                     details</a>
             </div>
         </div>
