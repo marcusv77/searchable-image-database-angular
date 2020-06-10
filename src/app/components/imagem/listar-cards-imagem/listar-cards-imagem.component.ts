@@ -19,12 +19,6 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     @Input() segmentationDatabase = false;
     @Input() classificationDatabase = false;
     public Imagem: IImagemModelResultado;
-    public contadorPaginaA: number;
-    public contadorPaginaB: number;
-    public contadorpaginaAtual: number;
-    public contadorPaginaC: number;
-    public contadorPaginaD: number;
-    public seletorDePagina: number;
     private paginaSelecionada: number;
     private limiteInferiorIndice: number;
     private numeroImagensPorPagina: number; // Determina a quantidade de registros que cada pagina ira conter
@@ -39,22 +33,12 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     public filter_injury: number;
 
     constructor(private router: Router) {
-        this.seletorDePagina = 1;
-        this.paginaSelecionada = this.seletorDePagina;
-        this.contadorPaginaA = 2;
-        this.contadorPaginaB = 3;
-        this.contadorPaginaC = 4;
-        this.contadorPaginaD = 5;
+        this.paginaSelecionada = 1;
         this.limiteInferiorIndice = 1;
         this.numeroImagensPorPagina = 12;  /* due Bootstrap grid layout */
-        this.contadorPaginaA = this.paginaSelecionada -2;
-        this.contadorPaginaB = this.paginaSelecionada - 1;
-        this.contadorpaginaAtual = this.paginaSelecionada;
-        this.contadorPaginaC = this.seletorDePagina + 1;
-        this.contadorPaginaD = this.seletorDePagina + 2;
         this.tamanhoArrayImagens = 0;
-        this.desabilitarAvancarPagina = false;
-        this.desabilitarVoltarPagina = false;
+        this.desabilitarAvancarPagina = true;
+        this.desabilitarVoltarPagina = true;
         this.filteredImages = new Array<PaginaImagemEntidade>();
         this.paginaDeImagens = new Array<PaginaImagemEntidade>();
         this.being_filtered = false;
@@ -105,25 +89,9 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     proximaPagina(evento) {
 
         evento.preventDefault();
-        if(this.seletorDePagina >= this.totalPaginas) {
-            this.desabilitarAvancarPagina = true;
-        }
-        else if (this.seletorDePagina >= this.limiteInferiorIndice && this.seletorDePagina < this.totalPaginas) {
+        if(this.paginaSelecionada < this.totalPaginas) {
+            this.paginaSelecionada = this.paginaSelecionada + 1;
 
-            // Garante que o seletor estara no intervalo valido
-            this.seletorDePagina++;
-            this.paginaSelecionada = this.seletorDePagina;
-            this.definirValoresContadorPagina(this.paginaSelecionada);
-            this.desabilitarAvancarPagina = false;
-            this.criarPagina(this.paginaSelecionada);
-        }
-        else if(this.seletorDePagina >= this.totalPaginas || (this.totalPaginas - this.seletorDePagina) <= 0) {
-
-            // muda o seletor para o intervalo valido caso esteja maior que o devido
-            this.seletorDePagina = this.totalPaginas;
-            this.paginaSelecionada = this.seletorDePagina;
-            this.definirValoresContadorPagina(this.paginaSelecionada);
-            this.desabilitarAvancarPagina = false;
             this.criarPagina(this.paginaSelecionada);
         }
     }
@@ -131,35 +99,11 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     paginaAnterior(evento) {
 
         evento.preventDefault();
-        if (this.seletorDePagina <= this.limiteInferiorIndice) {
+        if (this.paginaSelecionada > this.limiteInferiorIndice) {
+            this.paginaSelecionada = this.paginaSelecionada - 1;
 
-            // Garante que o seletor nao fica abaixo do que deve
-            this.seletorDePagina = this.limiteInferiorIndice;
-            this.paginaSelecionada = this.seletorDePagina;
-            this.definirValoresContadorPagina(this.paginaSelecionada);
-            this.desabilitarVoltarPagina = true;
             this.criarPagina(this.paginaSelecionada);
         }
-        else {
-
-            // Decrementa o contador de pagina
-            this.seletorDePagina--;
-            this.paginaSelecionada = this.seletorDePagina;
-            this.definirValoresContadorPagina(this.paginaSelecionada);
-            this.desabilitarVoltarPagina = false;
-            this.criarPagina(this.paginaSelecionada);
-        }
-    }
-
-    selecionarPagina(evento, paginaSelecionada: number) {
-
-        evento.preventDefault();
-        this.desabilitarAvancarPagina = false;
-        this.desabilitarVoltarPagina = false;
-        this.paginaSelecionada = paginaSelecionada;
-        this.seletorDePagina = paginaSelecionada;
-        this.definirValoresContadorPagina(this.paginaSelecionada);
-        this.criarPagina(this.paginaSelecionada);
     }
 
     criarPagina(paginaSelecionada: number) {
@@ -172,14 +116,15 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
         }
 
         if (set_of_images) {
+            this.paginaSelecionada = paginaSelecionada;
+
             this.tamanhoArrayImagens = set_of_images.length;
             this.removerElementosDaPagina();
             this.totalPaginas = Math.ceil(set_of_images.length / this.numeroImagensPorPagina);
-            this.definirValoresContadorPagina(paginaSelecionada);
 
-            const inicio = (paginaSelecionada - 1) * this.numeroImagensPorPagina;
+            const inicio = (this.paginaSelecionada - 1) * this.numeroImagensPorPagina;
             let limite;
-            if (this.totalPaginas == paginaSelecionada) {
+            if (this.totalPaginas == this.paginaSelecionada) {
                 limite = set_of_images.length;
             }
             else {
@@ -188,6 +133,20 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
 
             for (let i = inicio, j = 0; i < limite; i++, j++) {
                 this.paginaDeImagens.push(set_of_images[i]);
+            }
+
+            if (this.paginaSelecionada > this.limiteInferiorIndice) {
+                this.desabilitarVoltarPagina = false;
+            }
+            else {
+                this.desabilitarVoltarPagina = true;
+            }
+
+            if(this.paginaSelecionada < this.totalPaginas) {
+                this.desabilitarAvancarPagina = false;
+            }
+            else {
+                this.desabilitarAvancarPagina = true;
             }
         }
         else {
@@ -244,14 +203,6 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
         if (this.paginaDeImagens) {
             this.paginaDeImagens.splice(0, this.paginaDeImagens.length);
         }
-    }
-
-    definirValoresContadorPagina(paginaSelecionada: number) {
-        this.contadorpaginaAtual = paginaSelecionada;
-        this.contadorPaginaA = this.contadorpaginaAtual -2;
-        this.contadorPaginaB = this.contadorpaginaAtual - 1;
-        this.contadorPaginaC = this.contadorpaginaAtual + 1;
-        this.contadorPaginaD = this.contadorpaginaAtual + 2;
     }
 
     atualizarPagina() {
