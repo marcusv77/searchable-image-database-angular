@@ -121,15 +121,21 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
 
             this.tamanhoArrayImagens = set_of_images.length;
             this.removerElementosDaPagina();
-            this.totalPaginas = Math.ceil(set_of_images.length / this.numeroImagensPorPagina);
+
+            if (this.tamanhoArrayImagens === 0) {
+                this.totalPaginas = 1;
+            }
+            else {
+                this.totalPaginas = Math.ceil(this.tamanhoArrayImagens / this.numeroImagensPorPagina);
+            }
 
             const inicio = (this.paginaSelecionada - 1) * this.numeroImagensPorPagina;
             let limite;
-            if (this.totalPaginas == this.paginaSelecionada) {
-                limite = set_of_images.length;
+            if (this.totalPaginas === this.paginaSelecionada) {
+                limite = this.tamanhoArrayImagens;
             }
             else {
-                limite = paginaSelecionada * this.numeroImagensPorPagina;
+                limite = this.paginaSelecionada * this.numeroImagensPorPagina;
             }
 
             for (let i = inicio, j = 0; i < limite; i++, j++) {
