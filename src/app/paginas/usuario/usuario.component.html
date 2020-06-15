@@ -1,20 +1,19 @@
 <cr-animacao-carregamento *ngIf="carregando"></cr-animacao-carregamento>
-<section class="flex">
-    <div *ngFor="let usuario of todosUsuarios"
-            class="card-flex-box">
-        <!--So renderiza o card se o objeto img estiver pronto evita erros NotFound no console-->
-        <div *ngIf="usuario">
-            <div>
-                <p>Id: {{usuario.id}}</p>
-                <p>Nome: {{usuario.primeiro_nome}}</p>
-                <p>Ultimo nome: {{usuario.ultimo_nome}}</p>
-                <p>Email: {{usuario.email}}</p>
-                <p>Senha: {{usuario.senha}}</p>
-                <p>Ativo: {{usuario.ativo}}</p>
-                <p>Criado em: {{usuario.createdAt}}</p>
-                <p>Modificado em: {{usuario.updatedAt}}</p>
-            </div>
-            <hr>
-        </div>
-    </div>
-</section>
+<div class="container">
+
+    <h1>Your Private Collection</h1>
+    <p>
+        Click the image
+        to zoom
+        and
+        have access to cell classification.
+        Each image has annotations for each nucleus
+        which are represented by bounding boxes (100pixels x 100pixels).
+    </p>
+
+    <cr-listar-cards-imagem [todasImagens]="todasImagens"
+            [classificationDatabase]="classificationDatabase"
+            #atualizarPaginacaoViewChild>
+    </cr-listar-cards-imagem>
+
+</div>
