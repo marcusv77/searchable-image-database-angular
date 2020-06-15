@@ -17,6 +17,8 @@ import { PrivacyComponent } from "./paginas/privacy/privacy.component";
 import { TermsComponent } from "./paginas/terms/terms.component";
 import { UploadImageComponent } from "./paginas/upload-image/upload-image.component";
 
+import { AdminUserComponent } from "./admin/user/user.component";
+
 const routes: Routes = [
     {path: "", component: IndexComponent},
     {path: "privacy", component: PrivacyComponent},
@@ -31,6 +33,7 @@ const routes: Routes = [
     {path: "image/upload", component: UploadImageComponent},
     {path: "erro", component: PaginaDeErroComponent},
     {path: "user", component: UsuarioComponent, canActivate: [GuardaAutenticacao]},
+    {path: "admin/user", component: AdminUserComponent, canActivate: [GuardaAutenticacao]},
     {path: "**", component: PaginaDeErroComponent}
 ];
 

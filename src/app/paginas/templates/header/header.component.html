@@ -90,6 +90,12 @@
                 </li>
                 <li *ngIf="usuarioAutenticado"
                         class="nav-item">
+                    <a [routerLink]="['/user']"
+                            class="nav-link sair"
+                            >Account</a>
+                </li>
+                <li *ngIf="usuarioAutenticado"
+                        class="nav-item">
                     <a href="#"
                             class="nav-link sair"
                             (click)="fazerLogOut($event)">Leave</a>
