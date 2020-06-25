@@ -143,14 +143,12 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                     const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
                     this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
 
-                    setTimeout(() => {
-                        if(this.objetoSessao){
-                            this.listarClassificacoesDeCelula(this.id_imagem, this.objetoSessao.id_usuario);
-                        }
-                        else{
-                            this.listarClassificacoesDeCelula(this.id_imagem, 1);
-                        }
-                    },         500);
+                    setTimeout(
+                        () => {
+                            this.listarClassificacoesDeCelula(this.id_imagem);
+                        },
+                        500
+                    );
                     this.carregando = false;
                 },
                 (erro) => {
@@ -293,11 +291,20 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             );
     }
 
-    listarClassificacoesDeCelula(id_imagem: number, id_analista: number) {
+    listarClassificacoesDeCelula(id_imagem: number) {
+        let user_id;
+
+        if(this.objetoSessao){
+            user_id = this.objetoSessao.id_usuario;
+        }
+        else{
+            user_id = 1;
+        }
 
         this.carregando = true;
+        
         this.listarClassificacoesDeCelulaSubscription =
-        this.imagemService.listarClassificacoesCelula(id_imagem, id_analista)
+        this.imagemService.listarClassificacoesCelula(id_imagem, user_id)
             .subscribe(
                 (retorno) => {
                     this.todasClassificacoes = retorno;
