@@ -68,6 +68,12 @@ img{
     &:hover {
         opacity: 0.8;
     }
+
+    &:disabled,
+    &.disabled {
+        opacity: 1;
+        cursor: not-allowed;
+    }
 }
 
 .btn-primary {
@@ -75,8 +81,24 @@ img{
     border-color: $cric-blue;
 
     &:hover {
-        background-color: $cric-blue;
-        border-color: $cric-blue;
+        background-color: $cric-dark-blue;
+        border-color: $cric-dark-blue;
+    }
+
+    &:focus {
+    }
+
+    &:checked{
+    }
+    
+    &:active,
+    &.active {
+    }
+
+    &:disabled,
+    &.disabled {
+        background-color: $cric-light-blue;
+        border-color: $cric-light-blue;
     }
 }
 
