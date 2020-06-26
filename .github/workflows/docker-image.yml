@@ -20,7 +20,7 @@ jobs:
     - name: Build the (production) Docker image
       env:
           GITHUB_REF: ${{ github.ref }}
-      run: docker build . --target production -t cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-production .
+      run: docker build --target production -t cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-production .
     - name: Login into DockerHub
       env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -29,9 +29,9 @@ jobs:
     - name: Push the (development) Docker image
       env:
           GITHUB_REF: ${{ github.ref }}
-      run: docker push cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-development .
+      run: docker push cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-development
     - name: Push the (production) Docker image
       env:
           GITHUB_REF: ${{ github.ref }}
-      run: docker push cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-production .
+      run: docker push cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-production
       
