@@ -86,6 +86,9 @@ img{
     }
 
     &:focus {
+        background-color: $cric-dark-blue;
+        border-color: $cric-dark-blue;
+        box-shadow: 0 0 0 0.2rem $cric-dark-blue;
     }
 
     &:checked{
@@ -93,6 +96,8 @@ img{
     
     &:active,
     &.active {
+        background-color: $cric-blue;
+        border-color: $cric-blue;
     }
 
     &:disabled,
