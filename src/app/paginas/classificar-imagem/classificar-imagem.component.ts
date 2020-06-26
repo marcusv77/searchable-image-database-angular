@@ -405,7 +405,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                         this.imagem = retorno;
                         const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
                         this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
-                        this.listarClassificacoesDeCelula(this.imagem.id, this.objetoSessao.id_usuario);
+                        this.listarClassificacoesDeCelula(this.imagem.id);
                         this.carregando = false;
                         this.atualizarInformacoes = false;
                     },
@@ -468,7 +468,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                         this.imagem = retorno;
                         const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
                         this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
-                        this.listarClassificacoesDeCelula(this.imagem.id, this.objetoSessao.id_usuario);
+                        this.listarClassificacoesDeCelula(this.imagem.id);
                         this.indiceSelecionado = -1;
                         exibirClassificacoes(this.todasClassificacoes);
                         this.carregando = false;

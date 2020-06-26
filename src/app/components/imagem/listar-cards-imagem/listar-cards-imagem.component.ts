@@ -214,10 +214,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
 
     atualizarPagina() {
         if(this.todasImagens && this.tamanhoArrayImagens != this.todasImagens.length) {
-
-            this.seletorDePagina = 1;
-            this.contadorpaginaAtual = this.seletorDePagina;
-            this.criarPagina(this.contadorpaginaAtual);
+            this.criarPagina(this.paginaSelecionada);
         }
         else{
             setTimeout(() => {
