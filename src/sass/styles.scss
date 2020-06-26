@@ -68,6 +68,12 @@ img{
     &:hover {
         opacity: 0.8;
     }
+
+    &:disabled,
+    &.disabled {
+        opacity: 1;
+        cursor: not-allowed;
+    }
 }
 
 .btn-primary {
@@ -75,8 +81,29 @@ img{
     border-color: $cric-blue;
 
     &:hover {
+        background-color: $cric-dark-blue;
+        border-color: $cric-dark-blue;
+    }
+
+    &:focus {
+        background-color: $cric-dark-blue;
+        border-color: $cric-dark-blue;
+        box-shadow: 0 0 0 0.2rem $cric-dark-blue;
+    }
+
+    &:checked{
+    }
+    
+    &:active,
+    &.active {
         background-color: $cric-blue;
         border-color: $cric-blue;
+    }
+
+    &:disabled,
+    &.disabled {
+        background-color: $cric-light-blue;
+        border-color: $cric-light-blue;
     }
 }
 

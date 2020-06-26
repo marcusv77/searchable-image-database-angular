@@ -1,4 +1,3 @@
-<cr-animacao-carregamento *ngIf="carregando"></cr-animacao-carregamento>
 <div class="container">
 
     <h1>Downloads</h1>
@@ -28,8 +27,15 @@
     <button id="botao_download"
             type="submit"
             class="btn btn-primary"
+            [disabled]="carregando"
             (click)="solicitarDownloadImagens()">
+      <span *ngIf="!carregando">
         Download images and classifications
+      </span>
+      <span *ngIf="carregando">
+        Creating zip file with images and classifications
+      </span>
+      <span  *ngIf="carregando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
     </button>
 
     <cr-cite-us></cr-cite-us>

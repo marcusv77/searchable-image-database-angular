@@ -18,6 +18,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     public paginaDeImagens: Array<PaginaImagemEntidade>;
     @Input() segmentationDatabase = false;
     @Input() classificationDatabase = false;
+    @Input() carregando: boolean;
     public Imagem: IImagemModelResultado;
     private paginaSelecionada: number;
     private limiteInferiorIndice: number;

@@ -207,7 +207,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                     const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
                     this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
                     this.indiceSelecionado = -1;
-                    this.listarClassificacoesDeCelula(this.imagem.id, this.objetoSessao.id_usuario);
+                    this.listarClassificacoesDeCelula(this.imagem.id);
                     this.carregando = false;
                     console.log("Classification saved");
                 },
