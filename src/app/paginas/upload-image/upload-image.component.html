@@ -60,29 +60,6 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                <label for="lesao_imagem"
-                        class="activate">Diagnostic</label>
-                <select class="form-control"
-                        id="lesao_imagem"
-                        formControlName="lesao_imagem">
-
-                    <option [ngValue]="null"
-                            disabled
-                            hidden>Choose a diagnostic</option>
-                    <option *ngFor="let lesao of todasLesoes"
-                            [ngValue]="lesao.id">
-                        {{ lesao.nome }}
-                    </option>
-
-                </select>
-                <div *ngIf="(!lesao_imagem.pristine && lesao_imagem.errors) || (lesao_imagem.errors && lesao_imagem.touched)">
-                    <p *ngIf="lesao_imagem.errors.required">
-                        Image lesion
-                    </p>
-                </div>
-            </div>
-
             <div>
                 <button type="submit"
                         class="btn btn-primary btn-lg btn-block"
