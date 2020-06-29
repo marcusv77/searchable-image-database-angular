@@ -58,13 +58,6 @@ export class UploadImageComponent implements OnInit, OnDestroy {
                         Validators.required
                     ])
                 ],
-            lesao_imagem:
-                [
-                    "",
-                    Validators.compose([
-                        Validators.required
-                    ])
-                ],
             arquivo_imagem: [null]
         });
     }
@@ -90,7 +83,6 @@ export class UploadImageComponent implements OnInit, OnDestroy {
             formularioFormData.append("id_usuario", this.objetoSessao.id_usuario.toString());
             formularioFormData.append("codigo_lamina", this.formularioImagem.get("codigo_lamina").value);
             formularioFormData.append("dt_aquisicao", this.formularioImagem.get("dt_aquisicao").value);
-            formularioFormData.append("id_lesao", this.formularioImagem.get("lesao_imagem").value);
             formularioFormData.append("file", this.formularioImagem.get("arquivo_imagem").value);
 
             this.solicitarCadastroImagemSubscription =
@@ -98,11 +90,13 @@ export class UploadImageComponent implements OnInit, OnDestroy {
                     .subscribe(
                         (retorno) => {
                             this.carregando = false;
-                            console.log(retorno);
+
                             this.new_image = retorno;
+                            this.new_image.lesao = this.todasLesoes[this.new_image.id_lesao];
+
                             const destino = this.new_image.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
                             this.new_image_path = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.new_image.nome}`;
-                            console.log("Image successfully registered");
+
                             this.new_image_uploaded = true;
                         },
                         (erro) => {
@@ -201,7 +195,4 @@ export class UploadImageComponent implements OnInit, OnDestroy {
         return this.formularioImagem.get("dt_aquisicao");
     }
 
-    get lesao_imagem() {
-        return this.formularioImagem.get("lesao_imagem");
-    }
 }
