@@ -3,6 +3,8 @@ import { NgModule } from "@angular/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
+import { NgxJsonLdModule } from "@ngx-lite/json-ld";
+
 // Componentes
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -41,8 +43,6 @@ import { SignUpService } from "./services/login/sign_up.service";
 import { ImagemService } from "./services/imagens_service/imagens.service";
 import { ConexaoService } from "./services/conexao/conexao.service";
 
-
-
 @NgModule({
     declarations: [
         AppComponent,
@@ -74,7 +74,8 @@ import { ConexaoService } from "./services/conexao/conexao.service";
         FormsModule,
         HttpClientModule,
         ReactiveFormsModule,
-        ChartModule
+        ChartModule,
+        NgxJsonLdModule
     ],
     providers: [
         ImagemService,

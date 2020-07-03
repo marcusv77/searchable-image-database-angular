@@ -10,6 +10,13 @@ import { ArmazenamentoBrowser } from "./utils/browser_storage/browser_storage";
 })
 export class AppComponent {
 
+    public schema = {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "name": "CRIC Searchable Image Database",
+        "url": "http://database.cric.com.br/"
+    };
+
     @Output() usuarioAutenticado = false;
     private armazenamentoBrowser: ArmazenamentoBrowser;
 

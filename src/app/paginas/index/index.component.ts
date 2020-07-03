@@ -13,6 +13,13 @@ import { Subscription } from "rxjs";
 
 export class IndexComponent implements OnInit, OnDestroy {
 
+    public schema = {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "CRIC Searchable Image Database Home Page",
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+    };
+
     public statusDaConexao: IStatusSistemaResultado;
     private objetoErro: ObjetoErro;
     private verificarConexaoSubscription: Subscription;
