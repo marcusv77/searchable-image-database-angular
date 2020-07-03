@@ -520,4 +520,63 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     save_image() {
         canvas2file();  /* see canvas.js */
     }
+
+    save_json() {
+        var classifications_array = [];
+        
+        classifications_array.push({
+            image_id: this.imagem.id,
+            image_doi: this.imagem.doi,
+            image_name: this.imagem.nome,
+            classifications: this.todasClassificacoes.map(
+                (item) => {
+                    return {
+                        cell_id: item.id_celula,
+                        bethesda_system: item.lesao.nome,
+                        nucleus_x: item.coord_centro_nucleo_x,
+                        nucleus_y: item.coord_centro_nucleo_y
+                    };
+                }
+            )
+        });
+
+        this.save_file(
+            JSON.stringify(classifications_array),
+            `cric_${this.id_imagem}_classification.json`
+        )
+    }
+
+    save_csv() {
+        var classifications_csv_string = "image_id,image_filename,image_doi,cell_id,bethesda_system,nucleus_x,nucleus_y\n";
+
+        this.todasClassificacoes.forEach(
+            (item) => {
+                classifications_csv_string = classifications_csv_string + `${this.imagem.id},${this.imagem.nome},${this.imagem.doi},${item.id_celula},${item.lesao.nome},${item.coord_centro_nucleo_x},${item.coord_centro_nucleo_y}\n`;
+            }
+        );
+
+        this.save_file(
+            classifications_csv_string,
+            `cric_${this.id_imagem}_classification.csv`
+        )
+    }
+
+    save_file(data, filename) {
+        var file_a = document.createElement('a');
+        file_a.setAttribute(
+            'href',
+            'data:text/plain;charset=utf-8,' + encodeURIComponent(data)
+        );
+        file_a.setAttribute(
+            'download',
+            filename
+        );
+
+        file_a.style.display = 'none';
+        document.body.appendChild(file_a);
+
+        file_a.click();
+
+        document.body.removeChild(file_a);
+    }
 }
