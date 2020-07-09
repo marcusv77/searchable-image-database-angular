@@ -18,6 +18,13 @@ import { ComunicacaoApi } from "../../api_cric_database/comunicacao_api";
 })
 export class UploadImageComponent implements OnInit, OnDestroy {
 
+    public schema = {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "Upload Image",
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+    };
+
     private objetoErro: ObjetoErro;
     private objetoSessao: IObjetoSessaoModel;
     private armazenamentoBrowser: ArmazenamentoBrowser;

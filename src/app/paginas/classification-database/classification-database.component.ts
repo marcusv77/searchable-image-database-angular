@@ -17,6 +17,13 @@ import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_b
 
 export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
 
+    public schema = {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "Classification",
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+    };
+
     @Output() public todasImagens: IImagemModelResultado[];
     @Output() public classificationDatabase = false;
     @ViewChild("atualizarPaginacaoViewChild", { static: true }) public atualizacaoDePaginaViewChild: any;

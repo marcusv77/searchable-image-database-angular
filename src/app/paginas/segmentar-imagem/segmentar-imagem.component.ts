@@ -30,6 +30,20 @@ declare const exibirSegmentacoes: any; // Função javascript
 
 export class SegmentarImagemComponent implements OnInit, OnDestroy {
 
+    public schema = {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "CRIC Cervix Segmentation",
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+    };
+
+    public schema_sample = {
+        "@context": "http://bioschemas.org",
+        "@type": "Sample",
+        "subjectOf": "http://database.cric.com.br/",
+        "name": `CRIC Cervix Segmentation #${this.id_imagem}`
+    };
+
     private SegmentacaoHelper: SegmentacaoHelper;
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private cadastrarSegmentacaoSubscription: Subscription;

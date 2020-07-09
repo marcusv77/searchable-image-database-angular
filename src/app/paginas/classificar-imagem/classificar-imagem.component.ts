@@ -32,6 +32,20 @@ declare const canvas2file: any;
 
 export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
+    public schema = {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "CRIC Cervix Classification",
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+    };
+
+    public schema_sample = {
+        "@context": "http://bioschemas.org",
+        "@type": "Sample",
+        "subjectOf": "http://database.cric.com.br/",
+        "name": `CRIC Cervix Classification #${this.id_imagem}`
+    };
+
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private atualizarDadosImagemSubscription: Subscription;
     private cadastrarClassificacaoSubscription: Subscription;
@@ -85,6 +99,8 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             .subscribe((params: ParamMap) => {
                 this.id_imagem = Number(params.get("id"));
                 this.obterUmaImagem(this.id_imagem);
+
+                this.schema_sample.name = `CRIC Cervix #${this.id_imagem}`;
             });
 
         this.listarTodasLesoes();
@@ -302,7 +318,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         }
 
         this.carregando = true;
-        
+
         this.listarClassificacoesDeCelulaSubscription =
         this.imagemService.listarClassificacoesCelula(id_imagem, user_id)
             .subscribe(

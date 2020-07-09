@@ -7,6 +7,13 @@ import { Component, OnInit } from "@angular/core";
 })
 export class PaginaDeErroComponent implements OnInit {
 
+    public schema = {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "Error",
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+    };
+
     constructor() { }
 
     ngOnInit() { }

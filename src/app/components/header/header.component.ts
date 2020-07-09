@@ -23,6 +23,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private objetoErro: ObjetoErro;
     private fazerLogOutSubscription: Subscription;
 
+    public schema = {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "name": "angular.io",
+        "url": "https://angular.io"
+    };
+
     constructor(private autenticacaoService: AutenticacaoService, private router: Router, private usuarioService: UsuarioService) {}
 
     ngOnInit() {
