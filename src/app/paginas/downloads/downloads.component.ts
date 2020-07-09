@@ -16,6 +16,13 @@ import { Mensagens } from "src/app/utils/mensagens";
 })
 export class DownloadsComponent implements OnInit, OnDestroy {
 
+    public schema = {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "Download",
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+    };
+
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private objetoSessao: IObjetoSessaoModel;
     private objetoErro: ObjetoErro;

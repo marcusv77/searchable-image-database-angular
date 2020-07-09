@@ -17,6 +17,13 @@ import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_b
 
 export class SegmentationDatabaseComponent implements OnInit, OnDestroy {
 
+    public schema = {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "CRIC Cervix Segmentation",
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+    };
+
     @Output() public todasImagens: IImagemModelResultado[];
     @Output() public segmentationDatabase: boolean;
     @ViewChild("atualizarPaginacaoViewChild", { static: true }) public atualizacaoDePaginaViewChild: any;

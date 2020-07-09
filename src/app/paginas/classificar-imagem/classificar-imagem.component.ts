@@ -35,7 +35,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     public schema = {
         "@context": "http://schema.org",
         "@type": "WebPage",
-        "name": "CRIC Cervix",
+        "name": "CRIC Cervix Classification",
         "license": "https://creativecommons.org/licenses/by/4.0/"
     };
 
@@ -43,7 +43,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         "@context": "http://bioschemas.org",
         "@type": "Sample",
         "subjectOf": "http://database.cric.com.br/",
-        "name": `CRIC Cervix #${this.id_imagem}`
+        "name": `CRIC Cervix Classification #${this.id_imagem}`
     };
 
     private armazenamentoBrowser: ArmazenamentoBrowser;

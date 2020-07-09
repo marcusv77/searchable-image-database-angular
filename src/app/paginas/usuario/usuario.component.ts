@@ -16,6 +16,14 @@ import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_b
 })
 
 export class UsuarioComponent implements OnInit {
+
+    public schema = {
+        "@context": "http://schema.org",
+        "@type": "WebPage",
+        "name": "User",
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+    };
+    
     @Output() public todasImagens: IImagemModelResultado[];
     @Output() public classificationDatabase = false;
     @ViewChild("atualizarPaginacaoViewChild", { static: true }) public atualizacaoDePaginaViewChild: any;
