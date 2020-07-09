@@ -173,26 +173,10 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
                     switch(this.objetoErro.status_code) {
 
-                    case HttpStatusCode.UNAUTHORIZED: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.BAD_REQUEST: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.NOT_FOUND: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.FORBIDDEN: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
+                    case HttpStatusCode.UNAUTHORIZED:
+                    case HttpStatusCode.BAD_REQUEST:
+                    case HttpStatusCode.NOT_FOUND:
+                    case HttpStatusCode.FORBIDDEN:
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
                         console.log(this.objetoErro.mensagem);
                         break;
@@ -233,26 +217,10 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
                     switch(this.objetoErro.status_code) {
 
-                    case HttpStatusCode.UNAUTHORIZED: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.BAD_REQUEST: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.NOT_FOUND: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.FORBIDDEN: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
+                    case HttpStatusCode.UNAUTHORIZED:
+                    case HttpStatusCode.BAD_REQUEST:
+                    case HttpStatusCode.NOT_FOUND:
+                    case HttpStatusCode.FORBIDDEN:
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
                         console.log(this.objetoErro.mensagem);
                         break;
@@ -283,16 +251,8 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
                     switch(this.objetoErro.status_code) {
 
-                    case HttpStatusCode.UNAUTHORIZED: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.NOT_FOUND: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
+                    case HttpStatusCode.UNAUTHORIZED:
+                    case HttpStatusCode.NOT_FOUND:
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
                         console.log(this.objetoErro.mensagem);
                         break;
@@ -333,26 +293,10 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
                     switch(this.objetoErro.status_code) {
 
-                    case HttpStatusCode.UNAUTHORIZED: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.BAD_REQUEST: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.NOT_FOUND: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.FORBIDDEN: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
+                    case HttpStatusCode.UNAUTHORIZED:
+                    case HttpStatusCode.BAD_REQUEST:
+                    case HttpStatusCode.NOT_FOUND:
+                    case HttpStatusCode.FORBIDDEN:
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
                         console.log(this.objetoErro.mensagem);
                         break;
@@ -431,21 +375,9 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
                         switch(this.objetoErro.status_code) {
 
-                        case HttpStatusCode.UNAUTHORIZED: {
-                            console.log(this.objetoErro.mensagem);
-                            break;
-                        }
-
-                        case HttpStatusCode.BAD_REQUEST: {
-                            console.log(this.objetoErro.mensagem);
-                            break;
-                        }
-
-                        case HttpStatusCode.NOT_FOUND: {
-                            console.log(this.objetoErro.mensagem);
-                            break;
-                        }
-
+                        case HttpStatusCode.UNAUTHORIZED:
+                        case HttpStatusCode.BAD_REQUEST:
+                        case HttpStatusCode.NOT_FOUND:
                         case HttpStatusCode.INTERNAL_SERVER_ERROR: {
                             console.log(this.objetoErro.mensagem);
                             break;
@@ -495,26 +427,10 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
                         switch(this.objetoErro.status_code) {
 
-                        case HttpStatusCode.UNAUTHORIZED: {
-                            console.log(this.objetoErro.mensagem);
-                            break;
-                        }
-
-                        case HttpStatusCode.BAD_REQUEST: {
-                            console.log(this.objetoErro.mensagem);
-                            break;
-                        }
-
-                        case HttpStatusCode.NOT_FOUND: {
-                            console.log(this.objetoErro.mensagem);
-                            break;
-                        }
-
-                        case HttpStatusCode.FORBIDDEN: {
-                            console.log(this.objetoErro.mensagem);
-                            break;
-                        }
-
+                        case HttpStatusCode.UNAUTHORIZED:
+                        case HttpStatusCode.BAD_REQUEST:
+                        case HttpStatusCode.NOT_FOUND:
+                        case HttpStatusCode.FORBIDDEN:
                         case HttpStatusCode.INTERNAL_SERVER_ERROR: {
                             console.log(this.objetoErro.mensagem);
                             break;
