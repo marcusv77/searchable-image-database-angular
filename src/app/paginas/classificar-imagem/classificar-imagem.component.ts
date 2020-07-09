@@ -43,7 +43,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         "@context": "http://bioschemas.org",
         "@type": "Sample",
         "subjectOf": "http://database.cric.com.br/",
-        "name": `CRIC Cervix Classification #${this.id_imagem}`
+        "name": `CRIC Cervix Classification #undefined`
     };
 
     private armazenamentoBrowser: ArmazenamentoBrowser;
@@ -100,7 +100,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                 this.id_imagem = Number(params.get("id"));
                 this.obterUmaImagem(this.id_imagem);
 
-                this.schema_sample.name = `CRIC Cervix #${this.id_imagem}`;
+                this.schema_sample.name = `CRIC Cervix Classification #${this.id_imagem}`;
             });
 
         this.listarTodasLesoes();
