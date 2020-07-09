@@ -8,6 +8,7 @@ import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_stor
 import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
 import { ILesaoModelResultado } from "src/app/models/imagem/lesao.model";
 import { IDescricaoModelResultado } from "src/app/models/imagem/descricao.model";
+import { ICelulaClassificadaModelResultado } from "src/app/models/classificacao/celula_classificada.model";
 import { IClassificacaoCelulaModelResultado } from "src/app/models/classificacao/classificacao_celula.model";
 import { ISegmentacaoCelulaModelResultado } from "src/app/models/segmentacao/segmentacao_celula.model";
 import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
@@ -120,12 +121,12 @@ export class ImagemService {
         });
     }
 
-    listarClassificacoesCelula(id_imagem: number, id_analista: number): Observable<IClassificacaoCelulaModelResultado> {
+    listarClassificacoesCelula(id_imagem: number, id_analista: number): Observable<ICelulaClassificadaModelResultado[]> {
 
         this.inicializarServicos();
         const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/${id_imagem}/listar-classificacao-celula/${id_analista}`;
 
-        return this.httpClient.get<IClassificacaoCelulaModelResultado>(url, {
+        return this.httpClient.get<ICelulaClassificadaModelResultado[]>(url, {
             headers: this.headerApplicationJson
         });
     }

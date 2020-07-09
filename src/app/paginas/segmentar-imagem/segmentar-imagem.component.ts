@@ -41,7 +41,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
         "@context": "http://bioschemas.org",
         "@type": "Sample",
         "subjectOf": "http://database.cric.com.br/",
-        "name": `CRIC Cervix Segmentation #${this.id_imagem}`
+        "name": `CRIC Cervix Segmentation #undefined`
     };
 
     private SegmentacaoHelper: SegmentacaoHelper;
@@ -90,6 +90,8 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
         this.activatedRoute.paramMap.subscribe((params: ParamMap) => {
             const id = Number(params.get("id"));
             this.id_imagem = id;
+
+            this.schema_sample.name = `CRIC Cervix Segmentation #${this.id_imagem}`;
         });
 
         this.indiceSelecionado = this.indiceSelecionadoPadrao;

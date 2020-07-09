@@ -7,7 +7,6 @@ import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_b
 import { ImagemService } from "src/app/services/imagens_service/imagens.service";
 import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
 import { Subscription } from "rxjs";
-import { ILesaoModelResultado } from "src/app/models/imagem/lesao.model";
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { ComunicacaoApi } from "../../api_cric_database/comunicacao_api";
 
@@ -28,7 +27,6 @@ export class UploadImageComponent implements OnInit, OnDestroy {
     private objetoErro: ObjetoErro;
     private objetoSessao: IObjetoSessaoModel;
     private armazenamentoBrowser: ArmazenamentoBrowser;
-    public todasLesoes: ILesaoModelResultado[];
     public formularioImagem: FormGroup;
     public carregando: boolean;
     public arquivoSelecionado: boolean;
@@ -36,7 +34,6 @@ export class UploadImageComponent implements OnInit, OnDestroy {
     public new_image: IImagemModelResultado;
     public new_image_path: string;
     private solicitarCadastroImagemSubscription: Subscription;
-    private listarTodasLesoesSubscription: Subscription;
     private comunicacaoApi: ComunicacaoApi;
 
     constructor(private imagemService: ImagemService, private formBuilder: FormBuilder) {
@@ -70,15 +67,11 @@ export class UploadImageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.listarTodasLesoes();
     }
 
     ngOnDestroy() {
         if (this.solicitarCadastroImagemSubscription) {
             this.solicitarCadastroImagemSubscription.unsubscribe();
-        }
-        if (this.listarTodasLesoesSubscription) {
-            this.listarTodasLesoesSubscription.unsubscribe();
         }
     }
 
@@ -99,7 +92,6 @@ export class UploadImageComponent implements OnInit, OnDestroy {
                             this.carregando = false;
 
                             this.new_image = retorno;
-                            this.new_image.lesao = this.todasLesoes[this.new_image.id_lesao];
 
                             const destino = this.new_image.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
                             this.new_image_path = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.new_image.nome}`;
@@ -155,43 +147,6 @@ export class UploadImageComponent implements OnInit, OnDestroy {
         });
         this.formularioImagem.get("arquivo_imagem").updateValueAndValidity();
         this.arquivoSelecionado = true;
-    }
-
-    listarTodasLesoes() {
-
-        this.listarTodasLesoesSubscription =
-            this.imagemService.listarLesoes()
-                .subscribe(
-                    (retorno) => {
-                        this.todasLesoes = retorno;
-                    },
-                    (erro) => {
-
-                        this.objetoErro = erro.error;
-                        switch (this.objetoErro.status_code) {
-
-                        case HttpStatusCode.UNAUTHORIZED: {
-                            console.log(this.objetoErro.mensagem);
-                            break;
-                        }
-
-                        case HttpStatusCode.NOT_FOUND: {
-                            console.log(this.objetoErro.mensagem);
-                            break;
-                        }
-
-                        case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                            console.log(this.objetoErro.mensagem);
-                            break;
-                        }
-
-                        default: {
-                            console.log(erro);
-                            break;
-                        }
-                        }
-                    }
-                );
     }
 
     get codigo_lamina() {
