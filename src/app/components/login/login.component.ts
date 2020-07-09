@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { Router } from "@angular/router";
+
 import { AutenticacaoService } from "src/app/services/login/autenticacao.service";
-import { UsuarioService } from "src/app/services/usuarios/usuarios.service";
-import { UsuarioLogin } from "src/app/services/login/usuario_login";
-import { SignUpService } from "src/app/services/login/sign_up.service";
 import { SignUp } from "src/app/services/login/sign_up";
+import { SignUpService } from "src/app/services/login/sign_up.service";
+import { UsuarioLogin } from "src/app/services/login/usuario_login";
+import { UsuarioService } from "src/app/services/usuarios/usuarios.service";
 
 @Component({
     selector: "cr-login",
@@ -23,7 +25,8 @@ export class LoginComponent implements OnInit {
     constructor(
         private autenticacaoService: AutenticacaoService,
         private usuarioService: UsuarioService,
-        private signUpService: SignUpService
+        private signUpService: SignUpService,
+        private router: Router
     ){
         this.usuarioLogin = new UsuarioLogin();
         this.new_user = new SignUp();
@@ -44,6 +47,12 @@ export class LoginComponent implements OnInit {
                 () => {
                     this.is_invalid = false;
                     this.login_close.nativeElement.click();
+
+                    this.router.navigate(
+                        [
+                            "user/"
+                        ]
+                    );
                 },
                 (err) => {
                     this.is_invalid = true;
