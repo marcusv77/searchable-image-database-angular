@@ -61,7 +61,6 @@ import { ConexaoService } from "./services/conexao/conexao.service";
         UsuarioComponent,
         LoginComponent,
         CadastroVisitanteComponent,
-        TesteComponent,
         AnimacaoCarregamentoComponent,
         CiteUsComponent,
         ImageInfoComponent,
