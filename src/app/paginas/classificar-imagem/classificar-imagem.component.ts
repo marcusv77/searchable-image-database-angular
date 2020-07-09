@@ -9,7 +9,7 @@ import { ChavesArmazenamentoBrowser } from "../../utils/chaves_armazenamento_bro
 import { IObjetoSessaoModel } from "../../models/autenticacao/objeto_sessao.model";
 import { ILesaoModelResultado } from "src/app/models/imagem/lesao.model";
 import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
-import { IClassificacaoCelulaModelResultado } from "src/app/models/classificacao/classificacao_celula.model";
+import { ICelulaClassificadaModelResultado } from "src/app/models/classificacao/celula_classificada.model";
 import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
 import { ComunicacaoApi } from "../../api_cric_database/comunicacao_api";
 import { CadastrarClassificacaoRequisicao } from "./requisicao";
@@ -72,7 +72,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     public lesao: LesaoEntidade;
     public objetoSessao: IObjetoSessaoModel;
     public permitirCadastroClassificacao: boolean;
-    public todasClassificacoes: IClassificacaoCelulaModelResultado;
+    public todasClassificacoes: ICelulaClassificadaModelResultado[];
     public todasLesoes: ILesaoModelResultado[];
     public todosUsuarios: IUsuarioBaseModel[];
 
