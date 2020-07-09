@@ -33,8 +33,6 @@ import { LoginComponent } from "./components/login/login.component";
 
 import { GuardaAutenticacao } from "./guardas/guarda-autenticacao";
 
-import { ChartModule } from "angular-highcharts";
-
 // Services
 import { UsuarioService } from "src/app/services/usuarios/usuarios.service";
 import { AutenticacaoService } from "./services/login/autenticacao.service";
@@ -72,7 +70,6 @@ import { ConexaoService } from "./services/conexao/conexao.service";
         FormsModule,
         HttpClientModule,
         ReactiveFormsModule,
-        ChartModule,
         NgxJsonLdModule
     ],
     providers: [
