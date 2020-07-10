@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output } from "@angular/core";
 
 import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
 import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
