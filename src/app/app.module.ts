@@ -31,6 +31,9 @@ import { ImageInfoComponent } from "./components/imagem/image-info/image-info.co
 import { ListarCardsImagemComponent } from "./components/imagem/listar-cards-imagem/listar-cards-imagem.component";
 import { LoginComponent } from "./components/login/login.component";
 
+import { AdminHomeComponent } from './admin/home/admin-home.component';
+import { AdminUserComponent } from './admin/user/admin-user.component';
+
 import { GuardaAutenticacao } from "./guardas/guarda-autenticacao";
 
 // Services
@@ -62,7 +65,9 @@ import { ConexaoService } from "./services/conexao/conexao.service";
         AnimacaoCarregamentoComponent,
         CiteUsComponent,
         ImageInfoComponent,
-        UploadImageComponent
+        UploadImageComponent,
+        AdminUserComponent,
+        AdminHomeComponent
     ],
     imports: [
         BrowserModule,
