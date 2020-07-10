@@ -23,7 +23,7 @@
   "scripts": {
     "start-dev": "ng serve --host 0.0.0.0 --disable-host-check",
     "start-prod": "ng serve --host 0.0.0.0 --disable-host-check --prod",
-    "build": "ng build --prod --build-optmizer",
+    "build": "ng build --configuration=production",
     "test": "ng test",
     "lint": "eslint src --ext .ts",
     "fix": "eslint --fix --fix-type layout src --ext .ts",
