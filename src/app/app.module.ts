@@ -20,7 +20,6 @@ import { SegmentarImagemComponent } from "./paginas/segmentar-imagem/segmentar-i
 import { SegmentationDatabaseComponent } from "./paginas/segmentation-database/segmentation-database.component";
 import { TermsComponent } from "./paginas/terms/terms.component";
 import { UploadImageComponent } from "./paginas/upload-image/upload-image.component";
-import { UsuarioComponent } from "./paginas/usuario/usuario.component";
 
 import { AnimacaoCarregamentoComponent } from "./components/sistema/animacao-carregamento/animacao-carregamento.component";
 import { CadastroVisitanteComponent } from "./components/usuario/cadastro-visitante/cadastro-visitante.component";
@@ -30,6 +29,9 @@ import { HeaderComponent } from "./components/header/header.component";
 import { ImageInfoComponent } from "./components/imagem/image-info/image-info.component";
 import { ListarCardsImagemComponent } from "./components/imagem/listar-cards-imagem/listar-cards-imagem.component";
 import { LoginComponent } from "./components/login/login.component";
+
+import { UserHomeComponent } from './user/home/user-home.component';
+import { UserClassificationDatabaseComponent } from './user/classfication-database/user-classification-database.component';
 
 import { AdminHomeComponent } from './admin/home/admin-home.component';
 import { AdminUserComponent } from './admin/user/admin-user.component';
@@ -59,7 +61,6 @@ import { ConexaoService } from "./services/conexao/conexao.service";
         PaginaDeErroComponent,
         SegmentarImagemComponent,
         ClassificarImagemComponent,
-        UsuarioComponent,
         LoginComponent,
         CadastroVisitanteComponent,
         AnimacaoCarregamentoComponent,
@@ -67,7 +68,9 @@ import { ConexaoService } from "./services/conexao/conexao.service";
         ImageInfoComponent,
         UploadImageComponent,
         AdminUserComponent,
-        AdminHomeComponent
+        AdminHomeComponent,
+        UserHomeComponent,
+        UserClassificationDatabaseComponent
     ],
     imports: [
         BrowserModule,

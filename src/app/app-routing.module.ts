@@ -12,11 +12,11 @@ import { PaginaDeErroComponent } from "./paginas/pagina_de_erro/pagina-de-erro.c
 import { SegmentarImagemComponent } from "./paginas/segmentar-imagem/segmentar-imagem.component";
 import { ListarCardsImagemComponent } from "./components/imagem/listar-cards-imagem/listar-cards-imagem.component";
 import { ClassificarImagemComponent } from "./paginas/classificar-imagem/classificar-imagem.component";
-import { UsuarioComponent } from "./paginas/usuario/usuario.component";
 import { PrivacyComponent } from "./paginas/privacy/privacy.component";
 import { TermsComponent } from "./paginas/terms/terms.component";
 import { UploadImageComponent } from "./paginas/upload-image/upload-image.component";
 
+import user_routes from "./user/routing";
 import admin_routes from "./admin/routing";
 
 const routes: Routes = [
@@ -32,7 +32,7 @@ const routes: Routes = [
     {path: "image", component: ListarCardsImagemComponent},
     {path: "image/upload", component: UploadImageComponent},
     {path: "erro", component: PaginaDeErroComponent},
-    {path: "user", component: UsuarioComponent, canActivate: [GuardaAutenticacao]},
+    ...user_routes,
     ...admin_routes,
     {path: "**", component: PaginaDeErroComponent}
 ];
