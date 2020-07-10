@@ -1,15 +1,17 @@
 import { Component, OnInit, Output } from "@angular/core";
-import { IUsuarioBaseModel } from "../../models/usuario/usuario_base.model";
-import { UsuarioService } from "../../services/usuarios/usuarios.service";
-import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
+
 import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
+
+import { IUsuarioBaseModel } from "../../models/usuario/usuario_base.model";
+
+import { UsuarioService } from "../../services/usuarios/usuarios.service";
 
 @Component({
-    selector: "cr-admin-usuario",
-    templateUrl: "./user.component.html",
-    styleUrls: ["./user.component.scss"]
+  selector: 'cr-admin-user',
+  templateUrl: './admin-user.component.html',
+  styleUrls: ['./admin-user.component.scss']
 })
-
 export class AdminUserComponent implements OnInit {
 
     @Output() public todosUsuarios: IUsuarioBaseModel[];
@@ -19,7 +21,6 @@ export class AdminUserComponent implements OnInit {
     constructor(private usuarioService: UsuarioService) {
     }
 
-    // Inicialzia o componente e busca todas as imagens do "banco de dados"
     ngOnInit() {
         this.carregando = false;
         this.objetoErro = new ObjetoErro();
@@ -40,16 +41,8 @@ export class AdminUserComponent implements OnInit {
 
                     switch(this.objetoErro.status_code) {
 
-                    case HttpStatusCode.UNAUTHORIZED: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.NOT_FOUND: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
+                    case HttpStatusCode.UNAUTHORIZED:
+                    case HttpStatusCode.NOT_FOUND:
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
                         console.log(this.objetoErro.mensagem);
                         break;
@@ -63,4 +56,5 @@ export class AdminUserComponent implements OnInit {
                 }
             );
     }
+
 }

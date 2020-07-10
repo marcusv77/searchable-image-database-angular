@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>
+    <a routerLink="/admin" routerLinkActive="active">
+      Administration Panel
+    </a>
+  </h1>
+  <h2>User</h2>
+  <section class="flex">
+    
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Surname</th>
+          <th scope="col">Email</th>
+          <th scope="col">Status</th>
+          <th scope="col">Password</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let usuario of todosUsuarios"
+            class="card-flex-box">
+          <!--So renderiza o card se o objeto img estiver pronto evita erros NotFound no console-->
+          <th scope="row">{{usuario.id}}</th>
+          <td>{{usuario.primeiro_nome}}</td>
+          <td>{{usuario.ultimo_nome}}</td>
+          <td>{{usuario.email}}</td>
+          <td>
+            <button *ngIf="!usuario.ativo" type="button" class="btn btn-primary">Active</button>
+            <button *ngIf="usuario.ativo" type="button" class="btn btn-primary">Deactive</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary">Change</button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </section>
+</div>
