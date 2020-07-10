@@ -1,21 +1,25 @@
-import { IObjetoSessaoModel } from "./../../models/autenticacao/objeto_sessao.model";
 import { Component, OnInit, Output, OnDestroy, ViewChild } from "@angular/core";
-import { ImagemService } from "src/app/services/imagens_service/imagens.service";
-import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
-import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
-import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
-import { ComunicacaoApi } from "src/app/api_cric_database/comunicacao_api";
+
 import { Subscription } from "rxjs";
+
 import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
 import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
+import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
+import { IObjetoSessaoModel } from "./../../models/autenticacao/objeto_sessao.model";
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
+
+import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
+
+import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+
+import { ComunicacaoApi } from "src/app/api_cric_database/comunicacao_api";
 
 @Component({
-    selector: "cr-usuario",
-    templateUrl: "./usuario.component.html",
-    styleUrls: ["./usuario.component.scss"]
+  selector: 'cr-user-classification-database',
+  templateUrl: './user-classification-database.component.html',
+  styleUrls: ['./user-classification-database.component.scss']
 })
-
-export class UsuarioComponent implements OnInit {
+export class UserClassificationDatabaseComponent implements OnInit {
 
     public schema = {
         "@context": "http://schema.org",
