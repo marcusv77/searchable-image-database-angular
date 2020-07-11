@@ -31,7 +31,7 @@ export class UsuarioService {
 
             this.headerApplicationJsonTokenSessao = new HttpHeaders({
                 "content-type": "application/json",
-                token_autenticacao: this.objetoSessao.token_autenticacao
+                Authorization: this.objetoSessao.Authorization
             });
         }
     }
@@ -103,15 +103,15 @@ export class UsuarioService {
         });
     }
 
-    fazerLogOff(token_autenticacao: string): Observable<any> {
+    fazerLogOff(Authorization: string): Observable<any> {
 
         this.inicializarServicos();
-        const url = `${this.api.obterUrlBaseApi()}/api/v1/usuarios/${token_autenticacao}`;
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/usuarios/${Authorization}`;
 
         return this.httpClient.delete(url, {
             headers: new HttpHeaders({
                 "content-type": "application/json",
-                token_autenticacao
+                Authorization
             })
         });
     }
@@ -126,7 +126,7 @@ export class UsuarioService {
         return this.httpClient.post(url, body, {
             headers: new HttpHeaders({
                 "content-type": "application/json; charset=utf-8",
-                token_autenticacao: this.autenticacaoCadastroVisitante
+                Authorization: this.autenticacaoCadastroVisitante
             })
         });
     }

@@ -35,15 +35,15 @@ export class ImagemService {
         if (this.objetoSessao) {
             this.headerApplicationJson = new HttpHeaders({
                 "content-type": "application/json; charset=utf-8",
-                token_autenticacao: this.objetoSessao.token_autenticacao
+                Authorization: this.objetoSessao.Authorization
             });
 
             this.headerMultipartFormData = new HttpHeaders({
-                token_autenticacao: this.objetoSessao.token_autenticacao
+                Authorization: this.objetoSessao.Authorization
             });
 
             this.headerDownloadArquivo = new HttpHeaders({
-                token_autenticacao: this.objetoSessao.token_autenticacao,
+                Authorization: this.objetoSessao.Authorization,
                 responseType: "blob"
             });
         }

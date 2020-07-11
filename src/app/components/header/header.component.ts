@@ -51,7 +51,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.router.navigate([""]);
 
         this.fazerLogOutSubscription =
-        this.usuarioService.fazerLogOff(this.objetoSessao.token_autenticacao)
+        this.usuarioService.fazerLogOff(this.objetoSessao.Authorization)
             .subscribe(
                 (retorno) => {
                 },
