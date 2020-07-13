@@ -186,7 +186,7 @@ export class ImagemService {
     excluirRegistroDeClassificacao(requisicao: any): Observable<IImagemModelResultado> {
 
         this.inicializarServicos();
-        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/${requisicao.id_imagem}/classificacao-celula/${requisicao.id_celula}/usuario/${requisicao.id_usuario}`;
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/${requisicao.id_imagem}/classificacao-celula/${requisicao.id_celula}`;
 
         return this.httpClient.delete<IImagemModelResultado>(url, {
             headers: this.headerApplicationJson
