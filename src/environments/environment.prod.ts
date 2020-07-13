@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    api_url: "https://api.database.cric.com.br",
-    email_address: "cric@ufop.edu.br"
+    api_url: $ENV.CRIC_API_DOMAIN,
+    email_address: $ENV.CRIC_EMAIL
 };
