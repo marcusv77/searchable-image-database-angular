@@ -58,10 +58,7 @@ export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
 
     listarImagens() {
 
-        let user_id = 1;
-        if(this.objetoSessao) {
-            user_id = this.objetoSessao.id_usuario;
-        }
+        const user_id = 1;
 
         this.todasImagens = null;
         this.carregando = true;
