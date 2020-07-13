@@ -156,8 +156,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             .subscribe(
                 (retorno) => {
                     this.imagem = retorno;
-                    const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
-                    this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
+                    this.caminho_imagem = `${this.comunicacaoApi.getImageURL()}/${this.imagem.nome}`;
 
                     setTimeout(
                         () => {
@@ -204,8 +203,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             .subscribe(
                 (retorno) => {
                     this.imagem = retorno;
-                    const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
-                    this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
+                    this.caminho_imagem = `${this.comunicacaoApi.getImageURL()}/${this.imagem.nome}`;
                     this.indiceSelecionado = -1;
                     this.listarClassificacoesDeCelula(this.imagem.id);
                     this.carregando = false;
@@ -363,8 +361,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                 .subscribe(
                     (retorno) => {
                         this.imagem = retorno;
-                        const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
-                        this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
+                        this.caminho_imagem = `${this.comunicacaoApi.getImageURL()}/${this.imagem.nome}`;
                         this.listarClassificacoesDeCelula(this.imagem.id);
                         this.carregando = false;
                         this.atualizarInformacoes = false;
@@ -414,8 +411,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                 .subscribe(
                     (retorno) => {
                         this.imagem = retorno;
-                        const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
-                        this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
+                        this.caminho_imagem = `${this.comunicacaoApi.getImageURL()}/${this.imagem.nome}`;
                         this.listarClassificacoesDeCelula(this.imagem.id);
                         this.indiceSelecionado = -1;
                         exibirClassificacoes(this.todasClassificacoes);

@@ -7,7 +7,6 @@ export class PaginaImagemEntidade {
     excluida: number;
     classificacao_aprovada: number;
     dt_aquisicao: Date;
-    fonte_aquisicao: number;
     caminho_imagem: string;
     id_usuario: number;
     lesao: LesaoEntidade;

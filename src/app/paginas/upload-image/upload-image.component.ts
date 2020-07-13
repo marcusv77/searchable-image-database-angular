@@ -93,8 +93,7 @@ export class UploadImageComponent implements OnInit, OnDestroy {
 
                             this.new_image = retorno;
 
-                            const destino = this.new_image.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
-                            this.new_image_path = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.new_image.nome}`;
+                            this.new_image_path = `${this.comunicacaoApi.getImageURL()}/${this.new_image.nome}`;
 
                             this.new_image_uploaded = true;
                         },
