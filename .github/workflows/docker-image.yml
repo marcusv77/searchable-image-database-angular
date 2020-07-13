@@ -20,6 +20,9 @@ jobs:
     - name: Build the (production) Docker image
       env:
           GITHUB_REF: ${{ github.ref }}
+          CRIC_DOMAIN: "https://database.cric.com.br"
+          CRIC_API_DOMAIN: "https://api.database.cric.com.br"
+          CRIC_EMAIL: "cric@ufop.edu.br"
       run: docker build --target production -t cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-production .
     - name: Login into DockerHub
       env:
