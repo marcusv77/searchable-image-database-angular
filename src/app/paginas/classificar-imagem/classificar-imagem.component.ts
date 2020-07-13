@@ -202,8 +202,6 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         this.imagemService.cadastrarClassificacao(this.id_imagem, this.objetoSessao.id_usuario, this.requisicao)
             .subscribe(
                 (retorno) => {
-                    this.imagem = retorno;
-                    this.caminho_imagem = `${this.comunicacaoApi.getImageURL()}/${this.imagem.nome}`;
                     this.indiceSelecionado = -1;
                     this.listarClassificacoesDeCelula(this.imagem.id);
                     this.carregando = false;
