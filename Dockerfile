@@ -18,6 +18,9 @@ RUN npm install && npm cache clean --force
 LABEL   version="2.5.0-development"
 
 FROM development as builder
+ARG CRIC_DOMAIN="https://database.cric.com.br"
+ARG CRIC_API_DOMAIN="https://api.database.cric.com.br"
+ARG CRIC_EMAIL="cric@ufop.edu.br"
 COPY . ./
 RUN ng build --prod --build-optimizer
 LABEL   version="2.5.0-builder"
