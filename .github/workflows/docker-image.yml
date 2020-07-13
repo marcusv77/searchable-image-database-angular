@@ -25,6 +25,14 @@ jobs:
           CRIC_EMAIL: "cric@ufop.edu.br"
           CRIC_PLAYGROUND: false
       run: docker build --build-arg CRIC_DOMAIN --build-arg CRIC_API_DOMAIN --build-arg CRIC_EMAIL --build-arg CRIC_PLAYGROUND --target production -t cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-production .
+    - name: Build the (playground) Docker image
+      env:
+          GITHUB_REF: ${{ github.ref }}
+          CRIC_DOMAIN: "https://playground.database.cric.com.br"
+          CRIC_API_DOMAIN: "https://api.playground.database.cric.com.br"
+          CRIC_EMAIL: "cric@ufop.edu.br"
+          CRIC_PLAYGROUND: true
+      run: docker build --build-arg CRIC_DOMAIN --build-arg CRIC_API_DOMAIN --build-arg CRIC_EMAIL --build-arg CRIC_PLAYGROUND --target production -t cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-playground .
     - name: Login into DockerHub
       env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -38,4 +46,8 @@ jobs:
       env:
           GITHUB_REF: ${{ github.ref }}
       run: docker push cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-production
+    - name: Push the (playground) Docker image
+      env:
+          GITHUB_REF: ${{ github.ref }}
+      run: docker push cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-playground
       
