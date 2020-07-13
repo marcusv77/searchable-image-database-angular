@@ -21,6 +21,15 @@
         }
     }
 
+    dd {
+
+        &::after {
+            content: "";
+            clear: both;
+            display: block;
+        }
+    }
+
     .bd-highlight + .bd-highlight {
         margin-right: 1vw;
     }

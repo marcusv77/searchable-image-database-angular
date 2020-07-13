@@ -1,4 +1,5 @@
 import { ILesaoModelResultado } from "./lesao.model";
+import { IUsuarioBaseModel } from "../usuario/usuario_base.model";
 
 export interface IImagemModelResultado {
     id: number;
@@ -11,6 +12,7 @@ export interface IImagemModelResultado {
     fonte_aquisicao: number;
     caminho_imagem: string;
     id_usuario: number;
+    usuario: IUsuarioBaseModel;
     lesao: ILesaoModelResultado;
     largura: number;
     altura: number;
