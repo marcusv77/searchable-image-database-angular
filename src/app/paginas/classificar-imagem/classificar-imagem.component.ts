@@ -340,26 +340,21 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
         this.carregando = true;
         const houveMudanca =
-            this.imagemAtualizacao.codigo_lamina != this.imagem.codigo_lamina ||
-            this.imagemAtualizacao.dt_aquisicao != this.imagem.dt_aquisicao ||
             this.lesao.id != this.todasClassificacoes[indiceSelecionado].lesao.id;
 
         if(houveMudanca) {
-
-            console.log("******** A data de aquisicao nao esta atualizando ********");
             const requisicao = {
-                codigo_lamina: this.imagemAtualizacao.codigo_lamina,
-                dt_aquisicao: this.imagemAtualizacao.dt_aquisicao,
                 id_lesao_celula: this.lesao.id,
-                id_celula: this.todasClassificacoes[indiceSelecionado].id_celula
             };
 
             this.atualizarDadosImagemSubscription =
-            this.imagemService.atualizarDadosImagem(this.imagem.id, this.objetoSessao.id_usuario, requisicao)
+                this.imagemService.atualizarClassificacao(
+                    this.imagem.id,
+                    this.todasClassificacoes[indiceSelecionado].id_celula,
+                    requisicao
+                )
                 .subscribe(
                     (retorno) => {
-                        this.imagem = retorno;
-                        this.caminho_imagem = `${this.comunicacaoApi.getImageURL()}/${this.imagem.nome}`;
                         this.listarClassificacoesDeCelula(this.imagem.id);
                         this.carregando = false;
                         this.atualizarInformacoes = false;
@@ -408,8 +403,6 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             this.imagemService.excluirRegistroDeClassificacao(parametrosRequisicao)
                 .subscribe(
                     (retorno) => {
-                        this.imagem = retorno;
-                        this.caminho_imagem = `${this.comunicacaoApi.getImageURL()}/${this.imagem.nome}`;
                         this.listarClassificacoesDeCelula(this.imagem.id);
                         this.indiceSelecionado = -1;
                         exibirClassificacoes(this.todasClassificacoes);

@@ -203,10 +203,20 @@ export class ImagemService {
         });
     }
 
-    atualizarDadosImagem(id_imagem: number, id_usuario: number, body: any): Observable<IImagemModelResultado> {
+    atualizarImagem(id_imagem: number, id_usuario: number, body: any): Observable<IImagemModelResultado> {
 
         this.inicializarServicos();
-        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/${id_imagem}/atualizar/${id_usuario}`;
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/${id_imagem}`;
+
+        return this.httpClient.put<IImagemModelResultado>(url, body, {
+            headers: this.headerApplicationJson
+        });
+    }
+
+    atualizarClassificacao(id_imagem: number, id_classificacao: number, body: any): Observable<IImagemModelResultado> {
+
+        this.inicializarServicos();
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/${id_imagem}/classificacao-celula/${id_classificacao}`;
 
         return this.httpClient.put<IImagemModelResultado>(url, body, {
             headers: this.headerApplicationJson
