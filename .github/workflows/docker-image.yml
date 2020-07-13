@@ -23,7 +23,7 @@ jobs:
           CRIC_DOMAIN: "https://database.cric.com.br"
           CRIC_API_DOMAIN: "https://api.database.cric.com.br"
           CRIC_EMAIL: "cric@ufop.edu.br"
-      run: docker build --target production -t cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-production .
+      run: docker build --build-arg CRIC_DOMAIN --build-arg CRIC_API_DOMAIN --build-arg CRIC_EMAIL --target production -t cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-production .
     - name: Login into DockerHub
       env:
           DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
