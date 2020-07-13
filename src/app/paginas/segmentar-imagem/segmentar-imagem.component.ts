@@ -131,7 +131,7 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
             .subscribe(
                 (retorno) => {
                     this.imagem = retorno;
-                    const destino = this.imagem.fonte_aquisicao == 1 ? this.comunicacaoApi.obterUrlBaseInterna() : this.comunicacaoApi.obterUrlBaseExterna();
+                    const destino = "png";
                     this.caminho_imagem = `${this.comunicacaoApi.obterUrlBaseApi()}/${destino}/${this.imagem.nome}`;
                     this.carregando = false;
                     if(this.objetoSessao){

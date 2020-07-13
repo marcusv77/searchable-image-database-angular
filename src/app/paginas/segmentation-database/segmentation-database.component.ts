@@ -102,7 +102,7 @@ export class SegmentationDatabaseComponent implements OnInit, OnDestroy {
     construirUrlCaminhoImagemThumbnail(listaImagens: IImagemModelResultado[]) {
 
         listaImagens.forEach((imagem) => {
-            const urlImg = `${this.comunicacaoApi.obterUrlBaseApi()}/${this.comunicacaoApi.obterUrlBaseThumbnail()}/${imagem.nome}`;
+            const urlImg = `${this.comunicacaoApi.getThumbnailURL()}/${imagem.nome}`;
             imagem.caminho_imagem = urlImg;
         });
 
