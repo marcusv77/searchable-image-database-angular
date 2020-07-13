@@ -21,6 +21,7 @@ FROM development as builder
 ARG CRIC_DOMAIN="https://database.cric.com.br"
 ARG CRIC_API_DOMAIN="https://api.database.cric.com.br"
 ARG CRIC_EMAIL="cric@ufop.edu.br"
+ARG CRIC_PLAYGROUND=false
 COPY . ./
 RUN ng build --prod --build-optimizer
 LABEL   version="2.5.0-builder"
