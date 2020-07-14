@@ -33,7 +33,7 @@ export class IndexComponent implements OnInit, OnDestroy {
     public playground: boolean;
 
     constructor(private conexaoService: ConexaoService) {
-        this.playground = environment.playground;
+        this.playground = environment.playground === "true";
     }
 
     ngOnInit() { }

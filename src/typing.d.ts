@@ -4,5 +4,5 @@ interface Env {
     CRIC_EMAIL: string;
     CRIC_DOMAIN: string;
     CRIC_API_DOMAIN: string;
-    CRIC_PLAYGROUND: boolean;
+    CRIC_PLAYGROUND: string;
 }
