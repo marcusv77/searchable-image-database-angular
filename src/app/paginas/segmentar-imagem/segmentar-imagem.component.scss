@@ -1,5 +1,11 @@
 @import '../../../sass/variables';
 
+h5 {
+    span.beta {
+        color: $cric-red;
+    }
+}
+
 .image_info,
 .box_filter,
 .box_info {
