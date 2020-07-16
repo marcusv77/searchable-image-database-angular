@@ -15,9 +15,9 @@
             [(ngModel)]="filter_doi"
             placeholder="figshare/">
 
-    <label class="mb-2 mr-sm-2"
+    <label *ngIf="classificationDatabase" class="mb-2 mr-sm-2"
             for="classification-filter">Classification</label>
-    <select class="custom-select mb-2 mr-sm-2"
+    <select *ngIf="classificationDatabase" class="custom-select mb-2 mr-sm-2"
             id="classification-filter"
             [(ngModel)]="filter_injury">
       <option *ngFor="let lesao of todasLesoes"
