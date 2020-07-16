@@ -511,4 +511,10 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
         this.rotulo = !this.rotulo;
         exibirSegmentacoes(this.todasSegmentacoes, this.indiceSelecionado, this.rotulo);
     }
+
+    save_image() {}
+
+    save_json() {}
+
+    save_csv() {}
 }

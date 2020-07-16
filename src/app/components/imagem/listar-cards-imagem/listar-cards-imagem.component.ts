@@ -115,20 +115,10 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     detalheDeUmaImagem(event, img) {
         if (event.view.getSelection().type !== "Range") {
             event.preventDefault();
-            this.Imagem = img;
-
-            let route;
-            if (this.classificationDatabase) {
-                route = "classification/image/";
-            }
-            if (this.segmentationDatabase) {
-                route = "segmentation/image/";
-            }
 
             this.router.navigate(
                 [
-                    "classification/image/",
-                    this.Imagem.id
+                    this.detalheDeUmaImagemURL(img)
                 ]
             ).then(
                 ()=>{
@@ -136,6 +126,19 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
                 }
             );
         }
+    }
+
+    detalheDeUmaImagemURL(img) {
+        this.Imagem = img;
+        let route;
+        if (this.classificationDatabase) {
+            route = "classification/image/";
+        }
+        if (this.segmentationDatabase) {
+            route = "segmentation/image/";
+        }
+
+        return `${route}${this.Imagem.id}`;
     }
 
     proximaPagina(evento) {

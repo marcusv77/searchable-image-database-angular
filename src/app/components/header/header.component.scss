@@ -1,5 +1,17 @@
+@import '../../../sass/variables';
+
 header {
     margin-bottom: 1vh;
+
+    nav {
+        ul {
+            li {
+                span.beta {
+                    color: $cric-red;
+                }
+            }
+        }
+    }
 }
 
 img.logoIndexHeader{
