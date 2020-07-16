@@ -20,12 +20,10 @@
     <select class="custom-select mb-2 mr-sm-2"
             id="classification-filter"
             [(ngModel)]="filter_injury">
-        <option value="1">Negative</option>
-        <option value="2">ASC-US</option>
-        <option value="3">LSIL</option>
-        <option value="4">ASC-H</option>
-        <option value="5">HSIL</option>
-        <option value="6">SCC</option>
+      <option *ngFor="let lesao of todasLesoes"
+              [value]="lesao?.id">
+        {{lesao.nome}}
+      </option>
     </select>
 
     <button (click)="filterImages()"

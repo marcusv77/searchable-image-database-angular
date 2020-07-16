@@ -1,7 +1,13 @@
 import { Component, OnInit, Input, OnDestroy, AfterContentInit } from "@angular/core";
 import { Router } from "@angular/router";
 
+import { Subscription } from "rxjs";
+
+import { ICelulaClassificadaModelResultado } from "src/app/models/classificacao/celula_classificada.model";
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
+import { ILesaoModelResultado } from "src/app/models/imagem/lesao.model";
+
+import { ImagemService } from "src/app/services/imagens_service/imagens.service";
 
 import { PaginaImagemEntidade } from "./pagina_imagem.entidede";
 
@@ -32,8 +38,12 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     public filter_id: number;
     public filter_doi: string;
     public filter_injury: number;
+    private listarTodasDescricoesSubscription: Subscription;
+    private listarTodasLesoesSubscription: Subscription;
+    public todasClassificacoes: ICelulaClassificadaModelResultado[];
+    public todasLesoes: ILesaoModelResultado[];
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private imagemService: ImagemService) {
         this.paginaSelecionada = 1;
         this.limiteInferiorIndice = 1;
         this.numeroImagensPorPagina = 12;  /* due Bootstrap grid layout */
@@ -49,6 +59,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     }
 
     ngOnInit() {
+        this.listarTodasLesoes();
     }
 
     ngAfterContentInit(): void {
@@ -60,7 +71,46 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
         );
     }
 
-    ngOnDestroy() { }
+    ngOnDestroy() {
+        if (this.listarTodasLesoesSubscription) {
+            this.listarTodasLesoesSubscription.unsubscribe();
+        }
+        if (this.listarClassificacoesDeCelulaSubscription) {
+            this.listarClassificacoesDeCelulaSubscription.unsubscribe();
+        }
+    }
+
+    listarTodasLesoes() {
+
+        this.carregando = true;
+        this.listarTodasLesoesSubscription =
+        this.imagemService.listarLesoes()
+            .subscribe(
+                (retorno) => {
+                    this.todasLesoes = retorno;
+                    this.carregando = false;
+                },
+                (erro) => {
+                    this.carregando = false;
+                    this.objetoErro = erro.error;
+
+                    switch(this.objetoErro.status_code) {
+
+                    case HttpStatusCode.UNAUTHORIZED:
+                    case HttpStatusCode.NOT_FOUND:
+                    case HttpStatusCode.INTERNAL_SERVER_ERROR: {
+                        console.log(this.objetoErro.mensagem);
+                        break;
+                    }
+
+                    default: {
+                        console.log(erro);
+                        break;
+                    }
+                    }
+                }
+            );
+    }
 
     detalheDeUmaImagem(event, img) {
         if (event.view.getSelection().type !== "Range") {
