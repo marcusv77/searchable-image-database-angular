@@ -1,0 +1,9 @@
+@import '../../../sass/variables';
+
+.container {
+    h1 {
+        span.beta {
+            color: $cric-red;
+        }
+    }
+}
