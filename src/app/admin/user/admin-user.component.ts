@@ -3,7 +3,7 @@ import { Component, OnInit, Output } from "@angular/core";
 import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
 import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
 
-import { IUsuarioBaseModel } from "../../models/usuario/usuario_base.model";
+import { IUsuarioBaseModel } from "src/app/models/usuario/usuario_base.model";
 
 import { UsuarioService } from "../../services/usuarios/usuarios.service";
 

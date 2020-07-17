@@ -1,6 +1,6 @@
 import { Subscription } from "rxjs";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
-import { IImagemModelResultado } from "../../models/imagem/imagem.model";
+import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ImagemService } from "src/app/services/imagens_service/imagens.service";
 import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";

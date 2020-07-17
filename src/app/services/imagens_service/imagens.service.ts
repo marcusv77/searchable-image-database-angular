@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 
 import { ComunicacaoApi } from "../../api_cric_database/comunicacao_api";
-import { IImagemModelResultado } from "../../models/imagem/imagem.model";
+import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
 import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
 import { ILesaoModelResultado } from "src/app/models/imagem/lesao.model";

@@ -5,7 +5,7 @@ import { Subscription } from "rxjs";
 import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
 import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
 import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
-import { IObjetoSessaoModel } from "./../../models/autenticacao/objeto_sessao.model";
+import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
 import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
 
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";

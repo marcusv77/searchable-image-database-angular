@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 import { UsuarioService } from "../usuarios/usuarios.service";
-import { ChavesArmazenamentoBrowser } from "../../utils/chaves_armazenamento_browser";
+import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
 import { UsuarioAutenticacaoModelRequisicao } from "src/app/models/autenticacao/usuario_autenticacao.model";
 import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
 

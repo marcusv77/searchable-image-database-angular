@@ -1,4 +1,4 @@
-import { IObjetoSessaoModel } from "./../../models/autenticacao/objeto_sessao.model";
+import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
 import { Component, OnInit, Output, OnDestroy, ViewChild } from "@angular/core";
 import { ImagemService } from "src/app/services/imagens_service/imagens.service";
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
