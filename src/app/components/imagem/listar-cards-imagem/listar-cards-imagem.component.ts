@@ -3,11 +3,15 @@ import { Router } from "@angular/router";
 
 import { Subscription } from "rxjs";
 
+import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
+
 import { ICelulaClassificadaModelResultado } from "src/app/models/classificacao/celula_classificada.model";
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { ILesaoModelResultado } from "src/app/models/imagem/lesao.model";
 
 import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
 
 import { PaginaImagemEntidade } from "./pagina_imagem.entidede";
 
@@ -38,6 +42,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     public filter_id: number;
     public filter_doi: string;
     public filter_injury: number;
+    private objetoErro: ObjetoErro;
     private listarTodasDescricoesSubscription: Subscription;
     private listarTodasLesoesSubscription: Subscription;
     public todasClassificacoes: ICelulaClassificadaModelResultado[];
@@ -74,9 +79,6 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     ngOnDestroy() {
         if (this.listarTodasLesoesSubscription) {
             this.listarTodasLesoesSubscription.unsubscribe();
-        }
-        if (this.listarClassificacoesDeCelulaSubscription) {
-            this.listarClassificacoesDeCelulaSubscription.unsubscribe();
         }
     }
 
