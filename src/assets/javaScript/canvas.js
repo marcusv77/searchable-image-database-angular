@@ -41,7 +41,7 @@ function draw_classification(
 
     ctx.font = "30px Arial";
     ctx.fillText(
-        classication.id_celula,
+        classication.id,
         classication.coord_centro_nucleo_x,
         classication.coord_centro_nucleo_y
     );
