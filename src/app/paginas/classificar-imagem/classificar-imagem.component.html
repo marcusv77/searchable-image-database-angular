@@ -47,7 +47,15 @@
         </div>
 
         <div class="col-sm-12 col-md-8 col-lg-9">
-          <h5>Classification</h5>
+          <button class="btn btn-primary collapsed"
+                  (click)="toggle_augmentation()">
+            Disable augmention
+          </button>
+          <button class="btn btn-primary collapsed"
+                  (click)="toggle_label()">
+            Disable label
+          </button>
+
         </div>
     </div>
     <div class="row">
