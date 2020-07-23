@@ -75,6 +75,8 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     public todasClassificacoes: ICelulaClassificadaModelResultado[];
     public todasLesoes: ILesaoModelResultado[];
     public todosUsuarios: IUsuarioBaseModel[];
+    public draw_label: boolean;
+    public draw_augmentation: boolean;
 
     constructor(private imagemService: ImagemService, private activatedRoute: ActivatedRoute, public datepipe: DatePipe) {
         this.comunicacaoApi = new ComunicacaoApi();
@@ -86,6 +88,8 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         this.carregando = false;
         this.imagemAtualizacao = new ImagemEntidade();
         this.imagemAtualizacao.lesao = new LesaoEntidade();
+        this.draw_label = true;
+        this.draw_augmentation = true;
     }
 
     ngOnInit() {
@@ -280,7 +284,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             .subscribe(
                 (retorno) => {
                     this.todasClassificacoes = retorno;
-                    exibirClassificacoes(this.todasClassificacoes, this.indiceSelecionado);
+                    exibirClassificacoes(this.todasClassificacoes, this.indiceSelecionado, this.draw_label);
                     this.carregando = false;
                 },
                 (erro) => {
@@ -310,13 +314,14 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     exibirClassificacoesFormaSeletiva() {
 
         if(this.indiceSelecionado != this.indiceSelecionadoPadrao) {
-
+            this.draw_augmentation = true;
+            this.draw_label = true;
             this.lesao.id = this.todasClassificacoes[this.indiceSelecionado].lesao.id;
             this.lesao.nome = this.todasClassificacoes[this.indiceSelecionado].lesao.nome;
             this.lesao.detalhes = this.todasClassificacoes[this.indiceSelecionado].lesao.detalhes;
         }
 
-        exibirClassificacoes(this.todasClassificacoes, Number(this.indiceSelecionado));
+        exibirClassificacoes(this.todasClassificacoes, Number(this.indiceSelecionado), this.draw_label);
     }
 
     permitirCadastro(valor: boolean) {
@@ -497,5 +502,25 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         file_a.click();
 
         document.body.removeChild(file_a);
+    }
+
+    toggle_augmentation() {
+        this.draw_augmentation = !this.draw_augmentation;
+        let idx;
+
+        if (this.draw_augmentation) {
+            idx = this.indiceSelecionado;
+            this.draw_label = true;
+        }
+        else {
+            idx = null;
+        }
+        
+        exibirClassificacoes(this.todasClassificacoes, idx, this.draw_label);
+    }
+
+    toggle_label() {
+        this.draw_label = !this.draw_label;
+        exibirClassificacoes(this.todasClassificacoes, this.indiceSelecionado, this.draw_label);
     }
 }

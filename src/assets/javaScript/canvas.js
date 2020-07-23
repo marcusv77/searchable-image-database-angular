@@ -27,7 +27,8 @@ function draw(event, coord_click_x, coord_click_y) { // Método de classificaç�
 
 function draw_classification(
     ctx,
-    classication
+    classication,
+    draw_label
 ) {
     const largura = 100;
     const altura = 100;
@@ -39,19 +40,20 @@ function draw_classification(
     inicio_desenho_x = Math.round(classication.coord_centro_nucleo_x) - Math.round(largura / 2);
     inicio_desenho_y = Math.round(classication.coord_centro_nucleo_y) - Math.round(altura / 2);
 
-    ctx.font = "30px Arial";
-    ctx.fillText(
-        classication.id,
-        classication.coord_centro_nucleo_x,
-        classication.coord_centro_nucleo_y
-    );
+    if (draw_label) {
+        ctx.font = "30px Arial";
+        ctx.fillText(
+            classication.id,
+            classication.coord_centro_nucleo_x,
+            classication.coord_centro_nucleo_y
+        );
+    }
 
     ctx.strokeRect(inicio_desenho_x, inicio_desenho_y, largura, altura);
     ctx.stroke();
 }
 
-function exibirClassificacoes(classificacoes, indice = -1) {
-
+function exibirClassificacoes(classificacoes, indice = -1, draw_label) {
     var canvas = document.getElementById('canvas');
     const rect = canvas.getBoundingClientRect();
     var ctx = canvas.getContext('2d');
@@ -66,19 +68,23 @@ function exibirClassificacoes(classificacoes, indice = -1) {
     var i, j, inicio_desenho_x, inicio_desenho_y;
     ctx.fillStyle = "red";
 
-    if (indice === -1) {
-        for (i = 0; i < classificacoes.length; i++) {
+    if (indice !== null) {
+        if (indice === -1) {
+            for (i = 0; i < classificacoes.length; i++) {
+                draw_classification(
+                    ctx,
+                    classificacoes[i],
+                    draw_label
+                );
+            }
+        }
+        else {
             draw_classification(
                 ctx,
-                classificacoes[i]
+                classificacoes[indice],
+                draw_label
             );
         }
-    }
-    else {
-        draw_classification(
-            ctx,
-            classificacoes[indice]
-        );
     }
 }
 
