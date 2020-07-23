@@ -34,7 +34,7 @@ function draw_classification(
 
     ctx.beginPath();
 
-    ctx.strokeStyle = obterCorDaLesao(classication.lesao.nome.toString());
+    ctx.strokeStyle = obterCorDaLesao(classication.lesao.id);
 
     inicio_desenho_x = Math.round(classication.coord_centro_nucleo_x) - Math.round(largura / 2);
     inicio_desenho_y = Math.round(classication.coord_centro_nucleo_y) - Math.round(altura / 2);
@@ -270,21 +270,30 @@ function exibirSegmentacoes(segmentacoes, indice = -1, label = true) {
     }
 }
 
-function obterCorDaLesao(lesao) {
-    // Ordem de gravidade lesoes: Normal, ASC-US, LSIL, ASC-H, HSIL, Carcinoma
-    switch(lesao) {
-        case "normal":
-            return "#7CB5EC"; //Preto
-        case "ASC-US":
-            return "#434348"; //Preto
-        case "LSIL":
-            return "#90ED7D"; //Verde
-        case "ASC-H":
-            return "#F7A35C"; //laranja
-        case "HSIL":
-            return "#8085E9"; //Roxo        
-        case "carcinoma":
-            return "#F15C80"; //Rosa
+function obterCorDaLesao(seed) {
+    const seed_hash = seed % 10;
+
+    switch(seed_hash) {
+    case 0:
+        return "#023eff";
+    case 1:
+        return "#ff7c00";
+    case 2:
+        return "1ac938";
+    case 3:
+        return "#e8000b";
+    case 4:
+        return "#8b2be2";
+    case 5:
+        return "#9f4800";
+    case 6:
+        return "#f14cc1";
+    case 7:
+        return "#a3a3a3";
+    case 8:
+        return "ffc400";
+    case 9:
+        return "#00d7ff";
     }
 }
 
