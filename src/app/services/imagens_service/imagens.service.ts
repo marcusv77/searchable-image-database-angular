@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 
@@ -168,6 +168,10 @@ export class ImagemService {
 
         return this.httpClient.get(url, {
             headers: this.headerDownloadArquivo,
+            params: new HttpParams()
+                .set('images', 1)
+                .set('classifications', 1)
+                .set('segmentations', 0),
             responseType: "blob"
         });
     }
