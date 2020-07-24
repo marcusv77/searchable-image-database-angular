@@ -1,10 +1,6 @@
 <div class="container">
-  <h1>
-    <a routerLink="/user" routerLinkActive="active">
-      User Panel
-    </a>
-  </h1>
-  <h2>Your Collections</h2>
+  <cr-user-nav [heading]="'Your Collections'"></cr-user-nav>
+
   <section class="flex">
 
     <table class="table table-striped">
@@ -19,12 +15,12 @@
         <tr>
           <td>Cervix</td>
           <td>
-            <a class="btn btn-primary" routerLink="/user/classification"
-               routerLinkActive="active">View Cards</a>
+            <a class="btn btn-primary" routerLink="/user/segmentation"
+               routerLinkActive="active">View</a>
           </td>
           <td>
-            <a class="btn btn-primary" routerLink="/user/segmentation"
-               routerLinkActive="active">View Cards</a>
+            <a class="btn btn-primary" routerLink="/user/classification"
+               routerLinkActive="active">View</a>
           </td>
         </tr>
       </tbody>
