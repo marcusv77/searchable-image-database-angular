@@ -30,12 +30,10 @@ export class UserClassificationDatabaseComponent implements OnInit {
     
     @Output() public todasImagens: IImagemModelResultado[];
     @Output() public classificationDatabase = false;
-    @ViewChild("atualizarPaginacaoViewChild", { static: true }) public atualizacaoDePaginaViewChild: any;
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private comunicacaoApi: ComunicacaoApi;
     private listarImagensSubscription: Subscription;
     private objetoErro: ObjetoErro;
-    public cadastrandoImagem: boolean;
     public carregando: boolean;
     public objetoSessao: IObjetoSessaoModel;
 
@@ -46,7 +44,6 @@ export class UserClassificationDatabaseComponent implements OnInit {
         this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
         this.classificationDatabase = true;
         this.carregando = false;
-        this.cadastrandoImagem = false;
     }
 
     // Inicialzia o componente e busca todas as imagens do "banco de dados"
@@ -79,16 +76,8 @@ export class UserClassificationDatabaseComponent implements OnInit {
 
                     switch (this.objetoErro.status_code) {
 
-                    case HttpStatusCode.UNAUTHORIZED: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.NOT_FOUND: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
+                    case HttpStatusCode.UNAUTHORIZED:
+                    case HttpStatusCode.NOT_FOUND:
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
                         console.log(this.objetoErro.mensagem);
                         break;
@@ -111,17 +100,5 @@ export class UserClassificationDatabaseComponent implements OnInit {
         });
 
         return listaImagens;
-    }
-
-    atualizarListaImagens(carregandoImagem: boolean) {
-
-        if(carregandoImagem) {
-            this.carregando = true;
-        }
-        else {
-            this.carregando = false;
-            this.listarImagens();
-            this.atualizacaoDePaginaViewChild.atualizarPagina();
-        }
     }
 }
