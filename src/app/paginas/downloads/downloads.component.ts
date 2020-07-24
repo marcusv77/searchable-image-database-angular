@@ -26,7 +26,7 @@ export class DownloadsComponent implements OnInit, OnDestroy {
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private objetoSessao: IObjetoSessaoModel;
     private objetoErro: ObjetoErro;
-    private fazerDownloadImagensBaseSubscription: Subscription;
+    private export_collection_subscription: Subscription;
     public carregando = false;
 
     constructor(private imagemServico: ImagemService) {
@@ -38,8 +38,8 @@ export class DownloadsComponent implements OnInit, OnDestroy {
     ngOnInit() { }
 
     ngOnDestroy() {
-        if (this.fazerDownloadImagensBaseSubscription) {
-            this.fazerDownloadImagensBaseSubscription.unsubscribe();
+        if (this.export_collection_subscription) {
+            this.export_collection_subscription.unsubscribe();
         }
     }
 
@@ -51,8 +51,8 @@ export class DownloadsComponent implements OnInit, OnDestroy {
             user_id = this.objetoSessao.id_usuario.toString();
         }
 
-        this.fazerDownloadImagensBaseSubscription =
-                this.imagemServico.fazerDownloadImagensBaseInterna(user_id)
+        this.export_collection_subscription =
+                this.imagemServico.export_collection()
                     .subscribe(
                         (retorno) => {
                             saveAs(retorno, "base.zip");
