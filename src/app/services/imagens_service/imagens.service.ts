@@ -175,9 +175,9 @@ export class ImagemService {
             headers: this.headerDownloadArquivo,
             params: new HttpParams()
                 .set('collection', collection2download.toString())
-                .set('images', Number(download_images))
-                .set('classifications', Number(download_classifications))
-                .set('segmentations', Number(download_segmentations)),
+                .set('images', Number(download_images).toString())
+                .set('classifications', Number(download_classifications).toString())
+                .set('segmentations', Number(download_segmentations).toString()),
             responseType: "blob"
         });
     }
