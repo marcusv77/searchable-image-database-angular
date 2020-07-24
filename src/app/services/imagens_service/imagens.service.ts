@@ -174,7 +174,7 @@ export class ImagemService {
         return this.httpClient.get(url, {
             headers: this.headerDownloadArquivo,
             params: new HttpParams()
-                .set('collection', collection2download)
+                .set('collection', collection2download.toString())
                 .set('images', Number(download_images))
                 .set('classifications', Number(download_classifications))
                 .set('segmentations', Number(download_segmentations)),
