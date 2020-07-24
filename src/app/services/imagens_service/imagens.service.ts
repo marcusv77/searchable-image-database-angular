@@ -161,21 +161,10 @@ export class ImagemService {
         });
     }
 
-    fazerDownloadImagensBaseInterna(id_usuario: string): Observable<any> {
+    export_collection(): Observable<any> {
 
         this.inicializarServicos();
-        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/download/base_interna_cvx/${id_usuario}`;
-
-        return this.httpClient.get(url, {
-            headers: this.headerDownloadArquivo,
-            responseType: "blob"
-        });
-    }
-
-    fazerDownloadImagensBaseExterna(id_usuario: string): Observable<any> {
-
-        this.inicializarServicos();
-        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/download/base_externa_cvx/${id_usuario}`;
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/export`;
 
         return this.httpClient.get(url, {
             headers: this.headerDownloadArquivo,
