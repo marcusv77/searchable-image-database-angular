@@ -1,8 +1,33 @@
 <div class="container">
-  <h1>User Panel</h1>
-  <ul>
-    <li>
-      <a routerLink="/user/classification" routerLinkActive="active">Classification</a>
-    </li>
-  </ul>
+  <h1>
+    <a routerLink="/user" routerLinkActive="active">
+      User Panel
+    </a>
+  </h1>
+  <h2>Your Collections</h2>
+  <section class="flex">
+
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Collection Name</th>
+          <th scope="col">Segmentation</th>
+          <th scope="col">Classification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cervix</td>
+          <td>
+            <a class="btn btn-primary" routerLink="/user/classification"
+               routerLinkActive="active">View Cards</a>
+          </td>
+          <td>
+            <a class="btn btn-primary" routerLink="/user/segmentation"
+               routerLinkActive="active">View Cards</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
 </div>
