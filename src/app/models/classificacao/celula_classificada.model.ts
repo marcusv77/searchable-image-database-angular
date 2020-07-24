@@ -1,6 +1,7 @@
 import { ILesaoModelResultado } from "../imagem/lesao.model";
 
 export interface ICelulaClassificadaModelResultado {
+    id: number;
     id_celula: number;
     id_classificacao: number;
     tipo_analise_realizada: string;
