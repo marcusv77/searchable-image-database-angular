@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     @Input() usuarioAutenticado = false;
     private armazenamentoBrowser: ArmazenamentoBrowser;
-    private objetoSessao: IObjetoSessaoModel;
+    public objetoSessao: IObjetoSessaoModel;
     public exibir_botao_dropdown_menu = "nao_exibir_botao_menu";
     private objetoErro: ObjetoErro;
     private fazerLogOutSubscription: Subscription;
