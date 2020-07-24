@@ -28,11 +28,19 @@ export class DownloadsComponent implements OnInit, OnDestroy {
     private objetoErro: ObjetoErro;
     private export_collection_subscription: Subscription;
     public carregando = false;
+    public collection2download: number;
+    public download_images: boolean;
+    public download_classifications: boolean;
+    public download_segmentations: boolean;
 
     constructor(private imagemServico: ImagemService) {
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
         this.objetoErro = new ObjetoErro();
         this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
+        this.collection2download = 1; // Cervix collection
+        this.download_images = true;
+        this.download_classifications = true;
+        this.download_segmentations = false; // Until release segmentation
     }
 
     ngOnInit() { }
@@ -46,13 +54,13 @@ export class DownloadsComponent implements OnInit, OnDestroy {
     solicitarDownloadImagens() {
 
         this.carregando = true;
-        let user_id = "1";
-        if(this.objetoSessao) {
-            user_id = this.objetoSessao.id_usuario.toString();
-        }
-
         this.export_collection_subscription =
-                this.imagemServico.export_collection()
+                this.imagemServico.export_collection(
+                    this.collection2download,
+                    this.download_images,
+                    this.download_classifications,
+                    this.download_segmentations
+                )
                     .subscribe(
                         (retorno) => {
                             saveAs(retorno, "base.zip");

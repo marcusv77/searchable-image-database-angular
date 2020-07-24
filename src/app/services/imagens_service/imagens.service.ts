@@ -161,7 +161,12 @@ export class ImagemService {
         });
     }
 
-    export_collection(): Observable<any> {
+    export_collection(
+        collection2download: number,
+        download_images: boolean,
+        download_classifications: boolean,
+        download_segmentations: boolean
+    ): Observable<any> {
 
         this.inicializarServicos();
         const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/export`;
@@ -169,9 +174,10 @@ export class ImagemService {
         return this.httpClient.get(url, {
             headers: this.headerDownloadArquivo,
             params: new HttpParams()
-                .set('images', 1)
-                .set('classifications', 1)
-                .set('segmentations', 0),
+                .set('collection', collection2download)
+                .set('images', Number(download_images))
+                .set('classifications', Number(download_classifications))
+                .set('segmentations', Number(download_segmentations)),
             responseType: "blob"
         });
     }
