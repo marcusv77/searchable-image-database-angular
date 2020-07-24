@@ -30,10 +30,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
         "url": "https://angular.io"
     };
 
-    constructor(private autenticacaoService: AutenticacaoService, private router: Router, private usuarioService: UsuarioService) {}
+    constructor(private autenticacaoService: AutenticacaoService, private router: Router, private usuarioService: UsuarioService) {
+        this.armazenamentoBrowser = new ArmazenamentoBrowser();
+        this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
+    }
 
     ngOnInit() {
-        this.armazenamentoBrowser = new ArmazenamentoBrowser();
     }
 
     ngOnDestroy() {
@@ -44,7 +46,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     fazerLogOut($event) {
         $event.preventDefault();
-        this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
         this.autenticacaoService.solicitarLogOff();
         this.autenticacaoService.usuarioLogadoEventEmitter.emit(false);
         this.armazenamentoBrowser.excluirDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO);
@@ -60,16 +61,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
                     this.objetoErro = erro.error;
                     switch(this.objetoErro.status_code) {
 
-                    case HttpStatusCode.UNAUTHORIZED: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
-                    case HttpStatusCode.BAD_REQUEST: {
-                        console.log(this.objetoErro.mensagem);
-                        break;
-                    }
-
+                    case HttpStatusCode.UNAUTHORIZED:
+                    case HttpStatusCode.BAD_REQUEST:
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
                         console.log(this.objetoErro.mensagem);
                         break;

@@ -44,6 +44,7 @@ export class AutenticacaoService implements OnInit, OnDestroy {
 
                         const usuarioLogado = {
                             id_usuario: this.usuarioBanco.usuario.id,
+                            admin: this.usuarioBanco.usuario.admin,
                             email: this.usuarioBanco.usuario.email,
                             Authorization: this.usuarioBanco.Authorization
                         };

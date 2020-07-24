@@ -44,6 +44,7 @@ import { AutenticacaoService } from "./services/login/autenticacao.service";
 import { SignUpService } from "./services/login/sign_up.service";
 import { ImagemService } from "./services/imagens_service/imagens.service";
 import { ConexaoService } from "./services/conexao/conexao.service";
+import { UserNavComponent } from './user/nav/user-nav.component';
 
 @NgModule({
     declarations: [
@@ -70,7 +71,8 @@ import { ConexaoService } from "./services/conexao/conexao.service";
         AdminUserComponent,
         AdminHomeComponent,
         UserHomeComponent,
-        UserClassificationDatabaseComponent
+        UserClassificationDatabaseComponent,
+        UserNavComponent
     ],
     imports: [
         BrowserModule,
