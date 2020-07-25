@@ -285,7 +285,7 @@ function obterCorDaLesao(seed) {
     case 1:
         return "#ff7c00";
     case 2:
-        return "1ac938";
+        return "#1ac938";
     case 3:
         return "#e8000b";
     case 4:
@@ -297,7 +297,7 @@ function obterCorDaLesao(seed) {
     case 7:
         return "#a3a3a3";
     case 8:
-        return "ffc400";
+        return "#ffc400";
     case 9:
         return "#00d7ff";
     }
