@@ -32,16 +32,18 @@ function draw_classification(
 ) {
     const largura = 100;
     const altura = 100;
+    const color = obterCorDaLesao(classication.lesao.id);
 
     ctx.beginPath();
 
-    ctx.strokeStyle = obterCorDaLesao(classication.lesao.id);
+    ctx.strokeStyle = color;
 
     inicio_desenho_x = Math.round(classication.coord_centro_nucleo_x) - Math.round(largura / 2);
     inicio_desenho_y = Math.round(classication.coord_centro_nucleo_y) - Math.round(altura / 2);
 
     if (draw_label) {
         ctx.font = "30px Arial";
+        ctx.fillStyle = color;
         ctx.fillText(
             classication.id,
             classication.coord_centro_nucleo_x,
@@ -66,7 +68,6 @@ function exibirClassificacoes(classificacoes, indice = -1, draw_label) {
     const altura = 100;
 
     var i, j, inicio_desenho_x, inicio_desenho_y;
-    ctx.fillStyle = "red";
 
     if (indice !== null) {
         if (indice === -1) {
