@@ -46,15 +46,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     fazerLogOut($event) {
         $event.preventDefault();
-        this.autenticacaoService.solicitarLogOff();
-        this.autenticacaoService.usuarioLogadoEventEmitter.emit(false);
-        this.armazenamentoBrowser.excluirDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO);
-        this.router.navigate([""]);
 
         this.fazerLogOutSubscription =
-        this.usuarioService.fazerLogOff(this.objetoSessao.Authorization)
+        this.usuarioService.fazerLogOff()
             .subscribe(
                 (retorno) => {
+                    this.autenticacaoService.solicitarLogOff();
+                    this.autenticacaoService.usuarioLogadoEventEmitter.emit(false);
+                    this.armazenamentoBrowser.excluirDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO);
+                    this.router.navigate([""]);
                 },
                 (erro) => {
 

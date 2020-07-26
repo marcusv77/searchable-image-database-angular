@@ -103,17 +103,19 @@ export class UsuarioService {
         });
     }
 
-    fazerLogOff(Authorization: string): Observable<any> {
+    fazerLogOff(): Observable<any> {
 
         this.inicializarServicos();
-        const url = `${this.api.obterUrlBaseApi()}/api/v1/usuarios/${Authorization}`;
-
-        return this.httpClient.delete(url, {
-            headers: new HttpHeaders({
-                "content-type": "application/json",
-                Authorization
-            })
-        });
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/usuarios/logout`;
+        return this.httpClient.post(
+            url,
+            {},
+            {
+                headers: new HttpHeaders({
+                    Authorization: this.objetoSessao.Authorization
+                })
+            }
+        );
     }
 
     cadastrarAnalista(id_usuario: number): Observable<any> {
