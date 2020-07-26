@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
     }
 
     ngOnDestroy() {
