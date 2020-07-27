@@ -1,14 +1,20 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
 import { FormGroup, Validators, FormBuilder } from "@angular/forms";
+import { Router } from "@angular/router";
+
+import { Subscription } from "rxjs";
+
+import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
+
+import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+
 import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
 import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
-import { ImagemService } from "src/app/services/imagens_service/imagens.service";
 import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
-import { Subscription } from "rxjs";
-import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
-import { ComunicacaoApi } from "../../api_cric_database/comunicacao_api";
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
+
+import { ComunicacaoApi } from "src/app/api_cric_database/comunicacao_api";
 
 @Component({
     selector: "cr-upload-image",
@@ -36,7 +42,7 @@ export class UploadImageComponent implements OnInit, OnDestroy {
     private solicitarCadastroImagemSubscription: Subscription;
     private comunicacaoApi: ComunicacaoApi;
 
-    constructor(private imagemService: ImagemService, private formBuilder: FormBuilder) {
+    constructor(private router: Router, private imagemService: ImagemService, private formBuilder: FormBuilder) {
         this.comunicacaoApi = new ComunicacaoApi();
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
         this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
@@ -154,6 +160,47 @@ export class UploadImageComponent implements OnInit, OnDestroy {
 
     get dt_aquisicao() {
         return this.formularioImagem.get("dt_aquisicao");
+    }
+
+    go2segmentation(event) {
+        if (event.view.getSelection().type !== "Range") {
+            event.preventDefault();
+
+            this.router.navigate(
+                [
+                    this.segmentation_url()
+                ]
+            ).then(
+                ()=>{
+                    window.location.hash="#dashboard";
+                }
+            );
+        }
+    }
+
+    segmentation_url() {
+        return `segmentation/image/${this.new_image.id}`;
+    }
+
+
+    go2classification(event) {
+        if (event.view.getSelection().type !== "Range") {
+            event.preventDefault();
+
+            this.router.navigate(
+                [
+                    this.classification_url()
+                ]
+            ).then(
+                ()=>{
+                    window.location.hash="#dashboard";
+                }
+            );
+        }
+    }
+
+    classification_url() {
+        return `classification/image/${this.new_image.id}`;
     }
 
 }
