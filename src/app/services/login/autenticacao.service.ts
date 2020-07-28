@@ -39,9 +39,6 @@ export class AutenticacaoService implements OnInit, OnDestroy {
                 map(
                     (retorno) => {
                         this.usuarioBanco = retorno;
-                        this.usuarioAutenticado = true;
-                        this.usuarioLogadoEventEmitter.emit(true);
-
                         const usuarioLogado = {
                             id_usuario: this.usuarioBanco.usuario.id,
                             admin: this.usuarioBanco.usuario.admin,
@@ -50,6 +47,10 @@ export class AutenticacaoService implements OnInit, OnDestroy {
                         };
 
                         this.armazenamentoBrowser.armazenarDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO, usuarioLogado);
+
+                        this.usuarioAutenticado = true;
+                        this.usuarioLogadoEventEmitter.emit(true);
+
                         this.router.navigate([""]);
 
                         return true;

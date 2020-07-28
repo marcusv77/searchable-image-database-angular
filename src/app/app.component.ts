@@ -1,7 +1,11 @@
 import { Component, Output } from "@angular/core";
-import { AutenticacaoService } from "./services/login/autenticacao.service";
-import { ChavesArmazenamentoBrowser } from "./utils/chaves_armazenamento_browser";
-import { ArmazenamentoBrowser } from "./utils/browser_storage/browser_storage";
+
+import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
+
+import { AutenticacaoService } from "src/app/services/login/autenticacao.service";
+
+import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
+import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
 
 @Component({
     selector: "cr-root",
@@ -17,20 +21,24 @@ export class AppComponent {
         "url": "http://database.cric.com.br/"
     };
 
-    @Output() usuarioAutenticado = false;
+    @Output() usuarioAutenticado: boolean;
+    @Output() objetoSessao: IObjetoSessaoModel;
     private armazenamentoBrowser: ArmazenamentoBrowser;
 
     // Construtor
-    constructor(private autenticacaoService: AutenticacaoService) { }
+    constructor(private autenticacaoService: AutenticacaoService) {
+        this.usuarioAutenticado = false;
+        this.armazenamentoBrowser = new ArmazenamentoBrowser();
+        this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
+    }
 
     // Metodo de inicializacao
     ngOnInit() {
-        this.armazenamentoBrowser = new ArmazenamentoBrowser();
-
         // Autenticar no refresh da pagina
         if(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO)) {
             this.autenticacaoService.setUsuarioAutenticado(true);
             this.usuarioAutenticado = true;
+            this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
             this.autenticacaoService.usuarioLogadoEventEmitter.emit(true);
         }
 
@@ -39,6 +47,7 @@ export class AppComponent {
             .subscribe(
                 (autenticado: boolean) => {
                     this.usuarioAutenticado = autenticado;
+                    this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
                 }
             );
     }

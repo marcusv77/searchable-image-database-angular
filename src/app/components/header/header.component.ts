@@ -1,13 +1,17 @@
 import { Component, OnInit, Input, OnDestroy } from "@angular/core";
-import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
-import { AutenticacaoService } from "src/app/services/login/autenticacao.service";
 import { Router } from "@angular/router";
-import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
-import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
-import { UsuarioService } from "src/app/services/usuarios/usuarios.service";
-import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
-import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
+
 import { Subscription } from "rxjs";
+
+import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
+
+import { AutenticacaoService } from "src/app/services/login/autenticacao.service";
+import { UsuarioService } from "src/app/services/usuarios/usuarios.service";
+
+import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
+import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
+import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
+import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
 
 @Component({
     selector: "cr-header",
@@ -16,12 +20,12 @@ import { Subscription } from "rxjs";
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-    @Input() usuarioAutenticado = false;
+    @Input() objetoSessao: IObjetoSessaoModel;
+    @Input() usuarioAutenticado: boolean;
     private armazenamentoBrowser: ArmazenamentoBrowser;
-    public objetoSessao: IObjetoSessaoModel;
-    public exibir_botao_dropdown_menu = "nao_exibir_botao_menu";
-    private objetoErro: ObjetoErro;
     private fazerLogOutSubscription: Subscription;
+    private objetoErro: ObjetoErro;
+    public exibir_botao_dropdown_menu = "nao_exibir_botao_menu";
 
     public schema = {
         "@context": "http://schema.org",
@@ -32,11 +36,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     constructor(private autenticacaoService: AutenticacaoService, private router: Router, private usuarioService: UsuarioService) {
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
-        this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
     }
 
     ngOnInit() {
-        this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));
     }
 
     ngOnDestroy() {
