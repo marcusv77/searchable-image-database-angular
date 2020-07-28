@@ -67,13 +67,16 @@
                         data-dismiss="modal"
                         (click)="solicitarCadastroImagem()"
                         [disabled]="(!formularioImagem.valid || !arquivoSelecionado) && !carregando">
-                  <span *ngIf="!carregando">
-                    Send
-                  </span>
-                  <span *ngIf="carregando">
-                    Storing image
-                  </span>
-                  <span  *ngIf="carregando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span *ngIf="!carregando">
+                        Send
+                    </span>
+                    <span *ngIf="carregando">
+                        Storing image
+                    </span>
+                    <span *ngIf="carregando"
+                            class="spinner-border spinner-border-sm"
+                            role="status"
+                            aria-hidden="true"></span>
                 </button>
             </div>
 
@@ -86,12 +89,14 @@
         <cr-image-info [image]="new_image"></cr-image-info>
         <h2>Next Steps</h2>
         <div class="row">
-            <div class="col" (click)="go2segmentation($event)">
+            <div class="col"
+                    (click)="go2segmentation($event)">
                 <a class="btn btn-primary btn-lg btn-block"
                         href="{{segmentation_url()}}"
                         role="button">Segmentation</a>
             </div>
-            <div class="col" (click)="go2classification($event)">
+            <div class="col"
+                    (click)="go2classification($event)">
                 <a class="btn btn-primary btn-lg btn-block"
                         href="{{classification_url()}}"
                         role="button">Classification</a>

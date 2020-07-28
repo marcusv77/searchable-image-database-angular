@@ -21,39 +21,48 @@
 
     <h2>Customize your download</h2>
     <form>
-      <div class="form-group row">
-        <label for="collection_select" class="col-sm-2 col-form-label">Collection</label>
-        <div class="col-sm-10">
-          <select id="collection_select" class="custom-select" disabled
-               [(ngModel)]="collection2download"
-               [ngModelOptions]="{standalone: true}">
-            <option></option>
-            <option value="1" selected>Cervix</option>
-          </select>
+        <div class="form-group row">
+            <label for="collection_select"
+                    class="col-sm-2 col-form-label">Collection</label>
+            <div class="col-sm-10">
+                <select id="collection_select"
+                        class="custom-select"
+                        disabled
+                        [(ngModel)]="collection2download"
+                        [ngModelOptions]="{standalone: true}">
+                    <option></option>
+                    <option value="1"
+                            selected>Cervix</option>
+                </select>
+            </div>
         </div>
-      </div>
 
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox"
-               id="images_checkbox"
-               [(ngModel)]="download_images"
-               [ngModelOptions]="{standalone: true}">
-        <label class="form-check-label" for="images_checkbox">
-          Images
-        </label>
-      </div>
+        <div class="form-check">
+            <input class="form-check-input"
+                    type="checkbox"
+                    id="images_checkbox"
+                    [(ngModel)]="download_images"
+                    [ngModelOptions]="{standalone: true}">
+            <label class="form-check-label"
+                    for="images_checkbox">
+                Images
+            </label>
+        </div>
 
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value=""
-               id="classifications_checkbox"
-               [(ngModel)]="download_classifications"
-               [ngModelOptions]="{standalone: true}">
-        <label class="form-check-label" for="classifications_checkbox">
-          Classifications
-        </label>
-      </div>
+        <div class="form-check">
+            <input class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="classifications_checkbox"
+                    [(ngModel)]="download_classifications"
+                    [ngModelOptions]="{standalone: true}">
+            <label class="form-check-label"
+                    for="classifications_checkbox">
+                Classifications
+            </label>
+        </div>
 
-      <!--
+        <!--
       <div class="form-check">
         <input class="form-check-input" type="checkbox" value=""
                id="segmentations_checkbox"
@@ -65,19 +74,22 @@
       </div>
       -->
 
-      <button id="botao_download"
-              type="submit"
-              class="btn btn-primary"
-              [disabled]="carregando"
-              (click)="solicitarDownloadImagens()">
-        <span *ngIf="!carregando">
-          Start Download
-        </span>
-        <span *ngIf="carregando">
-          Creating zip file with images and classifications
-        </span>
-        <span  *ngIf="carregando" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-      </button>
+        <button id="botao_download"
+                type="submit"
+                class="btn btn-primary"
+                [disabled]="carregando"
+                (click)="solicitarDownloadImagens()">
+            <span *ngIf="!carregando">
+                Start Download
+            </span>
+            <span *ngIf="carregando">
+                Creating zip file with images and classifications
+            </span>
+            <span *ngIf="carregando"
+                    class="spinner-border spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"></span>
+        </button>
     </form>
 
     <cr-cite-us></cr-cite-us>

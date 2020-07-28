@@ -8,46 +8,74 @@
         id="dashboard">
     <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-3">
-          <a class="btn btn-primary collapsed"
-             title="Back to collection"
+            <a class="btn btn-primary collapsed"
+                    title="Back to collection"
                     [routerLink]="['/segmentation']">
-<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-collection" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M14.5 13.5h-13A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5zm-13 1A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5h-13zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
-</svg>
+                <svg width="1em"
+                        height="1em"
+                        viewBox="0 0 16 16"
+                        class="bi bi-collection"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                            d="M14.5 13.5h-13A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5zm-13 1A1.5 1.5 0 0 1 0 13V6a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 16 6v7a1.5 1.5 0 0 1-1.5 1.5h-13zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z" />
+                </svg>
             </a>
 
-          <button class="btn btn-primary collapsed"
-                  title="Download augmented image"
+            <button class="btn btn-primary collapsed"
+                    title="Download augmented image"
                     (click)="save_image()">
-<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-image" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M14.002 2h-12a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zm-12-1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12z"/>
-  <path d="M10.648 7.646a.5.5 0 0 1 .577-.093L15.002 9.5V14h-14v-2l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71z"/>
-  <path fill-rule="evenodd" d="M4.502 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-</svg>
+                <svg width="1em"
+                        height="1em"
+                        viewBox="0 0 16 16"
+                        class="bi bi-image"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                            d="M14.002 2h-12a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zm-12-1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12z" />
+                    <path d="M10.648 7.646a.5.5 0 0 1 .577-.093L15.002 9.5V14h-14v-2l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71z" />
+                    <path fill-rule="evenodd"
+                            d="M4.502 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
+                </svg>
             </button>
 
-          <button class="btn btn-primary collapsed"
-                  title="Download all classifications as JSON"
+            <button class="btn btn-primary collapsed"
+                    title="Download all classifications as JSON"
                     (click)="save_json()">
-<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4z"/>
-  <path fill-rule="evenodd" d="M4.5 10.5A.5.5 0 0 1 5 10h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
-</svg>
+                <svg width="1em"
+                        height="1em"
+                        viewBox="0 0 16 16"
+                        class="bi bi-file-text"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                            d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4z" />
+                    <path fill-rule="evenodd"
+                            d="M4.5 10.5A.5.5 0 0 1 5 10h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 8h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm0-2A.5.5 0 0 1 5 4h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z" />
+                </svg>
             </button>
 
-          <button class="btn btn-primary collapsed"
-                  title="Download all classifications as CSV"
+            <button class="btn btn-primary collapsed"
+                    title="Download all classifications as CSV"
                     (click)="save_csv()">
-<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-spreadsheet" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4z"/>
-  <path fill-rule="evenodd" d="M13 6H3V5h10v1zm0 3H3V8h10v1zm0 3H3v-1h10v1z"/>
-  <path fill-rule="evenodd" d="M5 14V6h1v8H5zm4 0V6h1v8H9z"/>
-</svg>
+                <svg width="1em"
+                        height="1em"
+                        viewBox="0 0 16 16"
+                        class="bi bi-file-spreadsheet"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                            d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2zm0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H4z" />
+                    <path fill-rule="evenodd"
+                            d="M13 6H3V5h10v1zm0 3H3V8h10v1zm0 3H3v-1h10v1z" />
+                    <path fill-rule="evenodd"
+                            d="M5 14V6h1v8H5zm4 0V6h1v8H9z" />
+                </svg>
             </button>
         </div>
 
         <div class="col-sm-12 col-md-8 col-lg-9">
-          <h5>Segmentation <span class="beta">Beta</span></h5>
+            <h5>Segmentation <span class="beta">Beta</span></h5>
         </div>
     </div>
     <div class="row">

@@ -1,29 +1,31 @@
 <div class="container">
-  <cr-user-nav [heading]="'Your Collections'"></cr-user-nav>
+    <cr-user-nav [heading]="'Your Collections'"></cr-user-nav>
 
-  <section class="flex">
+    <section class="flex">
 
-    <table class="table table-striped">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Collection Name</th>
-          <th scope="col">Segmentation</th>
-          <th scope="col">Classification</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Cervix</td>
-          <td>
-            <a class="btn btn-primary" routerLink="/user/segmentation"
-               routerLinkActive="active">View</a>
-          </td>
-          <td>
-            <a class="btn btn-primary" routerLink="/user/classification"
-               routerLinkActive="active">View</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Collection Name</th>
+                    <th scope="col">Segmentation</th>
+                    <th scope="col">Classification</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cervix</td>
+                    <td>
+                        <a class="btn btn-primary"
+                                routerLink="/user/segmentation"
+                                routerLinkActive="active">View</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary"
+                                routerLink="/user/classification"
+                                routerLinkActive="active">View</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </div>
