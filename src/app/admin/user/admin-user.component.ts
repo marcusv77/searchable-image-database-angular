@@ -14,7 +14,7 @@ import { UsuarioService } from "../../services/usuarios/usuarios.service";
 })
 export class AdminUserComponent implements OnInit {
 
-    @Output() public todosUsuarios: IUsuarioBaseModel[];
+    public todosUsuarios: IUsuarioBaseModel[];
     private objetoErro: ObjetoErro;
     public carregando: boolean;
 

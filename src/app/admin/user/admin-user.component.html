@@ -5,7 +5,7 @@
             Administration Panel
         </a>
     </h1>
-    <h2>User</h2>
+    <h2>Users</h2>
     <section class="flex">
 
         <table class="table table-striped">
@@ -23,7 +23,6 @@
 
                 <tr *ngFor="let usuario of todosUsuarios"
                         class="card-flex-box">
-                    <!--So renderiza o card se o objeto img estiver pronto evita erros NotFound no console-->
                     <th scope="row">{{usuario.id}}</th>
                     <td>{{usuario.primeiro_nome}}</td>
                     <td>{{usuario.ultimo_nome}}</td>
