@@ -1,7 +1,7 @@
 import { Subscription } from "rxjs";
 import { Component, OnInit, Input, OnDestroy, AfterContentInit, AfterViewInit, AfterViewChecked } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
-import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+import { ImagemService } from "src/app/services/imagens.service";
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { IUsuarioBaseModel } from "src/app/models/usuario/usuario_base.model";
 import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";

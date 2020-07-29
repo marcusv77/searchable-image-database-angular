@@ -9,7 +9,7 @@ import { ICelulaClassificadaModelResultado } from "src/app/models/classificacao/
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { ILesaoModelResultado } from "src/app/models/imagem/lesao.model";
 
-import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+import { ImagemService } from "src/app/services/imagens.service";
 
 import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
 

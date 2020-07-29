@@ -7,7 +7,7 @@ import { Subscription } from "rxjs";
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
 
-import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+import { ImagemService } from "src/app/services/imagens.service";
 
 import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
 import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";

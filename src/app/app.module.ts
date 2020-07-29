@@ -42,7 +42,7 @@ import { GuardaAutenticacao } from "./guardas/guarda-autenticacao";
 import { UsuarioService } from "src/app/services/usuarios/usuarios.service";
 import { AutenticacaoService } from "./services/login/autenticacao.service";
 import { SignUpService } from "./services/login/sign_up.service";
-import { ImagemService } from "./services/imagens_service/imagens.service";
+import { ImagemService } from "./services/imagens.service";
 import { ConexaoService } from "./services/conexao/conexao.service";
 import { UserNavComponent } from './user/nav/user-nav.component';
 import { AdminInjuryComponent } from './admin/injury/admin-injury.component';

@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+import { ImagemService } from "src/app/services/imagens.service";
 import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
 import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
 import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
