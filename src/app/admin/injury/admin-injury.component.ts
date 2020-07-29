@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 
 import { ILesaoModelResultado, ILesaoModelRequisicao } from "src/app/models/imagem/lesao.model";
@@ -15,6 +15,7 @@ import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
 })
 export class AdminInjuryComponent implements OnInit {
 
+    @ViewChild("injury_modal_close", { static: true }) injury_modal_close: any;
     public all_injuries: ILesaoModelResultado[];
     private objetoErro: ObjetoErro;
     public carregando: boolean;
@@ -75,6 +76,21 @@ export class AdminInjuryComponent implements OnInit {
 
     edit_injury() {
         console.log(this.injury_form.value);
+        this.image_service.edit_injury(
+            this.injury_id2edit,
+            this.injury_form.value
+        ).subscribe(
+            () => {
+                console.log("Injury changed");
+
+                this.injury_modal_close.nativeElement.click();
+
+                // TODO Load new data
+            },
+            (err) => {
+                console.log(err);
+            }
+        );
     }
 
 }
