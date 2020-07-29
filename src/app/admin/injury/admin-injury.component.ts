@@ -65,7 +65,7 @@ export class AdminInjuryComponent implements OnInit {
     }
 
     load_edit_injury_modal(injury_id: number) {
-        this.injury_id2edit = injury_id;
+        this.injury_id2edit = this.all_injuries[injury_id].id;
         this.injury_form.patchValue({
             nome: this.all_injuries[injury_id].nome,
             detalhes: this.all_injuries[injury_id].detalhes,

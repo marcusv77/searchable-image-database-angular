@@ -20,8 +20,7 @@
             </thead>
             <tbody>
 
-                <tr *ngFor="let injury of all_injuries"
-                        class="card-flex-box">
+                <tr *ngFor="let injury of all_injuries; index as idx;">
                     <th scope="row">{{injury.id}}</th>
                     <td>{{injury.nome}}</td>
                     <td>{{injury.detalhes}}</td>
@@ -30,7 +29,7 @@
                         <button
                                 type="button"
                           class="btn btn-primary"
-                          (click)="load_edit_injury_modal(injury.id)"
+                          (click)="load_edit_injury_modal(idx)"
                           data-toggle="modal"
                           data-target="#injury-edit-modal">
                           Edit</button>
