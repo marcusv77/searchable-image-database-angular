@@ -355,7 +355,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             this.atualizarDadosImagemSubscription =
                 this.imagemService.atualizarClassificacao(
                     this.imagem.id,
-                    this.todasClassificacoes[indiceSelecionado].id_celula,
+                    this.todasClassificacoes[indiceSelecionado].id,
                     requisicao
                 )
                 .subscribe(
@@ -400,8 +400,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
             const parametrosRequisicao = {
                 id_imagem: this.id_imagem,
-                id_celula: this.todasClassificacoes[indiceSelecionado].id_celula,
-                id_usuario: this.objetoSessao.id_usuario
+                id_celula: this.todasClassificacoes[indiceSelecionado].id,
             };
 
             this.excluirRegistroDeClassificacaoSubscription =
@@ -455,7 +454,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
             classifications: this.todasClassificacoes.map(
                 (item) => {
                     return {
-                        cell_id: item.id_celula,
+                        cell_id: item.id,
                         bethesda_system: item.lesao.nome,
                         nucleus_x: item.coord_centro_nucleo_x,
                         nucleus_y: item.coord_centro_nucleo_y
@@ -475,7 +474,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
         this.todasClassificacoes.forEach(
             (item) => {
-                classifications_csv_string = classifications_csv_string + `${this.imagem.id},${this.imagem.nome},${this.imagem.doi},${item.id_celula},${item.lesao.nome},${item.coord_centro_nucleo_x},${item.coord_centro_nucleo_y}\n`;
+                classifications_csv_string = classifications_csv_string + `${this.imagem.id},${this.imagem.nome},${this.imagem.doi},${item.id},${item.lesao.nome},${item.coord_centro_nucleo_x},${item.coord_centro_nucleo_y}\n`;
             }
         );
 
