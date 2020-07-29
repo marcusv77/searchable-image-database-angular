@@ -209,7 +209,7 @@ export class ImagemService {
     excluirRegistroDeSegmentacao(requisicao: any): Observable<ISegmentacaoCelulaModelResultado> {
 
         this.inicializarServicos();
-        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/${requisicao.id_imagem}/segmentacao-celula/${requisicao.id_celula}/usuario/${requisicao.id_usuario}`;
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/${requisicao.id_imagem}/segmentacao-celula/${requisicao.id_celula}`;
 
         return this.httpClient.delete<ISegmentacaoCelulaModelResultado>(url, {
             headers: this.headerApplicationJson
