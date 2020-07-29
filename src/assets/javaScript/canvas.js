@@ -71,10 +71,10 @@ function exibirClassificacoes(classificacoes, indice = -1, draw_label) {
 
     if (indice !== null) {
         if (indice === -1) {
-            for (i = 0; i < classificacoes.length; i++) {
+            for (const cell of classificacoes) {
                 draw_classification(
                     ctx,
-                    classificacoes[i],
+                    cell,
                     draw_label
                 );
             }
@@ -219,9 +219,9 @@ function draw_segmentation(
     cell,
     label = true
 ) {
-    ctx.beginPath();
-
+    
     if(label) {
+        ctx.beginPath();
         ctx.font = "30px Arial";
         ctx.fillText(
             String(cell.id),
@@ -230,22 +230,25 @@ function draw_segmentation(
         );
     }
 
-    for (let j = 0; j < cell.segmentos_citoplasma.length; j++) {
+    ctx.beginPath();
+    for (const point of cell.segmentos_citoplasma) {
         ctx.lineTo(
-            cell.segmentos_citoplasma[j].coord_x,
-            cell.segmentos_citoplasma[j].coord_y
+            point.coord_x,
+            point.coord_y
         );
-        ctx.stroke();
     }
+    ctx.closePath();
+    ctx.stroke();
 
     ctx.beginPath();
-    for (let j = 0; j < cell.segmentos_nucleo.length; j++) {
+    for (const point of cell.segmentos_nucleo) {
         ctx.lineTo(
-            cell.segmentos_nucleo[j].coord_x,
-            cell.segmentos_nucleo[j].coord_y
+            point.coord_x,
+            point.coord_y
         );
-        ctx.stroke();
     }
+    ctx.closePath();
+    ctx.stroke();
 }
 
 function exibirSegmentacoes(segmentacoes, indice = -1, label = true) {
@@ -259,10 +262,10 @@ function exibirSegmentacoes(segmentacoes, indice = -1, label = true) {
 
     if (indice == -1) {
 
-        for (let i = 0; i < segmentacoes.celulas.length; i++) {
+        for (const cell of  segmentacoes.celulas) {
             draw_segmentation(
                 ctx,
-                segmentacoes.celulas[i],
+                cell,
                 label
             )
         }
