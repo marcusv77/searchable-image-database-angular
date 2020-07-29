@@ -1,0 +1,85 @@
+<div class="container">
+    <h1>
+        <a routerLink="/admin"
+                routerLinkActive="active">
+            Administration Panel
+        </a>
+    </h1>
+    <h2>Injuries</h2>
+    <section class="flex">
+
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Acronym</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let injury of all_injuries; index as idx;">
+                    <th scope="row">{{injury.id}}</th>
+                    <td>{{injury.nome}}</td>
+                    <td>{{injury.detalhes}}</td>
+                    <td>{{injury.grade}}</td>
+                    <td>
+                        <button
+                                type="button"
+                          class="btn btn-primary"
+                          (click)="load_edit_injury_modal(idx)"
+                          data-toggle="modal"
+                          data-target="#injury-edit-modal">
+                          Edit</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+<div class="modal" tabindex="-1" role="dialog" id="injury-edit-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Injury</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="injury_form" (ngSubmit)="edit_injury()">
+
+<div class="form-group">
+    <label for="injury_id">ID</label>
+    <input type="number" class="form-control" id="injury_id"
+           readonly value="{{injury_id2edit}}">
+  </div>
+          
+<div class="form-group">
+    <label for="injury_nome">Acronym</label>
+    <input type="text" class="form-control" id="injury_nome" formControlName="nome">
+  </div>
+
+<div class="form-group">
+    <label for="injury_detalhes">Detail</label>
+    <input type="text" class="form-control" id="injury_detalhes" formControlName="detalhes">
+  </div>
+
+<div class="form-group">
+    <label for="injury_grade">Grade</label>
+    <input type="number" class="form-control" id="injury_grade" formControlName="grade">
+  </div>
+
+      <div class="modal-footer">
+        <button type="submit" [disabled]="!injury_form.valid" class="btn btn-primary">Save</button>
+        <button #injury_modal_close type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+    </section>
+</div>

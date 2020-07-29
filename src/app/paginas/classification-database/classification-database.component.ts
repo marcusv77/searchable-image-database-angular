@@ -1,6 +1,6 @@
 import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
 import { Component, OnInit, Output, OnDestroy, ViewChild } from "@angular/core";
-import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+import { ImagemService } from "src/app/services/imagens.service";
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
 import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";

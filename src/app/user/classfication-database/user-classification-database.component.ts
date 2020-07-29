@@ -10,7 +10,7 @@ import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
 
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 
-import { ImagemService } from "src/app/services/imagens_service/imagens.service";
+import { ImagemService } from "src/app/services/imagens.service";
 
 import { ComunicacaoApi } from "src/app/api_cric_database/comunicacao_api";
 

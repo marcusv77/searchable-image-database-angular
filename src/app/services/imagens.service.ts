@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 
-import { ComunicacaoApi } from "../../api_cric_database/comunicacao_api";
+import { ComunicacaoApi } from "src/app/api_cric_database/comunicacao_api";
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
 import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
@@ -104,11 +104,25 @@ export class ImagemService {
     listarLesoes(): Observable<ILesaoModelResultado[]> {
 
         this.inicializarServicos();
-        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens-lesoes`;
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/lesoes`;
 
         return this.httpClient.get<ILesaoModelResultado[]>(url, {
             headers: this.headerApplicationJson
         });
+    }
+
+    edit_injury(injury_id: number, injury:any): any {
+
+        this.inicializarServicos();
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/lesoes/${injury_id}`;
+
+        return this.httpClient.put(
+            url,
+            injury,
+            {
+                headers: this.headerApplicationJson
+            }
+        );
     }
 
     listarDescricoes(): Observable<IDescricaoModelResultado[]> {
