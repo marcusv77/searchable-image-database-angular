@@ -21,7 +21,7 @@ jobs:
       env:
           GITHUB_REF: ${{ github.ref }}
           CRIC_DOMAIN: "https://database.cric.com.br"
-          CRIC_API_DOMAIN: "https://api.database.cric.com.br"
+          CRIC_API_DOMAIN: "https://database.cric.com.br"
           CRIC_EMAIL: "cric@ufop.edu.br"
           CRIC_PLAYGROUND: false
       run: docker build --build-arg CRIC_DOMAIN --build-arg CRIC_API_DOMAIN --build-arg CRIC_EMAIL --build-arg CRIC_PLAYGROUND --target production -t cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-production .
@@ -29,7 +29,7 @@ jobs:
       env:
           GITHUB_REF: ${{ github.ref }}
           CRIC_DOMAIN: "https://playground.database.cric.com.br"
-          CRIC_API_DOMAIN: "https://api.playground.database.cric.com.br"
+          CRIC_API_DOMAIN: "https://playground.database.cric.com.br"
           CRIC_EMAIL: "cric@ufop.edu.br"
           CRIC_PLAYGROUND: true
       run: docker build --build-arg CRIC_DOMAIN --build-arg CRIC_API_DOMAIN --build-arg CRIC_EMAIL --build-arg CRIC_PLAYGROUND --target production -t cricdatabase/angular:${GITHUB_REF/refs\/tags\/v/}-playground .
