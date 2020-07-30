@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    playground: "false",
-    api_url: "http://localhost:8080",
-    email_address: "cric@localhost"
+    playground: $ENV.CRIC_PLAYGROUND,
+    api_url: $ENV.CRIC_API_DOMAIN,
+    email_address: $ENV.CRIC_EMAIL
 };
