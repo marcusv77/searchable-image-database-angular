@@ -1,6 +1,5 @@
-
 export enum LinksExternos {
     UFOP = "https://www.ufop.br/",
-    UFC = "https://www.ufc.br/",
+    UFC = "http://www.ufc.br/", // The website does NOT support HTTPS
     UC_BERKELEY = "https://www.berkeley.edu/",
 }
