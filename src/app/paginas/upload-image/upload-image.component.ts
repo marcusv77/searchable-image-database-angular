@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 
 import { Subscription } from "rxjs";
 
+import { environment } from "src/environments/environment";
+
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
 
@@ -41,8 +43,10 @@ export class UploadImageComponent implements OnInit, OnDestroy {
     public new_image_path: string;
     private solicitarCadastroImagemSubscription: Subscription;
     private comunicacaoApi: ComunicacaoApi;
+    public playground: boolean;
 
     constructor(private router: Router, private imagemService: ImagemService, private formBuilder: FormBuilder) {
+        this.playground = environment.playground === "true";
         this.comunicacaoApi = new ComunicacaoApi();
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
         this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));

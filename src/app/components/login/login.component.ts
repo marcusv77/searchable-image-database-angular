@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 
+import { environment } from "src/environments/environment";
+
 import { AutenticacaoService } from "src/app/services/login/autenticacao.service";
 import { SignUp } from "src/app/services/login/sign_up";
 import { SignUpService } from "src/app/services/login/sign_up.service";
@@ -21,6 +23,7 @@ export class LoginComponent implements OnInit {
     public reset_password_view: boolean;
     public reset_password_complete: boolean;
     public sign_up_view: boolean;
+    public playground: boolean;
 
     constructor(
         private autenticacaoService: AutenticacaoService,
@@ -28,6 +31,7 @@ export class LoginComponent implements OnInit {
         private signUpService: SignUpService,
         private router: Router
     ){
+        this.playground = environment.playground === "true";
         this.usuarioLogin = new UsuarioLogin();
         this.new_user = new SignUp();
     }

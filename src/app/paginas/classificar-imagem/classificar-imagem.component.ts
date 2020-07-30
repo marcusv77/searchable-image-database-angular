@@ -1,6 +1,11 @@
-import { Subscription } from "rxjs";
-import { Component, OnInit, Input, OnDestroy, AfterContentInit, AfterViewInit, AfterViewChecked } from "@angular/core";
 import { ActivatedRoute, ParamMap } from "@angular/router";
+import { Component, OnInit, Input, OnDestroy, AfterContentInit, AfterViewInit, AfterViewChecked } from "@angular/core";
+import { DatePipe } from "@angular/common";
+
+import { Subscription } from "rxjs";
+
+import { environment } from "src/environments/environment";
+
 import { ImagemService } from "src/app/services/imagens.service";
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { IUsuarioBaseModel } from "src/app/models/usuario/usuario_base.model";
@@ -16,7 +21,6 @@ import { CadastrarClassificacaoRequisicao } from "./requisicao";
 import { LesaoEntidade } from "./lesao.entidade";
 import { Mensagens } from "src/app/utils/mensagens";
 import { ImagemEntidade } from "./imagem.entidade";
-import {DatePipe} from "@angular/common";
 
 declare const draw: any;
 declare const exibirClassificacoes: any;
@@ -77,8 +81,10 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     public todosUsuarios: IUsuarioBaseModel[];
     public draw_label: boolean;
     public draw_augmentation: boolean;
+    public playground: boolean;
 
     constructor(private imagemService: ImagemService, private activatedRoute: ActivatedRoute, public datepipe: DatePipe) {
+        this.playground = environment.playground === "true";
         this.comunicacaoApi = new ComunicacaoApi();
         this.requisicao = new CadastrarClassificacaoRequisicao();
         this.lesao = new LesaoEntidade();

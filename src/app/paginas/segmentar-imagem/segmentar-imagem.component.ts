@@ -1,7 +1,11 @@
-import { Subscription } from "rxjs";
 import { ActivatedRoute, ParamMap, Router } from "@angular/router";
-import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { Component, OnInit, OnDestroy } from "@angular/core";
+
+import { Subscription } from "rxjs";
+
+import { environment } from "src/environments/environment";
+
+import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { ImagemService } from "src/app/services/imagens.service";
 import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
 import { IDescricaoModelResultado } from "src/app/models/imagem/descricao.model";
@@ -70,8 +74,10 @@ export class SegmentarImagemComponent implements OnInit, OnDestroy {
     public todasSegmentacoes: ISegmentacaoCelulaModelResultado;
     public vetorDePontos: any;
     public vetorSelecaoDescricao: Array<IDescricaoModelResultado[]>;
+    public playground: boolean;
 
     constructor(private imagemService: ImagemService, private activatedRoute: ActivatedRoute) {
+        this.playground = environment.playground === "true";
         this.comunicacaoApi = new ComunicacaoApi();
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
         this.objetoErro = new ObjetoErro();
