@@ -104,7 +104,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <label for="new-user-name"
-                            class="activate">Name</label>
+                            class="activate">First name</label>
                     <input [(ngModel)]="new_user.primeiro_nome"
                             type="text"
                             value=""
@@ -113,11 +113,11 @@
                             class="form-control">
                     <div *ngIf="is_invalid"
                             class="invalid-feedback">
-                        Name isn't correct.
+                        First name isn't correct.
                     </div>
 
                     <label for="new-user-family-name"
-                            class="activate">Family Name</label>
+                            class="activate">Last name</label>
                     <input [(ngModel)]="new_user.ultimo_nome"
                             type="text"
                             value=""
@@ -126,7 +126,7 @@
                             class="form-control">
                     <div *ngIf="is_invalid"
                             class="invalid-feedback">
-                        Family name isn't correct.
+                        Last name isn't correct.
                     </div>
 
                     <label for="new-user-email"
