@@ -1,11 +1,16 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
+
+import { Subscription } from "rxjs";
+
+import { saveAs } from "file-saver";
+
+import { environment } from "src/environments/environment";
+
 import { ImagemService } from "src/app/services/imagens.service";
 import { ArmazenamentoBrowser } from "src/app/utils/browser_storage/browser_storage";
 import { ChavesArmazenamentoBrowser } from "src/app/utils/chaves_armazenamento_browser";
 import { IObjetoSessaoModel } from "src/app/models/autenticacao/objeto_sessao.model";
 import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
-import { Subscription } from "rxjs";
-import { saveAs } from "file-saver";
 import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
 import { Mensagens } from "src/app/utils/mensagens";
 
@@ -32,8 +37,10 @@ export class DownloadsComponent implements OnInit, OnDestroy {
     public download_images: boolean;
     public download_classifications: boolean;
     public download_segmentations: boolean;
+    public playground: boolean;
 
     constructor(private imagemServico: ImagemService) {
+        this.playground = environment.playground === "true";
         this.armazenamentoBrowser = new ArmazenamentoBrowser();
         this.objetoErro = new ObjetoErro();
         this.objetoSessao = JSON.parse(this.armazenamentoBrowser.obterDadoSessao(ChavesArmazenamentoBrowser.CHAVE_USUARIO_LOGADO));

@@ -84,7 +84,18 @@
     <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-3"
                 id="selecionador">
-
+          <div *ngIf="playground"
+               class="alert alert-warning alert-dismissible fade show"
+               role="alert">
+            This is the playground.
+            We reset the data every 24 hours.
+            Use <a href="http://database.cric.com.br"
+                   class="alert-link">database.cric.com.br</a> to store your
+             data safely.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
             <cr-image-info [image]="imagem"></cr-image-info>
 
             <div class="box_filter">
