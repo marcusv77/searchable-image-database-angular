@@ -10,13 +10,13 @@ import { environment } from "src/environments/environment";
 })
 export class FooterComponent implements OnInit {
 
-    public linkContactUs: string;
+    public contact_us_email: string;
     public linkUFOP: string;
     public linkUFC: string;
     public linkUC_BERKELEY: string;
 
     constructor() {
-        this.linkContactUs = `mailto:${environment.email_address}`;
+        this.contact_us_email = environment.email_address;
         this.linkUFOP = LinksExternos.UFOP;
         this.linkUFC = LinksExternos.UFC;
         this.linkUC_BERKELEY = LinksExternos.UC_BERKELEY;
