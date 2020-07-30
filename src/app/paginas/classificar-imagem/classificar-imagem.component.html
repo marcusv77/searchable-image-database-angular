@@ -77,13 +77,13 @@
         <div class="col-sm-12 col-md-8 col-lg-9">
             <button class="btn btn-primary collapsed"
                     (click)="toggle_augmentation()">
-                Disable augmention
-            </button>
-            <button class="btn btn-primary collapsed"
-                    (click)="toggle_label()">
-                Disable label
+              {{ draw_augmentation ? 'Disable augmention' : 'Enable augmention' }}
             </button>
 
+            <button class="btn btn-primary collapsed"
+                    (click)="toggle_label()">
+              {{ draw_label ? 'Disable label' : 'Enable label' }}
+            </button>
         </div>
     </div>
     <div class="row">
