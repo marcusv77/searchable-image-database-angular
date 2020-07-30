@@ -6,10 +6,12 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ["./cite-us.component.scss"]
 })
 export class CiteUsComponent implements OnInit {
+    today: any;
 
     constructor() { }
 
     ngOnInit() {
+        this.today = new Date();
     }
 
 }
