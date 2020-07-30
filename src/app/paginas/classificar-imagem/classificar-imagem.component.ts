@@ -513,13 +513,17 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         }
         else {
             idx = null;
+            this.draw_label = false;
+
         }
         
         exibirClassificacoes(this.todasClassificacoes, idx, this.draw_label);
     }
 
     toggle_label() {
-        this.draw_label = !this.draw_label;
-        exibirClassificacoes(this.todasClassificacoes, this.indiceSelecionado, this.draw_label);
+        if (this.draw_augmentation) {
+            this.draw_label = !this.draw_label;
+            exibirClassificacoes(this.todasClassificacoes, this.indiceSelecionado, this.draw_label);
+        }
     }
 }

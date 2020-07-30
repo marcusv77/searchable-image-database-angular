@@ -81,7 +81,8 @@
             </button>
 
             <button class="btn btn-primary collapsed"
-                    (click)="toggle_label()">
+                    (click)="toggle_label()"
+                    [disabled]="!draw_augmentation">
               {{ draw_label ? 'Disable label' : 'Enable label' }}
             </button>
         </div>
