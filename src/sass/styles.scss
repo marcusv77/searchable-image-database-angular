@@ -133,6 +133,10 @@ img{
     }
 
     canvas {
+        &.crosshair {
+            cursor: crosshair;
+        }
+        
         max-height: calc(90vh - 10px);
         max-width: calc(100% - 10px);
         height: auto;
