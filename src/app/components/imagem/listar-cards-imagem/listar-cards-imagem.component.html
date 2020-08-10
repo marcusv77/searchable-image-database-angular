@@ -1,11 +1,11 @@
 <div class="form-inline">
     <label class="sr-only"
-            for="ID-filter">Image ID</label>
+            for="ID-filter">Image slide</label>
     <input type="text"
             class="form-control mb-2 mr-sm-2"
             id="ID-filter"
-            [(ngModel)]="filter_id"
-            placeholder="Image ID">
+            [(ngModel)]="filter_slide"
+            placeholder="Image slide">
 
     <label class="sr-only"
             for="DOI-filter">Image DOI</label>
@@ -17,7 +17,7 @@
 
     <label *ngIf="classificationDatabase"
             class="mb-2 mr-sm-2"
-            for="classification-filter">Classification</label>
+            for="classification-filter">Lesion</label>
     <select *ngIf="classificationDatabase"
             class="custom-select mb-2 mr-sm-2"
             id="classification-filter"

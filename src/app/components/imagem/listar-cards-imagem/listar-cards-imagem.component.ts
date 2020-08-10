@@ -39,7 +39,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     public paginacaoSuave: boolean;
     public tamanhoArrayImagens: number;
     public being_filtered: boolean;
-    public filter_id: number;
+    public filter_slide: string;
     public filter_doi: string;
     public filter_injury: number;
     private objetoErro: ObjetoErro;
@@ -58,7 +58,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
         this.filteredImages = new Array<PaginaImagemEntidade>();
         this.paginaDeImagens = new Array<PaginaImagemEntidade>();
         this.being_filtered = false;
-        this.filter_id = undefined;
+        this.filter_slide = undefined;
         this.filter_doi = undefined;
         this.filter_injury = undefined;
     }
@@ -224,11 +224,10 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
 
         this.filteredImages.splice(0, this.filteredImages.length);
 
-        const filter_id = Number(this.filter_id);
         const filter_injury = Number(this.filter_injury);
 
         for (const image of this.todasImagens) {
-            if (filter_id != NaN && filter_id === image.id) {
+            if (this.filter_slide != undefined && image.codigo_lamina.includes(this.filter_slide)) {
                 this.filteredImages.push(
                     image
                 );
@@ -255,7 +254,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     resetFilterImages() {
         this.being_filtered = false;
 
-        this.filter_id = undefined;
+        this.filter_slide = undefined;
         this.filter_doi = undefined;
         this.filter_injury = undefined;
 
