@@ -447,7 +447,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     }
 
     save_image() {
-        canvas2file();  /* see canvas.js */
+        canvas2file(`cric_${this.id_imagem}.png`);  /* see canvas.js */
     }
 
     save_json() {

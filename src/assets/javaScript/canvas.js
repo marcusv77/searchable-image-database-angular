@@ -307,7 +307,7 @@ function obterCorDaLesao(seed) {
     }
 }
 
-function canvas2file(){
+function canvas2file(filename){
     /* Based on https://stackoverflow.com/a/6957155/1802726 */
     var canvas = document.getElementById("canvas");
     var tmp_canvas = document.createElement('canvas');
@@ -339,7 +339,10 @@ function canvas2file(){
         anchor.setAttribute('href', tmp_canvas.toDataURL(
             "image/png"
         ));
-        anchor.setAttribute('download', "image.png");
+        anchor.setAttribute(
+            'download',
+            filename
+        );
         anchor.click()
     };
 
