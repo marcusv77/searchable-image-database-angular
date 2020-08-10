@@ -256,6 +256,7 @@
                 <canvas id="canvas"
                         (click)="!objetoSessao || registrarPonto($event)"
                         [ngStyle]="{'background-image': 'url('+caminho_imagem+')'}"
+                        [className]="objetoSessao ? 'crosshair' : ''"
                         width="{{imagem.largura}}"
                         height="{{imagem.altura}}">
                 </canvas>
