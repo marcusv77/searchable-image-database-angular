@@ -166,6 +166,17 @@ export class UploadImageComponent implements OnInit, OnDestroy {
         return this.formularioImagem.get("dt_aquisicao");
     }
 
+    new_upload(event) {
+        if (event.view.getSelection().type !== "Range") {
+            event.preventDefault();
+
+            this.arquivoSelecionado = false;
+            this.new_image_uploaded = false;
+            this.formularioImagem.reset();
+            window.location.hash="#upload-new-image";
+        }
+    }
+
     go2segmentation(event) {
         if (event.view.getSelection().type !== "Range") {
             event.preventDefault();

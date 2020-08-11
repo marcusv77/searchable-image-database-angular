@@ -2,7 +2,7 @@
 
 <div class="container">
 
-    <div *ngIf="!new_image_uploaded">
+    <div *ngIf="!new_image_uploaded" id="upload-new-image">
         <h1>Upload New Image</h1>
 
         <div *ngIf="playground"
@@ -100,6 +100,13 @@
         <cr-image-info [image]="new_image"></cr-image-info>
         <h2>Next Steps</h2>
         <div class="row">
+            <div class="col"
+                    (click)="new_upload($event)">
+                <a class="btn btn-primary btn-lg btn-block"
+                        href="#"
+                        role="button">Upload another image</a>
+            </div>
+
             <div class="col"
                     (click)="go2segmentation($event)">
                 <a class="btn btn-primary btn-lg btn-block"
