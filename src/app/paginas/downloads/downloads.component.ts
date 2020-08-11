@@ -29,7 +29,7 @@ export class DownloadsComponent implements OnInit, OnDestroy {
     };
 
     private armazenamentoBrowser: ArmazenamentoBrowser;
-    private objetoSessao: IObjetoSessaoModel;
+    public objetoSessao: IObjetoSessaoModel;
     private objetoErro: ObjetoErro;
     private export_collection_subscription: Subscription;
     public carregando = false;
