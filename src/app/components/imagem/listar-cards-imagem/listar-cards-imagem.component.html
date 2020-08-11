@@ -75,7 +75,7 @@
                 <img class="card-img-top"
                         [src]="imagem?.caminho_imagem"
                         alt="Image preview">
-                <div [attr.title]="imagem?.classificacao_aprovada ? 'Approved image' : 'Image submited by User'"
+                <div [attr.title]="imagem?.excluida ? 'Removed image' : (imagem?.classificacao_aprovada ? 'Approved image' : 'Image submited by User')"
                         class="card-img-annotation">
                     <!-- Bootstrap trash icon -->
                     <svg *ngIf="imagem?.excluida"
