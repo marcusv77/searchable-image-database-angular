@@ -119,11 +119,12 @@
                             class="browser-default custom-select"
                             class="custom-select"
                             id="cellGroupSelect"
+                            [disabled]="todasClassificacoes?.length === 0"
                             name="">
 
                         <option value="-1"
                                 selected>
-                            All cells
+                          {{ todasClassificacoes?.length === 0 ? 'No cell recorded' : 'All cells' }}
                         </option>
 
                         <option *ngFor="let celula of todasClassificacoes; let i = index "
