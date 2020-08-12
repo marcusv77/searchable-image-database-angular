@@ -1,4 +1,4 @@
-import { ActivatedRoute, ParamMap } from "@angular/router";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { Component, OnInit, Input, OnDestroy, AfterContentInit, AfterViewInit, AfterViewChecked, ViewChild } from "@angular/core";
 import { DatePipe } from "@angular/common";
 
@@ -84,7 +84,12 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     public draw_augmentation: boolean;
     public playground: boolean;
 
-    constructor(private imagemService: ImagemService, private activatedRoute: ActivatedRoute, public datepipe: DatePipe) {
+    constructor(
+        private router: Router,
+        private imagemService: ImagemService,
+        private activatedRoute: ActivatedRoute,
+        public datepipe: DatePipe
+    ) {
         this.playground = environment.playground === "true";
         this.comunicacaoApi = new ComunicacaoApi();
         this.requisicao = new CadastrarClassificacaoRequisicao();
@@ -512,6 +517,39 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
     delete_image() {
         console.log("Delete image");
+
+        this.imagemService.delete_image(this.id_imagem)
+            .subscribe(
+                () => {
+                    this.router.navigate(
+                        [
+                            "/classification/"
+                        ]
+                    );
+                },
+                (err) => {
+                    this.objetoErro = err.error;
+                    console.log(err);
+
+                    switch(this.objetoErro.status_code) {
+
+                    case HttpStatusCode.UNAUTHORIZED:
+                    case HttpStatusCode.BAD_REQUEST:
+                    case HttpStatusCode.NOT_FOUND:
+                    case HttpStatusCode.FORBIDDEN:
+                    case HttpStatusCode.INTERNAL_SERVER_ERROR: {
+                        console.log(this.objetoErro.mensagem);
+                        break;
+                    }
+
+                    default: {
+                        console.log(err);
+                        break;
+                    }
+                    }
+                }
+            );
+
         this.modal_close.nativeElement.click();
     }
 
