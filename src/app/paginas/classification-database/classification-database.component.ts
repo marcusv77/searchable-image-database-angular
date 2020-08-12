@@ -79,7 +79,7 @@ export class ClassificationDatabaseComponent implements OnInit, OnDestroy {
                     this.carregando = false;
                     this.objetoErro = erro.error;
 
-                    switch (this.objetoErro.status_code) {
+                    switch (this.objetoErro.status) {
 
                     case HttpStatusCode.UNAUTHORIZED: {
                         console.log(this.objetoErro.mensagem);

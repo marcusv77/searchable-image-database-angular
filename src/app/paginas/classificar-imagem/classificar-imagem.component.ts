@@ -1,5 +1,5 @@
-import { ActivatedRoute, ParamMap } from "@angular/router";
-import { Component, OnInit, Input, OnDestroy, AfterContentInit, AfterViewInit, AfterViewChecked } from "@angular/core";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
+import { Component, OnInit, Input, OnDestroy, AfterContentInit, AfterViewInit, AfterViewChecked, ViewChild } from "@angular/core";
 import { DatePipe } from "@angular/common";
 
 import { Subscription } from "rxjs";
@@ -50,6 +50,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         "name": `CRIC Cervix Classification #undefined`
     };
 
+    @ViewChild("delete_image_modal_close", { static: true }) modal_close: any;
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private atualizarDadosImagemSubscription: Subscription;
     private cadastrarClassificacaoSubscription: Subscription;
@@ -83,7 +84,12 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     public draw_augmentation: boolean;
     public playground: boolean;
 
-    constructor(private imagemService: ImagemService, private activatedRoute: ActivatedRoute, public datepipe: DatePipe) {
+    constructor(
+        private router: Router,
+        private imagemService: ImagemService,
+        private activatedRoute: ActivatedRoute,
+        public datepipe: DatePipe
+    ) {
         this.playground = environment.playground === "true";
         this.comunicacaoApi = new ComunicacaoApi();
         this.requisicao = new CadastrarClassificacaoRequisicao();
@@ -180,7 +186,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                     this.carregando = false;
                     this.objetoErro = erro.error;
 
-                    switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status) {
 
                     case HttpStatusCode.UNAUTHORIZED:
                     case HttpStatusCode.BAD_REQUEST:
@@ -221,7 +227,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                     this.carregando = false;
                     this.objetoErro = erro.error;
 
-                    switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status) {
 
                     case HttpStatusCode.UNAUTHORIZED:
                     case HttpStatusCode.BAD_REQUEST:
@@ -255,7 +261,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                     this.carregando = false;
                     this.objetoErro = erro.error;
 
-                    switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status) {
 
                     case HttpStatusCode.UNAUTHORIZED:
                     case HttpStatusCode.NOT_FOUND:
@@ -297,7 +303,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                     this.carregando = false;
                     this.objetoErro = erro.error;
 
-                    switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status) {
 
                     case HttpStatusCode.UNAUTHORIZED:
                     case HttpStatusCode.BAD_REQUEST:
@@ -374,7 +380,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                         this.carregando = false;
                         this.objetoErro = erro.error;
 
-                        switch(this.objetoErro.status_code) {
+                        switch(this.objetoErro.status) {
 
                         case HttpStatusCode.UNAUTHORIZED:
                         case HttpStatusCode.BAD_REQUEST:
@@ -422,7 +428,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                         this.carregando = false;
                         this.objetoErro = erro.error;
 
-                        switch(this.objetoErro.status_code) {
+                        switch(this.objetoErro.status) {
 
                         case HttpStatusCode.UNAUTHORIZED:
                         case HttpStatusCode.BAD_REQUEST:
@@ -507,6 +513,100 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         file_a.click();
 
         document.body.removeChild(file_a);
+    }
+
+    delete_image() {
+        this.carregando = true;
+        
+        this.imagemService.delete_image(this.id_imagem)
+            .subscribe(
+                () => {
+                    this.carregando = false;
+                    this.modal_close.nativeElement.click();
+
+                    this.router.navigate(
+                        [
+                            "/classification/"
+                        ]
+                    );
+                },
+                (err) => {
+                    switch(err.status) {
+
+                    case HttpStatusCode.UNAUTHORIZED:
+                    case HttpStatusCode.BAD_REQUEST:
+                    case HttpStatusCode.NOT_FOUND:
+                    case HttpStatusCode.FORBIDDEN:
+                    case HttpStatusCode.INTERNAL_SERVER_ERROR: {
+                        console.log(err.message);
+                        break;
+                    }
+
+                    default: {
+                        console.log(err);
+                        break;
+                    }
+                    }
+
+                    this.carregando = false;
+                    this.modal_close.nativeElement.click();
+                }
+            );
+    }
+
+    toggle_approve_image() {
+        if (this.imagem.classificacao_aprovada) {
+            this.imagemService.unapprove_image(this.id_imagem)
+                .subscribe(
+                    () => {
+                        this.imagem.classificacao_aprovada = false;
+                    },
+                    (err) => {
+                        switch(err.status) {
+
+                            case HttpStatusCode.UNAUTHORIZED:
+                            case HttpStatusCode.BAD_REQUEST:
+                            case HttpStatusCode.NOT_FOUND:
+                            case HttpStatusCode.FORBIDDEN:
+                            case HttpStatusCode.INTERNAL_SERVER_ERROR: {
+                                console.log(err.message);
+                                break;
+                            }
+
+                            default: {
+                                console.log(err);
+                                break;
+                            }
+                        }
+                    }
+                );
+        }
+        else {
+            this.imagemService.approve_image(this.id_imagem)
+                .subscribe(
+                    () => {
+                        this.imagem.classificacao_aprovada = true;
+                    },
+                    (err) => {
+                        switch(err.status) {
+
+                            case HttpStatusCode.UNAUTHORIZED:
+                            case HttpStatusCode.BAD_REQUEST:
+                            case HttpStatusCode.NOT_FOUND:
+                            case HttpStatusCode.FORBIDDEN:
+                            case HttpStatusCode.INTERNAL_SERVER_ERROR: {
+                                console.log(err.message);
+                                break;
+                            }
+
+                            default: {
+                                console.log(err);
+                                break;
+                            }
+                        }
+                    }
+                );
+        }
     }
 
     toggle_augmentation() {

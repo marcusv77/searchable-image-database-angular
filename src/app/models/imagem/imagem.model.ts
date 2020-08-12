@@ -6,8 +6,8 @@ export interface IImagemModelResultado {
     nome: string;
     doi: string;
     codigo_lamina: string;
-    excluida: number;
-    classificacao_aprovada: number;
+    excluida: boolean;
+    classificacao_aprovada: boolean;
     dt_aquisicao: Date;
     caminho_imagem: string;
     id_usuario: number;

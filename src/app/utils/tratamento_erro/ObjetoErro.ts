@@ -1,4 +1,4 @@
 export class ObjetoErro {
-    status_code: number;
+    status: number;
     mensagem: string;
 }
