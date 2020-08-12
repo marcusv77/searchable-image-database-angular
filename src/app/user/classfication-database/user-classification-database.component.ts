@@ -74,7 +74,7 @@ export class UserClassificationDatabaseComponent implements OnInit {
                     this.carregando = false;
                     this.objetoErro = erro.error;
 
-                    switch (this.objetoErro.status_code) {
+                    switch (this.objetoErro.status) {
 
                     case HttpStatusCode.UNAUTHORIZED:
                     case HttpStatusCode.NOT_FOUND:

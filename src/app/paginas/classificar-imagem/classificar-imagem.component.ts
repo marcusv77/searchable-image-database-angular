@@ -186,7 +186,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                     this.carregando = false;
                     this.objetoErro = erro.error;
 
-                    switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status) {
 
                     case HttpStatusCode.UNAUTHORIZED:
                     case HttpStatusCode.BAD_REQUEST:
@@ -227,7 +227,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                     this.carregando = false;
                     this.objetoErro = erro.error;
 
-                    switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status) {
 
                     case HttpStatusCode.UNAUTHORIZED:
                     case HttpStatusCode.BAD_REQUEST:
@@ -261,7 +261,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                     this.carregando = false;
                     this.objetoErro = erro.error;
 
-                    switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status) {
 
                     case HttpStatusCode.UNAUTHORIZED:
                     case HttpStatusCode.NOT_FOUND:
@@ -303,7 +303,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                     this.carregando = false;
                     this.objetoErro = erro.error;
 
-                    switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status) {
 
                     case HttpStatusCode.UNAUTHORIZED:
                     case HttpStatusCode.BAD_REQUEST:
@@ -380,7 +380,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                         this.carregando = false;
                         this.objetoErro = erro.error;
 
-                        switch(this.objetoErro.status_code) {
+                        switch(this.objetoErro.status) {
 
                         case HttpStatusCode.UNAUTHORIZED:
                         case HttpStatusCode.BAD_REQUEST:
@@ -428,7 +428,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                         this.carregando = false;
                         this.objetoErro = erro.error;
 
-                        switch(this.objetoErro.status_code) {
+                        switch(this.objetoErro.status) {
 
                         case HttpStatusCode.UNAUTHORIZED:
                         case HttpStatusCode.BAD_REQUEST:
@@ -531,7 +531,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                     this.objetoErro = err.error;
                     console.log(err);
 
-                    switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status) {
 
                     case HttpStatusCode.UNAUTHORIZED:
                     case HttpStatusCode.BAD_REQUEST:

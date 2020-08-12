@@ -47,7 +47,7 @@ export class AdminInjuryComponent implements OnInit {
                     this.carregando = false;
                     this.objetoErro = error.error;
 
-                    switch(this.objetoErro.status_code) {
+                    switch(this.objetoErro.status) {
 
                     case HttpStatusCode.UNAUTHORIZED:
                     case HttpStatusCode.NOT_FOUND:

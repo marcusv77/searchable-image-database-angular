@@ -109,7 +109,7 @@ export class UploadImageComponent implements OnInit, OnDestroy {
                         },
                         (erro) => {
                             this.objetoErro = erro.error;
-                            switch (this.objetoErro.status_code) {
+                            switch (this.objetoErro.status) {
 
                             case HttpStatusCode.UNAUTHORIZED: {
                                 console.log(this.objetoErro.mensagem);
