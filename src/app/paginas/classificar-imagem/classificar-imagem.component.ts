@@ -516,11 +516,14 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     }
 
     delete_image() {
-        console.log("Delete image");
-
+        this.carregando = true;
+        
         this.imagemService.delete_image(this.id_imagem)
             .subscribe(
                 () => {
+                    this.carregando = false;
+                    this.modal_close.nativeElement.click();
+
                     this.router.navigate(
                         [
                             "/classification/"
@@ -528,17 +531,14 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                     );
                 },
                 (err) => {
-                    this.objetoErro = err.error;
-                    console.log(err);
-
-                    switch(this.objetoErro.status) {
+                    switch(err.status) {
 
                     case HttpStatusCode.UNAUTHORIZED:
                     case HttpStatusCode.BAD_REQUEST:
                     case HttpStatusCode.NOT_FOUND:
                     case HttpStatusCode.FORBIDDEN:
                     case HttpStatusCode.INTERNAL_SERVER_ERROR: {
-                        console.log(this.objetoErro.mensagem);
+                        console.log(err.message);
                         break;
                     }
 
@@ -547,10 +547,11 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
                         break;
                     }
                     }
+
+                    this.carregando = false;
+                    this.modal_close.nativeElement.click();
                 }
             );
-
-        this.modal_close.nativeElement.click();
     }
 
     approve_image() {

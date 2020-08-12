@@ -390,7 +390,20 @@
             <div class="modal-footer">
                 <button type="button"
                         class="btn btn-danger"
-                        (click)="delete_image()">Delete Image</button>
+                        (click)="delete_image()"
+                        [disabled]="carregando"
+                        >
+                    <span *ngIf="!carregando">
+                        Delete image
+                    </span>
+                    <span *ngIf="carregando">
+                        Deleting image
+                    </span>
+                    <span *ngIf="carregando"
+                            class="spinner-border spinner-border-sm"
+                            role="status"
+                            aria-hidden="true"></span>
+                </button>
             </div>
         </div>
     </div>
