@@ -1,5 +1,5 @@
 import { ActivatedRoute, ParamMap } from "@angular/router";
-import { Component, OnInit, Input, OnDestroy, AfterContentInit, AfterViewInit, AfterViewChecked } from "@angular/core";
+import { Component, OnInit, Input, OnDestroy, AfterContentInit, AfterViewInit, AfterViewChecked, ViewChild } from "@angular/core";
 import { DatePipe } from "@angular/common";
 
 import { Subscription } from "rxjs";
@@ -50,6 +50,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         "name": `CRIC Cervix Classification #undefined`
     };
 
+    @ViewChild("delete_image_modal_close", { static: true }) modal_close: any;
     private armazenamentoBrowser: ArmazenamentoBrowser;
     private atualizarDadosImagemSubscription: Subscription;
     private cadastrarClassificacaoSubscription: Subscription;
@@ -507,6 +508,15 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
         file_a.click();
 
         document.body.removeChild(file_a);
+    }
+
+    delete_image() {
+        console.log("Delete image");
+        this.modal_close.nativeElement.click();
+    }
+
+    approve_image() {
+        console.log("Approve image");
     }
 
     toggle_augmentation() {
