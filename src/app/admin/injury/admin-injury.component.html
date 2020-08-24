@@ -69,7 +69,7 @@
                     </div>
                     <div class="modal-body">
                         <form [formGroup]="injury_form"
-                                (ngSubmit)="edit_injury()">
+                                (ngSubmit)="injury_id2edit ? edit_injury() : create_injury()">
 
                             <div *ngIf="injury_id2edit" class="form-group">
                                 <label for="injury_id">ID</label>
