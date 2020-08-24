@@ -58,7 +58,9 @@
                     role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Edit Injury</h5>
+                      <h5 class="modal-title">
+                        {{ injury_id2edit ? "Edit Injury" : "New Injury" }}
+                      </h5>
                         <button type="button"
                                 class="close"
                                 data-dismiss="modal"
@@ -70,7 +72,7 @@
                         <form [formGroup]="injury_form"
                                 (ngSubmit)="edit_injury()">
 
-                            <div class="form-group">
+                            <div *ngIf="injury_id2edit" class="form-group">
                                 <label for="injury_id">ID</label>
                                 <input type="number"
                                         class="form-control"
@@ -106,7 +108,9 @@
                             <div class="modal-footer">
                                 <button type="submit"
                                         [disabled]="!injury_form.valid"
-                                        class="btn btn-primary">Save</button>
+                                        class="btn btn-primary">
+                                  {{ injury_id2edit ? "Save" : "Create" }}
+                                </button>
                                 <button #injury_modal_close
                                         type="button"
                                         class="btn btn-secondary"
