@@ -10,6 +10,7 @@ import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { ILesaoModelResultado } from "src/app/models/imagem/lesao.model";
 
 import { ImagemService } from "src/app/services/imagens.service";
+import { InjuriesService } from "src/app/services/injuries.service";
 
 import { ObjetoErro } from "src/app/utils/tratamento_erro/ObjetoErro";
 
@@ -48,7 +49,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
     public todasClassificacoes: ICelulaClassificadaModelResultado[];
     public todasLesoes: ILesaoModelResultado[];
 
-    constructor(private router: Router, private imagemService: ImagemService) {
+    constructor(private router: Router, private imagemService: ImagemService, private injuriesService: InjuriesService) {
         this.paginaSelecionada = 1;
         this.limiteInferiorIndice = 1;
         this.numeroImagensPorPagina = 12;  /* due Bootstrap grid layout */
@@ -86,7 +87,7 @@ export class ListarCardsImagemComponent implements OnInit, OnDestroy, AfterConte
 
         this.carregando = true;
         this.listarTodasLesoesSubscription =
-        this.imagemService.listarLesoes()
+        this.injuriesService.listarLesoes()
             .subscribe(
                 (retorno) => {
                     this.todasLesoes = retorno;

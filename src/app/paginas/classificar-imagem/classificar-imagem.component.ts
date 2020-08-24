@@ -7,6 +7,7 @@ import { Subscription } from "rxjs";
 import { environment } from "src/environments/environment";
 
 import { ImagemService } from "src/app/services/imagens.service";
+import { InjuriesService } from "src/app/services/injuries.service";
 import { IImagemModelResultado } from "src/app/models/imagem/imagem.model";
 import { IUsuarioBaseModel } from "src/app/models/usuario/usuario_base.model";
 import { HttpStatusCode } from "src/app/utils/tratamento_erro/Http_Status_Code";
@@ -87,6 +88,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private imagemService: ImagemService,
+        private injuriesService: InjuriesService,
         private activatedRoute: ActivatedRoute,
         public datepipe: DatePipe
     ) {
@@ -251,7 +253,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
         this.carregando = true;
         this.listarTodasLesoesSubscription =
-        this.imagemService.listarLesoes()
+        this.injuriesService.listarLesoes()
             .subscribe(
                 (retorno) => {
                     this.todasLesoes = retorno;

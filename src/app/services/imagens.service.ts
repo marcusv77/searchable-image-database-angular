@@ -101,30 +101,6 @@ export class ImagemService {
         });
     }
 
-    listarLesoes(): Observable<ILesaoModelResultado[]> {
-
-        this.inicializarServicos();
-        const url = `${this.api.obterUrlBaseApi()}/api/v1/lesoes`;
-
-        return this.httpClient.get<ILesaoModelResultado[]>(url, {
-            headers: this.headerApplicationJson
-        });
-    }
-
-    edit_injury(injury_id: number, injury:any): any {
-
-        this.inicializarServicos();
-        const url = `${this.api.obterUrlBaseApi()}/api/v1/lesoes/${injury_id}`;
-
-        return this.httpClient.put(
-            url,
-            injury,
-            {
-                headers: this.headerApplicationJson
-            }
-        );
-    }
-
     listarDescricoes(): Observable<IDescricaoModelResultado[]> {
 
         this.inicializarServicos();
