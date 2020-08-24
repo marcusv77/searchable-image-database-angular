@@ -65,6 +65,15 @@ export class AdminInjuryComponent implements OnInit {
             );
     }
 
+    load_create_injury_modal() {
+        this.injury_id2edit = undefined;
+        this.injury_form.patchValue({
+            nome: undefined,
+            detalhes: undefined,
+            grade: undefined,
+        });
+    }
+
     load_edit_injury_modal(injury_id: number) {
         this.injury_id2edit = this.all_injuries[injury_id].id;
         this.injury_form.patchValue({
