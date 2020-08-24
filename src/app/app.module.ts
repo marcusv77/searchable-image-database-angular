@@ -43,6 +43,7 @@ import { UsuarioService } from "src/app/services/usuarios/usuarios.service";
 import { AutenticacaoService } from "./services/login/autenticacao.service";
 import { SignUpService } from "./services/login/sign_up.service";
 import { ImagemService } from "./services/imagens.service";
+import { InjuriesService } from "./services/injuries.service";
 import { ConexaoService } from "./services/conexao/conexao.service";
 import { UserNavComponent } from './user/nav/user-nav.component';
 import { AdminInjuryComponent } from './admin/injury/admin-injury.component';
@@ -86,6 +87,7 @@ import { AdminInjuryComponent } from './admin/injury/admin-injury.component';
     ],
     providers: [
         ImagemService,
+        InjuriesService,
         UsuarioService,
         AutenticacaoService,
         SignUpService,
