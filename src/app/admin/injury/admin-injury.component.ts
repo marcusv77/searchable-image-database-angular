@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { ILesaoModelResultado, ILesaoModelRequisicao } from "src/app/models/imagem/lesao.model";
 
@@ -21,9 +21,9 @@ export class AdminInjuryComponent implements OnInit {
     public carregando: boolean;
     public injury_id2edit: number;
     public injury_form = new FormGroup({
-        nome: new FormControl(''),
+        nome: new FormControl('', Validators.required),
         detalhes: new FormControl(''),
-        grade: new FormControl(''),
+        grade: new FormControl('', Validators.required),
     });
 
     constructor(private image_service: ImagemService) {
