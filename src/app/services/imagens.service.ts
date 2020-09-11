@@ -89,7 +89,7 @@ export class ImagemService {
         return this.httpClient.get<IImagemModelResultado[]>(url, {
             headers: this.headerApplicationJson,
             params: {
-                id_usuario: id_usuario
+                id_usuario: id_usuario.toString()
             }
         });
     }
