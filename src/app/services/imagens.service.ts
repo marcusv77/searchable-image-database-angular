@@ -84,10 +84,13 @@ export class ImagemService {
     listarTodasImagens(id_usuario: number): Observable<IImagemModelResultado[]> {
 
         this.inicializarServicos();
-        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens/listar/${id_usuario}`;
+        const url = `${this.api.obterUrlBaseApi()}/api/v1/imagens`;
 
         return this.httpClient.get<IImagemModelResultado[]>(url, {
-            headers: this.headerApplicationJson
+            headers: this.headerApplicationJson,
+            params: {
+                id_usuario: id_usuario
+            }
         });
     }
 
