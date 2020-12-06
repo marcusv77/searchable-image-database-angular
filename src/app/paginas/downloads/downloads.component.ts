@@ -111,3 +111,4 @@ export class DownloadsComponent implements OnInit, OnDestroy {
                     );
     }
 }
+
