@@ -27,8 +27,10 @@
         when using the images or classifications.
     </p>
 
-    <h2>Customize your download</h2>
+    <h2>CRIC Cervix Cell Classification</h2>
     <form>
+        <p>400 images (with 11,348 cells) from microscope slides of the uterine cervix using the conventional smear (Pap smear) and the epithelial cell abnormalities classified  according to Bethesda system.</p>
+        <p>The cells in the CRIC Cervix Classification collection are labeled in six (6) classes: negative for intraepithelial lesion or malignancy (NILM); atypical squamous cells of undetermined significance, possibly non-neoplastic (ASC-US); low-grade squamous intraepithelial lesion (LSIL); atypical squamous cells of undetermined significance, and cannot exclude a high-grade lesion (ASC-H); high-grade squamous intraepithelial lesion (HSIL); and squamous carcinoma (SC).</p>
         <div class="form-group row">
             <label for="collection_select"
                     class="col-sm-2 col-form-label">Collection</label>
@@ -95,6 +97,15 @@
                     class="spinner-border spinner-border-sm"
                     role="status"
                     aria-hidden="true"></span>
+        </button>
+    </form>
+
+    <h2>CRIC Cervix Cell Classification - Cropped Image</h2>
+    <form>
+        <p>The CRIC Cervical Cell Classification – Cropped Image (CRIC- CI) was designed to push state of the art in cervical cell classification using cropped patches around nuclei for machine learning algorithm.  The database is part of the Cervix Cell classification collection, the bounding boxes of 90 x 90 pixels around nuclei were chosen from different classes. This dataset divides cells into two more group classes: two class groups and three class groups. The two-class groups divide the cell into normal (NILM) and altered (ASC-US, ASC-H, LSIL, HSIL, and CA). The three-class group divides into normal (NILM), low (ASC-US and LSIL), and high grade (ASC-H, HSIL, and CA)  lesions. As the database was used in convolutional neural networks algorithms it is balanced and augmented according [2].</p>        
+        <p>[2] A deep learning ensemble method to assist cytopathologists in the Pap test images classification - Débora N. Diniz, Mariana T. Rezende, Andrea G. C. Bianchi, Claudia M.Carneiro, Eduardo J. S. Luz, Gladston J. P. Moreira, Daniela M. Ushizima, Fátima N. S. de Medeiros, and Marcone J. F. Souza, submitted to PeerJ in december 2020.</p>
+        <button class="btn btn-primary">
+            <a href="./assets/content/Base.rar" download="Base.rar">Start download</a>
         </button>
     </form>
 
