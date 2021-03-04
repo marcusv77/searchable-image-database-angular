@@ -212,7 +212,7 @@ export class ClassificarImagemComponent implements OnInit, OnDestroy {
 
         this.carregando = true;
         this.exibirModal = false;
-        this.requisicao.id_lesao = this.id_lesao;
+        this.requisicao.id_lesao = Number(this.id_lesao);
         this.requisicao.alturaOriginalImg = this.imagem.altura;
         this.requisicao.larguraOriginalImg = this.imagem.largura;
 
