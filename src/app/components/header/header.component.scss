@@ -40,3 +40,9 @@ img.logoIndexHeader{
     color: #2f9fae !important;
     font-weight: 600;
 }
+
+@media screen and (max-width: 340px){ 
+    img.logoIndexHeader{
+        max-width: 180px;
+    }
+}
